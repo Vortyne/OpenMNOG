@@ -1,0 +1,6 @@
+{
+ "note": "V.4-S: panning left stops at 705 (beyond, a black strip shows at the edge).",
+ "pan": {
+  "max": 705
+ }
+}

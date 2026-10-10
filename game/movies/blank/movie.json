@@ -1,0 +1,11 @@
+{
+  "format": "mnog-movie/1",
+  "source": "blank.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [],
+  "timeline": {"frameCount": 1, "frames": [{}]}
+}

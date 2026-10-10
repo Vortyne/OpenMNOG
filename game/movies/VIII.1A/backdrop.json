@@ -1,0 +1,26 @@
+{
+ "note": "VIII.1A (Kapura in the desert): its backdrop is a painting made from VIII.1-S's far mesa and a dune, zoomed about 3x and blurred; drawn live from the scene (without the statue and its shadow) when Vectorize bitmaps is on, filling the widescreen view. The background and middle layers are placed separately (569 / 520) so the mesa and the dune sit as in the painting.",
+ "image": 1,
+ "scene": "VIII.1-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 569.0,
+  "Middle-Ground": 520.0,
+  "Fore-Ground": 667.45
+ },
+ "hide": [
+  "Middle-Ground/#8",
+  "Middle-Ground/#6",
+  "Buttons"
+ ],
+ "zoom": 3.05,
+ "x": 0.0,
+ "y": 165.0,
+ "blur": 5.0,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ]
+}

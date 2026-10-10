@@ -1,0 +1,6 @@
+{
+ "note": "IX.4-E: panning left stops at 735 (beyond, the foreground rock ends and the sky shows past it).",
+ "pan": {
+  "max": 735
+ }
+}

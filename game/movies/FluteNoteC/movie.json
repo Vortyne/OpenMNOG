@@ -1,0 +1,25 @@
+{
+  "format": "mnog-movie/1",
+  "source": "FluteNoteC.swf",
+  "swfVersion": 4,
+  "width": 740,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#000000FF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 36271, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 10,
+    "frames": [
+      {"labels": ["init"], "scripts": ["scripts/frame1.as"]},
+      {"scripts": ["scripts/frame2.as"]},
+      {"labels": ["stop"], "scripts": ["scripts/frame3.as"]},
+      {"labels": ["play"], "sounds": [{"id": 1}]},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  }
+}

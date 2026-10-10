@@ -1,0 +1,26 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_OnuKoro.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 40770, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "sounds": [
+          {
+            "id": 1,
+            "out": 163080,
+            "loops": 65535,
+            "envelope": [[0, 0, 0], [157066, 16384, 26444], [622223, 16384, 26444], [942396, 5749, 7186]]
+          }
+        ]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

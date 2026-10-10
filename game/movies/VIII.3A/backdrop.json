@@ -1,0 +1,22 @@
+{
+ "note": "VIII.3A: its backdrop is VIII.3-E zoomed 1.07x and blurred; drawn live from the scene (without Nokama, Fore-ground) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 2,
+ "scene": "VIII.3-E",
+ "frame": 2,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 377.5,
+  "Middle-Ground": 370.0,
+  "Fore-Ground": 439.55
+ },
+ "hide": [
+  "Middle-Ground/Nokama",
+  "Fore-ground",
+  "Buttons"
+ ],
+ "zoom": 1.0,
+ "x": 51.5,
+ "y": -2.1,
+ "blur": 2.0,
+ "wide": true
+}

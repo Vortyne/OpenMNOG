@@ -1,0 +1,98 @@
+{
+ "note": "VII.1B: its backdrop is VII.1-N zoomed 1.34x and blurred; drawn live from the scene (without the Po-Matoran) when Vectorize bitmaps is on, filling the widescreen view. As in the original painting: the background layer placed on its own (542) so the distant mesas sit right of the dome; the jetty left out (parts 0-7 of the shape it shares with the sign); the water and the foreground left out; and the cobbled path and dirt (parts of the ground shape) repeated further down in their place.",
+ "image": 1,
+ "scene": "VII.1-N",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 542.0,
+  "Middle-Ground": 530.0,
+  "Fore-Ground": 688.0
+ },
+ "hide": [
+  "Middle-Ground/#52",
+  "Buttons",
+  "Fore-Ground",
+  "Middle-Ground/#1",
+  "Middle-Ground/#2",
+  "Middle-Ground/#12"
+ ],
+ "zoom": 1.34,
+ "x": 5.0,
+ "y": 36.5,
+ "blur": 1.5,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ],
+ "hideParts": {
+  "Middle-Ground/#32": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ]
+ },
+ "copies": [
+  {
+   "of": "Middle-Ground/#27",
+   "parts": [
+    3,
+    4
+   ],
+   "depth": 23,
+   "dy": 250
+  },
+  {
+   "of": "Middle-Ground/#27",
+   "parts": [
+    3,
+    4
+   ],
+   "depth": 24,
+   "dy": 150
+  },
+  {
+   "of": "Middle-Ground/#27",
+   "parts": [
+    3,
+    4,
+    2
+   ],
+   "depth": 25,
+   "dy": 100
+  },
+  {
+   "of": "Middle-Ground/#27",
+   "parts": [
+    2
+   ],
+   "depth": 26,
+   "dy": 75
+  },
+  {
+   "of": "Middle-Ground/#27",
+   "parts": [
+    3,
+    4,
+    2
+   ],
+   "depth": 28,
+   "dy": 50
+  },
+  {
+   "of": "Middle-Ground/#27",
+   "parts": [
+    3,
+    4
+   ],
+   "depth": 29,
+   "dy": 25
+  }
+ ]
+}

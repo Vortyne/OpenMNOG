@@ -1,0 +1,11 @@
+{
+  "format": "mnog-movie/1",
+  "source": "matanuionlinegame.swf",
+  "swfVersion": 5,
+  "width": 770,
+  "height": 475,
+  "frameRate": 18,
+  "background": "#000000FF",
+  "symbols": [],
+  "timeline": {"frameCount": 1, "frames": [{"scripts": ["scripts/frame1.as"]}]}
+}

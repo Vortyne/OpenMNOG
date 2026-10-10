@@ -1,0 +1,29 @@
+{
+  "format": "mnog-movie/1",
+  "source": "SFX_WaterAmbiant.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 115503, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 52748, "original": "mp3"},
+    {"kind": "sound", "id": 3, "file": "sounds/3.ogg", "rate": 11025, "channels": 1, "samples": 29554, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 5,
+    "frames": [
+      {},
+      {"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 8048, 7186]]}]},
+      {"scripts": ["scripts/frame3.as"]},
+      {
+        "sounds": [
+          {"id": 2, "loops": 2, "envelope": [[0, 0, 0], [210254, 15809, 16097], [420508, 0, 0]]},
+          {"id": 3, "loops": 65535, "envelope": [[0, 0, 0], [118205, 4024, 4312]]}
+        ]
+      },
+      {"scripts": ["scripts/frame5.as"]}
+    ]
+  }
+}

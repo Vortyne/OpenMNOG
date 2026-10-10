@@ -1,0 +1,15 @@
+{
+ "note": "The right cave wall (depth 7) is stretched rightwards (it is placed mirrored, so about its own right edge) to reach the 16:9 edge at the bottom. The view stays 16:9 wide (the measured edge stopped short at the right).",
+ "fixes": [
+  {
+   "sprite": 15,
+   "depth": 7,
+   "widescreenScaleX": 1.04,
+   "widescreenAnchor": "right"
+  }
+ ],
+ "view": {
+  "left": -37.2,
+  "right": 807.2
+ }
+}

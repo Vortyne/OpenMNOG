@@ -1,0 +1,649 @@
+{
+ "note": "XX.4A: XX.5-N's glyph wall with the painting's lighting redrawn (a radial wall light and a floor glow beneath the glyphs, the scene's own wall colours, light facets and torch hidden), the light's bright core on top; both glyph blocks placed as the painting has them, the right block rewritten to read as the painting's.",
+ "image": 1,
+ "scene": "XX.5-N",
+ "frame": 3,
+ "vertical": true,
+ "layers": {
+  "Middle-Ground": 70.0,
+  "Fore-Ground": 25.8
+ },
+ "hide": [
+  "Middle-Ground/Tohunga",
+  "Fore-Ground",
+  "TurnButtons",
+  "Buttons",
+  "Middle-Ground/#56",
+  "Middle-Ground/#55",
+  "Middle-Ground/#51",
+  "Middle-Ground/#5",
+  "Middle-Ground/#52"
+ ],
+ "zoom": 1.984,
+ "x": 33.7,
+ "y": 189.0,
+ "blur": 1.0,
+ "wide": true,
+ "text": {
+  "Middle-Ground/#8": [
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#003333FF",
+    "x": 90.9,
+    "y": 97,
+    "text": "what do",
+    "glyphs": [
+     32,
+     19,
+     12,
+     29,
+     0,
+     15,
+     25
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#003333FF",
+    "x": 90.9,
+    "y": 119,
+    "text": "you get",
+    "glyphs": [
+     33,
+     25,
+     30,
+     0,
+     18,
+     16,
+     29
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#003333FF",
+    "x": 99.9,
+    "y": 141,
+    "text": "if you",
+    "glyphs": [
+     20,
+     17,
+     0,
+     33,
+     25,
+     30
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#003333FF",
+    "x": 82.9,
+    "y": 163,
+    "text": "multiply",
+    "glyphs": [
+     23,
+     30,
+     22,
+     29,
+     20,
+     26,
+     22,
+     33
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#003333FF",
+    "x": 102.46,
+    "y": 185,
+    "text": "six by",
+    "glyphs": [
+     28,
+     20,
+     35,
+     0,
+     13,
+     33
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#003333FF",
+    "x": 115.17,
+    "y": 207,
+    "text": "nine",
+    "glyphs": [
+     24,
+     20,
+     24,
+     16
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9
+    ]
+   }
+  ],
+  "Middle-Ground/#57": [
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 21.2,
+    "y": 17,
+    "text": "amet ",
+    "glyphs": [
+     12,
+     23,
+     16,
+     29,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 0.05,
+    "y": 39,
+    "text": "cg elit",
+    "glyphs": [
+     14,
+     18,
+     0,
+     16,
+     22,
+     20,
+     29
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 16.95,
+    "y": 61,
+    "text": "     bh ",
+    "glyphs": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     13,
+     19,
+     0
+    ],
+    "advances": [
+     8.45,
+     8.45,
+     8.45,
+     8.45,
+     8.45,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 4.3,
+    "y": 83,
+    "text": "eureet ",
+    "glyphs": [
+     16,
+     30,
+     27,
+     16,
+     16,
+     29,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     6.3
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 21.2,
+    "y": 105,
+    "text": "  rat ",
+    "glyphs": [
+     0,
+     0,
+     27,
+     12,
+     29,
+     0
+    ],
+    "advances": [
+     8.45,
+     8.45,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 8.5,
+    "y": 127,
+    "text": "vom ad ",
+    "glyphs": [
+     31,
+     25,
+     23,
+     0,
+     12,
+     15,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 12.75,
+    "y": 149,
+    "text": "mtrud ",
+    "glyphs": [
+     23,
+     29,
+     27,
+     30,
+     15,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 12.75,
+    "y": 171,
+    "text": "erper ",
+    "glyphs": [
+     16,
+     27,
+     26,
+     16,
+     27,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 8.5,
+    "y": 193,
+    "text": "ssl ut ",
+    "glyphs": [
+     28,
+     28,
+     22,
+     0,
+     30,
+     29,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 21.2,
+    "y": 215,
+    "text": "moto ",
+    "glyphs": [
+     23,
+     25,
+     29,
+     25,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#0A3C40FF",
+    "x": 21.2,
+    "y": 237,
+    "text": "utem ",
+    "glyphs": [
+     30,
+     29,
+     16,
+     23,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   }
+  ]
+ },
+ "move": {
+  "Middle-Ground/#8": [
+   -20.0,
+   -2.5,
+   1.06
+  ],
+  "Middle-Ground/#57": [
+   3.7,
+   -45.4,
+   1.28
+  ]
+ },
+ "hideParts": {
+  "Middle-Ground/#4": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "shapes": [
+  {
+   "points": [
+    [
+     -400,
+     -300
+    ],
+    [
+     523,
+     -300
+    ],
+    [
+     427,
+     332
+    ],
+    [
+     112,
+     356
+    ],
+    [
+     0,
+     382
+    ],
+    [
+     -400,
+     470
+    ]
+   ],
+   "from": [
+    175,
+    40
+   ],
+   "to": [
+    175,
+    480
+   ],
+   "radial": true,
+   "under": true,
+   "colors": [
+    "#FEFE9A",
+    "#FEFE9A",
+    "#C4DCA6",
+    "#70A8B5",
+    "#3E7480",
+    "#0B3F41",
+    "#003333",
+    "#001A1A"
+   ]
+  },
+  {
+   "points": [
+    [
+     -400,
+     470
+    ],
+    [
+     0,
+     382
+    ],
+    [
+     112,
+     356
+    ],
+    [
+     427,
+     332
+    ],
+    [
+     1200,
+     320
+    ],
+    [
+     1200,
+     700
+    ],
+    [
+     -400,
+     700
+    ]
+   ],
+   "from": [
+    470,
+    455
+   ],
+   "to": [
+    470,
+    105
+   ],
+   "radial": true,
+   "under": true,
+   "colors": [
+    "#639EB1",
+    "#3A717C",
+    "#0C3F41",
+    "#001010",
+    "#000000"
+   ]
+  },
+  {
+   "points": [
+    [
+     -400,
+     -300
+    ],
+    [
+     209,
+     -300
+    ],
+    [
+     111,
+     356
+    ],
+    [
+     0,
+     382
+    ],
+    [
+     -400,
+     470
+    ]
+   ],
+   "from": [
+    0,
+    120
+   ],
+   "to": [
+    0,
+    370
+   ],
+   "under": true,
+   "colors": [
+    "#06303500",
+    "#06303590"
+   ]
+  },
+  {
+   "points": [
+    [
+     -400,
+     120
+    ],
+    [
+     330,
+     120
+    ],
+    [
+     330,
+     700
+    ],
+    [
+     -400,
+     700
+    ]
+   ],
+   "from": [
+    -50,
+    440
+   ],
+   "to": [
+    -50,
+    120
+   ],
+   "radial": true,
+   "under": true,
+   "colors": [
+    "#000000F0",
+    "#000000B0",
+    "#00000040",
+    "#00000000"
+   ]
+  }
+ ],
+ "sharp": [
+  "Middle-Ground/#8",
+  "Middle-Ground/#57"
+ ],
+ "sharpBlur": 0.8
+}

@@ -1,0 +1,6 @@
+{
+ "note": "II.1-W: panning right stops at 42 (beyond, a thin line shows at the artwork's edge).",
+ "pan": {
+  "min": 42
+ }
+}

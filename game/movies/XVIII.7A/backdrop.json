@@ -1,0 +1,61 @@
+{
+ "image": 1,
+ "scene": "XVIII.7",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 439.4,
+  "Middle-Ground": 387.0,
+  "Fore-Ground": 385.0
+ },
+ "hide": [
+  "Middle-Ground/#2",
+  "Middle-Ground/#3",
+  "Middle-Ground/#4",
+  "Middle-Ground/#5",
+  "Middle-Ground/#20",
+  "Middle-Ground/#22",
+  "Middle-Ground/#23",
+  "Middle-Ground/#24",
+  "Middle-Ground/#25",
+  "Middle-Ground/#36",
+  "Middle-Ground/#55",
+  "Middle-Ground/#65",
+  "Fore-Ground"
+ ],
+ "zoom": 0.797,
+ "x": 23.0,
+ "y": -1.1,
+ "blur": 2.0,
+ "wide": true,
+ "copies": [
+  {
+   "of": "Middle-Ground/#2",
+   "depth": 202,
+   "dx": -257,
+   "dy": 15,
+   "flip": true
+  },
+  {
+   "of": "Middle-Ground/#3",
+   "depth": 203,
+   "dx": -257,
+   "dy": 15,
+   "flip": true
+  },
+  {
+   "of": "Middle-Ground/#4",
+   "depth": 204,
+   "dx": -257,
+   "dy": 15,
+   "flip": true
+  }
+ ],
+ "note": "XVIII.7A: XVIII.7's background (its hex pillars, glowing lights and rock) on the left, and the scene's left foreground rocks mirrored on the right, as the painting composed it (placed by eye).",
+ "sharp": [
+  "Middle-Ground/#202",
+  "Middle-Ground/#203",
+  "Middle-Ground/#204"
+ ],
+ "sharpBlur": 0.8
+}

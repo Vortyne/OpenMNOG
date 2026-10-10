@@ -1,0 +1,239 @@
+{
+ "image": 1,
+ "scene": "XVIII.4-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 742.0,
+  "Middle-Ground": 1100.0,
+  "Fore-Ground": -689.7
+ },
+ "hide": [
+  "Middle-Ground/Flute",
+  "Middle-Ground/T1",
+  "Middle-Ground/T2",
+  "Middle-Ground/T3",
+  "Buttons",
+  "Middle-Ground/#22",
+  "Middle-Ground/#98",
+  "Middle-Ground/#99",
+  "Middle-Ground/#100",
+  "Middle-Ground/#101",
+  "Middle-Ground/#34",
+  "Middle-Ground/#42",
+  "Middle-Ground/#44"
+ ],
+ "zoom": 0.67,
+ "x": 524.3,
+ "y": -177.5,
+ "blur": 1.8,
+ "wide": true,
+ "note": "XVIII.4B/C/D (one shared painting): XVIII.4-S panned to its left huts, zoomed out (placed by eye), without the Matoran, the flute, the central platform and the floor's dark band; hut windows open (lids hidden); foliage, a trunk and the painting's lens flare added.",
+ "copies": [
+  {
+   "of": "Middle-Ground/#67",
+   "depth": 202,
+   "dx": 392.3,
+   "dy": 34.3,
+   "scale": 1.6
+  },
+  {
+   "of": "Middle-Ground/#15",
+   "depth": 12,
+   "dx": -1025.8,
+   "dy": -125.3,
+   "scale": 1.0
+  },
+  {
+   "of": "Middle-Ground/#67",
+   "depth": 200,
+   "dx": -651.8,
+   "dy": -94.3,
+   "scale": 1.4
+  },
+  {
+   "of": "Middle-Ground/#67",
+   "depth": 204,
+   "dx": 382.1,
+   "dy": -94.3,
+   "scale": 1.4
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 214,
+   "dx": -346.7,
+   "dy": -396.1,
+   "scale": 1.09
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 215,
+   "dx": -293.7,
+   "dy": -389.8,
+   "scale": 1.16
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 216,
+   "dx": -178.2,
+   "dy": -385.7,
+   "scale": 1.1
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 217,
+   "dx": -111.8,
+   "dy": -385.0,
+   "scale": 1.08
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 218,
+   "dx": -4.2,
+   "dy": -413.6,
+   "scale": 1.16
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 219,
+   "dx": 99.5,
+   "dy": -386.5,
+   "scale": 1.16
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 220,
+   "dx": 207.3,
+   "dy": -378.6,
+   "scale": 1.02
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 229,
+   "dx": -339.2,
+   "dy": -320.1,
+   "scale": 1.07
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 230,
+   "dx": -260.4,
+   "dy": -347.5,
+   "scale": 1.15
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 231,
+   "dx": -175.2,
+   "dy": -344.5,
+   "scale": 0.92
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 232,
+   "dx": -65.1,
+   "dy": -316.8,
+   "scale": 0.93
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 233,
+   "dx": 25.3,
+   "dy": -339.6,
+   "scale": 0.95
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 234,
+   "dx": 88.9,
+   "dy": -325.5,
+   "scale": 1.16
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 235,
+   "dx": 167.7,
+   "dy": -331.6,
+   "scale": 0.91
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 244,
+   "dx": -363.1,
+   "dy": -272.3,
+   "scale": 1.18
+  },
+  {
+   "of": "Middle-Ground/#70",
+   "depth": 245,
+   "dx": -272.7,
+   "dy": -279.7,
+   "scale": 1.12
+  }
+ ],
+ "flares": [
+  {
+   "x": 185,
+   "y": 22,
+   "r": 60,
+   "color": "#FFFFF0FF"
+  },
+  {
+   "x": 185,
+   "y": 22,
+   "r": 130,
+   "color": "#FFF7C080"
+  },
+  {
+   "x": 180,
+   "y": 28,
+   "r": 58,
+   "color": "#FF6040A0",
+   "ring": true
+  },
+  {
+   "x": 277,
+   "y": 150,
+   "r": 12,
+   "color": "#FFE0A060",
+   "ring": true
+  },
+  {
+   "x": 343,
+   "y": 250,
+   "r": 30,
+   "color": "#FFE6B030",
+   "ring": true
+  },
+  {
+   "x": 343,
+   "y": 250,
+   "r": 28,
+   "color": "#FFE6B014"
+  },
+  {
+   "x": 380,
+   "y": 285,
+   "r": 16,
+   "color": "#6090FF30"
+  },
+  {
+   "x": 420,
+   "y": 318,
+   "r": 55,
+   "color": "#FFF0A014"
+  },
+  {
+   "x": 420,
+   "y": 318,
+   "r": 57,
+   "color": "#FFF0A028",
+   "ring": true
+  }
+ ],
+ "hideParts": {
+  "Middle-Ground/#30": [
+   2
+  ]
+ }
+}

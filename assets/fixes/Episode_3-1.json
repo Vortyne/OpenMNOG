@@ -1,0 +1,64 @@
+{
+ "note": "Episode_3-1: the Ta-Wahi arrival (frames 280-379) is a mirrored copy of the Po-Wahi one in which the coastline (depth 6) slides out of view and the boat (depths 7-14) sails away from it. The coast's movement is played backwards, and the boat is given the Po-Wahi arrival's path (the same pieces), sailing toward the land. Smooth blends its animation between frames (it's mostly panning).",
+ "fixes": [
+  {
+   "sprite": 0,
+   "depth": 6,
+   "reverse": [
+    280,
+    379
+   ]
+  },
+  {
+   "sprite": 0,
+   "depth": 7,
+   "copyMotion": [
+    11,
+    78,
+    280,
+    100
+   ]
+  },
+  {
+   "sprite": 0,
+   "depth": 8,
+   "copyMotion": [
+    12,
+    78,
+    280,
+    100
+   ]
+  },
+  {
+   "sprite": 0,
+   "depth": 10,
+   "copyMotion": [
+    14,
+    78,
+    280,
+    100
+   ]
+  },
+  {
+   "sprite": 0,
+   "depth": 12,
+   "copyMotion": [
+    16,
+    78,
+    280,
+    100
+   ]
+  },
+  {
+   "sprite": 0,
+   "depth": 14,
+   "copyMotion": [
+    18,
+    78,
+    280,
+    100
+   ]
+  }
+ ],
+ "smoothMotion": true
+}

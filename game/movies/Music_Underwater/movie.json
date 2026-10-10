@@ -1,0 +1,31 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Underwater.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 124008, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 177019, "original": "mp3"},
+    {"kind": "sound", "id": 3, "file": "sounds/3.ogg", "rate": 11025, "channels": 1, "samples": 132734, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 9,
+    "frames": [
+      {
+        "scripts": ["scripts/frame1.as"],
+        "sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 0, 0], [492260, 16097, 16097]]}]
+      },
+      {"labels": ["loop"], "scripts": ["scripts/frame2.as"]},
+      {"scripts": ["scripts/frame3.as"]},
+      {"scripts": ["scripts/frame4.as"]},
+      {"labels": ["Flute1"], "sounds": [{"id": 2, "envelope": [[0, 23570, 23283]]}]},
+      {"scripts": ["scripts/frame6.as"]},
+      {"labels": ["Flute2"], "sounds": [{"id": 3, "envelope": [[0, 23857, 22995]]}]},
+      {"scripts": ["scripts/frame8.as"]},
+      {"scripts": ["scripts/frame9.as"]}
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Sound_WaterFall.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 59826, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 13,
+    "frames": [
+      {"scripts": ["scripts/frame1.as"]},
+      {"labels": ["High"], "scripts": ["scripts/frame2.as"]},
+      {"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 0, 0], [217296, 8911, 9198]]}]},
+      {"labels": ["High_Loop"], "scripts": ["scripts/frame4.as"]},
+      {"scripts": ["scripts/frame5.as"]},
+      {"labels": ["Medium"], "scripts": ["scripts/frame6.as"]},
+      {"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 0, 0], [216290, 4599, 4886]]}]},
+      {"labels": ["Medium_Loop"], "scripts": ["scripts/frame8.as"]},
+      {"scripts": ["scripts/frame9.as"]},
+      {"labels": ["Low"], "scripts": ["scripts/frame10.as"]},
+      {"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 0, 0], [214278, 3162, 3737]]}]},
+      {"labels": ["Low_Loop"], "scripts": ["scripts/frame12.as"]},
+      {"scripts": ["scripts/frame13.as"]}
+    ]
+  }
+}

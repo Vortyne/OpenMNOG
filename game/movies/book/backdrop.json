@@ -1,0 +1,425 @@
+{
+ "backdrops": [
+  {
+   "image": 1,
+   "scene": "Episode_1-1",
+   "frame": 782,
+   "zoom": 1.0035,
+   "x": 211,
+   "y": 61,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 6,
+   "scene": "Episode_1-2",
+   "frame": 169,
+   "zoom": 1.0035,
+   "x": 336,
+   "y": 60,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 8,
+   "scene": "Episode_2-1",
+   "frame": 831,
+   "zoom": 1.0141,
+   "x": 205,
+   "y": 71,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 10,
+   "scene": "Episode_3-2",
+   "frame": 209,
+   "zoom": 0.97,
+   "x": 244,
+   "y": 53,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 12,
+   "scene": "Episode_3-3",
+   "frame": 1434,
+   "zoom": 1.0106,
+   "x": 240,
+   "y": 62,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 14,
+   "scene": "Episode_4-2",
+   "frame": 298,
+   "zoom": 0.82,
+   "x": 220,
+   "y": 51,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 16,
+   "scene": "Episode_4-3",
+   "frame": 404,
+   "zoom": 0.9318,
+   "x": 196,
+   "y": 56,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 18,
+   "scene": "Episode_6-2",
+   "frame": 196,
+   "zoom": 0.685,
+   "x": 234,
+   "y": 8,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 20,
+   "scene": "Episode_6-3",
+   "frame": 192,
+   "zoom": 0.9349,
+   "x": 268,
+   "y": 121,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true,
+   "hold": {
+    "#23": 35,
+    "#23/NR": 2,
+    "#29": 11
+   },
+   "hide": [
+    "#26"
+   ]
+  },
+  {
+   "image": 22,
+   "scene": "Episode_6-4",
+   "frame": 184,
+   "zoom": 0.7906,
+   "x": 301,
+   "y": 47,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 24,
+   "scene": "Episode_6-5",
+   "frame": 1078,
+   "zoom": 0.82,
+   "x": 322,
+   "y": 55,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 26,
+   "scene": "Episode_6-7",
+   "frame": 257,
+   "zoom": 1.3,
+   "x": 313,
+   "y": 120,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 28,
+   "scene": "Episode_7-2",
+   "frame": 1649,
+   "zoom": 0.9349,
+   "x": 77,
+   "y": 49,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 30,
+   "scene": "Episode_8-1",
+   "frame": 251,
+   "zoom": 1.05,
+   "x": 492,
+   "y": 83,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true,
+   "hold": {
+    "#60": 2,
+    "#60/Kopeke": 2,
+    "#69": 2,
+    "#69/Tamaru": 2,
+    "#73": 2,
+    "#73/Hafu": 2,
+    "#82": 2,
+    "#82/Taipu": 2,
+    "#95": 2,
+    "#95/Kopeke": 2,
+    "#104": 2,
+    "#104/Tamaru": 2,
+    "#108": 2,
+    "#108/Hafu": 2,
+    "#117": 2,
+    "#117/Taipu": 2
+   }
+  },
+  {
+   "image": 32,
+   "scene": "Episode_8-2",
+   "frame": 15,
+   "zoom": 0.9258,
+   "x": 142,
+   "y": 17,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 34,
+   "scene": "Episode_8-3",
+   "frame": 761,
+   "zoom": 0.7303,
+   "x": 160,
+   "y": 15,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "move": {
+    "#1": [
+     0,
+     -25,
+     1.15
+    ]
+   }
+  },
+  {
+   "image": 36,
+   "scene": "Episode_8-4",
+   "frame": 413,
+   "zoom": 1.07,
+   "x": 412,
+   "y": 118,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 38,
+   "scene": "Episode_8-5",
+   "frame": 2349,
+   "zoom": 0.72,
+   "x": 210,
+   "y": 18,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 40,
+   "scene": "Episode_8-6",
+   "frame": 926,
+   "zoom": 1.0,
+   "x": 222,
+   "y": 22,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 42,
+   "scene": "Episode_8-7",
+   "frame": 381,
+   "zoom": 0.7799,
+   "x": 198,
+   "y": 36,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 44,
+   "scene": "Episode_8-8",
+   "frame": 267,
+   "zoom": 0.9696,
+   "x": 267,
+   "y": 71,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true
+  },
+  {
+   "image": 46,
+   "scene": "Episode_9-1",
+   "frame": 2324,
+   "zoom": 0.66,
+   "x": 130,
+   "y": 0,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 48,
+   "scene": "Episode_9-2",
+   "frame": 232,
+   "zoom": 0.81,
+   "x": 121,
+   "y": 17,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "played": true,
+   "shapes": [
+    {
+     "points": [
+      [
+       0,
+       0
+      ],
+      [
+       287,
+       0
+      ],
+      [
+       287,
+       18
+      ],
+      [
+       0,
+       18
+      ]
+     ],
+     "from": [
+      0,
+      0
+     ],
+     "to": [
+      287,
+      0
+     ],
+     "colors": [
+      "#798686",
+      "#A2AAAA",
+      "#C5C8C8",
+      "#D2D4D4",
+      "#DADADA",
+      "#E0E0E0",
+      "#E0E0E0"
+     ],
+     "under": true
+    }
+   ]
+  },
+  {
+   "image": 50,
+   "scene": "Episode_9-3",
+   "frame": 1119,
+   "zoom": 0.7653,
+   "x": 164,
+   "y": 9,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true
+  },
+  {
+   "image": 52,
+   "scene": "Episode_9-6",
+   "frame": 722,
+   "zoom": 0.7799,
+   "x": 243,
+   "y": 23,
+   "still": true,
+   "overlay": true,
+   "clip": "M 287 143.5 A 143.5 143.5 0 1 1 0 143.5 A 143.5 143.5 0 1 1 287 143.5 Z",
+   "unbar": true,
+   "shapes": [
+    {
+     "points": [
+      [
+       0,
+       0
+      ],
+      [
+       287,
+       0
+      ],
+      [
+       287,
+       25.5
+      ],
+      [
+       0,
+       25.5
+      ]
+     ],
+     "from": [
+      0,
+      0
+     ],
+     "to": [
+      0,
+      25
+     ],
+     "colors": [
+      "#782833",
+      "#783C46"
+     ],
+     "under": true
+    }
+   ]
+  }
+ ]
+}

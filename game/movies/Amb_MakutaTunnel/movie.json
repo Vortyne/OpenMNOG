@@ -1,0 +1,26 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Amb_MakutaTunnel.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 36371, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 82030, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 8,
+    "frames": [
+      {"sounds": [{"id": 1}]},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {"sounds": [{"id": 2, "loops": 10, "envelope": [[0, 0, 0], [76456, 32768, 32768]]}]},
+      {"scripts": ["scripts/frame8.as"]}
+    ]
+  }
+}

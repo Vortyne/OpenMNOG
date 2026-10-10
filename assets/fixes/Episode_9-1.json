@@ -1,0 +1,13 @@
+{
+ "note": "Episode 9-1: smooth motion only while the view pans past the Tohunga (405-704, stopping before the Nui-Rama attack) and while Jala's guards throw their discs at the Rahi (1200-1500).",
+ "smoothFrames": [
+  [
+   405,
+   704
+  ],
+  [
+   1200,
+   1500
+  ]
+ ]
+}

@@ -1,0 +1,6 @@
+{
+ "note": "XV.2-S: panning right stops at 46 (beyond, a strip of another layer shows past the artwork).",
+ "pan": {
+  "min": 46
+ }
+}

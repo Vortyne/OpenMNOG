@@ -1,0 +1,19 @@
+#version 6
+TaVisit = "0";
+Quest = "0";
+GaKoro = "0";
+GaKoroVisited = "0";
+Sound_BG_Volume = "High";
+Sound_ChangeBackgroundVolume = "0";
+loadMovie("I.1-S.swf", "holder");
+loadMovie("Sound_Waves.swf", "waves");
+leaving = 0;
+fade = 0;
+// The logo and buttons fade in over 2 seconds (36 frames).
+ui._alpha = 0;
+// Continue is there when the selected save slot has a save.
+refreshSlot = function() {
+    ui.continueButton._visible = _level0.__matanui.hasSave();
+};
+refreshSlot();
+ui.versionText = System.mnogVersion != undefined && System.mnogVersion != "" ? "OpenMNOG v" + System.mnogVersion : "";

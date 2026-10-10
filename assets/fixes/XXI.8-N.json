@@ -1,0 +1,10 @@
+{
+ "note": "XXI.8-N: the white overlay shown when the player passes out in the snow (shape 78 in sprite 79) is stretched 1.2x in widescreen to reach the edges.",
+ "fixes": [
+  {
+   "sprite": 79,
+   "depth": 1,
+   "widescreenScaleX": 1.2
+  }
+ ]
+}

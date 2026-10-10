@@ -1,0 +1,28 @@
+{
+ "note": "V.1-W: its backdrop is V.1-S zoomed 3.1x and blurred, as the scene is before Ga-Koro is visited (the wrecked boat on the beach); drawn live from the scene when Vectorize bitmaps is on, filling the widescreen view. Frame 3 is that version of the scene and the sky is loaded here, so the view doesn't depend on the save. Placed by eye.",
+ "image": 2,
+ "scene": "V.1-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 207.5,
+  "Middle-Ground": 30,
+  "Fore-Ground": -312
+ },
+ "hide": [
+  "Buttons"
+ ],
+ "zoom": 3.06,
+ "x": 483.02,
+ "y": 246.96,
+ "blur": 1.5,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ],
+ "softer": {
+  "Back-Ground/Sky-holder": 2.6,
+  "Back-Ground/#7": 2.6
+ }
+}

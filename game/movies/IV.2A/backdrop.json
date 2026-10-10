@@ -1,0 +1,27 @@
+{
+ "note": "IV.2A: its backdrop is IV.2-N (panned to the shields) zoomed 1.9x and blurred; drawn live from the scene (without Jala) when Vectorize bitmaps is on, filling the widescreen view. Placed by eye.",
+ "image": 2,
+ "scene": "IV.2-N",
+ "frame": 2,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 350,
+  "Middle-Ground": 315,
+  "Fore-ground": 329.5
+ },
+ "hide": [
+  "Middle-Ground/Jala",
+  "Buttons"
+ ],
+ "zoom": 1.935,
+ "x": 330.08,
+ "y": 156.2,
+ "blur": 4,
+ "wide": true,
+ "move": {
+  "Back-Ground": [
+   120,
+   -15
+  ]
+ }
+}

@@ -1,0 +1,25 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Forest.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 225280, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 99354, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 7,
+    "frames": [
+      {"scripts": ["scripts/frame1.as"], "sounds": [{"id": 1}]},
+      {"labels": ["loop"], "scripts": ["scripts/frame2.as"]},
+      {"scripts": ["scripts/frame3.as"]},
+      {"sounds": [{"id": 2, "loops": 65535, "envelope": [[0, 2300, 2587]]}]},
+      {},
+      {},
+      {"scripts": ["scripts/frame7.as"]}
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Digsite.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 40770, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 205394, "original": "mp3"},
+    {"kind": "sound", "id": 3, "file": "sounds/3.ogg", "rate": 11025, "channels": 1, "samples": 102697, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "sounds": [
+          {
+            "id": 1,
+            "out": 163080,
+            "loops": 6,
+            "envelope": [[0, 0, 0], [163080, 24145, 26444], [655340, 24145, 26444], [972440, 0, 0]]
+          },
+          {
+            "id": 2,
+            "out": 821576,
+            "loops": 65535,
+            "envelope": [[0, 0, 0], [362460, 0, 0], [833658, 27882, 28744], [2633876, 27882, 28744], [3334632, 7761, 6036]]
+          },
+          {
+            "id": 3,
+            "out": 410788,
+            "loops": 65535,
+            "envelope": [[0, 0, 0], [1341102, 0, 0], [2186842, 32768, 32768], [2645958, 32768, 32768], [3298386, 6036, 5174]]
+          }
+        ]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

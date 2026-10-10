@@ -1,0 +1,14 @@
+{
+  "format": "mnog-movie/1",
+  "source": "SFX_Marching.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 21355, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [{"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 3449, 3449]]}]}, {"scripts": ["scripts/frame2.as"]}]
+  }
+}

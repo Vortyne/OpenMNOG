@@ -1,0 +1,22 @@
+{
+ "image": 1,
+ "scene": "XII.5-E",
+ "frame": 3,
+ "vertical": false,
+ "mirror": true,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 387.0
+ },
+ "hide": [
+  "Middle-Ground/Tohunga",
+  "Fore-Ground",
+  "Buttons"
+ ],
+ "zoom": 1.83,
+ "x": 766.0,
+ "y": 193.0,
+ "blur": 3.0,
+ "wide": true,
+ "note": "XI.5A (Kapura): the same painting as XII.9B (Taipu), so the same view: XII.5-E mirrored, without the Astrologer and the foreground arch."
+}

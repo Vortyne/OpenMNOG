@@ -1,0 +1,450 @@
+using System.Globalization;
+using Mnog.Engine;
+using Mnog.Engine.Host;
+using SkiaSharp;
+
+// Usage:
+//   Mnog.Engine [gameDir] [--windowed]            play (fullscreen, or as last left, unless --windowed)
+//   Mnog.Engine [gameDir] --autopilot "<commands>" the game in its window, driven by the same commands
+//   Mnog.Engine [gameDir] --run "<commands>"      headless test run; commands separated by ';':
+//       wait N | click X Y | move X Y | key CODE | shot FILE.png [W H [T]] | type TEXT | widescreen 0|1 | smooth 0|1 | tree [depth] | bench N W H
+
+string? gameDir = null;
+string? commands = null;
+string? entry = null;
+string? autopilot = null;
+for (int i = 0; i < args.Length; i++)
+{
+    if (args[i] == "--run" && i + 1 < args.Length) commands = args[++i] is var r && r.StartsWith('@') ? File.ReadAllText(r[1..]) : r;
+    else if (args[i] == "--autopilot" && i + 1 < args.Length) autopilot = args[++i] is var a && a.StartsWith('@') ? File.ReadAllText(a[1..]) : a;
+    else if (args[i] == "--movie" && i + 1 < args.Length) entry = args[++i];
+    else if (args[i].StartsWith("--")) continue;
+    else gameDir = args[i];
+}
+gameDir ??= FindGameDir();
+if (gameDir == null || !File.Exists(Path.Combine(gameDir, "game.json")))
+{
+    Console.Error.WriteLine("Game data not found. Pass the folder containing game.json (the game/ folder of this repository).");
+    return 1;
+}
+
+var player = new Player(gameDir);
+// --movie Name starts a single movie instead of the game (for testing scenes in isolation).
+if (entry != null) player.Manifest.EntryMovie = entry;
+if (commands != null)
+{
+    // Headless runs draw only when asked (shot): no startup hold.
+    player.SkipStartupHold();
+    RunHeadless(player, commands);
+    return 0;
+}
+
+using var host = new SdlHost(player, player.Manifest.Title);
+// --autopilot "<commands>": the game in its window (on the GPU), driven by test commands as if played: wait N lets N
+// game frames pass; "quit" (or the end) closes it. For measuring the real renderer (its frame times are logged).
+if (autopilot != null)
+{
+    var queue = new Queue<string>(autopilot.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries));
+    int waiting = 0;
+    host.Autopilot = () =>
+    {
+        while (waiting == 0)
+        {
+            if (!queue.TryDequeue(out var c) || c == "quit") return false;
+            if (c.StartsWith("wait ")) waiting = int.Parse(c[5..]);
+            else RunCommand(player, c);
+        }
+        waiting--;
+        return true;
+    };
+}
+// The game opens fullscreen, or as it was last left (F11 / Alt+Enter or the bar's button toggle it, and the
+// choice is remembered); --windowed starts in a window this time.
+if (!args.Contains("--windowed") && SdlHost.SavedFullscreen()) host.Fullscreen = true;
+// A crash leaves its details in build/crash-<time>.log (next to the game data) as well as on the console.
+AppDomain.CurrentDomain.UnhandledException += (_, e) => WriteCrash(gameDir, player, e.ExceptionObject as Exception);
+try
+{
+    player.Start();
+    host.Run();
+}
+catch (Exception e)
+{
+    WriteCrash(gameDir, player, e);
+    throw;
+}
+return 0;
+
+static void WriteCrash(string gameDir, Player player, Exception? e)
+{
+    try
+    {
+        var file = Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), $"crash-{DateTime.Now:yyyyMMdd-HHmmss}.log");
+        var scene = (player.GetLevel(1)?.ChildByName("holder") as Mnog.Engine.Display.MovieClip) is { } h ? $"{h.Movie.Name} frame {h.CurrentFrame}" : "-";
+        var lines = new List<string> { $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  tick {player.TickCount}  scene {scene}", "Recent log:" };
+        lines.AddRange(player.RecentLog.Select(l => "  " + l));
+        lines.Add("");
+        lines.Add(e?.ToString() ?? "(no exception)");
+        var text = string.Join(Environment.NewLine, lines);
+        File.WriteAllText(file, text);
+        Console.Error.WriteLine($"Crashed; details saved to {file}");
+    }
+    catch (IOException) { }
+}
+
+static string? FindGameDir()
+{
+    foreach (var start in new[] { AppContext.BaseDirectory, Directory.GetCurrentDirectory() })
+    {
+        for (var dir = new DirectoryInfo(start); dir != null; dir = dir.Parent)
+        {
+            foreach (var candidate in new[] { Path.Combine(dir.FullName, "game"), Path.Combine(dir.FullName, "build", "game") })
+                if (File.Exists(Path.Combine(candidate, "game.json"))) return candidate;
+        }
+    }
+    return null;
+}
+
+static void RunHeadless(Player player, string commands)
+{
+    player.Start();
+    foreach (var raw in commands.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+        RunCommand(player, raw);
+}
+
+/// <summary>One test command (see the usage above); wait N plays N game frames.</summary>
+static void RunCommand(Player player, string raw)
+{
+    {
+        var p = raw.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        float F(int i) => float.Parse(p[i], CultureInfo.InvariantCulture);
+        switch (p[0])
+        {
+            case "wait":
+                for (int i = 0; i < int.Parse(p[1]); i++)
+                {
+                    player.Tick();
+                    // Mix a frame's worth of audio too (as the host's audio callback would), so sound problems show.
+                    if (MixAudio) player.Audio.Mix(new float[44100 / 18 * 2]);
+                }
+                break;
+            case "audio":
+                MixAudio = p[1] == "1";
+                break;
+            case "move":
+                player.OnMouseMove(new SKPoint(F(1), F(2)));
+                break;
+            case "press":
+                // press X Y: the mouse moved there and held down (a button's down state), not released.
+                player.OnMouseMove(new SKPoint(F(1), F(2)));
+                player.OnMouseDown();
+                break;
+            case "click":
+                player.OnMouseMove(new SKPoint(F(1), F(2)));
+                player.OnMouseDown();
+                player.Tick();
+                player.OnMouseUp();
+                break;
+            case "key":
+                player.OnKeyDown(int.Parse(p[1]), 0);
+                player.OnKeyUp(int.Parse(p[1]));
+                break;
+            case "keydown":
+                // keydown CODE / keyup CODE: hold a key across frames (Key.isDown).
+                player.OnKeyDown(int.Parse(p[1]), 0);
+                break;
+            case "vector":
+                // vector 0|1: Misc > Vector sand.
+                player.FsCommand("vectorsand", p[1]);
+                break;
+            case "turn":
+                // turn: Left Shift's turn-around.
+                player.TurnAround();
+                break;
+            case "keyup":
+                player.OnKeyUp(int.Parse(p[1]));
+                break;
+            case "playframes":
+                {
+                    // playframes FILE W H: the scene (/holder) played through as the game plays it (its animations
+                    // running, unlike "frames", which holds each frame with its clips at their start), drawn every tick
+                    // and appended to FILE as raw RGB, with each capture's timeline frame in FILE.idx. Where it stops
+                    // to wait for a click, it's moved on a frame; it ends at its last frame or when it hands over.
+                    int w = int.Parse(p[2]), h = int.Parse(p[3]);
+                    // (Optional FROM TO: only the captures of those timeline frames are kept.)
+                    int keepFrom = p.Length > 5 ? int.Parse(p[4]) : 1, keepTo = p.Length > 5 ? int.Parse(p[5]) : int.MaxValue;
+                    if (player.GetLevel(1)?.ChildByName("holder") is not Mnog.Engine.Display.MovieClip holder) { Console.WriteLine("playframes: no /holder"); break; }
+                    using var surface = SKSurface.Create(new SKImageInfo(w, h, SKColorType.Rgb888x, SKAlphaType.Opaque));
+                    using var outFile = File.Create(p[1]);
+                    using var idx = new StreamWriter(p[1] + ".idx");
+                    var row = new byte[w * h * 3];
+                    int n = 0, still = 0, last = -1;
+                    for (int tick = 0; tick < 20000; tick++)
+                    {
+                        if (player.GetLevel(1)?.ChildByName("holder") != holder || holder.Removed) break;
+                        if (holder.CurrentFrame >= keepFrom && holder.CurrentFrame <= keepTo)
+                        {
+                            if (Environment.GetEnvironmentVariable("MNOG_UNBAR") == "1") Mnog.Engine.LiveBackdrop.HideLetterbox(holder, 0);
+                            surface.Canvas.Clear(SKColors.Black);
+                            player.Render(surface.Canvas, w, h, 1);
+                            using (var pix = surface.PeekPixels())
+                            {
+                                var span = pix.GetPixelSpan();
+                                for (int i = 0, j = 0; i < w * h; i++, j += 4) { row[i * 3] = span[j]; row[i * 3 + 1] = span[j + 1]; row[i * 3 + 2] = span[j + 2]; }
+                            }
+                            outFile.Write(row);
+                            idx.WriteLine(holder.CurrentFrame);
+                            n++;
+                        }
+                        if (holder.CurrentFrame > keepTo) break;
+                        if (holder.CurrentFrame >= holder.FrameCount) break;
+                        still = holder.CurrentFrame == last ? still + 1 : 0;
+                        last = holder.CurrentFrame;
+                        // Waiting (stopped for a click, or a loop that doesn't move on): on a frame.
+                        if (still >= 18) { holder.GotoFrame(holder.CurrentFrame + 1); holder.Play(); still = 0; }
+                        player.Tick();
+                    }
+                    Console.WriteLine($"playframes: {n} captures of {holder.Movie.Name} ({holder.FrameCount}) to {p[1]}");
+                    break;
+                }
+            case "wallsvg":
+                {
+                    // wallsvg SLOT N FILE: a chronicle slot's Nth wallpaper saved as an SVG (1920x1080), and as FILE.png.
+                    var shots = player.WallpaperFrames(int.Parse(p[1]));
+                    using var svgFile = File.Create(p[3]);
+                    using var img = player.RenderWallpaper(int.Parse(p[1]), 1920, 1080, shots[Math.Clamp(int.Parse(p[2]) - 1, 0, shots.Count - 1)], svgFile);
+                    if (img != null) { using var data = img.Encode(SKEncodedImageFormat.Png, 100); File.WriteAllBytes(p[3] + ".png", data.ToArray()); }
+                    Console.WriteLine($"wallsvg {p[1]} {p[2]}: {(img != null ? p[3] : "none")}");
+                    break;
+                }
+            case "wallshot":
+                {
+                    // wallshot SLOT N FILE [W H]: a chronicle slot's Nth wallpaper (wallpapers.json) saved as a PNG.
+                    var shots = player.WallpaperFrames(int.Parse(p[1]));
+                    int w = p.Length > 5 ? int.Parse(p[4]) : 960, h = p.Length > 5 ? int.Parse(p[5]) : 540;
+                    using var img = player.RenderWallpaper(int.Parse(p[1]), w, h, shots[Math.Clamp(int.Parse(p[2]) - 1, 0, shots.Count - 1)]);
+                    if (img != null) { using var data = img.Encode(SKEncodedImageFormat.Png, 100); File.WriteAllBytes(p[3], data.ToArray()); }
+                    Console.WriteLine($"wallshot {p[1]} {p[2]}: {(img != null ? p[3] : "none")}");
+                    break;
+                }
+            case "frames":
+                {
+                    // frames FILE FROM TO STEP W H: the scene (/holder) held at each of those frames and drawn, appended to
+                    // FILE as raw RGB (W*H*3 bytes a frame), for matching stills (the chronicle's pictures) to their frames.
+                    int from = int.Parse(p[2]), to = int.Parse(p[3]), step = int.Parse(p[4]), w = int.Parse(p[5]), h = int.Parse(p[6]);
+                    if (player.GetLevel(1)?.ChildByName("holder") is not Mnog.Engine.Display.MovieClip holder) { Console.WriteLine("frames: no /holder"); break; }
+                    using var surface = SKSurface.Create(new SKImageInfo(w, h, SKColorType.Rgb888x, SKAlphaType.Opaque));
+                    using var outFile = File.Create(p[1]);
+                    var row = new byte[w * h * 3];
+                    int n = 0;
+                    for (int f = from; f <= Math.Min(to, holder.FrameCount); f += step)
+                    {
+                        holder.GotoFrame(f);
+                        holder.Playing = false;
+                        // (MNOG_UNBAR=1: the episode's letterbox left out, as the chronicle's live pictures show it.)
+                        if (Environment.GetEnvironmentVariable("MNOG_UNBAR") == "1") Mnog.Engine.LiveBackdrop.HideLetterbox(holder, 0);
+                        surface.Canvas.Clear(SKColors.Black);
+                        player.Render(surface.Canvas, w, h, 1);
+                        using var pix = surface.PeekPixels();
+                        var span = pix.GetPixelSpan();
+                        for (int i = 0, j = 0; i < w * h; i++, j += 4) { row[i * 3] = span[j]; row[i * 3 + 1] = span[j + 1]; row[i * 3 + 2] = span[j + 2]; }
+                        outFile.Write(row);
+                        n++;
+                    }
+                    Console.WriteLine($"frames: {n} of {holder.Movie.Name} ({holder.FrameCount}) to {p[1]}");
+                    break;
+                }
+            case "shot":
+                {
+                    int w = p.Length > 3 ? int.Parse(p[2]) : player.StageWidth;
+                    int h = p.Length > 3 ? int.Parse(p[3]) : player.StageHeight;
+                    using var surface = SKSurface.Create(new SKImageInfo(w, h));
+                    // Optional 4th number: draw partway (0..1) between the previous and current game frame.
+                    float t = p.Length > 4 ? F(4) : 1;
+                    player.Render(surface.Canvas, w, h, t);
+                    // Vector images are drawn in the background at this size: wait for them, then draw again.
+                    var waitStart = DateTime.UtcNow;
+                    if (System.Threading.Volatile.Read(ref Mnog.Engine.Render.RenderContext.VectorImagesPending) > 0)
+                    {
+                        while (System.Threading.Volatile.Read(ref Mnog.Engine.Render.RenderContext.VectorImagesPending) > 0 && (DateTime.UtcNow - waitStart).TotalSeconds < 20)
+                            System.Threading.Thread.Sleep(50);
+                        surface.Canvas.Clear();
+                        player.Render(surface.Canvas, w, h, t);
+                    }
+                    using var img = surface.Snapshot();
+                    using var data = img.Encode(SKEncodedImageFormat.Png, 100);
+                    File.WriteAllBytes(p[1], data.ToArray());
+                    Console.WriteLine($"saved {p[1]} (tick {player.TickCount})");
+                    break;
+                }
+            case "type":
+                player.OnTextInput(p[1]);
+                break;
+            case "load":
+                // load URL TARGET: loadMovie as a script would (applied on the next tick).
+                player.LoadMovie(p[1], Mnog.Engine.Script.Value.From(p[2]), player.Levels.Values.First());
+                break;
+            case "set":
+                // set PATH VALUE: set a variable (relative to _level1, e.g. "MovieName"), as a script would.
+                player.Vm.SetVariableAt(player.GetLevel(1) ?? player.Levels.Values.First(), p[1], Mnog.Engine.Script.Value.From(p[2]));
+                break;
+            case "hide":
+            case "shift":
+            case "goto":
+                // hide PATH: hide a display object (slash path from _level1; "#9" names an unnamed one by its depth).
+                {
+                    Mnog.Engine.Display.DisplayObject? o = player.GetLevel(1);
+                    foreach (var part in p[1].Split('/', StringSplitOptions.RemoveEmptyEntries))
+                        o = o is Mnog.Engine.Display.MovieClip mc
+                            ? part.StartsWith('#') && int.TryParse(part.AsSpan(1), out int depth) ? mc.Children.GetValueOrDefault(depth) : mc.ChildByName(part)
+                            : null;
+                    if (o == null) { Console.WriteLine($"{p[0]}: no {p[1]}"); break; }
+                    if (p[0] == "hide") o.Visible = false;
+                    // shift PATH DX DY: move it; goto PATH FRAME: hold a clip at that frame.
+                    else if (p[0] == "shift") { o.Matrix = o.Matrix.PostConcat(SKMatrix.CreateTranslation(F(2), F(3))); o.TransformedByScript = true; }
+                    // (goto PATH FRAME play: went to, and playing on from there.)
+                    else if (o is Mnog.Engine.Display.MovieClip held) { held.GotoFrame(int.Parse(p[2])); held.Playing = p.Length > 3 && p[3] == "play"; }
+                    break;
+                }
+            case "scene":
+                // scene NAME: go to a scene the way the game's navigation does (as the warp menu does).
+                player.WarpTo(p[1]);
+                break;
+            case "extentms":
+                if (player._extentMs.Count > 0)
+                    Console.WriteLine($"extent: {player._extentMs.Count} runs, avg {player._extentMs.Average():0.00} ms, max {player._extentMs.Max():0.00} ms");
+                break;
+            case "flactest":
+                // flactest FILE.flac RAW: decode, and compare with RAW (ffmpeg's decode: signed 16-bit little-endian, interleaved).
+                {
+                    var sw = System.Diagnostics.Stopwatch.StartNew();
+                    var (samples, rate, channels) = Mnog.Engine.Assets.FlacDecoder.Decode(p[1]);
+                    var ms = sw.Elapsed.TotalMilliseconds;
+                    var ref16 = File.ReadAllBytes(p[2]);
+                    int n = ref16.Length / 2, diffs = 0, maxDiff = 0;
+                    for (int i = 0; i < Math.Min(n, samples.Length); i++)
+                    {
+                        int want = BitConverter.ToInt16(ref16, i * 2), got = (int)Math.Round(samples[i] * 32768);
+                        if (got != want) { diffs++; maxDiff = Math.Max(maxDiff, Math.Abs(got - want)); }
+                    }
+                    Console.WriteLine($"flactest: {rate} Hz, {channels} ch, {samples.Length} samples (ffmpeg {n}) in {ms:0} ms; {diffs} differ, max {maxDiff}");
+                }
+                break;
+            case "pos":
+                // pos PATH...: print clips' x positions (paths relative to _level1).
+                Console.WriteLine($"pos tick {player.TickCount}: " + string.Join("  ", p.Skip(1).Select(path =>
+                    player.Vm.ResolveTargetFrom(player.GetLevel(1)!, Mnog.Engine.Script.Value.From(path)) is { } o ? $"{path}={o.Matrix.TransX:0.0}" + (Environment.GetEnvironmentVariable("MNOG_POSDBG") == "1" ? $" [{o.Matrix.ScaleX:0.###} {o.Matrix.SkewY:0.###} {o.Matrix.SkewX:0.###} {o.Matrix.ScaleY:0.###}] lerp={o.LerpMatrix}/{o.LerpFull}" : "") : $"{path}=?")));
+                break;
+            case "get":
+                // get PATH...: print variables (slash paths relative to _level1, e.g. /Backpack/Backpack/:Slot1).
+                foreach (var path in p.Skip(1))
+                    Console.WriteLine($"get {path} = {player.Vm.GetVariableAt(player.GetLevel(1)!, path).ToStr(6)}");
+                break;
+            case "profile":
+                // profile N W H: run N frames, drawing each at W x H, and report the slow ones.
+                {
+                    int n = int.Parse(p[1]), w = int.Parse(p[2]), h = int.Parse(p[3]);
+                    using var surface = SKSurface.Create(new SKImageInfo(w, h));
+                    for (int i = 0; i < n; i++)
+                    {
+                        long t0 = System.Diagnostics.Stopwatch.GetTimestamp();
+                        player.Tick();
+                        long t1 = System.Diagnostics.Stopwatch.GetTimestamp();
+                        // (profile N W H SUB: also the SUB-1 in-between frames smooth mode draws.)
+                        int sub = p.Length > 4 ? int.Parse(p[4]) : 1;
+                        for (int k = 1; k <= sub; k++) player.Render(surface.Canvas, w, h, (float)k / sub);
+                        surface.Canvas.Flush();
+                        long t2 = System.Diagnostics.Stopwatch.GetTimestamp();
+                        double tick = (t1 - t0) * 1000.0 / System.Diagnostics.Stopwatch.Frequency, draw = (t2 - t1) * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
+                        if (tick + draw > 30)
+                        {
+                            var holder = player.GetLevel(1)?.ChildByName("holder") as Mnog.Engine.Display.MovieClip;
+                            Console.WriteLine($"slow tick {player.TickCount} ({holder?.Movie.Name} frame {holder?.CurrentFrame}): logic {tick:0.0} ms, draw {draw:0.0} ms");
+                        }
+                    }
+                    break;
+                }
+            case "vimg":
+                // vimg MOVIE ID SCALE FILE: an image's vector replacement alone, as the engine draws it.
+                {
+                    var m = Mnog.Engine.Assets.MovieAsset.Load(p[1], System.IO.Path.Combine("game", "movies", p[1]));
+                    if (m.Symbol(int.Parse(p[2])) is Mnog.Engine.Assets.ImageAsset ia && Mnog.Engine.Render.RenderContext.RenderVectorImageAlone(ia, F(3)) is { } vi)
+                    {
+                        using var data = vi.Encode(SKEncodedImageFormat.Png, 100);
+                        File.WriteAllBytes(p[4], data.ToArray());
+                        Console.WriteLine($"saved {p[4]} {vi.Width}x{vi.Height}");
+                    }
+                    else Console.WriteLine($"vimg: no vector for {p[1]}#{p[2]} " + string.Join("; ", m.Errors));
+                    break;
+                }
+            case "art":
+                // art X Y: the shapes drawn at a stage point.
+                foreach (var a in player.ArtAt(new SKPoint(F(1), F(2)))) Console.WriteLine("art " + a);
+                break;
+            case "cache":
+                player.UseLayerCache = p[1] == "1";
+                break;
+            case "cachestats":
+                Console.WriteLine("cache: " + string.Join(", ", player.LayerCacheStats.OrderByDescending(kv => kv.Value).Select(kv => $"{kv.Key} {kv.Value}")));
+                player.LayerCacheStats.Clear();
+                break;
+            case "drawprof":
+                if (Mnog.Engine.Render.RenderContext.DrawProfile is { } dp)
+                {
+                    foreach (var kv in dp.OrderByDescending(kv => kv.Value).Take(12)) Console.WriteLine($"drawprof {kv.Value,8:0.0} ms  {kv.Key}");
+                    dp.Clear();
+                }
+                break;
+            case "sounds":
+                Console.WriteLine($"sounds (tick {player.TickCount}): {string.Join(", ", player.Audio.Describe())}");
+                break;
+            case "widescreen":
+                player.Widescreen = p[1] == "1";
+                break;
+            case "smooth":
+                player.Smooth = p[1] is "1" or "2";
+                player.SmoothAll = p[1] == "2";
+                break;
+            case "fs":
+                // fs CMD [ARG]: an fscommand, as a script would send it.
+                player.FsCommand(p[1], p.Length > 2 ? p[2] : "");
+                break;
+            case "debug":
+                player.Debug = p[1] == "1";
+                break;
+            case "tree":
+                {
+                    // tree [maxDepth]: dump the display list.
+                    int max = p.Length > 1 ? int.Parse(p[1]) : 99;
+                    void Dump(Mnog.Engine.Display.DisplayObject o, int ind)
+                    {
+                        var mc = o as Mnog.Engine.Display.MovieClip;
+                        Console.WriteLine($"{new string(' ', ind * 2)}{o.Depth} '{o.Name}' {o.GetType().Name} id={o.Asset?.Id} vis={o.Visible}" +
+                            (mc != null ? $" [{mc.Movie.Name}] frame {mc.CurrentFrame}/{mc.FrameCount}{(mc.Playing ? " playing" : "")}" : "") + $" placed@{o.PlaceFrame}{(o.LerpMatrix ? " LERP-MOVE" : "")}{(o.LerpColor ? " LERP-COLOR" : "")} cx={o.ColorTransform.RM:0.##}/{o.PrevColor.RM:0.##} snap={o.Snapshotted} clip={o.ClipDepth}{(o.WidescreenScaleX != 1 ? $" WIDE x{o.WidescreenScaleX}" : "")} world={o.WorldMatrix.MapRect(o.LocalBounds)}");
+                        if (mc != null && ind < max) foreach (var c in mc.Children.Values) Dump(c, ind + 1);
+                    }
+                    foreach (var l in player.Levels.Values) Dump(l, 0);
+                    break;
+                }
+            case "bench":
+                {
+                    // bench N W H: average render time without encoding.
+                    int n = int.Parse(p[1]), w = int.Parse(p[2]), h = int.Parse(p[3]);
+                    using var surface = SKSurface.Create(new SKImageInfo(w, h));
+                    var sw = System.Diagnostics.Stopwatch.StartNew();
+                    for (int i = 0; i < n; i++) { player.Tick(); player.Render(surface.Canvas, w, h); }
+                    surface.Canvas.Flush();
+                    Console.WriteLine($"tick+render {w}x{h}: {sw.Elapsed.TotalMilliseconds / n:F1} ms/frame");
+                    break;
+                }
+            default:
+                Console.Error.WriteLine($"unknown command {p[0]}");
+                break;
+        }
+    }
+}
+
+static partial class Program
+{
+    static bool MixAudio;
+}

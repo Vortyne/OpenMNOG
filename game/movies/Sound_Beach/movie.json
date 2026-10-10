@@ -1,0 +1,51 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Sound_Beach.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {
+      "kind": "shape",
+      "id": 1,
+      "bounds": [10.5, 13.5, 11.5, 14.5],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#0066CCFF"},
+          "path": "M10.5 13.5 L11.5 13.5 L11.5 14.5 L10.5 14.5 L10.5 13.5 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 2,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    }
+  ],
+  "timeline": {
+    "frameCount": 16,
+    "frames": [
+      {
+        "ops": [{"place": 1, "id": 2, "matrix": [1, 0, 0, 1, 258.8, 291.85], "name": "SFX-holder"}],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"labels": ["SFX_One"], "scripts": ["scripts/frame2.as"]},
+      {},
+      {"scripts": ["scripts/frame4.as"]},
+      {"labels": ["SFX_Two"]},
+      {},
+      {"scripts": ["scripts/frame7.as"]},
+      {"labels": ["SFX_Three"], "scripts": ["scripts/frame8.as"]},
+      {},
+      {"scripts": ["scripts/frame10.as"]},
+      {"labels": ["SFX_Four"]},
+      {},
+      {"scripts": ["scripts/frame13.as"]},
+      {"labels": ["SFX_Five"], "scripts": ["scripts/frame14.as"]},
+      {},
+      {"scripts": ["scripts/frame16.as"]}
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+ "note": "The brush mark on the right (Fore-ground depth 5), cut off in the original just past the stage, is stretched rightwards to the 16:9 edge.",
+ "fixes": [
+  {
+   "sprite": 41,
+   "depth": 5,
+   "widescreenScaleX": 1.3,
+   "widescreenAnchor": "left"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "note": "XXIII.5A: the same painting as XVIII.1A (XVII.2-S's mossy root), so it's drawn live the same way.",
+ "image": 1,
+ "scene": "XVII.2-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 386.5,
+  "Middle-Ground": 390.0,
+  "Fore-Ground": -2109.7
+ },
+ "hide": [
+  "Middle-Ground/Taipu",
+  "Middle-Ground/TaipuBubble",
+  "Buttons"
+ ],
+ "zoom": 1.52,
+ "x": 156.5,
+ "y": 139.0,
+ "blur": 3.5,
+ "wide": true
+}

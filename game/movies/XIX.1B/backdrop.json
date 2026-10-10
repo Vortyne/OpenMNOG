@@ -1,0 +1,33 @@
+{
+ "note": "XIX.1B: its backdrop is XIX.1-N (panned to the cable winch) zoomed 1.6x; drawn live from the scene when Vectorize bitmaps is on, filling the widescreen view. The mountains and sky are hazier than the winch. Placed by eye.",
+ "image": 1,
+ "scene": "XIX.1-N",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 206.5,
+  "Middle-Ground": 30,
+  "Fore-Ground": -2829.7
+ },
+ "hide": [
+  "Buttons"
+ ],
+ "zoom": 1.6352,
+ "x": 194.16,
+ "y": 93.08,
+ "blur": 0.5,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky3"
+ ],
+ "loads": [
+  [
+   "Back-Ground/Ihu-holder",
+   "Ihu"
+  ]
+ ],
+ "softer": {
+  "Back-Ground": 3.46
+ }
+}

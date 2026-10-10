@@ -1,0 +1,1 @@
+{"width": 50, "height": 50, "source": "(made by hand: the bottom bar buttons' hover glow, small and white, behind the icon)", "parts": [{"color": "#000000FF", "path": "M0 0 L50 0 L50 50 L0 50 Z", "gradient": {"type": "radial", "center": [25, 25], "radius": 22, "stops": [[0, "#FFFFFFD0"], [0.7, "#FFFFFFB0"], [0.82, "#FFFFFF50"], [1, "#FFFFFF00"]]}}]}

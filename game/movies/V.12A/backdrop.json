@@ -1,0 +1,36 @@
+{
+ "note": "V.12A: its backdrop is V.12-N zoomed 1.7x and blurred; drawn live from the scene (without the Matoran, whose parts are Middle-Ground #49-#53) when Vectorize bitmaps is on, filling the widescreen view. Placed by eye.",
+ "image": 3,
+ "scene": "V.12-N",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385,
+  "Middle-Ground": 385,
+  "Fore-Ground": 397.45
+ },
+ "hide": [
+  "Middle-Ground/#49",
+  "Middle-Ground/#50",
+  "Middle-Ground/#51",
+  "Middle-Ground/#52",
+  "Middle-Ground/#53",
+  "Middle-Ground/#54",
+  "Buttons"
+ ],
+ "zoom": 1.6758,
+ "x": 167.19,
+ "y": 77.72,
+ "blur": 1.5,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ],
+ "slow": {
+  "Middle-Ground/#13": 0.5,
+  "Middle-Ground/#15": 0.5,
+  "Middle-Ground/#18": 0.5,
+  "Middle-Ground/#44": 0.5
+ }
+}

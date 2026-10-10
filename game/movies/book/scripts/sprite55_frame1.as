@@ -1,0 +1,26 @@
+#version 4
+TextSlot1 = eval("../TextSelect/:TextSlot1");
+TextSlot2 = eval("../TextSelect/:TextSlot2");
+TextSlot3 = eval("../TextSelect/:TextSlot3");
+TextSlot4 = eval("../TextSelect/:TextSlot4");
+TextSlot5 = eval("../TextSelect/:TextSlot5");
+TextSlot6 = eval("../TextSelect/:TextSlot6");
+TextSlot7 = eval("../TextSelect/:TextSlot7");
+TextSlot8 = eval("../TextSelect/:TextSlot8");
+TextSlot9 = eval("../TextSelect/:TextSlot9");
+TextSlot10 = eval("../TextSelect/:TextSlot10");
+TextSlot11 = eval("../TextSelect/:TextSlot11");
+TextSlot12 = eval("../TextSelect/:TextSlot12");
+TextSlot13 = eval("../TextSelect/:TextSlot13");
+TextSlot14 = eval("../TextSelect/:TextSlot14");
+TextSlot15 = eval("../TextSelect/:TextSlot15");
+TextSlot16 = eval("../TextSelect/:TextSlot16");
+TextSlot17 = eval("../TextSelect/:TextSlot17");
+TextSlot18 = eval("../TextSelect/:TextSlot18");
+TextSlot19 = eval("../TextSelect/:TextSlot19");
+TextSlot20 = eval("../TextSelect/:TextSlot20");
+TextSlot21 = eval("../TextSelect/:TextSlot21");
+TextSlot22 = eval("../TextSelect/:TextSlot22");
+TextSlot23 = eval("../TextSelect/:TextSlot23");
+TextSlot24 = eval("../TextSelect/:TextSlot24");
+TextSlot25 = eval("../TextSelect/:TextSlot25");

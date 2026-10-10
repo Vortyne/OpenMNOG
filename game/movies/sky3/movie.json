@@ -1,0 +1,38 @@
+{
+  "format": "mnog-movie/1",
+  "source": "sky3.swf",
+  "swfVersion": 4,
+  "width": 1155,
+  "height": 302,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "image", "id": 1, "file": "images/1.jpg", "width": 510, "height": 307},
+    {
+      "kind": "shape",
+      "id": 2,
+      "bounds": [-871.45, -152.25, 877.45, 154.8],
+      "parts": [
+        {
+          "fill": {
+            "type": "bitmap",
+            "matrix": [2.2527618408203125, 0, 0, 1.00006103515625, -571.45, -152.25],
+            "spread": "reflect",
+            "bitmap": 1,
+            "repeat": false,
+            "smooth": true
+          },
+          "path": "M877.45 154.8 L-871.45 154.8 L-871.45 -152.25 L877.45 -152.25 L877.45 154.8 Z"
+        }
+      ]
+    }
+  ],
+  "timeline": {
+    "frameCount": 3,
+    "frames": [
+      {"ops": [{"place": 1, "id": 2, "matrix": [1, 0, 0, 1, 0, 0]}]},
+      {"scripts": ["scripts/frame2.as"]},
+      {"scripts": ["scripts/frame3.as"]}
+    ]
+  }
+}

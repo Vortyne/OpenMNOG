@@ -1,0 +1,55 @@
+{
+ "note": "IV.8A (the Ko-Koro cable car prompt): IV.8-N zoomed 1.2x (panned to 170, the background kept where it is relative to the cable in the normal view, so the cable meets the summit), its background blurred and the cable car machine, ropes and ledge kept sharp; drawn live when Vectorize bitmaps is on, filling the widescreen view.",
+ "backdrop": {
+  "image": 1,
+  "scene": "IV.8-N",
+  "frame": 5,
+  "vertical": false,
+  "layers": {
+   "Back-ground": 118.8,
+   "Middle-Ground": 170.0,
+   "Fore-ground": 39.55
+  },
+  "hide": [
+   "Middle-Ground/Guard",
+   "Middle-Ground/Bubble1",
+   "Buttons"
+  ],
+  "zoom": 1.2,
+  "x": 12.5,
+  "y": 7.0,
+  "blur": 4.5,
+  "wide": true,
+  "sky": [
+   "Back-ground/Sky-holder",
+   "sky1"
+  ],
+  "sharp": [
+   "Middle-Ground/#2",
+   "Middle-Ground/Chair",
+   "Middle-Ground/Rope1",
+   "Middle-Ground/Rope2",
+   "Middle-Ground/#10",
+   "Middle-Ground/#12",
+   "Middle-Ground/#13",
+   "Middle-Ground/#14",
+   "Middle-Ground/#15",
+   "Middle-Ground/#16",
+   "Middle-Ground/#17",
+   "Middle-Ground/#19",
+   "Middle-Ground/#20",
+   "Middle-Ground/#21",
+   "Middle-Ground/#22",
+   "Middle-Ground/#23",
+   "Middle-Ground/#24",
+   "Middle-Ground/#25",
+   "Middle-Ground/#26",
+   "Middle-Ground/#27",
+   "Middle-Ground/#28"
+  ]
+ },
+ "view": {
+  "left": -1000,
+  "right": 1800
+ }
+}

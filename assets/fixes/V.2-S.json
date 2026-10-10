@@ -1,0 +1,10 @@
+{
+ "note": "V.2-S: a leaf (shape 56) placed straight on the scene's timeline at x -38, just off the original stage, doesn't pan with the scenery and floats over the water in widescreen: removed.",
+ "fixes": [
+  {
+   "sprite": 0,
+   "depth": 117,
+   "remove": true
+  }
+ ]
+}

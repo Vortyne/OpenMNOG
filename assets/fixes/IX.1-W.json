@@ -1,0 +1,19 @@
+{
+ "note": "IX.1-W: two gaps at the top of the Middle-Ground's sand, either side of the path, show the background through; filled with the pale sand colour, beneath the layer's other shapes.",
+ "fixes": [
+  {
+   "sprite": 20,
+   "depth": 0,
+   "parts": [
+    {
+     "color": "#FFFFCCFF",
+     "path": "M-181.00 103.50 L-128.40 112.34 L-125.86 115.00 L-127.90 117.25 L-128.90 117.75 L-133.90 117.75 L-135.40 117.25 L-199.90 116.75 L-201.40 116.25 L-213.90 116.25 L-215.40 115.75 L-223.90 115.66 L-226.44 113.00 L-224.12 110.50 L-222.90 109.83 Z"
+    },
+    {
+     "color": "#FFFFCCFF",
+     "path": "M-30.62 105.50 L-25.40 105.25 L-23.90 105.75 L-7.40 106.25 L-5.90 106.75 L-1.40 106.75 L0.10 107.25 L7.60 107.75 L9.32 108.50 L11.64 111.00 L8.82 114.00 L6.60 114.83 L3.60 117.66 L-10.40 117.75 L-30.40 110.66 L-32.94 108.00 Z"
+    }
+   ]
+  }
+ ]
+}

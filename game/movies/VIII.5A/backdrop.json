@@ -1,0 +1,40 @@
+{
+ "note": "VIII.5A: its backdrop is VIII.5-E zoomed 1.40x and blurred; drawn live from the scene (without Astrologer, HukiBubble, Fore-ground) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 1,
+ "scene": "VIII.5-E",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 385.0,
+  "Fore-Ground": 469.55
+ },
+ "hide": [
+  "Middle-Ground/Astrologer",
+  "Middle-Ground/HukiBubble",
+  "Fore-ground",
+  "Buttons"
+ ],
+ "zoom": 1.4,
+ "x": 94.5,
+ "y": 45.5,
+ "blur": 0.5,
+ "wide": true,
+ "alpha": {
+  "Darkness": 0
+ },
+ "tone": [
+  [
+   0.517,
+   1.59
+  ],
+  [
+   0.514,
+   1.493
+  ],
+  [
+   0.488,
+   1.292
+  ]
+ ]
+}

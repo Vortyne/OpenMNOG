@@ -1,0 +1,6 @@
+{
+ "note": "I.5-S: panning left stops at 729 (beyond, the sky shows past the cliff's edge).",
+ "pan": {
+  "max": 729
+ }
+}

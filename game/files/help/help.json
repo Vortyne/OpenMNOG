@@ -1,0 +1,778 @@
+{
+ "note": "The in-game Help (the original support site's pages the game needs; tools/extract_help.py). Pictures are frames of the game, drawn live: {\"scene\": NAME, \"frame\": N} a scene or episode at a frame, {\"cursor\": \"arrow\"|\"finger\"|\"turn\"} the game's cursor, {\"decoder\": true} the Matoran alphabet tablet.",
+ "index": [
+  {
+   "title": "General",
+   "page": "general"
+  },
+  {
+   "title": "Tips and Hints",
+   "page": "tips"
+  },
+  {
+   "title": "Bionicle Decoder",
+   "page": "decoder"
+  },
+  {
+   "title": "New Controls",
+   "page": "controls"
+  }
+ ],
+ "pages": {
+  "general": {
+   "title": "General",
+   "blocks": [
+    {
+     "heading": "A world full of mystery and danger, wonder and legend."
+    },
+    {
+     "text": "Exploring the island of Mata Nui is very different from a traditional video game. There are many places to explore and secrets to uncover, and you may need to solve puzzles or perform tasks to reach certain locations. There is no single, clear goal for you to accomplish -- finding your true purpose is up to you, and it may or may not be possible to \"win the game.\""
+    },
+    {
+     "text": "To journey across Mata Nui, move your mouse across the scene before you. As your mouse reaches the left or right edge of the scene, it will shift in that direction, just as if you were turning your head. In some locations you can look up and down as well."
+    },
+    {
+     "picture": {
+      "cursor": "arrow"
+     },
+     "align": "left"
+    },
+    {
+     "text": "Normally your mouse cursor will look like an arrow."
+    },
+    {
+     "picture": {
+      "cursor": "finger"
+     },
+     "align": "left"
+    },
+    {
+     "text": "If you see your cursor change to a pointing finger, you can click to move forward, or inspect a particular object. There are many strange devices on Mata Nui; clicking on some of them may cause interesting effects."
+    },
+    {
+     "text": "If you see a symbol that looks like this"
+    },
+    {
+     "picture": {
+      "cursor": "turn"
+     },
+     "align": "inline"
+    },
+    {
+     "text": ", you can click to turn all the way around, and face the opposite direction. You can use this feature to retrace your steps, and return the way you came."
+    },
+    {
+     "picture": {
+      "scene": "IV.2A",
+      "frame": 23,
+      "sky": [
+       "Back-Ground/Sky-holder",
+       "sky2"
+      ],
+      "hide": [
+       "TextSub",
+       "Buttons"
+      ],
+      "x": 190,
+      "y": 10,
+      "zoom": 0.526,
+      "width": 200,
+      "height": 120
+     },
+     "align": "left"
+    },
+    {
+     "text": "If you meet one of the inhabitants of Mata Nui, you may be able to talk to them by clicking. Some of the island-dwellers have very little to say, but others will start a conversation with you. When you see a screen with a set of questions, click on one of them to continue the dialogue. You could learn very useful information from talking to the island's inhabitants..."
+    }
+   ]
+  },
+  "tips": {
+   "title": "Tips and Hints",
+   "blocks": [
+    {
+     "text": "Sometimes the mysteries of Mata Nui can be difficult to unravel. That's why the Bionicle team has put together some hints to help you find your way around the island. Click on the section where you're having trouble and you'll see a list of questions. If you find the question that applies to your problem, click on it. You'll receive a hint, and you can click \"More...\" to receive another. Each question may have several tips to help you along. Good luck!"
+    }
+   ],
+   "areas": [
+    {
+     "area": "On the Beach",
+     "questions": [
+      {
+       "question": "What's that big canister doing there?",
+       "hints": [
+        "Looks like somebody came out of it and walked away.",
+        "Maybe you should follow the footprints?",
+        "This is where Tahu arrived on Mata Nui. He headed towards the Burnt Forest. If you have the Storybook, you can see what happened next..."
+       ]
+      },
+      {
+       "question": "How can I get into the big stone face on the beach?",
+       "hints": [
+        "Hmm, it looks like you should be able to get in there, doesn't it?",
+        "But you can't. Not right now, at any rate... the stone faces are a great mystery."
+       ]
+      },
+      {
+       "question": "What was that strange movie with all the stones falling from the sky?",
+       "hints": [
+        "That was the Legend of Mata Nui, which is told using stones across the island.",
+        "Perhaps one of the Turaga can tell you more."
+       ]
+      },
+      {
+       "question": "What is the green gem on the hook for, the one at the edge of the cliff?",
+       "hints": [
+        "Have you tried clicking on the gem?",
+        "Have you tried clicking on the pedestal underneath the hook?",
+        "There is someone in the village of Ga-Koro who knows more about these things.",
+        "The green gem is a telescope of sorts, that lets you see the starry sky above Mata Nui.",
+        "The pedestal shows scenes from the prophecies kept by the Turaga, and each scene is connected to a certain constellation in the sky.",
+        "\"When the Red Star is exactly where it is shown in one of the pictures, then a prophecy may come true.\""
+       ]
+      },
+      {
+       "question": "There's someone here with a boat, waving at me and asking me for help!",
+       "hints": [
+        "Maybe you should talk to her.",
+        "Maybe you should agree to help her?",
+        "If you agree to help Maku, you will be journey to Ga-Koro automatically. You might want to hear about what happened first, though."
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Ta-Koro",
+     "questions": [
+      {
+       "question": "How do I get across the big lava pit?",
+       "hints": [
+        "That's the village of Ta-Koro over there. The guards and other travelers must have some way of getting back inside.",
+        "You might want to check around the gate area, where the guards are patrolling.",
+        "There's a staircase on one side of the archway where the guards are.",
+        "In the guardhouse up the stairs, you can talk to Jala, Captain of the Guard. But there's another room behind him.",
+        "In the room behind Jala, click on the big machine and watch it work."
+       ]
+      },
+      {
+       "question": "Why can't I go into the rooms in the back?",
+       "hints": [
+        "Those are private dwellings of the Ta-Koro Tohunga. I don't think they'd want you in there.",
+        "You might want to talk to Vakama, Turaga of Ta-Koro, for more information.",
+        "The Tohunga of Ta-Koro don't seem to like you for some reason!"
+       ]
+      },
+      {
+       "question": "Why can't I use the cablecar at the top of the cliff stairs?",
+       "hints": [
+        "It's broken."
+       ]
+      },
+      {
+       "question": "I'm lost in the forest.",
+       "hints": [
+        "Forests are dark and confusing places, but maybe you can keep track of where you're going.",
+        "You don't have anything with you that you could use, but there are plenty of trees around.",
+        "If you click on a tree, you'll make a marking there.",
+        "Use the markings to keep track of which paths you've already gone down. Eventually you'll find your way out."
+       ]
+      },
+      {
+       "question": "What is there to find in the forest?",
+       "hints": [
+        "Lots and lots of blackened trees.",
+        "You might run across someone else wandering in there.",
+        "Kapura is practicing in the forest. There's nothing else to find there for now."
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Ga-Koro",
+     "questions": [
+      {
+       "question": "The gate is closed, how do I get in?",
+       "hints": [
+        "This gate looks kind of complicated. Maybe there's some way to open it from outside?",
+        "There's a big shell hanging to the right of the gate, and a bunch of stones on the ground.",
+        "Try putting the stones in the shell.",
+        "Look carefully at what happens to the gate when you put a stone in the shell.",
+        "The dial at the top of the gate moves.",
+        "Put just enough stones in the shell to get the two blue dots on the dial to line up. The larger stones will move the dial further than the smaller stones."
+       ]
+      },
+      {
+       "question": "Where are all the villagers?",
+       "hints": [
+        "Have you looked in all the houses?",
+        "Have you looked underwater?",
+        "If you go underwater, you can see a submerged hut.",
+        "The villagers and their Turaga, Nokama, are trapped in that hut.",
+        "You can't talk to them from down there, you'll have to find a different way."
+       ]
+      },
+      {
+       "question": "How do I rescue the villagers?",
+       "hints": [
+        "You're a visitor to this village, but maybe one of the villagers knows what to do.",
+        "All the villagers are trapped underwater. You'll have to figure out how to talk with them.",
+        "There's a lily pad with a strange machine, just to the left of the hut that leads you underwater.",
+        "If you go to this lily pad, there's a little tube at the left edge.",
+        "If you click on the tube, you can talk with Nokama, who has some ideas on what to do."
+       ]
+      },
+      {
+       "question": "How do I repair the machine?",
+       "hints": [
+        "Try pressing the button!",
+        "Oops, nothing happened. Looks like something's missing in the middle there.",
+        "You need to find the missing gear. If it's not on the machine, maybe it fell...",
+        "... into the water. It's on the ocean floor somewhere.",
+        "It's pretty dark down there, but Nokama might be able to help you.",
+        "You need Nokama's lightstone, which is in one of the huts. It will illuminate the darkness underwater.",
+        "Once you've found the missing gear, put it in the machine and press the button!"
+       ]
+      },
+      {
+       "question": "I can't pick up the lightstone.",
+       "hints": [
+        "It's much easier to carry stuff when you have something to carry it in.",
+        "Look around the village.",
+        "There's a backpack in the hut that leads underwater. Once you have the backpack you can pick up the lightstone -- not to mention other stuff you might need."
+       ]
+      },
+      {
+       "question": "I know what I'm supposed to do underwater, but how do I find it?",
+       "hints": [
+        "Gears are much shinier than ocean-dwelling plants and animals.",
+        "Try dragging the lightstone along the ocean floor.",
+        "The gear has fallen into a clump of sea plants and it's hard to tell which one is the gear! Shine the lightstone on the clumps of sea plants that look like they have spokes -- eventually you'll find the gear.",
+        "The gear could be in any of the four underwater scenes. Try turning around, moving towards the sunken hut, or moving back towards the hole that leads to the surface."
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Po-Wahi and Po-Koro",
+     "questions": [
+      {
+       "question": "What do I do in the dead-end valley with all the huge statues?",
+       "hints": [
+        "Those statues look kind of familiar, don't they?",
+        "Have you tried clicking on them?",
+        "That slot looks like something might fit into it.",
+        "You need a key, better look elsewhere.",
+        "The statues are of the six Toa, each of which is associated with a particular element.",
+        "This place is called the Quarry."
+       ]
+      },
+      {
+       "question": "How do I get to Po-Koro?",
+       "hints": [
+        "From the shores, turn left at the first intersection, and turn right at the second intersection."
+       ]
+      },
+      {
+       "question": "What's wrong with the villagers in Po-Koro?",
+       "hints": [
+        "Try talking to everyone, someone might know more about what's going on.",
+        "There's a Koli player in the stadium that you might want to talk to.",
+        "Try leaving the stadium and coming back.",
+        "Oops, he left his Koli ball behind...",
+        "Something's very strange about that ball. You might want to show it to Onewa.",
+        "For that matter, you might want to find out where that ball came from."
+       ]
+      },
+      {
+       "question": "Where do Comet Koli balls come from?",
+       "hints": [
+        "Well, there's a big marketplace in the middle of Po-Koro.",
+        "Maybe someone's selling them.",
+        "Talk to the merchant just to the right of the gate when you come into Po-Koro.",
+        "Hmm, he won't tell you where he got them from. Maybe there's another clue around?",
+        "Look near his stand for clues.",
+        "There's an object just to the right of his stand, on the ground. It's not a Koli ball.",
+        "Have you seen anywhere that this might fit into?",
+        "It's a key for one of the statues in the quarry."
+       ]
+      },
+      {
+       "question": "How do I get to the Quarry?",
+       "hints": [
+        "From Po-Koro, turn left at the first intersection, and turn left again at the second intersection.",
+        "From the shores, turn right at the first intersection."
+       ]
+      },
+      {
+       "question": "How do I know which statue in the Quarry is the right one?",
+       "hints": [
+        "If you have the key, there is a symbol on it.",
+        "This symbol corresponds to one of the six elements: earth, stone, water, air, fire, or ice.",
+        "The six elements correspond to the six Toa.",
+        "The statues are of the Great Masks of Power that belong to each of the six Toa."
+       ]
+      },
+      {
+       "question": "I've entered the secret chamber and there's an angry Nui Jaga in there! What do I do?",
+       "hints": [
+        "Did you see Pohatu? What did he say?",
+        "Try to knock down the Rahi's nest with stones.",
+        "Click on a stone, drag it until you get to supporting trunk and fire!",
+        "Knock down all of the Rahi's support and escape with Pohatu."
+       ]
+      },
+      {
+       "question": "I've returned to Po-Koro and everyone seems better. Now what?",
+       "hints": [
+        "Have you talked to Onewa?",
+        "He should give you a gift.",
+        "Take the chisel back to Ga-Koro.",
+        "Give the chisel to one of Ga-Koro's residents.",
+        "You should receive another gift in exchange for the chisel from Nokama.",
+        "The new gift is an episode book with movies from all seven stories."
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Onu-Koro",
+     "questions": [
+      {
+       "question": "I'm at the entrance to the cave and there are some strange creatures there. What do I do?",
+       "hints": [
+        "Have you talked to the crab driver?",
+        "Take his suggestion and ride the crab."
+       ]
+      },
+      {
+       "question": "I just got off the crab ride into the underground tunnels. Where do I go?",
+       "hints": [
+        "Try talking to some of the locals.",
+        "Try the hut on the left.",
+        "Talk to Onepu. What does he tell you?"
+       ]
+      },
+      {
+       "question": "I've talked to Onepu. Where do I go now?",
+       "hints": [
+        "Talk to more villagers.",
+        "Try crossing the bridge.",
+        "Find Whenua's hut and talk to him.",
+        "What seems to be the problem?"
+       ]
+      },
+      {
+       "question": "I've talked to Onepu and Whenua, where do I go now?",
+       "hints": [
+        "Try crossing the bridge and venturing into the tunnels."
+       ]
+      },
+      {
+       "question": "I've come to a fork in the road. Which way should I go?",
+       "hints": [
+        "To the right is Le-Koro, to the left is Ta-Koro. You should brush up on your Bionicle language!",
+        "Take the right fork towards Le-Koro.",
+        "Did you run into anyone?",
+        "Taipu is working, but its not easy without some lightstones.",
+        "Try going back towards Ta-Koro."
+       ]
+      },
+      {
+       "question": "I've come back to the fork in the road, which way do I go?",
+       "hints": [
+        "This would be a lot easier if you could translate Bionicle language!",
+        "Go the right towards Ta-Koro.",
+        "Notice any extra doorways along the way?",
+        "Look for a doorway lit by two lanterns."
+       ]
+      },
+      {
+       "question": "How can I get across the lava overflow?",
+       "hints": [
+        "You'll need something to ride across those waves of lava.",
+        "Try continuing on Ta-Koro and look around the village.",
+        "Be sure to talk to anyone who's passing by.",
+        "Grab the lava surfboard from the lava surfer."
+       ]
+      },
+      {
+       "question": "What do I do with the lava surfboard?",
+       "hints": [
+        "Lava surfboards are good for surfing on lava.",
+        "Go back to the lava overflow and glide across!"
+       ]
+      },
+      {
+       "question": "How do I drain the lava?",
+       "hints": [
+        "You need to activate the pump.",
+        "It needs to be turned on. It only runs when all of the lights are on.",
+        "If you get the pump going, the lightstone mines should be open again."
+       ]
+      },
+      {
+       "question": "I've wandered back into the mines and I see an elevator. What does it do?",
+       "hints": [
+        "Take the elevator down and talk to the Tohunga there.",
+        "What does he ask you?",
+        "Do you know an astrologer?",
+        "There is an astrologer in Ga-Koro.",
+        "Take the Tohunga's message to Ga-Koro."
+       ]
+      },
+      {
+       "question": "I've got the Tohunga's message. How do I get back to Ga-Koro?",
+       "hints": [
+        "Just follow the signs out of the tunnel!",
+        "Pass back through Onu-Koro until you get to the crabs.",
+        "Ride the crab back up out of the mine.",
+        "Pass back through the deserts of Onu-Wahi and Po-Wahi until you get to the ship."
+       ]
+      },
+      {
+       "question": "I'm back in Ga-Koro. Where is the astrologer?",
+       "hints": [
+        "Try a few huts.",
+        "The astrologer is right next to the weaving Tohunga."
+       ]
+      },
+      {
+       "question": "I'm back in Onu-Koro in the mine with the sundial. What do I do?",
+       "hints": [
+        "Go down into the chamber and use the Gnomen and one of your other tools to make it 4:00 on the sundial.",
+        "Your lightstone can be used as an artificial sunlight.",
+        "If it you leave the sundial at 4:00 for a few seconds, a secret should be revealed!",
+        "A Golden Tanohi mask!"
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Le-Koro",
+     "questions": [
+      {
+       "question": "I took Taipu with me, but some creature grabbed him and now he's gone - what happened?",
+       "hints": [
+        "Don't worry. Taipu is ok.",
+        "He was captured by one of Makuta's minions - the Nui-Rama.",
+        "He's not hurt, but you will have to rescue him."
+       ]
+      },
+      {
+       "question": "I've reached a place where there are two big pods - what do I do?",
+       "hints": [
+        "Notice the trees high above the pods? You need to get up there.",
+        "Try entering one of the pods.",
+        "The pod is actually an elevator. Turn the three levers to \"up\" to go to the top."
+       ]
+      },
+      {
+       "question": "I've made it up to the treetops. Where should I go?",
+       "hints": [
+        "Look around the village. What do you see?",
+        "Pick up the flute lying on the ground.",
+        "Try and play a tune on the flute.",
+        "Not sure what to play? Try hitting the blue tab for a hint.",
+        "If you follow the pattern of the blue tab, you should meet the people of Le-Koro!"
+       ]
+      },
+      {
+       "question": "I've talked to a few Le-Koronans, where should I go?",
+       "hints": [
+        "Have you tried venturing \"uptree\"?",
+        "You should find Kongu asking for you to join him and battle the Nui-Rama.",
+        "Don't be afraid! Join Kongu against the Nui-Rama.",
+        "Once you're flying with Kongu, try to nail some of those Nui-Rama!",
+        "Can't hit them? Click your mouse to hurl a disk."
+       ]
+      },
+      {
+       "question": "I was flying along battling the Nui-Rama when I suddenly fell back into the jungle. What happened?",
+       "hints": [
+        "What did Kongu say? Maybe you should try flying with him again."
+       ]
+      },
+      {
+       "question": "I've defeated the Nui-Rama and now I'm in their hive, where do I go?",
+       "hints": [
+        "Have you looked around the entire cave, both to the left and right of Matau?",
+        "Try checking some of the holes in the hive.",
+        "Click on one of the holes on the left side of the screen right above the blue bug."
+       ]
+      },
+      {
+       "question": "I'm back in Le-Koro and everyone is celebrating. What do I do now?",
+       "hints": [
+        "Did you talk to Matau? What did he say?",
+        "Be sure to get your gift from Matau.",
+        "The new flute song is used just like the other.",
+        "You can use the new flute song to travel all over Mata Nuiâ¦except Ko-Koro - for nowâ¦."
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Ko-Koro",
+     "questions": [
+      {
+       "question": "How do I get to Ko-Koro?",
+       "hints": [
+        "Ko-koro is a snowy village high in the mountains.",
+        "You need to take a cable car to get there.",
+        "Follow the path to the right of the entrance to Ta-Koro.",
+        "Try the cable car at the top of the path.",
+        "You can't ride the cable car without a special ensign."
+       ]
+      },
+      {
+       "question": "I've found the cable car, but they won't let me ride. What do I do?",
+       "hints": [
+        "You must visit an old friend to get the Ta-Koronan ensign you need.",
+        "Try one of the residents of Ta-Koro.",
+        "Jala has the ensign you need.",
+        "He is located just inside the gates to Ta-Koro on the right.",
+        "After getting the ensign, return to the cable car."
+       ]
+      },
+      {
+       "question": "I'm in Ko-Koro. I don't know what to do. Help me!",
+       "hints": [
+        "Have you tried exploring a bit?",
+        "Try the small hut on the left.",
+        "Pick up the heatstone in the hut. You'll need it later.",
+        "Look outside in the snow for some footprints.",
+        "They will lead you to Kopeke, one of Ko-Koro's residents."
+       ]
+      },
+      {
+       "question": "I've found a frozen Tohunga! How can I help him?",
+       "hints": [
+        "He needs to be thawed out.",
+        "Heat will melt the ice.",
+        "Heat from a heatstone would help.",
+        "You can get a heatstone in the cave back by the cable car.",
+        "Use the heat stone to thaw Kopeke out."
+       ]
+      },
+      {
+       "question": "I thawed out Kopeke and he ran away. What do I do?",
+       "hints": [
+        "Follow him!",
+        "Once you catch up to him, talk to him.",
+        "After talking to Kopeke, follow the corridor to the right towards the center of Ko-Koro."
+       ]
+      },
+      {
+       "question": "I've come to a large wall with some Masks. How do I pass?",
+       "hints": [
+        "Use your mouse to place the masks on the wall and crack the code.",
+        "The masks of power must be matched with their respective noble masks.",
+        "Take the set of noble and power masks and match them with the right symbol.",
+        "Place the mask of power in the top spot and the noble mask underneath it.",
+        "Once all the masks are in the right place, the door to Ko-Koro will open."
+       ]
+      },
+      {
+       "question": "I've passed the mask puzzle and I'm in Ko-Koro. What do I do?",
+       "hints": [
+        "Enter Nuju's temple. It's straight ahead.",
+        "Talk to the Tohunga on the left.",
+        "He will tell you that Matoro is out on the drifts hunting Rahi."
+       ]
+      },
+      {
+       "question": "I've gone down the passage to find Matoro and I can't find him. Where do I go?",
+       "hints": [
+        "Follow the Tohunga's advice.",
+        "Look for Matoro's flags in the snow.",
+        "Keep following them until you find the Tohungan stone with a secret message.",
+        "Use the Bionicle decoder to decipher the message if you dare!",
+        "After finding the stone, continue looking for Matoro in the drifts. Follow the red flags."
+       ]
+      },
+      {
+       "question": "Matoro saved me and defeated the Rahi! Now I'm back in the temple. What do I do?",
+       "hints": [
+        "Did you try talking to some Tohunga in the temple?",
+        "Talk to Nuju.",
+        "He will tell you what you need to do next in Mata Nui."
+       ]
+      }
+     ]
+    },
+    {
+     "area": "Kini-Nui",
+     "questions": [
+      {
+       "question": "Where do I go? What do I do? Help!",
+       "hints": [
+        "Have you come across anyone on Mata Nui yet?",
+        "Look for Kapura outside of Ta-Koro.",
+        "He will explain things to you and go with you to Vakama.",
+        "Vakama will instruct you on how you must collect all the Tohunga from the villages."
+       ]
+      },
+      {
+       "question": "Now that I've collected all my Tohunga, what do I do?",
+       "hints": [
+        "Have you tried talking to any of them?",
+        "Try looking right outside of Ga-koro.",
+        "Use Maku to sail into the waterfall."
+       ]
+      },
+      {
+       "question": "I've come to a gorge. How do I get across?",
+       "hints": [
+        "Have you tried talking to your Tohunga?",
+        "Try using your Tohunga when you come to challenges.",
+        "Try using Tamaru to cross the gorge."
+       ]
+      },
+      {
+       "question": "I've come to a rockslide. How do I pass?",
+       "hints": [
+        "Remember: Use your Tohunga when you come to challenges.",
+        "Try using Hafu and Taipu to clear the rock."
+       ]
+      },
+      {
+       "question": "I've come to a locked gate. How can I get through?",
+       "hints": [
+        "Remember: Use your Tohunga when you come to challenges.",
+        "At the gate use Kopeke to carve a key of ice to pass."
+       ]
+      },
+      {
+       "question": "I'm at Kini-Nui and the Rahi are attacking. What do I do?",
+       "hints": [
+        "Have you tried clicking on a Tohunga?",
+        "Click on a Tohunga to hurl a disk.",
+        "Click on a Rahi to choose a target.",
+        "Watch your health and the Rahi's health to see who will win.",
+        "In between battles, get sneak peeks at the Toa battling the Manas."
+       ]
+      },
+      {
+       "question": "When does the battle with the Rahi end?",
+       "hints": [
+        "You must keep fighting to protect the Toa.",
+        "After three victories, you will see the Rahi closing in.",
+        "Don't worry though, your fellow Tohunga from all of the villages will come to your aid!"
+       ]
+      },
+      {
+       "question": "The Tohunga have helped me defeat the Rahi. What do I do now?",
+       "hints": [
+        "Remember Gali's message.",
+        "Have you talked to any of the Tohunga?",
+        "Try talking to some of the Onu-Koronan.",
+        "Ride the crab to Onu-Koro to investigate the strange goings on."
+       ]
+      },
+      {
+       "question": "I'm in Onu-Koro and I don't know where to go.",
+       "hints": [
+        "Try talking to the Turaga of the village.",
+        "Go to Whenua's hut and talk to him.",
+        "Whenua will tell you to go to the Great Mine.",
+        "Take the elevator down and go to the Great Mine."
+       ]
+      },
+      {
+       "question": "What do I do once I'm in the Great Mine?",
+       "hints": [
+        "Try looking around a bit.",
+        "Try the chamber where the Golden Kanohi was.",
+        "You will descend into Makuta's lair.",
+        "Walk towards the red portal.",
+        "You will get a secret view of the Toa's battle with Makuta!"
+       ]
+      },
+      {
+       "question": "I'm standing on the beach where the game started. What do I do now?",
+       "hints": [
+        "Do you see anyone nearby?",
+        "Try talking to Vakama.",
+        "Vakama will explain what has happened.",
+        "Congratulations! You've saved the island and reached the end of the Mata Nui game. Thanks for playing!"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "decoder": {
+   "title": "Bionicle Decoder",
+   "blocks": [
+    {
+     "heading": "BIONICLE DECODER"
+    },
+    {
+     "text": "You may have noticed while playing the Mata Nui game that clues written in Bionicle language are scattered throughout the Island. Until now, it was almost impossible to figure them out. Now you can use this special decoder to learn the secrets of Mata Nui!"
+    },
+    {
+     "picture": {
+      "decoder": true
+     },
+     "align": "inline"
+    }
+   ]
+  },
+  "controls": {
+   "title": "New Controls",
+   "blocks": [
+    {
+     "heading": "Keyboard controls"
+    },
+    {
+     "text": "Everything can still be done with the mouse, as it always could. These keys are new:"
+    },
+    {
+     "key": "Arrows or W A S D",
+     "text": "Look around: turn left and right, and look up and down where a place allows it, as moving the mouse to the edge of the scene does."
+    },
+    {
+     "key": "Left Shift",
+     "text": "Turn all the way around, as clicking the turn-around symbol does."
+    },
+    {
+     "key": "Space",
+     "text": "Continue a conversation, as clicking its red arrow does."
+    },
+    {
+     "key": "Esc",
+     "text": "Close the open window. With none open, ask whether to quit the game."
+    },
+    {
+     "key": "F11 or Alt + Enter",
+     "text": "Switch between full screen and a window."
+    },
+    {
+     "key": "Mouse wheel",
+     "text": "Scroll pages like this one."
+    },
+    {
+     "heading": "In a movie"
+    },
+    {
+     "key": "<",
+     "text": "Go back one frame (the comma key). Pauses the movie if it is playing."
+    },
+    {
+     "key": ">",
+     "text": "Go forward one frame (the full stop key). Pauses the movie if it is playing."
+    },
+    {
+     "key": "/ or Pause|Break",
+     "text": "Pause the movie, or play it on from where it is."
+    },
+    {
+     "heading": "Comparing with the original"
+    },
+    {
+     "key": "V",
+     "text": "Switch the vectorized pictures (the smooth, redrawn sand and backgrounds) on or off until the game is closed, to compare them with the original art."
+    }
+   ]
+  }
+ }
+}

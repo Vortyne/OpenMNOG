@@ -1,0 +1,70 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Jungle.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 138845, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 138845, "original": "mp3"},
+    {"kind": "sound", "id": 3, "file": "sounds/3.ogg", "rate": 11025, "channels": 1, "samples": 138845, "original": "mp3"},
+    {"kind": "sound", "id": 4, "file": "sounds/4.ogg", "rate": 11025, "channels": 1, "samples": 138845, "original": "mp3"},
+    {"kind": "sound", "id": 5, "file": "sounds/5.ogg", "rate": 11025, "channels": 1, "samples": 138845, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "sounds": [
+          {
+            "id": 1,
+            "loops": 13,
+            "envelope": [
+              [0, 16959, 16097],
+              [2029776, 16959, 15809],
+              [2283498, 0, 0],
+              [4434094, 0, 0],
+              [4579078, 16097, 16097],
+              [6669264, 16097, 16097],
+              [6814248, 0, 0],
+              [27797832, 0, 0]
+            ]
+          },
+          {
+            "id": 2,
+            "loops": 20,
+            "envelope": [
+              [0, 0, 0],
+              [2090186, 0, 0],
+              [2295580, 15809, 15809],
+              [4397848, 15809, 15809],
+              [4627406, 0, 0],
+              [6676188, 0, 0],
+              [6802166, 16671, 16671],
+              [11158610, 0, 0]
+            ]
+          },
+          {"id": 3, "loops": 50, "envelope": [[0, 0, 0], [25009740, 16959, 16671], [27800682, 0, 0]]},
+          {
+            "id": 4,
+            "loops": 100,
+            "envelope": [
+              [13253954, 287, 0],
+              [13568086, 18971, 19833],
+              [17835657, 12072, 13797],
+              [17985962, 0, 0],
+              [26584708, 0, 0],
+              [26850512, 19833, 20408],
+              [35453581, 15234, 15234],
+              [35671057, 0, 0]
+            ]
+          },
+          {"id": 5, "loops": 50, "envelope": [[0, 0, 0], [6681346, 0, 0], [11079194, 10923, 10060], [27764436, 0, 0]]}
+        ]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

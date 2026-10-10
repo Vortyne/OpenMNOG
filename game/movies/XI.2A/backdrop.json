@@ -1,0 +1,52 @@
+{
+ "note": "XI.2A: its backdrop is XI.2-E (the Ussal stable), placed by eye, without the speakers (drawn by the dialog), the blue crab, the scene's wax tin and the doorway arch.",
+ "image": 1,
+ "scene": "XI.2-E",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 385.0
+ },
+ "hide": [
+  "Middle-Ground/Onepu",
+  "Middle-Ground/#12",
+  "Middle-Ground/#26",
+  "Middle-Ground/#112",
+  "Fore-ground",
+  "Buttons",
+  "Middle-Ground/#69",
+  "Middle-Ground/#70",
+  "Middle-Ground/#72",
+  "Middle-Ground/#68",
+  "Middle-Ground/#74"
+ ],
+ "zoom": 1.067,
+ "x": -12.4,
+ "y": -15.6,
+ "blur": 1.0,
+ "wide": true,
+ "move": {
+  "Middle-Ground/#80": [
+   25,
+   0
+  ],
+  "Middle-Ground/#75": [
+   -45,
+   0
+  ],
+  "Middle-Ground/#77": [
+   -45,
+   0
+  ],
+  "Middle-Ground/#78": [
+   -45,
+   0
+  ]
+ },
+ "depth": {
+  "Middle-Ground/#75": 100,
+  "Middle-Ground/#77": 101,
+  "Middle-Ground/#78": 102
+ }
+}

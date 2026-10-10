@@ -1,0 +1,6 @@
+{
+ "note": "White fills the view behind the scene (instead of black), shown full width.",
+ "view": {
+  "backdrop": "#FFFFFF"
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "note": "V.2-N: the whole vertical scroll of the original (30-395); near the top a small dark notch shows at the bottom right, where the cliff ends. The view stays 16:9 wide (-37.2 to 807.2). On the right, the cliff (depth 3), the water mask (44) and the shore (45) are stretched only right of the waterfall (from x 560), so the waterfall stays lined up, to reach the 16:9 edge.",
+ "pan": {
+  "min": 30,
+  "max": 395
+ },
+ "view": {
+  "left": -37.2,
+  "right": 807.2
+ },
+ "fixes": [
+  {
+   "sprite": 40,
+   "depth": 3,
+   "widescreenScaleX": 1.14,
+   "widescreenFrom": 0.742
+  },
+  {
+   "sprite": 40,
+   "depth": 44,
+   "widescreenScaleX": 1.14,
+   "widescreenFrom": 0.688
+  },
+  {
+   "sprite": 40,
+   "depth": 45,
+   "widescreenScaleX": 1.1,
+   "widescreenFrom": 0.733
+  }
+ ]
+}

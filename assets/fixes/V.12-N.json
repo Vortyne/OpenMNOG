@@ -1,0 +1,15 @@
+{
+ "note": "The view stays 16:9 wide; the water backdrop (depth 4) is stretched right of x 600 to reach its edge.",
+ "view": {
+  "left": -37.2,
+  "right": 807.2
+ },
+ "fixes": [
+  {
+   "sprite": 9,
+   "depth": 4,
+   "widescreenScaleX": 1.21,
+   "widescreenFrom": 0.794
+  }
+ ]
+}

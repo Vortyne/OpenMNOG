@@ -1,0 +1,22 @@
+{
+ "image": 1,
+ "scene": "XII.5-E",
+ "frame": 3,
+ "vertical": false,
+ "mirror": true,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 387.0
+ },
+ "hide": [
+  "Middle-Ground/Tohunga",
+  "Fore-Ground",
+  "Buttons"
+ ],
+ "zoom": 1.83,
+ "x": 766.0,
+ "y": 193.0,
+ "blur": 3.0,
+ "wide": true,
+ "note": "XII.9B (Taipu): its backdrop is XII.5-E mirrored (the painting flipped it), placed by eye at the torch side, without the Astrologer and the foreground arch."
+}

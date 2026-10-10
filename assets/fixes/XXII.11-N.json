@@ -1,0 +1,6 @@
+{
+ "note": "XXII.11-N: panning right stops at 70 (beyond, the ground ends and sky shows below it).",
+ "pan": {
+  "min": 70
+ }
+}

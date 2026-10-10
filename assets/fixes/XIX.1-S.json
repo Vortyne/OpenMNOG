@@ -1,0 +1,7 @@
+{
+ "note": "The view is fixed to the width the scrolled-down view has artwork for (-22 to 792), so it does not widen as it scrolls up.",
+ "view": {
+  "left": -22,
+  "right": 792
+ }
+}

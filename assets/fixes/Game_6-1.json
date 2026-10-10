@@ -1,0 +1,11 @@
+{
+ "note": "Game_6-1 (the Gukko bird flight): written for 18 fps, but too fast to play at it; on 2001 computers it couldn't be drawn that fast, so it ran slower. Played at 10 fps (Smooth blends its motion between frames). The scrolling backgrounds (sprites 18, 38, 62, 69, 94) have one-frame pauses in their grass's motion, a hitch at the lower rate: filled with the in-between positions.",
+ "frameRate": 10,
+ "fillHolds": [
+  18,
+  38,
+  62,
+  69,
+  94
+ ]
+}

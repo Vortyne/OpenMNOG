@@ -1,0 +1,74 @@
+{
+  "format": "mnog-movie/1",
+  "source": "XIX.1B.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#000000FF",
+  "symbols": [
+    {"kind": "image", "id": 1, "file": "images/1.png", "width": 770, "height": 425},
+    {
+      "kind": "shape",
+      "id": 2,
+      "bounds": [-3.85, -2.1, 773.9, 427.2],
+      "parts": [
+        {
+          "fill": {
+            "type": "bitmap",
+            "matrix": [1.0100555419921875, 0, 0, 1.0100555419921875, -3.85, -2.1],
+            "bitmap": 1,
+            "repeat": false,
+            "smooth": true
+          },
+          "path": "M773.9 427.2 L-3.85 427.2 L-3.85 -2.1 L773.9 -2.1 L773.9 427.2 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 3,
+      "bounds": [-385, -65, 385, 65],
+      "parts": [{"fill": {"type": "solid", "color": "#66CCCCFF"}, "path": "M385 65 L-385 65 L-385 -65 L385 -65 L385 65 Z"}]
+    },
+    {
+      "kind": "sprite",
+      "id": 4,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 3, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    }
+  ],
+  "timeline": {
+    "frameCount": 23,
+    "frames": [
+      {
+        "ops": [
+          {"place": 1, "id": 2, "matrix": [1, 0, 0, 1, 0, 0]},
+          {"place": 2, "id": 4, "matrix": [1, 0, 0, 1, 385, 490], "name": "TextSub"}
+        ],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"scripts": ["scripts/frame2.as"]},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {"labels": ["loop"]},
+      {"scripts": ["scripts/frame22.as"]},
+      {"scripts": ["scripts/frame23.as"]}
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+ "note": "III.1-N: panning right stops at 52 (beyond, the sky ends in a black strip).",
+ "pan": {
+  "min": 52
+ }
+}

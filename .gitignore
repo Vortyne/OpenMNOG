@@ -1,0 +1,40 @@
+# .NET build output
+bin/
+obj/
+*.user
+*.suo
+*.rsuser
+TestResults/
+publish/
+
+# Local outputs: test builds, screenshots, logs (the game itself, game/, is source and committed)
+build/
+
+# Written while running or testing the game
+edge-reports/
+*.log
+*.stackdump
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Python caches (helper scripts live outside the repository)
+__pycache__/
+*.pyc
+
+# Editors and IDEs
+.vs/
+.vscode/
+.idea/
+*.code-workspace
+
+# Operating system clutter
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.DS_Store
+$RECYCLE.BIN/

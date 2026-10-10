@@ -1,0 +1,27 @@
+#version 4
+AttackTime = "0";
+Attacking = "0";
+PrepAttack = "0";
+Attack = "0";
+NumRuns = "1";
+NumAttacks = "1";
+NumHits = "1";
+Hit = "0";
+Target = "";
+ThrowFrames = "10";
+ReturnFrames = "11";
+agility = "10";
+realname = "Maku";
+BaseDMG = "5";
+VarDMG = "70";
+Type = "Water";
+ModFire = "25";
+ModIce = "-5";
+ModRock = "-5";
+ModEarth = "-25";
+ModAir = "10";
+ModWater = "0";
+BaseHealth = "150";
+ThrowFrames = ThrowFrames + "2";
+ReturnFrames = ReturnFrames + "1";
+ThrowName = "MakuDisk";

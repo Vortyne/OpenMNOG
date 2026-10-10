@@ -1,0 +1,122 @@
+#version 4
+LinkTo_0_1 = eval("/:LinkTo_0_1");
+LinkTo_0_2 = eval("/:LinkTo_0_2");
+LinkTo_0_3 = eval("/:LinkTo_0_3");
+LinkTo_1_0 = eval("/:LinkTo_1_0");
+LinkTo_1_1 = eval("/:LinkTo_1_1");
+LinkTo_1_2 = eval("/:LinkTo_1_2");
+LinkTo_1_3 = eval("/:LinkTo_1_3");
+LinkTo_2_0 = eval("/:LinkTo_2_0");
+LinkTo_2_1 = eval("/:LinkTo_2_1");
+LinkTo_2_2 = eval("/:LinkTo_2_2");
+LinkTo_2_3 = eval("/:LinkTo_2_3");
+LinkTo_3_0 = eval("/:LinkTo_3_0");
+LinkTo_3_1 = eval("/:LinkTo_3_1");
+LinkTo_3_2 = eval("/:LinkTo_3_2");
+LinkTo_3_3 = eval("/:LinkTo_3_3");
+LinkTo_4_0 = eval("/:LinkTo_4_0");
+LinkTo_4_1 = eval("/:LinkTo_4_1");
+LinkTo_4_2 = eval("/:LinkTo_4_2");
+LinkTo_4_3 = eval("/:LinkTo_4_3");
+LinkTo_5_0 = eval("/:LinkTo_5_0");
+LinkTo_5_1 = eval("/:LinkTo_5_1");
+LinkTo_5_2 = eval("/:LinkTo_5_2");
+LinkTo_5_3 = eval("/:LinkTo_5_3");
+LinkTo_6_0 = eval("/:LinkTo_6_0");
+LinkTo_6_1 = eval("/:LinkTo_6_1");
+LinkTo_6_2 = eval("/:LinkTo_6_2");
+LinkTo_6_3 = eval("/:LinkTo_6_3");
+LinkTo_7_0 = eval("/:LinkTo_7_0");
+LinkTo_7_1 = eval("/:LinkTo_7_1");
+LinkTo_7_2 = eval("/:LinkTo_7_2");
+LinkTo_7_3 = eval("/:LinkTo_7_3");
+LinkTo_8_0 = eval("/:LinkTo_8_0");
+LinkTo_8_1 = eval("/:LinkTo_8_1");
+LinkTo_8_2 = eval("/:LinkTo_8_2");
+LinkTo_8_3 = eval("/:LinkTo_8_3");
+Link_0_0 = eval("/:Link_0_0");
+Link_0_1 = eval("/:Link_0_1");
+Link_0_2 = eval("/:Link_0_2");
+Link_0_3 = eval("/:Link_0_3");
+Link_1_0 = eval("/:Link_1_0");
+Link_1_1 = eval("/:Link_1_1");
+Link_1_2 = eval("/:Link_1_2");
+Link_1_3 = eval("/:Link_1_3");
+Link_2_0 = eval("/:Link_2_0");
+Link_2_1 = eval("/:Link_2_1");
+Link_2_2 = eval("/:Link_2_2");
+Link_2_3 = eval("/:Link_2_3");
+Link_3_0 = eval("/:Link_3_0");
+Link_3_1 = eval("/:Link_3_1");
+Link_3_2 = eval("/:Link_3_2");
+Link_3_3 = eval("/:Link_3_3");
+Link_4_0 = eval("/:Link_4_0");
+Link_4_1 = eval("/:Link_4_1");
+Link_4_2 = eval("/:Link_4_2");
+Link_4_3 = eval("/:Link_4_3");
+Link_5_0 = eval("/:Link_5_0");
+Link_5_1 = eval("/:Link_5_1");
+Link_5_2 = eval("/:Link_5_2");
+Link_5_3 = eval("/:Link_5_3");
+Link_6_0 = eval("/:Link_6_0");
+Link_6_1 = eval("/:Link_6_1");
+Link_6_2 = eval("/:Link_6_2");
+Link_6_3 = eval("/:Link_6_3");
+Link_7_0 = eval("/:Link_7_0");
+Link_7_1 = eval("/:Link_7_1");
+Link_7_2 = eval("/:Link_7_2");
+Link_7_3 = eval("/:Link_7_3");
+Link_8_0 = eval("/:Link_8_0");
+Link_8_1 = eval("/:Link_8_1");
+Link_8_2 = eval("/:Link_8_2");
+Link_8_3 = eval("/:Link_8_3");
+CurrentScreen = eval("/:CurrentScreen");
+if (eval("Link_" add CurrentScreen add "_2") eq "III.1-N.swf") {
+    tellTarget ("/") {
+        MovieName = "III.1-N.swf";
+        ScreenPositionChangeH = "1";
+        ScreenPositionFGH = "-180";
+        ScreenPositionMGH = "60";
+        ScreenPositionBGH = "222.5";
+        CurrentScreen = "0";
+        VerticalShift = "0";
+        HorizontalShift = "1";
+        ShiftOff = "0";
+        Sound_ChangeBackgroundMovie = "1";
+        Sound_BackGround = "Sound_LavaWorld.swf";
+        Sound_ChangeSFXMovie = "1";
+        Sound_SFXMovie = "blank.swf";
+        Sound_ChangeBackgroundVolume = "1";
+        Sound_BG_Volume = "High";
+        BeginLoadMovie = "1";
+    }
+} else if (eval("Link_" add CurrentScreen add "_2") eq "IV.1-N.swf") {
+    tellTarget ("/") {
+        MovieName = "IV.1-N.swf";
+        CurrentScreen = "0";
+        VerticalShift = "0";
+        HorizontalShift = "1";
+        ShiftOff = "0";
+        Sound_ChangeBackgroundMovie = "1";
+        Sound_BackGround = "Sound_LavaWorld.swf";
+        Sound_ChangeSFXMovie = "1";
+        Sound_SFXMovie = "blank.swf";
+        Sound_ChangeBackgroundVolume = "1";
+        Sound_BG_Volume = "Low";
+        IV1Current = "1";
+        BeginLoadMovie = "1";
+    }
+} else {
+    tellTarget ("/") {
+        MovieName = "III.3.swf";
+        LastDir = eval("LinkTo_" add CurrentScreen add "_2");
+        CurrentScreen = eval("Link_" add CurrentScreen add "_2");
+        VerticalShift = "0";
+        HorizontalShift = "0";
+        Sound_ChangeBackgroundMovie = "1";
+        Sound_BackGround = "Sound_Forest.swf";
+        Sound_ChangeSFXMovie = "1";
+        Sound_SFXMovie = "Sound_ForestFX.swf";
+        BeginLoadMovie = "1";
+    }
+}

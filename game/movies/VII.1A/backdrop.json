@@ -1,0 +1,25 @@
+{
+ "note": "VII.1A: its backdrop is VII.1-S zoomed 1.01x and blurred; drawn live from the scene (without Maku) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 2,
+ "scene": "VII.1-S",
+ "frame": 2,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 387.5,
+  "Middle-Ground": 390.0,
+  "Fore-Ground": 407.45
+ },
+ "hide": [
+  "Middle-Ground/Maku",
+  "Buttons"
+ ],
+ "zoom": 1.01,
+ "x": 14.0,
+ "y": 3.0,
+ "blur": 1.0,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ]
+}

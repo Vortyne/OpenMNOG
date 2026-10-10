@@ -1,0 +1,25 @@
+{
+ "note": "V.8A: its backdrop is V.8-E zoomed 1.20x and blurred; drawn live from the scene (without Nokama) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 5,
+ "scene": "V.8-E",
+ "frame": 4,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 347.5,
+  "Middle-Ground": 310.0,
+  "Fore-Ground": 319.55
+ },
+ "hide": [
+  "Middle-Ground/Nokama",
+  "Buttons"
+ ],
+ "zoom": 1.2,
+ "x": 18.0,
+ "y": 4.0,
+ "blur": 2.0,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ]
+}

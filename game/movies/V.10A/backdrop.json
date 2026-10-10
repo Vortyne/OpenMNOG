@@ -1,0 +1,23 @@
+{
+ "note": "V.10A: its backdrop is V.10-N zoomed 1.7x and blurred; drawn live from the scene (without Maku, her speech bubble, Fore-ground) when Vectorize bitmaps is on, filling the widescreen view. Placed by eye.",
+ "image": 1,
+ "scene": "V.10-N",
+ "frame": 2,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385,
+  "Middle-Ground": 385,
+  "Fore-ground": 469.55
+ },
+ "hide": [
+  "Middle-Ground/Maku",
+  "Middle-Ground/MakuBubble",
+  "Fore-ground",
+  "Buttons"
+ ],
+ "zoom": 1.71,
+ "x": 137.48,
+ "y": 151.57,
+ "blur": 4,
+ "wide": true
+}

@@ -1,0 +1,121 @@
+{
+ "image": 1,
+ "scene": "XVIII.5-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 387.0
+ },
+ "hide": [
+  "Back-Ground/#13",
+  "Back-Ground/#14",
+  "Back-Ground/#15",
+  "Back-Ground/#16",
+  "Back-Ground/#17",
+  "Back-Ground/#18",
+  "Back-Ground/#20",
+  "Back-Ground/#21",
+  "Back-Ground/#22",
+  "Back-Ground/#24",
+  "Back-Ground/#25",
+  "Back-Ground/#31",
+  "Back-Ground/Nest",
+  "Back-Ground/Kewa",
+  "Fore-Ground",
+  "Buttons",
+  "Middle-Ground/#13",
+  "Middle-Ground/#14",
+  "Middle-Ground/#16",
+  "Middle-Ground/#18",
+  "Middle-Ground/#19",
+  "Middle-Ground/#23",
+  "Middle-Ground/#24",
+  "Middle-Ground/#36",
+  "Middle-Ground/#38",
+  "Middle-Ground/#39",
+  "Middle-Ground/#40",
+  "Middle-Ground/#41",
+  "Middle-Ground/#42",
+  "Middle-Ground/Doors",
+  "Middle-Ground/Tohunga",
+  "Middle-Ground/Tamaru"
+ ],
+ "move": {
+  "Middle-Ground/#1": [
+   -418.0,
+   -162.0
+  ],
+  "Middle-Ground/#3": [
+   -418.0,
+   -162.0
+  ],
+  "Middle-Ground/#4": [
+   -418.0,
+   -162.0
+  ],
+  "Middle-Ground/#6": [
+   -418.0,
+   -162.0
+  ],
+  "Middle-Ground/#8": [
+   -418.0,
+   -162.0
+  ],
+  "Middle-Ground/#9": [
+   -418.0,
+   -162.0
+  ],
+  "Middle-Ground/#15": [
+   0,
+   -55
+  ],
+  "Middle-Ground/#17": [
+   0,
+   -55
+  ]
+ },
+ "zoom": 1.0,
+ "x": 71.0,
+ "y": -75.0,
+ "blur": 2.0,
+ "wide": true,
+ "copies": [
+  {
+   "of": "Back-Ground/#15",
+   "depth": 44,
+   "dx": -634.3,
+   "dy": -107.2,
+   "scale": 0.55
+  },
+  {
+   "of": "Back-Ground/#15",
+   "depth": 45,
+   "dx": -594.3,
+   "dy": -107.2,
+   "scale": 0.45
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 41,
+   "dx": 84.2,
+   "dy": 150.2,
+   "scale": 0.45
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 42,
+   "dx": 139.2,
+   "dy": 170.2,
+   "scale": 0.35
+  }
+ ],
+ "light": [
+  {
+   "top": 315,
+   "bottom": 345,
+   "color": "#FCCC6E"
+  }
+ ],
+ "note": "XVIII.5B: XVIII.5-S's sunset sky with its own trees hidden; the scene's right-hand tree moved into view, the straw platform tops raised as the ground, small trees copied to the left (placed by eye)."
+}

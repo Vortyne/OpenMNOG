@@ -1,0 +1,11 @@
+{
+ "note": "The backdrop (depth 6) is stretched leftwards to reach the 16:9 edge at the top.",
+ "fixes": [
+  {
+   "sprite": 11,
+   "depth": 6,
+   "widescreenScaleX": 1.05,
+   "widescreenAnchor": "right"
+  }
+ ]
+}

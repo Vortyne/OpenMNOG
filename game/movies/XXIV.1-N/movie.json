@@ -1,0 +1,161 @@
+{
+  "format": "mnog-movie/1",
+  "source": "XXIV.1-N.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#000000FF",
+  "symbols": [
+    {"kind": "sprite", "id": 1, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {
+      "kind": "shape",
+      "id": 2,
+      "bounds": [-19.85, -9.9, 776.6, 305.6],
+      "parts": [
+        {
+          "fill": {
+            "type": "radial",
+            "matrix": [0, -488.85, 814.2375000000001, 0, 395.45, -148.75],
+            "stops": [{"at": 0.2, "color": "#003333FF"}, {"at": 0.8627, "color": "#000000FF"}]
+          },
+          "path": "M-19.85 -9.9 L776.6 -9.9 L776.6 305.6 L-19.85 305.6 L-19.85 -9.9 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 3,
+      "bounds": [-188.3, 603.8, 445.9, 758.9],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#00FF00FF"},
+          "path": "M-188.3 603.8 L445.9 603.8 L445.9 758.9 L-188.3 758.9 L-188.3 603.8 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 4,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [{"place": 1, "id": 3, "matrix": [1.337677, 0, 0, 0.086075, -218.35, 253.25]}],
+            "scripts": ["scripts/sprite4_frame1.as"]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 5,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [{"place": 1, "id": 3, "matrix": [0.877014, 0, 0, 0.259186, -174.95, 278.75]}],
+            "scripts": ["scripts/sprite5_frame1.as"]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 6,
+      "bounds": [-656.45, -112.2, 686.1, 91.5],
+      "parts": [
+        {
+          "fill": {
+            "type": "radial",
+            "matrix": [0, -98.4, 814.2375000000001, 0, 0, 0.05],
+            "stops": [{"at": 0.2, "color": "#003333FF"}, {"at": 0.8627, "color": "#000000FF"}]
+          },
+          "path": "M596.8 -91.45 Q775.45 -7.45 596.8 91.5 L-600 91.5 Q-715.3 11.85 -595.15 -91.45 Q3.6 -132.95 596.8 -91.45 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 7,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 3, "matrix": [1, 0, 0, 1, 0, 0]},
+              {"place": 2, "id": 6, "matrix": [3.415894, 0, 0, 2.467575, -34.25, 494.4]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 8,
+      "bounds": [-25, -212.45, 25, 212.55],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#FF3366FF"},
+          "path": "M25 212.55 L-25 212.55 L-25 -212.45 L25 -212.45 L25 212.55 Z"
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 9,
+      "records": [{"states": ["hit"], "id": 8, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button9_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button9_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button9_2.as"}
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 10,
+      "records": [{"states": ["hit"], "id": 8, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button10_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button10_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button10_2.as"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 11,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [{"place": 1, "id": 9, "matrix": [1, 0, 0, 1, 715, -16]}, {"place": 3, "id": 10, "matrix": [-1, 0, 0, 1, -715, -16]}]
+          }
+        ]
+      }
+    }
+  ],
+  "timeline": {
+    "frameCount": 3,
+    "frames": [
+      {
+        "ops": [
+          {"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 341.8, 519.8], "name": "SoundFX"},
+          {"place": 3, "id": 2, "matrix": [1, 0, 0, 1, 0, 0]},
+          {"place": 4, "id": 4, "matrix": [1, 0, 0, 1, 409, 316.5], "name": "Back-Ground"},
+          {
+            "place": 6,
+            "id": 5,
+            "matrix": [1, 0, 0, 1, 443, 212.5],
+            "cxform": [0.8984, 0.8984, 0.8984, 1, 0, 0, 0, 0],
+            "name": "Middle-Ground"
+          },
+          {"place": 8, "id": 7, "matrix": [-0.5, 0, 0, 0.5, 385, 212.5], "name": "Fore-Ground"},
+          {"place": 11, "id": 11, "matrix": [1, 0, 0, 1, 385, 228.5], "name": "Buttons"}
+        ],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {},
+      {"scripts": ["scripts/frame3.as"]}
+    ]
+  }
+}

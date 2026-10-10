@@ -1,0 +1,19 @@
+{
+  "format": "mnog-movie/1",
+  "source": "SFX_desertbugs.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 75697, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "sounds": [{"id": 1, "envelope": [[0, 0, 0], [37222, 7761, 6611], [142852, 7761, 6899], [201200, 0, 0], [286710, 0, 0]]}]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

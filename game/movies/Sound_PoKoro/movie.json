@@ -1,0 +1,42 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Sound_PoKoro.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 185165, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 212291, "original": "mp3"},
+    {"kind": "sound", "id": 3, "file": "sounds/3.ogg", "rate": 11025, "channels": 1, "samples": 49298, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 13,
+    "frames": [
+      {"scripts": ["scripts/frame1.as"]},
+      {"labels": ["High"], "scripts": ["scripts/frame2.as"]},
+      {
+        "sounds": [
+          {"id": 1, "loops": 65535, "envelope": [[0, 8623, 9198]]},
+          {"id": 2, "loops": 65535, "envelope": [[0, 16097, 16097]]},
+          {"id": 3, "loops": 65535, "envelope": [[0, 3449, 4024]]}
+        ]
+      },
+      {"labels": ["High_Loop"], "scripts": ["scripts/frame4.as"]},
+      {"scripts": ["scripts/frame5.as"]},
+      {"labels": ["Medium"], "scripts": ["scripts/frame6.as"]},
+      {
+        "sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 3449, 3737]]}, {"id": 2, "loops": 65535, "envelope": [[0, 7186, 6611]]}]
+      },
+      {"labels": ["Medium_Loop"], "scripts": ["scripts/frame8.as"]},
+      {"scripts": ["scripts/frame9.as"]},
+      {"labels": ["Low"], "scripts": ["scripts/frame10.as"]},
+      {
+        "sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 1725, 1725]]}, {"id": 2, "loops": 65535, "envelope": [[0, 1437, 1437]]}]
+      },
+      {"labels": ["Low_Loop"], "scripts": ["scripts/frame12.as"]},
+      {"scripts": ["scripts/frame13.as"]}
+    ]
+  }
+}

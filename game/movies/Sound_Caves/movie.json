@@ -1,0 +1,34 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Sound_Caves.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sprite", "id": 1, "timeline": {"frameCount": 1, "frames": [{}]}}],
+  "timeline": {
+    "frameCount": 16,
+    "frames": [
+      {
+        "ops": [{"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 280.8, 215.9], "name": "SFX-holder"}],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"labels": ["SFX_One"], "scripts": ["scripts/frame2.as"]},
+      {},
+      {"scripts": ["scripts/frame4.as"]},
+      {"labels": ["SFX_Two"], "scripts": ["scripts/frame5.as"]},
+      {},
+      {"scripts": ["scripts/frame7.as"]},
+      {"labels": ["SFX_Three"], "scripts": ["scripts/frame8.as"]},
+      {},
+      {"scripts": ["scripts/frame10.as"]},
+      {"labels": ["SFX_Four"], "scripts": ["scripts/frame11.as"]},
+      {},
+      {"scripts": ["scripts/frame13.as"]},
+      {"labels": ["SFX_Five"], "scripts": ["scripts/frame14.as"]},
+      {},
+      {"scripts": ["scripts/frame16.as"]}
+    ]
+  }
+}

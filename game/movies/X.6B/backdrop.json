@@ -1,0 +1,56 @@
+{
+ "note": "X.6B: its backdrop is X.6-S zoomed 1.99x and blurred; drawn live from the scene (without UssalKeeper, #23, #110, Fore-Ground) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 1,
+ "scene": "X.6-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 546.5,
+  "Middle-Ground": 710.0,
+  "Fore-Ground": 1031.0
+ },
+ "hide": [
+  "Middle-Ground/UssalKeeper",
+  "Middle-Ground/#23",
+  "Middle-Ground/#110",
+  "Fore-Ground",
+  "Buttons"
+ ],
+ "zoom": 1.99,
+ "x": 303.5,
+ "y": 194.5,
+ "blur": 1.5,
+ "wide": true,
+ "move": {
+  "Middle-Ground/#58": [
+   -79,
+   -3.5,
+   0.85
+  ],
+  "Middle-Ground/#59": [
+   -79,
+   -3.5,
+   0.85
+  ],
+  "Middle-Ground/#55": [
+   -15,
+   45,
+   0.72
+  ],
+  "Middle-Ground/#5": [
+   -117.8,
+   -7.5,
+   0.8
+  ],
+  "Middle-Ground/#21": [
+   0,
+   40,
+   0.75
+  ],
+  "Middle-Ground/#22": [
+   0,
+   40,
+   0.75
+  ]
+ }
+}

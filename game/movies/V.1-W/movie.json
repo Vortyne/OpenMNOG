@@ -1,0 +1,93 @@
+{
+  "format": "mnog-movie/1",
+  "source": "V.1-W.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sprite", "id": 1, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "image", "id": 2, "file": "images/2.jpg", "width": 770, "height": 425},
+    {
+      "kind": "shape",
+      "id": 3,
+      "bounds": [-7.7, -2.25, 777.75, 431.3],
+      "parts": [
+        {
+          "fill": {
+            "type": "bitmap",
+            "matrix": [1.020050048828125, 0, 0, 1.020050048828125, -7.7, -2.25],
+            "bitmap": 2,
+            "repeat": false,
+            "smooth": true
+          },
+          "path": "M777.75 431.3 L-7.7 431.3 L-7.7 -2.25 L777.75 -2.25 L777.75 431.3 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 4,
+      "bounds": [-269.55, 301.55, 174.6, 353.55],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#00FFFFFF"},
+          "path": "M174.6 353.55 L-269.55 353.55 L-269.55 301.55 L174.6 301.55 L174.6 353.55 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 5,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 4, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    },
+    {
+      "kind": "shape",
+      "id": 6,
+      "bounds": [-385, -65, 385, 65],
+      "parts": [{"fill": {"type": "solid", "color": "#66CCCCFF"}, "path": "M385 -65 L385 65 L-385 65 L-385 -65 L385 -65 Z"}]
+    },
+    {
+      "kind": "sprite",
+      "id": 7,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 6, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    }
+  ],
+  "timeline": {
+    "frameCount": 23,
+    "frames": [
+      {
+        "ops": [
+          {"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 385, 212.5], "name": "Back-Ground"},
+          {"place": 3, "id": 3, "matrix": [1, 0, 0, 1, 0, 0]},
+          {"place": 4, "id": 5, "matrix": [1, 0, 0, 1, 469.55, 194.55], "name": "Fore-ground"},
+          {"place": 6, "id": 7, "matrix": [1, 0, 0, 1, 385, 490], "name": "TextSub"}
+        ],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"scripts": ["scripts/frame2.as"]},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {"labels": ["loop"]},
+      {"scripts": ["scripts/frame22.as"]},
+      {"scripts": ["scripts/frame23.as"]}
+    ]
+  }
+}

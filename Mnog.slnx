@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Mnog.Engine/Mnog.Engine.csproj" />
+    <Project Path="src/Mnog.Format/Mnog.Format.csproj" />
+    <Project Path="src/Mnog.Script/Mnog.Script.csproj" />
+  </Folder>
+</Solution>

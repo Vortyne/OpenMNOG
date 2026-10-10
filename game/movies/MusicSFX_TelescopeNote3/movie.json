@@ -1,0 +1,32 @@
+{
+  "format": "mnog-movie/1",
+  "source": "MusicSFX_TelescopeNote3.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 71369, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "sounds": [
+          {
+            "id": 1,
+            "envelope": [
+              [0, 32768, 32768],
+              [65390, 32768, 32768],
+              [106636, 32768, 27019],
+              [149894, 25869, 32768],
+              [195164, 32768, 25582],
+              [239428, 25582, 32768],
+              [281680, 32768, 32768]
+            ]
+          }
+        ]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

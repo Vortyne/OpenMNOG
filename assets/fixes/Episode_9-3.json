@@ -1,0 +1,30 @@
+{
+ "note": "Episode 9-3: smooth motion, except the opening (Takua looking around, 1-66) and while the streaked backdrop scrolls (sprite 394: the Toa's attacks on Makuta and Takua's escape), which look worse blended.",
+ "smoothMotion": true,
+ "noSmoothFrames": [
+  [
+   1,
+   66
+  ],
+  [
+   1291,
+   1323
+  ],
+  [
+   1865,
+   1984
+  ],
+  [
+   2020,
+   2433
+  ],
+  [
+   2467,
+   2502
+  ],
+  [
+   4874,
+   4899
+  ]
+ ]
+}

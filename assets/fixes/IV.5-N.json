@@ -1,0 +1,13 @@
+{
+ "note": "IV.5-N: the fixed band of rock and red sky across the top (shape 1 at depth 1, stage x -8.1..775.9) is stretched 1.1x in widescreen to reach the 16:9 view's edges. Panning left stops at 720, where the scenery visibly ends.",
+ "fixes": [
+  {
+   "sprite": 0,
+   "depth": 1,
+   "widescreenScaleX": 1.1
+  }
+ ],
+ "pan": {
+  "max": 720
+ }
+}

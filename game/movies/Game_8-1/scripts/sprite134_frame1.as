@@ -1,0 +1,27 @@
+#version 4
+AttackTime = "0";
+Attacking = "0";
+PrepAttack = "0";
+Attack = "0";
+NumRuns = "1";
+NumAttacks = "1";
+NumHits = "1";
+Hit = "0";
+Target = "";
+ThrowFrames = "10";
+ReturnFrames = "10";
+agility = "35";
+realname = "Taipu";
+BaseDMG = "75";
+VarDMG = "175";
+Type = "Earth";
+ModFire = "10";
+ModIce = "-5";
+ModRock = "-5";
+ModEarth = "0";
+ModAir = "-25";
+ModWater = "25";
+BaseHealth = "400";
+ThrowFrames = ThrowFrames + "2";
+ReturnFrames = ReturnFrames + "1";
+ThrowName = "TaipuDisk";

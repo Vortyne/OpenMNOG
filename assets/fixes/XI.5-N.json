@@ -1,0 +1,6 @@
+{
+ "note": "XI.5-N: panning right stops at 80 (beyond, the artwork ends in a black strip).",
+ "pan": {
+  "min": 80
+ }
+}

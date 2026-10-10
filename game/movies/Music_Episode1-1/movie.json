@@ -1,0 +1,67 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Episode1-1.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sprite", "id": 1, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 2, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 3, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 4, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 5, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 6, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 7, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 8, "timeline": {"frameCount": 1, "frames": [{}]}}
+  ],
+  "timeline": {
+    "frameCount": 31,
+    "frames": [
+      {
+        "ops": [
+          {"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 281.8, 282.85], "name": "sun-holder"},
+          {"place": 3, "id": 2, "matrix": [1, 0, 0, 1, 230.8, 236.85], "name": "makuta-holder"},
+          {"place": 5, "id": 3, "matrix": [1, 0, 0, 1, 172.8, 227.85], "name": "lgndloop-holder"},
+          {"place": 7, "id": 4, "matrix": [1, 0, 0, 1, 215.8, 206.85], "name": "landing-holder"},
+          {"place": 9, "id": 5, "matrix": [1, 0, 0, 1, 196.8, 121.85], "name": "happyday-holder"},
+          {"place": 11, "id": 6, "matrix": [1, 0, 0, 1, 189.8, 174.85], "name": "darkness-holder"},
+          {"place": 13, "id": 7, "matrix": [1, 0, 0, 1, 282.8, 211.85], "name": "Loop-holder"},
+          {"place": 15, "id": 8, "matrix": [1, 0, 0, 1, 256.8, 207.85], "name": "Intro-holder"}
+        ],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"scripts": ["scripts/frame2.as"]},
+      {},
+      {},
+      {"labels": ["playlgndloop"], "scripts": ["scripts/frame5.as"]},
+      {"scripts": ["scripts/frame6.as"]},
+      {},
+      {},
+      {},
+      {"labels": ["playdarkness"], "scripts": ["scripts/frame10.as"]},
+      {"scripts": ["scripts/frame11.as"]},
+      {},
+      {},
+      {},
+      {"labels": ["playhappyday"], "scripts": ["scripts/frame15.as"]},
+      {"scripts": ["scripts/frame16.as"]},
+      {},
+      {},
+      {},
+      {"labels": ["playlanding"], "scripts": ["scripts/frame20.as"]},
+      {"scripts": ["scripts/frame21.as"]},
+      {},
+      {},
+      {},
+      {"labels": ["playmakuta"], "scripts": ["scripts/frame25.as"]},
+      {"scripts": ["scripts/frame26.as"]},
+      {},
+      {},
+      {},
+      {"labels": ["playsun"], "scripts": ["scripts/frame30.as"]},
+      {"scripts": ["scripts/frame31.as"]}
+    ]
+  }
+}

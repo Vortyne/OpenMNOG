@@ -1,0 +1,26 @@
+{
+ "note": "X.1A (Hafu): its backdrop is the same painting as VIII.1A's (VIII.1-S's far mesa and a dune), so it's drawn live the same way.",
+ "image": 1,
+ "scene": "VIII.1-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 569.0,
+  "Middle-Ground": 520.0,
+  "Fore-Ground": 667.45
+ },
+ "hide": [
+  "Middle-Ground/#8",
+  "Middle-Ground/#6",
+  "Buttons"
+ ],
+ "zoom": 3.05,
+ "x": 0.0,
+ "y": 165.0,
+ "blur": 5.0,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky1"
+ ]
+}

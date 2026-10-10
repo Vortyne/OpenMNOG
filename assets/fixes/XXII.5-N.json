@@ -1,0 +1,13 @@
+{
+ "note": "XXII.5-N: panning left stops at 690, and the fixed sky gradient behind the scenery (shape 1, depth 1) is stretched 1.1x in widescreen so its top corners reach the edges.",
+ "fixes": [
+  {
+   "sprite": 0,
+   "depth": 1,
+   "widescreenScaleX": 1.1
+  }
+ ],
+ "pan": {
+  "max": 690
+ }
+}

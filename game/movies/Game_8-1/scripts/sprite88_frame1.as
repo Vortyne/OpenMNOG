@@ -1,0 +1,27 @@
+#version 4
+AttackTime = "0";
+Attacking = "0";
+PrepAttack = "0";
+Attack = "0";
+NumRuns = "1";
+NumAttacks = "1";
+NumHits = "1";
+Hit = "0";
+Target = "";
+ThrowFrames = "15";
+ReturnFrames = "15";
+agility = "20";
+realname = "Hafu";
+BaseDMG = "50";
+VarDMG = "50";
+Type = "Rock";
+ModFire = "10";
+ModIce = "-25";
+ModRock = "0";
+ModEarth = "-15";
+ModAir = "25";
+ModWater = "5";
+BaseHealth = "250";
+ThrowFrames = ThrowFrames + "2";
+ReturnFrames = ReturnFrames + "1";
+ThrowName = "HafuDisk";

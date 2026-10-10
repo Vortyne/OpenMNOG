@@ -1,0 +1,24 @@
+{
+ "note": "I.6-S: its backdrop is I.5-S zoomed 2.91x and blurred; drawn live from the scene (without Maku) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 2,
+ "scene": "I.5-S",
+ "frame": 2,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 331.5,
+  "Middle-Ground": 330.0,
+  "Fore-Ground": 251.0
+ },
+ "hide": [
+  "Middle-Ground/Maku",
+  "Buttons"
+ ],
+ "zoom": 2.91,
+ "x": 501.5,
+ "y": 236.0,
+ "blur": 1.5,
+ "wide": true,
+ "softer": {
+  "Back-Ground": 4
+ }
+}

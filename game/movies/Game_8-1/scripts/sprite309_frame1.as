@@ -1,0 +1,25 @@
+#version 4
+AttackTime = "0";
+Attacking = "0";
+PrepAttack = "0";
+Attack = "0";
+NumRuns = "1";
+NumAttacks = "1";
+NumHits = "1";
+Hit = "0";
+Target = "";
+ThrowFrames = "9";
+agility = "30";
+realname = "Nui-Jaga";
+BaseDMG = "100";
+VarDMG = "200";
+Type = "Rock";
+ModFire = "10";
+ModWater = "45";
+ModAir = "25";
+ModIce = "-25";
+ModRock = "0";
+ModEarth = "-15";
+BaseHealth = "550";
+ThrowFrames = ThrowFrames - "1";
+ThrowName = "JagaVenom";

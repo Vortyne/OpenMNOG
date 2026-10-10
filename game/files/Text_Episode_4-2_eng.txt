@@ -1,0 +1,1 @@
+Text1=Adventurer,+the+scorpion+has+blinded+me+for+the+moment.+It+will+be+some+time+before+my+sight+returns!&Text2=Tell+me+where+to+kick+the+ball,+and+together+we+can+destroy+the+Nui+Jaga's+nest!&

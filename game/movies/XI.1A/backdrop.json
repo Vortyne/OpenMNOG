@@ -1,0 +1,33 @@
+{
+ "note": "XI.1A: its backdrop is XI.1-N's stone pillar and sign (placed by eye), without the Ussal crabs, the torch bowls and flames; the torches' glow kept as the lightstone light the painting shows.",
+ "image": 1,
+ "scene": "XI.1-N",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 246.5,
+  "Middle-Ground": 110.0,
+  "Fore-Ground": -169.0
+ },
+ "hide": [
+  "Middle-Ground/#27",
+  "Middle-Ground/#42",
+  "Middle-Ground/#60",
+  "Middle-Ground/#62",
+  "Middle-Ground/#65",
+  "Middle-Ground/#67",
+  "Buttons"
+ ],
+ "zoom": 0.914,
+ "x": -8.0,
+ "y": 63.0,
+ "blur": 2.0,
+ "wide": true,
+ "move": {
+  "Middle-Ground/#63": [
+   75,
+   -110,
+   2.4
+  ]
+ }
+}

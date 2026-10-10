@@ -1,0 +1,18 @@
+#version 4
+BookOpen = eval("/:BookOpen");
+if (BookOpen eq "1") {
+    tellTarget ("/") {
+        BookMovieName = "book.swf";
+        BeginLoadMovie = "1";
+    }
+} else {
+    tellTarget ("/") {
+        MovieName = "Game_4-1.swf";
+        VerticalShift = "0";
+        HorizontalShift = "1";
+        ShiftOff = "1";
+        ShowBackPack = "0";
+        BeginLoadMovie = "1";
+    }
+}
+stop();

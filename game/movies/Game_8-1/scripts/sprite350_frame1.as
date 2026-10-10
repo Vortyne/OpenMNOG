@@ -1,0 +1,27 @@
+#version 4
+AttackTime = "0";
+Attacking = "0";
+PrepAttack = "0";
+Attack = "0";
+NumRuns = "1";
+NumAttacks = "1";
+NumHits = "1";
+Hit = "0";
+Target = "";
+ThrowFrames = "9";
+agility = "30";
+realname = "Muaka";
+BaseDMG = "250";
+VarDMG = "200";
+Type = "Ice";
+ModFire = "-25";
+ModWater = "5";
+ModAir = "-10";
+ModIce = "0";
+ModRock = "25";
+ModEarth = "5";
+BaseHealth = "800";
+ThrowFrames = ThrowFrames - "1";
+ThrowName = "MuakaShock1";
+ThrowName2 = "MuakaShock2";
+ThrowName3 = "MuakaShock3";

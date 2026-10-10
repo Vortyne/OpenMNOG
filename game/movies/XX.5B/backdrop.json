@@ -1,0 +1,300 @@
+{
+ "note": "XX.5B: XX.5-N's lit glyph wall (matched 0.988), without the Astrologer, the torch, the pick and their shadows; the 'modo' glyph corrected to a T as in the original game.",
+ "image": 1,
+ "scene": "XX.5-N",
+ "frame": 3,
+ "vertical": true,
+ "layers": {
+  "Middle-Ground": 50.0,
+  "Fore-Ground": -14.2
+ },
+ "hide": [
+  "Middle-Ground/Tohunga",
+  "Middle-Ground/#52",
+  "Middle-Ground/#56",
+  "Fore-Ground",
+  "TurnButtons",
+  "Buttons",
+  "Middle-Ground/#51",
+  "Middle-Ground/#55"
+ ],
+ "zoom": 1.36,
+ "x": -7.4,
+ "y": 81.7,
+ "blur": 1.0,
+ "wide": true,
+ "text": {
+  "Middle-Ground/#57": [
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 21.2,
+    "y": 17,
+    "text": "amet ",
+    "glyphs": [
+     12,
+     23,
+     16,
+     29,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 0.05,
+    "y": 39,
+    "text": "cg elit",
+    "glyphs": [
+     14,
+     18,
+     0,
+     16,
+     22,
+     20,
+     29
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     16.9,
+     16.9
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 16.95,
+    "y": 61,
+    "text": "     bh ",
+    "glyphs": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     13,
+     19,
+     0
+    ],
+    "advances": [
+     8.45,
+     8.45,
+     8.45,
+     8.45,
+     8.45,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 4.3,
+    "y": 83,
+    "text": "eureet ",
+    "glyphs": [
+     16,
+     30,
+     27,
+     16,
+     16,
+     29,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     6.3
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 21.2,
+    "y": 105,
+    "text": "  rat ",
+    "glyphs": [
+     0,
+     0,
+     27,
+     12,
+     29,
+     0
+    ],
+    "advances": [
+     8.45,
+     8.45,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 8.5,
+    "y": 127,
+    "text": "vom ad ",
+    "glyphs": [
+     31,
+     25,
+     23,
+     0,
+     12,
+     15,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 12.75,
+    "y": 149,
+    "text": "mtrud ",
+    "glyphs": [
+     23,
+     29,
+     27,
+     30,
+     15,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 12.75,
+    "y": 171,
+    "text": "erper ",
+    "glyphs": [
+     16,
+     27,
+     26,
+     16,
+     27,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 8.5,
+    "y": 193,
+    "text": "ssl ut ",
+    "glyphs": [
+     28,
+     28,
+     22,
+     0,
+     30,
+     29,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     8.45,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 21.2,
+    "y": 215,
+    "text": "moto ",
+    "glyphs": [
+     23,
+     25,
+     29,
+     25,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   },
+   {
+    "font": 5,
+    "size": 18,
+    "color": "#000000FF",
+    "x": 21.2,
+    "y": 237,
+    "text": "utem ",
+    "glyphs": [
+     30,
+     29,
+     16,
+     23,
+     0
+    ],
+    "advances": [
+     16.9,
+     16.9,
+     16.9,
+     16.9,
+     8.45
+    ]
+   }
+  ]
+ }
+}

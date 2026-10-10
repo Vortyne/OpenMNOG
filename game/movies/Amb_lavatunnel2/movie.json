@@ -1,0 +1,20 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Amb_lavatunnel2.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 85718, "original": "mp3"},
+    {"kind": "sound", "id": 2, "file": "sounds/2.ogg", "rate": 11025, "channels": 1, "samples": 57649, "original": "mp3"}
+  ],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 2012, 2587]]}, {"id": 2}]},
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

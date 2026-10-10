@@ -1,0 +1,17 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Amb_JewelRoom.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 88200, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {"sounds": [{"id": 1, "loops": 51711, "envelope": [[0, 0, 0], [178062, 27594, 26444]]}]},
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

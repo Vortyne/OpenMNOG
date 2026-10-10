@@ -1,0 +1,6 @@
+{
+ "note": "XI.3-N: panning right stops at 70 (beyond, the cave wall ends in a black strip).",
+ "pan": {
+  "min": 70
+ }
+}

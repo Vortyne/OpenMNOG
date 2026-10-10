@@ -1,0 +1,6 @@
+{
+ "note": "XI.7-E: panning right stops at 68 (beyond, the ground ends in a black strip).",
+ "pan": {
+  "min": 68
+ }
+}

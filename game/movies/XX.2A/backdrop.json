@@ -1,0 +1,25 @@
+{
+ "note": "XX.2A: its backdrop is XX.2-N zoomed 2.00x and blurred; drawn live from the scene (without Kapura) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 1,
+ "scene": "XX.2-N",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 386.5,
+  "Middle-Ground": 390.0,
+  "Fore-Ground": -2109.7
+ },
+ "hide": [
+  "Middle-Ground/Kapura",
+  "Buttons"
+ ],
+ "zoom": 2.0,
+ "x": 92.5,
+ "y": 199.0,
+ "blur": 4.0,
+ "wide": true,
+ "sky": [
+  "Back-Ground/Sky-holder",
+  "sky3"
+ ]
+}

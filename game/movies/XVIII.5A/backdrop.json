@@ -1,0 +1,113 @@
+{
+ "image": 1,
+ "scene": "XVIII.5-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0
+ },
+ "hide": [
+  "Back-Ground/#13",
+  "Back-Ground/#14",
+  "Back-Ground/#15",
+  "Back-Ground/#16",
+  "Back-Ground/#17",
+  "Back-Ground/#18",
+  "Back-Ground/#20",
+  "Back-Ground/#21",
+  "Back-Ground/#22",
+  "Back-Ground/#24",
+  "Back-Ground/#25",
+  "Back-Ground/#31",
+  "Back-Ground/Nest",
+  "Back-Ground/Kewa",
+  "Middle-Ground",
+  "Fore-Ground",
+  "Buttons"
+ ],
+ "zoom": 1.0,
+ "x": 71.0,
+ "y": -75.0,
+ "blur": 2.0,
+ "wide": true,
+ "copies": [
+  {
+   "of": "Back-Ground/#21",
+   "depth": 40,
+   "dx": 120.7,
+   "dy": -81.2,
+   "scale": 0.6
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 41,
+   "dx": 104.2,
+   "dy": 0.2,
+   "scale": 0.6
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 42,
+   "dx": 139.2,
+   "dy": 65.2,
+   "scale": 0.5
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 43,
+   "dx": 69.2,
+   "dy": 105.2,
+   "scale": 0.55
+  },
+  {
+   "of": "Back-Ground/#15",
+   "depth": 44,
+   "dx": -69.3,
+   "dy": -69.2,
+   "scale": 0.6
+  },
+  {
+   "of": "Back-Ground/#15",
+   "depth": 45,
+   "dx": -29.3,
+   "dy": -69.2,
+   "scale": 0.5
+  },
+  {
+   "of": "Back-Ground/#15",
+   "depth": 46,
+   "dx": -109.3,
+   "dy": -69.2,
+   "scale": 0.4
+  },
+  {
+   "of": "Back-Ground/#24",
+   "depth": 47,
+   "dx": 246.2,
+   "dy": 247.2,
+   "scale": 0.8
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 48,
+   "dx": 69.2,
+   "dy": -54.8,
+   "scale": 0.6
+  },
+  {
+   "of": "Back-Ground/#20",
+   "depth": 49,
+   "dx": 19.2,
+   "dy": -29.8,
+   "scale": 0.5
+  }
+ ],
+ "note": "XVIII.5A/5C (one shared painting): XVIII.5-S's sunset sky (background layer only), its own trees and hills hidden, with copies of its trees placed at the painting's edges.",
+ "light": [
+  {
+   "top": 315,
+   "bottom": 345,
+   "color": "#FCCC6E"
+  }
+ ]
+}

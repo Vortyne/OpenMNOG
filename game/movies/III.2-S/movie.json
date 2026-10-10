@@ -1,0 +1,166 @@
+{
+  "format": "mnog-movie/1",
+  "source": "III.2-S.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#CCCCCCFF",
+  "symbols": [
+    {
+      "kind": "shape",
+      "id": 1,
+      "bounds": [-577.45, -151, 577.55, 151],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#FFFFFFFF"},
+          "path": "M577.55 -151 L577.55 151 L-577.45 151 L-577.45 -151 L577.55 -151 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 2,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    },
+    {
+      "kind": "sprite",
+      "id": 3,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 2, "matrix": [0.837997, 0, 0, 2.969986, -93.2, -317.55], "name": "Sky-holder"}]}]
+      }
+    },
+    {"kind": "image", "id": 4, "file": "images/4.jpg", "width": 784, "height": 802},
+    {"kind": "image", "id": 5, "file": "images/5.jpg", "width": 784, "height": 802},
+    {
+      "kind": "shape",
+      "id": 6,
+      "bounds": [-455.5, -447.6, 452.1, 480.8],
+      "parts": [
+        {
+          "fill": {
+            "type": "bitmap",
+            "matrix": [1.10247802734375, 0, 0, 1.10247802734375, -433.9, -425.5],
+            "bitmap": 5,
+            "repeat": false,
+            "smooth": true
+          },
+          "path": "M-433.9 -425.5 L430.45 -425.5 L430.45 458.7 L-433.9 458.7 L-433.9 -425.5 Z"
+        },
+        {
+          "fill": {
+            "type": "bitmap",
+            "matrix": [1.1576080322265625, 0, 0, 1.1576080322265625, -455.5, -447.6],
+            "bitmap": 4,
+            "repeat": false,
+            "smooth": true
+          },
+          "path": "M-455.5 -447.6 L452.1 -447.6 L452.1 480.8 L-455.5 480.8 L-455.5 -447.6 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 7,
+      "bounds": [-25, -212.45, 25, 212.55],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#FF3366FF"},
+          "path": "M25 -212.45 L25 212.55 L-25 212.55 L-25 -212.45 L25 -212.45 Z"
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 8,
+      "records": [{"states": ["hit"], "id": 7, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button8_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button8_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button8_2.as"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 9,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 2, "id": 6, "matrix": [1, 0, 0, 1, 0, 0]},
+              {"place": 3, "id": 8, "matrix": [4.524765, 0, 0, 1.096725, 5.35, 40.2]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 10,
+      "bounds": [584.6, -251.65, 655, 281.75],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#3366FFFF"},
+          "path": "M584.6 -251.65 L655 -251.65 L655 281.75 L584.6 281.75 L584.6 -251.65 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 11,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 10, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    },
+    {
+      "kind": "button",
+      "id": 12,
+      "records": [{"states": ["hit"], "id": 7, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button12_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button12_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button12_2.as"}
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 13,
+      "records": [{"states": ["hit"], "id": 7, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button13_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button13_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button13_2.as"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 14,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 12, "matrix": [1, 0, 0, 1, 360, 0]},
+              {"place": 3, "id": 13, "matrix": [-0.999496, 0, 0, 1, -360, 0]}
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "ops": [
+          {"place": 1, "id": 3, "matrix": [0.802307, 0, 0, 0.551941, 459, 212.5], "name": "Back-Ground"},
+          {"place": 3, "id": 9, "matrix": [1, 0, 0, 1, 385, 206.7], "name": "Middle-Ground"},
+          {"place": 7, "id": 11, "matrix": [1, 0, 0, 0.551941, 385, 212.5], "name": "Fore-Ground"},
+          {"place": 9, "id": 14, "matrix": [1, 0, 0, 1, 385, 212.5], "name": "Buttons-DONTMOVEME"}
+        ],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

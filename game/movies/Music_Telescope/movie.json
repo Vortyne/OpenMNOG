@@ -1,0 +1,34 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Telescope.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [
+    {"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 51028, "original": "mp3"},
+    {"kind": "sprite", "id": 2, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 3, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {"kind": "sprite", "id": 4, "timeline": {"frameCount": 1, "frames": [{}]}}
+  ],
+  "timeline": {
+    "frameCount": 7,
+    "frames": [
+      {"sounds": [{"id": 1, "loops": 65535, "envelope": [[0, 0, 0], [203212, 13797, 14084]]}]},
+      {
+        "ops": [
+          {"place": 1, "id": 2, "matrix": [1, 0, 0, 1, 302.8, 248.8], "ratio": 1.5E-05, "name": "Choir-holder"},
+          {"place": 3, "id": 3, "matrix": [1, 0, 0, 1, 235.8, 187.85], "ratio": 1.5E-05, "name": "Notes-holder"},
+          {"place": 5, "id": 4, "matrix": [1, 0, 0, 1, 280.8, 195.85], "ratio": 1.5E-05, "name": "Lo-Hi-holder"}
+        ],
+        "scripts": ["scripts/frame2.as"]
+      },
+      {},
+      {},
+      {},
+      {},
+      {"scripts": ["scripts/frame7.as"]}
+    ]
+  }
+}

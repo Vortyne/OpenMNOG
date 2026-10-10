@@ -1,0 +1,25 @@
+#version 4
+AttackTime = "0";
+Attacking = "0";
+PrepAttack = "0";
+Attack = "0";
+NumRuns = "1";
+NumAttacks = "1";
+NumHits = "1";
+Hit = "0";
+Target = "";
+ThrowFrames = "9";
+agility = "25";
+realname = "Water Tarakava";
+BaseDMG = "125";
+VarDMG = "200";
+Type = "Water";
+ModFire = "25";
+ModWater = "0";
+ModAir = "10";
+ModIce = "-5";
+ModRock = "-5";
+ModEarth = "-25";
+BaseHealth = "500";
+ThrowFrames = ThrowFrames - "1";
+ThrowName = "TarakavaBubble";

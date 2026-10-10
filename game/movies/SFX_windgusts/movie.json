@@ -1,0 +1,19 @@
+{
+  "format": "mnog-movie/1",
+  "source": "SFX_windgusts.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sound", "id": 1, "file": "sounds/1.ogg", "rate": 11025, "channels": 1, "samples": 55136, "original": "mp3"}],
+  "timeline": {
+    "frameCount": 2,
+    "frames": [
+      {
+        "sounds": [{"id": 1, "envelope": [[0, 0, 0], [59857, 2874, 1725], [127762, 2874, 2012], [202206, 0, 0], [220314, 0, 0]]}]
+      },
+      {"scripts": ["scripts/frame2.as"]}
+    ]
+  }
+}

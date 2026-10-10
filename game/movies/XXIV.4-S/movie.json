@@ -1,0 +1,224 @@
+{
+  "format": "mnog-movie/1",
+  "source": "XXIV.4-S.swf",
+  "swfVersion": 4,
+  "width": 770,
+  "height": 425,
+  "frameRate": 18,
+  "background": "#000000FF",
+  "symbols": [
+    {"kind": "sprite", "id": 1, "timeline": {"frameCount": 1, "frames": [{}]}},
+    {
+      "kind": "shape",
+      "id": 2,
+      "bounds": [-22.85, -28.3, 773.6, 287.2],
+      "parts": [
+        {
+          "fill": {
+            "type": "radial",
+            "matrix": [305.08750000000003, 0, 0, 305.08750000000003, 385.4, 295.55],
+            "stops": [
+              {"at": 0.0431, "color": "#993300FF"},
+              {"at": 0.2431, "color": "#660000FF"},
+              {"at": 0.6196, "color": "#330000FF"}
+            ]
+          },
+          "path": "M-22.85 -28.3 L773.6 -28.3 L773.6 287.2 L-22.85 287.2 L-22.85 -28.3 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 3,
+      "bounds": [-631.5, -335.2, 629.6, 214.4],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#00FF00FF"},
+          "path": "M241.6 214.4 L-352.25 214.4 L-352.25 205.05 L241.6 205.05 L241.6 214.4 Z"
+        },
+        {
+          "fill": {"type": "solid", "color": "#000000FF"},
+          "path": "M-106.8 -84.6 Q-106.8 -52 -84.25 -28.95 L-132.75 6.95 L-631.5 6.95 L-631.5 -335.2 L629.6 -335.2 L629.6 6.95 L98.35 6.95 L30.1 -28.95 Q52.85 -52 52.85 -84.6 Q52.85 -117.8 29.4 -141.25 Q6.2 -164.45 -26.95 -164.4 Q-60.1 -164.45 -83.55 -141.25 Q-106.8 -117.8 -106.8 -84.6 Z"
+        },
+        {
+          "fill": {
+            "type": "radial",
+            "matrix": [0, -120.575, 159.025, 0, -28.5, -59.15],
+            "stops": [{"at": 0, "color": "#660000FF"}, {"at": 0.4392, "color": "#330000FF"}, {"at": 0.8196, "color": "#000000FF"}]
+          },
+          "path": "M30.1 -28.95 L98.35 6.95 L127.25 24.6 Q-18.8 40.95 -156.6 24.6 L-132.75 6.95 L-84.25 -28.95 L30.1 -28.95 Z"
+        },
+        {
+          "stroke": {"width": 0.05, "color": "#660000FF"},
+          "path": "M-84.25 -28.95 Q-106.8 -52 -106.8 -84.6 Q-106.8 -117.8 -83.55 -141.25 Q-60.1 -164.45 -26.95 -164.4 Q6.2 -164.45 29.4 -141.25 Q52.85 -117.8 52.85 -84.6 Q52.85 -52 30.1 -28.95 M-84.25 -28.95 L30.1 -28.95"
+        }
+      ]
+    },
+    {"kind": "image", "id": 4, "file": "images/4.png", "width": 268, "height": 176},
+    {
+      "kind": "shape",
+      "id": 5,
+      "bounds": [-133.5, -88, 133.55, 88],
+      "parts": [
+        {
+          "fill": {
+            "type": "bitmap",
+            "matrix": [1.00006103515625, 0, 0, 1.00006103515625, -133.5, -88],
+            "bitmap": 4,
+            "repeat": false,
+            "smooth": true
+          },
+          "path": "M133.55 88 L-133.5 88 L-133.5 -88 L133.55 -88 L133.55 88 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 6,
+      "bounds": [-155.7, -43.9, 39.35, 116.2],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#00FFFFFF"},
+          "path": "M39.35 -43.9 L39.35 116.2 L-155.7 116.2 L-155.7 -43.9 L39.35 -43.9 Z"
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 7,
+      "records": [{"states": ["hit"], "id": 6, "depth": 1}],
+      "actions": [{"on": ["release"], "script": "scripts/button7_0.as"}]
+    },
+    {
+      "kind": "sprite",
+      "id": 8,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 2, "id": 3, "matrix": [1, 0, 0, 1, 0, 0]},
+              {"place": 3, "id": 5, "matrix": [1, 0, 0, 1, -16, -257], "cxform": [0.5, 0.5, 0.5, 1, 0, 0, 0, 0]},
+              {"place": 4, "id": 7, "matrix": [1, 0, 0, 1, 33.05, -133.75]}
+            ],
+            "scripts": ["scripts/sprite8_frame1.as"]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 9,
+      "bounds": [-188.3, 603.8, 445.9, 758.9],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#00FF00FF"},
+          "path": "M-188.3 603.8 L445.9 603.8 L445.9 758.9 L-188.3 758.9 L-188.3 603.8 Z"
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 10,
+      "bounds": [-656.45, -91.45, 686.1, 91.5],
+      "parts": [
+        {
+          "fill": {
+            "type": "radial",
+            "matrix": [0, -98.4, 814.2375000000001, 0, 0, 0.05],
+            "stops": [{"at": 0.2, "color": "#003333FF"}, {"at": 0.8627, "color": "#000000FF"}]
+          },
+          "path": "M596.8 91.5 L-600 91.5 Q-715.3 11.85 -595.15 -91.45 Q-3.35 -86.75 596.8 -91.45 Q775.45 -7.45 596.8 91.5 Z"
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 11,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 9, "matrix": [0.877014, 0, 0, 0.259186, -174.95, 278.75]},
+              {"place": 2, "id": 10, "matrix": [1.405533, 0, 0, 0.987961, -106.9, 195.15]}
+            ],
+            "scripts": ["scripts/sprite11_frame1.as"]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 12,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 9, "matrix": [1, 0, 0, 1, 0, 0]}]}]}
+    },
+    {
+      "kind": "shape",
+      "id": 13,
+      "bounds": [-25, -212.45, 25, 212.55],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#FF3366FF"},
+          "path": "M25 -212.45 L25 212.55 L-25 212.55 L-25 -212.45 L25 -212.45 Z"
+        }
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 14,
+      "records": [{"states": ["hit"], "id": 13, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button14_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button14_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button14_2.as"}
+      ]
+    },
+    {
+      "kind": "button",
+      "id": 15,
+      "records": [{"states": ["hit"], "id": 13, "depth": 1}],
+      "actions": [
+        {"on": ["release"], "script": "scripts/button15_0.as"},
+        {"on": ["rollOver"], "script": "scripts/button15_1.as"},
+        {"on": ["rollOut"], "script": "scripts/button15_2.as"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 16,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [{"place": 1, "id": 14, "matrix": [1, 0, 0, 1, 715, -16]}, {"place": 3, "id": 15, "matrix": [-1, 0, 0, 1, -715, -16]}]
+          }
+        ]
+      }
+    }
+  ],
+  "timeline": {
+    "frameCount": 3,
+    "frames": [
+      {
+        "ops": [
+          {"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 341.8, 519.8], "name": "SoundFX"},
+          {"place": 3, "id": 2, "matrix": [1, 0, 0, 1, 0, 0]},
+          {"place": 4, "id": 8, "matrix": [1, 0, 0, 1, 409, 316.5], "name": "Back-Ground"},
+          {
+            "place": 9,
+            "id": 11,
+            "matrix": [1, 0, 0, 1, 443, 246.9],
+            "cxform": [0.8984, 0.8984, 0.8984, 1, 0, 0, 0, 0],
+            "name": "Middle-Ground"
+          },
+          {"place": 12, "id": 12, "matrix": [-0.5, 0, 0, 0.5, 385, 212.5], "name": "Fore-Ground"},
+          {"place": 14, "id": 16, "matrix": [1, 0, 0, 1, 385, 228.5], "name": "Buttons"}
+        ],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {},
+      {"scripts": ["scripts/frame3.as"]}
+    ]
+  }
+}

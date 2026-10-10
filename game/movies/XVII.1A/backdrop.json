@@ -1,0 +1,35 @@
+{
+ "note": "XVII.1A: its backdrop is XVII.1-S (the jungle with the light shafts, at its centre) zoomed 1.35x and blurred, without Taipu and his speech bubble; drawn live from the scene when Vectorize bitmaps is on, filling the widescreen view. The image is stored at half size, so the zoom is in its pixels (0.68). Placed by eye.",
+ "image": 1,
+ "scene": "XVII.1-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 384.25,
+  "Middle-Ground": 387,
+  "Fore-Ground": -2115.7
+ },
+ "hide": [
+  "Middle-Ground/Taipu",
+  "Middle-Ground/TaipuBubble",
+  "Buttons"
+ ],
+ "zoom": 0.6971,
+ "x": 81.48,
+ "y": 106.84,
+ "blur": 1.5,
+ "wide": true,
+ "sharp": [
+  "Middle-Ground/#29",
+  "Middle-Ground/#30",
+  "Middle-Ground/#45"
+ ],
+ "depth": {
+  "Middle-Ground/#9": 26,
+  "Middle-Ground/#79": 27
+ },
+ "sharpAt": {
+  "Middle-Ground/#9": 0.6,
+  "Middle-Ground/#79": 0.6
+ }
+}

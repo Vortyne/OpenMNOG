@@ -1,0 +1,60 @@
+{
+ "image": 1,
+ "scene": "XI.6-W",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 385.0
+ },
+ "hide": [
+  "Middle-Ground/Door",
+  "Middle-Ground/Rats",
+  "Middle-Ground/Whenua",
+  "Middle-Ground/GuildBubble",
+  "Middle-Ground/MinerBubble",
+  "Middle-Ground/GuardBubble",
+  "Middle-Ground/#25",
+  "Middle-Ground/#28",
+  "Fore-ground",
+  "Buttons",
+  "Middle-Ground/#24",
+  "Middle-Ground/#1",
+  "Middle-Ground/#9",
+  "Middle-Ground/#27"
+ ],
+ "zoom": 0.65,
+ "x": -18.4,
+ "y": -28.0,
+ "blur": 2.5,
+ "wide": true,
+ "note": "XI.6A: its backdrop is XI.6-W's chamber (placed by eye from the wall rings, zoomed out), without Whenua, the door, the torch and the speech bubbles; darker, with the torch's glow moved up and enlarged as the painting's light.",
+ "move": {
+  "Middle-Ground/#22": [
+   -393,
+   -290,
+   6.0
+  ]
+ },
+ "tone": [
+  [
+   0.85,
+   1.35
+  ],
+  [
+   0.85,
+   1.35
+  ],
+  [
+   0.85,
+   1.35
+  ]
+ ],
+ "light": [
+  {
+   "top": 285,
+   "bottom": 363,
+   "color": "#B76E06"
+  }
+ ]
+}

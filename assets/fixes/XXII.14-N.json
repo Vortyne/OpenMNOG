@@ -1,0 +1,7 @@
+{
+ "note": "The view is fixed to the width of its backdrop (-7 to 783); the artwork is narrower than 16:9 all the way up and down.",
+ "view": {
+  "left": -7,
+  "right": 783
+ }
+}

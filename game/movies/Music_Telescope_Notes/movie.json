@@ -1,0 +1,47 @@
+{
+  "format": "mnog-movie/1",
+  "source": "Music_Telescope_Notes.swf",
+  "swfVersion": 4,
+  "width": 550,
+  "height": 400,
+  "frameRate": 18,
+  "background": "#FFFFFFFF",
+  "symbols": [{"kind": "sprite", "id": 1, "timeline": {"frameCount": 1, "frames": [{}]}}],
+  "timeline": {
+    "frameCount": 29,
+    "frames": [
+      {
+        "ops": [{"place": 1, "id": 1, "matrix": [1, 0, 0, 1, 286.8, 196.85], "name": "MusicSFX-holder"}],
+        "scripts": ["scripts/frame1.as"]
+      },
+      {"labels": ["Waitingloop"]},
+      {"scripts": ["scripts/frame3.as"]},
+      {"scripts": ["scripts/frame4.as"]},
+      {},
+      {"labels": ["Note1"], "scripts": ["scripts/frame6.as"]},
+      {},
+      {"labels": ["Note1loop"], "scripts": ["scripts/frame8.as"]},
+      {"scripts": ["scripts/frame9.as"]},
+      {},
+      {"labels": ["Note2"], "scripts": ["scripts/frame11.as"]},
+      {},
+      {"labels": ["Note2loop"], "scripts": ["scripts/frame13.as"]},
+      {"scripts": ["scripts/frame14.as"]},
+      {},
+      {"labels": ["Note3"], "scripts": ["scripts/frame16.as"]},
+      {},
+      {"labels": ["Note3loop"], "scripts": ["scripts/frame18.as"]},
+      {"scripts": ["scripts/frame19.as"]},
+      {},
+      {"labels": ["Note4"], "scripts": ["scripts/frame21.as"]},
+      {},
+      {"labels": ["Note4loop"], "scripts": ["scripts/frame23.as"]},
+      {"scripts": ["scripts/frame24.as"]},
+      {},
+      {"labels": ["Note5"], "scripts": ["scripts/frame26.as"]},
+      {},
+      {"labels": ["Note5loop"], "scripts": ["scripts/frame28.as"]},
+      {"scripts": ["scripts/frame29.as"]}
+    ]
+  }
+}

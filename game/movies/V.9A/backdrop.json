@@ -1,0 +1,22 @@
+{
+ "note": "V.9A: its backdrop is V.9-E zoomed 1.00x and blurred; drawn live from the scene (without Astrologer, Fore-ground) when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 4,
+ "scene": "V.9-E",
+ "frame": 2,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 385.0,
+  "Fore-Ground": 469.55
+ },
+ "hide": [
+  "Middle-Ground/Astrologer",
+  "Fore-ground",
+  "Buttons"
+ ],
+ "zoom": 0.995,
+ "x": 82.5,
+ "y": -4.0,
+ "blur": 2.0,
+ "wide": true
+}

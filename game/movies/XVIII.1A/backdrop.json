@@ -1,0 +1,22 @@
+{
+ "note": "XVIII.1A (Tamaru): its backdrop is XVII.2-S (the mossy root in the jungle) zoomed 1.52x and blurred, without Taipu; drawn live when Vectorize bitmaps is on, filling the widescreen view.",
+ "image": 1,
+ "scene": "XVII.2-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 386.5,
+  "Middle-Ground": 390.0,
+  "Fore-Ground": -2109.7
+ },
+ "hide": [
+  "Middle-Ground/Taipu",
+  "Middle-Ground/TaipuBubble",
+  "Buttons"
+ ],
+ "zoom": 1.52,
+ "x": 156.5,
+ "y": 139.0,
+ "blur": 3.5,
+ "wide": true
+}

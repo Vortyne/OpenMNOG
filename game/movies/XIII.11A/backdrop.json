@@ -1,0 +1,41 @@
+{
+ "image": 1,
+ "scene": "XIII.11-S",
+ "frame": 3,
+ "vertical": false,
+ "layers": {
+  "Back-Ground": 385.0,
+  "Middle-Ground": 387.0,
+  "Fore-Ground": 385.0
+ },
+ "hide": [
+  "Fore-Ground/Taipu",
+  "Back-Ground/#28",
+  "Back-Ground/#50",
+  "Back-Ground/#12",
+  "Back-Ground/#37",
+  "Buttons",
+  "Middle-Ground/#20",
+  "Middle-Ground/#22"
+ ],
+ "zoom": 1.0,
+ "x": -241.5,
+ "y": -0.5,
+ "blur": 1.5,
+ "wide": true,
+ "note": "XIII.11A: its backdrop is XIII.11-S's mine cart and the torch-lit rocks (placed by eye), without Taipu and the Matoran.",
+ "move": {
+  "Middle-Ground/#18": [
+   -80,
+   -90,
+   1.6
+  ]
+ },
+ "light": [
+  {
+   "top": 355,
+   "bottom": 400,
+   "color": "#9C7020"
+  }
+ ]
+}
