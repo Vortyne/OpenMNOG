@@ -1,99 +1,113 @@
-# Mata Nui Online Game — native
+# OpenMNOG
 
-A native, Flash-free version of the *Mata Nui Online Game* (LEGO / Templar Studios, 2001). The original
-SWF files are converted once into an open, readable format — vector shapes as SVG path data, sounds as
-Ogg Vorbis, scripts as readable ActionScript-style source — and a new engine plays that format.
+A native, Flash-free version of the *Mata Nui Online Game* (LEGO / Templar Studios, 2001), with widescreen,
+smooth motion and other enhancements.
 
-Nothing from Adobe is used. The game was released as freeware, so its converted content is part of this
-repository, in `game/`: that folder is the game's source now, readable and editable (scenes, scripts, artwork,
-sounds), and this project's fixes and enhancements are edits to it. The converter that first made it from the
-original SWF files is maintained separately, outside this repository.
+The original SWF files were converted once into an open, readable format: vector shapes as SVG path data, sounds
+as Ogg Vorbis, scripts as readable ActionScript-style source. A new engine (C# / .NET, SkiaSharp, SDL2) plays that
+format. Nothing from Adobe is used. The game was released as freeware, so its converted content is part of this
+repository in `game/`. That folder is now the game's source: this project's fixes and enhancements are edits to
+it, never a reconversion. The converter that first made it is kept outside this repository.
 
-## Layout
+## Running
 
-| Project | Purpose |
-| --- | --- |
-| `src/Mnog.Format` | The converted format's JSON documents ([docs/FORMAT.md](docs/FORMAT.md)). |
-| `src/Mnog.Script` | The script language: syntax tree, parser, printer ([docs/SCRIPT.md](docs/SCRIPT.md)). |
-| `game/` | The game itself, converted and with this project's fixes ([docs/FORMAT.md](docs/FORMAT.md)). Edit it directly. |
-| `src/Mnog.Engine` | The game engine: Skia rendering (GPU via OpenGL, CPU fallback), SDL2 window/input/audio, script interpreter. |
-| `assets/` | Sources the game was enhanced with: fonts, title screen logo and music, artwork fixes, vector sand, upscaled images. |
-| `version_number.txt` | The project's version, shown on the title screen as "OpenMNOG v" followed by it. |
-
-## Building and running
-
-Requirements: .NET 10 SDK.
+Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download).
 
 ```bash
 dotnet run --project src/Mnog.Engine -c Release -- game
 ```
 
-The engine also finds `game/` next to (or above) its executable on its own. `bash play.sh` builds the engine and
-opens the game on your own save, checking the build and game files first.
+`bash play.sh` builds the engine and opens the game on your save, checking the build and the game files first.
+The game opens fullscreen, or in a window if it was last left that way; `--windowed` starts it in a window.
 
-Controls are the original mouse controls. The in-game **Settings** menu (key icon) has a **Widescreen**
-option: the view fills the window's width with the scenery beyond the original stage edges, as far as
-each scene's artwork reaches. **Smooth** draws at the display's refresh rate: scene panning and
-transition fades are interpolated between game frames, while animations and movies keep their original
-frame rate (18 fps). Both are on by default. The Settings menu also has **Language** (switches without reloading; the current one is highlighted) and
-**Misc** (Timestamp, Progress) submenus and **Dialog speed** (Normal, the original typing speed; Fast, 2x;
-Instant; the question box and a conversation's opening slide-up move 2x as fast on Fast and at once on Instant; with Smooth on, the typed text appears letter by letter between game frames, each letter fading in), **Title screen** and **Loading screen** (Off goes from scene to scene directly, without the fade to black and the globe, with a 200 ms crossfade). **Space** continues a dialog, as clicking its red arrow does. The game always runs at its original 18 fps: Project Brick's 30 fps option was removed because it
-breaks the timing of many scenes. During cutscenes a **Skip** button
-on the bottom bar jumps to where the cutscene hands back to the game. Pressing **W** while the Settings menu is
-open opens a warp menu listing every scene, cutscene and minigame (type to filter, Enter or click to go there).
-Pressing **D** while the Settings menu is open toggles a debug panel
-over the bottom bar (scene, frame, fps, mouse/button under it, music and sound movies, playing
-sounds, latest warning). Its **Report edge issue** button (or F8) records the current view as a widescreen edge problem: a line in `edge-reports/reports.txt` (scene, layer positions, view, measured edges, pan limits) and a screenshot beside it. The game opens fullscreen, or windowed if it was last left that way (`--windowed` starts it in a window), on a **title screen**: the first beach view with the
-BIONICLE logo, the Beach Chant and the waves, and **Continue** / **New Game** / **Exit**, with **Settings** (the
-settings menu, as in game) and **Save Slot** in the bottom right and the version in the bottom left. New Game fades the
-title away into the game on that same view; Continue goes straight to loading the saved game; New Game over a save asks first, with the settings menu's Start New Game? dialog. Settings has
-**Title screen: On/Off**. **Esc** asks "Quit game?" (or closes an open dialog). **F11**, **Alt+Enter** or the bar's
-fullscreen button toggle fullscreen. Saved settings and
-progress (the Project Brick patch uses a Flash "shared object") live in
-`%APPDATA%\MataNuiOnlineGame\sharedobjects`.
+## What's new
 
-### Engine test mode
+- **Widescreen**: the view fills a wide screen with the scenery beyond the original stage edges, as far as each
+  scene's artwork reaches (skies and some backdrops are extended to fit).
+- **Smoothing**: drawing runs at the display's refresh rate. Panning and fades are smoothed between the game's
+  18 fps frames; with Full (or Partial, in scenes marked for it) animation is too.
+- **Vectorized pictures**: the photographic sand, sky and other pictures are redrawn as vector art that stays sharp
+  at any size. Some images are upscaled instead.
+- **Title screen**: the first beach view with the BIONICLE logo and the Beach Chant, with Continue, New Game,
+  Exit, Settings and Save Slot.
+- **Save slots**: 12 slots, each with a picture of where it was last saved. The game saves by itself.
+- **In-game Help**: the original support site's General, Tips and Hints and Bionicle Decoder pages, rebuilt inside
+  the game (pictures are live frames of the game itself), plus the new keyboard controls.
+- **Settings**, grouped into Language, Graphics, Gameplay and Audio, each option described when the mouse is over
+  it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, dialog speed, panning speed and edge
+  zone, title screen, and volume for master, music and sound effects.
+- **Skip** button for cutscenes, and fixes for flaws in the original artwork.
+- High-quality music: a FLAC file beside a sound's Ogg (`sounds/NAME.flac`) is played in its place.
 
-`--run "<commands>"` plays headlessly: `wait N` (frames), `move X Y`, `click X Y`, `key CODE`,
-`shot file.png [W H [T]]` (T: draw partway between game frames), `bench N W H`, `widescreen 0|1`, `smooth 0|1` (the game's saved setting is applied at startup and overrides these), `type TEXT` (key presses),
-`load URL TARGET` (loadMovie, e.g. `load blank.swf _level1/Music-holder`), `sounds` (list playing sounds), `tree [depth]` (dump the display list),
-`scene NAME` (go to a scene as the warp menu does, replaying the variables a navigation button leading there sets), `set VAR VALUE` / `get PATH` (variables, relative to
-`_level1`, e.g. `get /Backpack/Backpack/:Slot1`), `pos PATH...` (clip x positions), `profile N W H` (run and draw N frames, reporting slow ones),
-`extentms` (widescreen edge-measurement timings; with `MNOG_EXTENTDBG=1` short edges and clamp decisions are logged), `drawprof` (per-shape draw
-times, with `MNOG_DRAWPROF=1`). `--run @file` reads the commands from a file. `MNOG_SAVEDIR=<folder>` uses another save folder (test runs use a copy so the player's save is never touched).
-`--movie Name` starts a single movie instead of the game, to test a scene in isolation. Coordinates are stage pixels. Example:
+## Controls
+
+The original mouse controls all work as before. New keys:
+
+| Key | Does |
+| --- | --- |
+| Arrow keys, W A S D | Pan the view |
+| Left Shift | Turn around |
+| Space | Continue a conversation |
+| Esc | Close the open window, or ask to quit |
+| F11, Alt + Enter | Toggle fullscreen |
+| < / > | In a movie: go back / forward one frame (pauses it) |
+| / or Pause | In a movie: pause or play on |
+| V | Toggle vectorized pictures (to compare with the original art) |
+| W, D (with Settings open) | Warp menu (every scene, cutscene and minigame) / debug panel |
+
+## Save data
+
+Settings and progress are saved in `%APPDATA%\MataNuiOnlineGame\sharedobjects` (a Flash-style shared object, as
+the Project Brick patch used). Slot 1 is the original save. Slot pictures (`pictures/`) and backups of the save
+file (`backups/`) are kept in `%APPDATA%\MataNuiOnlineGame`.
+
+## Repository
+
+| Path | Contents |
+| --- | --- |
+| `game/` | The game: scenes, scripts, artwork, sounds and the Help's pages ([docs/FORMAT.md](docs/FORMAT.md)). Edit it directly. |
+| `src/Mnog.Engine` | The engine: Skia rendering (GPU via OpenGL, CPU fallback), SDL2 window, input and audio, the script interpreter. |
+| `src/Mnog.Format` | The game format's JSON documents ([docs/FORMAT.md](docs/FORMAT.md)). |
+| `src/Mnog.Script` | The script language: syntax tree, parser, printer ([docs/SCRIPT.md](docs/SCRIPT.md)). |
+| `assets/` | The original sources of the enhancements, kept for reference: the menus' font (TradeMarker Light), the title screen's logo, music and sand, artwork fixes, vector and upscaled pictures. |
+| `version_number.txt` | The version, shown on the title screen as "OpenMNOG v" followed by it. |
+
+## Development
+
+**Test mode.** `--run "<commands>"` plays the game headlessly (coordinates are stage pixels), for example:
 
 ```bash
 dotnet run --project src/Mnog.Engine -- game --run "wait 40; click 690 255; wait 60; shot out.png"
 ```
 
-## Title screen assets
+| Command | Does |
+| --- | --- |
+| `wait N` | Run N frames |
+| `move X Y`, `click X Y`, `key CODE`, `type TEXT` | Mouse and keyboard input |
+| `shot FILE [W H [T]]` | Screenshot (T: partway between game frames) |
+| `scene NAME` | Go to a scene, as the warp menu does |
+| `set VAR VALUE`, `get PATH` | Variables, relative to `_level1` (e.g. `get /Backpack/Backpack/:Slot1`) |
+| `load URL TARGET` | loadMovie (e.g. `load blank.swf _level1/Music-holder`) |
+| `widescreen 0\|1`, `smooth 0\|1` | Settings for the run |
+| `sounds`, `tree [depth]`, `pos PATH...` | Playing sounds, the display list, clip positions |
+| `bench N W H`, `profile N W H` | Frame timings |
+| `cache 0\|1`, `cachestats`, `drawprof`, `extentms` | Rendering diagnostics |
 
-`assets/title` holds the title screen's sources, used by the converter's title patch: `bionicle_logo.json`, the BIONICLE logo vectorized from `BIONICLE_Logo.png`
-(by a helper script kept outside this repository), and the
-music, *Beach Chant (HQ Remake by Essenger)*, encoded to Ogg Vorbis with ffmpeg during conversion.
-Fixes to flaws in the original artwork live in `assets/fixes/MOVIE.json` (shapes added to a sprite at a
-given depth, in its own coordinates; applied by the converter after conversion), e.g.
-`IX.1-W.json` fills two gaps in the desert's sand that showed the background through. A fix can also place another
-(e.g. mirrored) copy of a symbol, remove a stray piece the original kept just off the stage (`remove`; a leaf in V.2-S),
-stretch a placed backdrop horizontally while widescreen is on
-(`widescreenScaleX`; the top band of IV.5-N and XIV.8-E), and `"pan": {"min", "max"}` narrows a scene's widescreen pan range by hand where
-the measured one goes further than the artwork looks right (IV.5-N). Other widescreen patches widen the skies
-(continued as their mirror image) and the flute's backdrop.
+`--run @file` reads the commands from a file, and `--movie NAME` starts a single movie instead of the game.
 
-**Save slots**: 12 slots (4 to a tab) with a picture of where each was last saved. The bottom bar's Change Save Slot
-button (formerly Start New Game) opens them in game: picking a slot loads it (an empty one starts a new game). The
-title screen's Save Slot button picks the slot Continue and New Game use (New Game over a save asks first). Saves can
-be deleted, after a confirmation; in game, the slot being played has Restart instead (the original's Start New Game,
-also confirmed). The title screen's Save Slot button (bottom right) shows the selected slot in a box joined below it. The game saves by itself, so there's no save or load. Slot 1 is the original save;
-pictures are kept in `pictures/` beside the save data. The menus' font, TradeMarker Light, is in `assets/fonts`
-(the converter takes the glyphs the original lacks from it).
+**Environment variables.** `MNOG_SAVEDIR` uses another save folder (test runs use a copy, so your save is never
+touched). `MNOG_NOVSYNC=1` draws as fast as possible. `MNOG_NOCACHE=1` turns off the layer cache: artwork that
+isn't changing is drawn from cached images (`src/Mnog.Engine/Render/LayerCache.cs`), so panning slides them
+instead of redrawing every shape.
 
-If the game crashes, the error is saved to `build/crash-<time>.log`.
+**Logs.** `play.sh` writes the game's log to `build/game-run.log` (frame timings for each scene, slow frames). A
+crash writes its details to `build/crash-<time>.log`. The debug panel's **Report edge issue** button (or F8)
+records a widescreen edge problem in `edge-reports/`.
 
-Rendering: artwork that isn't changing is drawn from cached images (`src/Mnog.Engine/Render/LayerCache.cs`), so
-panning a detailed scene only slides those images instead of redrawing every vector shape; animated parts are
-drawn as usual in between. `MNOG_NOCACHE=1` turns it off (harness: `cache 0|1`, `cachestats` with `MNOG_CACHESTATS=1`).
+**Sounds.** `game/sound-groups.json` lists which cutscene and minigame sounds follow the Music slider and which
+the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are music).
 
-`sand_extension.png` fills the strip below the beach (where the game's menu bar is) on the title screen: it was
-painted onto a 3840x2160 render of the 16:9 view and covers its rows 1937-2159.
+## Credits
+
+The *Mata Nui Online Game* is by Templar Studios for LEGO. The title music is *Beach Chant (HQ Remake by
+Essenger)*.

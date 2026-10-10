@@ -79,7 +79,9 @@ static void WriteCrash(string gameDir, Player player, Exception? e)
 {
     try
     {
-        var file = Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), $"crash-{DateTime.Now:yyyyMMdd-HHmmss}.log");
+        var dir = Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), "build");
+        Directory.CreateDirectory(dir);
+        var file = Path.Combine(dir, $"crash-{DateTime.Now:yyyyMMdd-HHmmss}.log");
         var scene = (player.GetLevel(1)?.ChildByName("holder") as Mnog.Engine.Display.MovieClip) is { } h ? $"{h.Movie.Name} frame {h.CurrentFrame}" : "-";
         var lines = new List<string> { $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}  tick {player.TickCount}  scene {scene}", "Recent log:" };
         lines.AddRange(player.RecentLog.Select(l => "  " + l));
