@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OpenMNOG</title>
 <meta name="description" content="Download OpenMNOG, a native, Flash-free version of the Mata Nui Online Game with widescreen, smooth motion and other enhancements.">
+<link rel="preload" href="sky.svg" as="image" type="image/svg+xml">
 <link rel="preload" href="back.svg" as="image" type="image/svg+xml">
 <style>
 :root {
@@ -20,7 +21,7 @@ body { background: #c9b48a; color: var(--ink); font: 15px/1.4 system-ui, "Segoe 
 /* The title screen's beach, cropped to fill the window; everything on it is placed in its own proportions, so the
    button stays under the pods whatever the window's shape. */
 .stage { position: fixed; left: 50%; top: 50%; width: calc(100 * var(--u)); aspect-ratio: 16 / 9; transform: translate(-50%, -50%); }
-/* The scenery in three layers: the beach, its water (animated), then the pods and sand over the water. */
+/* The scenery in layers: the sky, its bird (animated), the beach, its water (animated), then the pods and sand. */
 .scene, .scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
 h1 { position: absolute; left: 52%; top: 22%; transform: translateX(-50%); margin: 0; width: min(50 * var(--u), 92vw); }
@@ -67,6 +68,8 @@ button.sound[aria-pressed="false"] .waves, button.sound[aria-pressed="true"] .mu
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="waves" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="mute" d="m16 9 6 6m0-6-6 6"/></svg>
 </button>
 <div class="stage">
+  <img class="scene" src="sky.svg" alt="">
+  <div class="scene" id="bird"></div>
   <img class="scene" src="back.svg" alt="">
   <div class="scene" id="water"></div>
   <img class="scene" src="front.svg" alt="">
@@ -121,29 +124,34 @@ function show(version) {
   note.hidden = !note.textContent;
 }
 
-// The water: each of its loops (water.svg: the sparkle, foam and waves, a group of frames each) played at the
-// game's 18 frames a second, all from their first frame together as in the game. Held still for reduced motion.
-fetch('water.svg').then(r => r.ok ? r.text() : Promise.reject()).then(text => {
-  const box = document.getElementById('water');
-  box.innerHTML = text;
-  const loops = ['sparkle', 'foam', 'waves'].map(id => ({ frames: [...box.querySelector('#' + id).children], at: -1 }));
-  const still = matchMedia('(prefers-reduced-motion: reduce)');
-  const start = performance.now();
-  function show(frame) {
-    for (const loop of loops) {
-      const i = frame % loop.frames.length;
-      if (i === loop.at) continue;
-      if (loop.at >= 0) loop.frames[loop.at].setAttribute('display', 'none');
-      loop.frames[i].removeAttribute('display');
-      loop.at = i;
-    }
+// The bird and the water: each of their loops (bird.svg: the bird's flight; water.svg: the sparkle, foam and waves;
+// a group of frames each) played at the game's 18 frames a second, all from their first frame together as in the
+// game. Held still for reduced motion.
+const LOOPS = { bird: ['bird'], water: ['sparkle', 'foam', 'waves'] };
+const loops = [];
+const still = matchMedia('(prefers-reduced-motion: reduce)');
+const start = performance.now();
+function show(frame) {
+  for (const loop of loops) {
+    const i = frame % loop.frames.length;
+    if (i === loop.at) continue;
+    if (loop.at >= 0) loop.frames[loop.at].setAttribute('display', 'none');
+    loop.frames[i].removeAttribute('display');
+    loop.at = i;
   }
-  function tick(now) {
-    show(still.matches ? 59 : Math.floor((now - start) * 18 / 1000));
-    requestAnimationFrame(tick);
-  }
+}
+function tick(now) {
+  show(still.matches ? 59 : Math.floor((now - start) * 18 / 1000));
   requestAnimationFrame(tick);
-}).catch(() => {});
+}
+for (const [layer, names] of Object.entries(LOOPS)) {
+  fetch(layer + '.svg').then(r => r.ok ? r.text() : Promise.reject()).then(text => {
+    const box = document.getElementById(layer);
+    box.innerHTML = text;
+    for (const id of names) loops.push({ frames: [...box.querySelector('#' + id).children], at: -1 });
+  }).catch(() => {});
+}
+requestAnimationFrame(tick);
 
 // The sound switch: the waves (a 15 s loop of the HQ Amb_Waves) load the first time it's turned on, then loop
 // without a gap.

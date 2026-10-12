@@ -2383,27 +2383,32 @@ public sealed class Player
     }
 
     /// <summary>
-    /// The title screen's scenery in layers, for the project page to animate its water: back.svg (everything beneath the
-    /// water), front.svg (the pods and sand over it, transparent elsewhere), and each frame of the water's loops alone
-    /// (sparkle-NNN, foam-NNN, waves-NNN.svg, transparent). Into <paramref name="dir"/>, at that size.
+    /// The title screen's scenery in layers, for the project page to animate its bird and water, from the back: sky.svg
+    /// (the sky and distant scenery), the bird's frames (bird-NNN.svg), back.svg (the beach beneath the water), the
+    /// water's frames (sparkle-NNN, foam-NNN, waves-NNN.svg), and front.svg (the pods and sand over it). All but the
+    /// sky are transparent where they don't draw. Into <paramref name="dir"/>, at that size.
     /// </summary>
     public bool SaveTitleLayers(string dir, int width, int height)
     {
         if (GetLevel(TitleLevel) is not { } title || title.ChildByName("holder") is not MovieClip holder ||
+            holder.ChildByName("Back-Ground") is not MovieClip background ||
             holder.ChildByName("Middle-Ground") is not MovieClip middle) return false;
-        // The beach's (I.1-S) water clips, by their symbols: the sparkle, the foam lines and the waves on the shore.
-        var loops = new (string Name, int Symbol)[] { ("sparkle", 25), ("foam", 32), ("waves", 37) };
-        var water = middle.Children.Values.OfType<MovieClip>().Where(c => loops.Any(l => l.Symbol == c.Asset?.Id)).ToList();
+        // The beach's (I.1-S) moving clips, by their symbols: the bird in the sky, and the water's sparkle, foam lines
+        // and waves on the shore.
+        var loops = new (string Name, int Symbol)[] { ("bird", 18), ("sparkle", 25), ("foam", 32), ("waves", 37) };
+        var moving = background.Children.Values.Concat(middle.Children.Values).OfType<MovieClip>()
+            .Where(c => loops.Any(l => l.Symbol == c.Asset?.Id)).ToList();
+        var water = moving.Where(c => c.Parent == middle).ToList();
         if (water.Count == 0) return false;
         int top = water.Max(c => c.Depth);
-        var all = title.Children.Values.Concat(holder.Children.Values).Concat(middle.Children.Values).ToList();
+        var all = title.Children.Values.Concat(holder.Children.Values).Concat(background.Children.Values).Concat(middle.Children.Values).ToList();
         var was = all.ToDictionary(o => o, o => o.Visible);
         var (scale, ox, oy) = Viewport(width, height);
         void Save(string name, bool opaque, Func<DisplayObject, bool> shown)
         {
             foreach (var o in all) o.Visible = was[o] && shown(o);
             // (The containers on the way to what's shown stay shown.)
-            holder.Visible = middle.Visible = true;
+            holder.Visible = background.Visible = middle.Visible = true;
             if (title.ChildByName("ui") is { } ui) ui.Visible = false;
             using var file = File.Create(Path.Combine(dir, name + ".svg"));
             using var canvas = SKSvgCanvas.Create(SKRect.Create(width, height), file);
@@ -2412,18 +2417,21 @@ public sealed class Player
             new Mnog.Engine.Render.RenderContext(canvas, matrix, this, 1) { ClipMasks = true, SkyGradients = false }
                 .DrawContainer(title.Children, title.Matrix, CxForm.Identity);
         }
-        bool InMiddle(DisplayObject o) => o.Parent == middle;
-        Save("back", true, o => !InMiddle(o) ? o.Parent == holder && o.Name == "Back-Ground" || o == holder : o.Depth < top && !water.Contains(o));
-        Save("front", false, o => !InMiddle(o) ? o.Name != "Back-Ground" : o.Depth > top);
-        var at = water.ToDictionary(c => c, c => c.CurrentFrame);
+        // (Each layer: what's shown of the background, of the middle ground, and of the rest, the containers aside.)
+        bool Shown(DisplayObject o, Func<DisplayObject, bool> back, Func<DisplayObject, bool> mid, bool rest) =>
+            o.Parent == background ? back(o) : o.Parent == middle ? mid(o) : o == holder || o == background || o == middle || rest;
+        Save("sky", true, o => Shown(o, b => !moving.Contains(b), _ => false, false));
+        Save("back", false, o => Shown(o, _ => false, m => m.Depth < top && !moving.Contains(m), false));
+        Save("front", false, o => Shown(o, _ => false, m => m.Depth > top, o.Parent == title || o.Parent == holder));
+        var at = moving.ToDictionary(c => c, c => c.CurrentFrame);
         foreach (var (name, symbol) in loops)
         {
-            var clips = water.Where(c => c.Asset?.Id == symbol).ToList();
+            var clips = moving.Where(c => c.Asset?.Id == symbol).ToList();
             if (clips.Count == 0) continue;
             for (int f = 1; f <= clips[0].FrameCount; f++)
             {
                 foreach (var c in clips) c.GotoFrame(f);
-                Save($"{name}-{f:000}", false, o => !InMiddle(o) ? o == holder : clips.Contains(o));
+                Save($"{name}-{f:000}", false, o => Shown(o, clips.Contains, clips.Contains, false));
             }
         }
         foreach (var (c, f) in at) c.GotoFrame(f);
