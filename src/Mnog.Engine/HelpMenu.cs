@@ -81,13 +81,6 @@ public sealed class HelpMenu
     }
     bool? _hand;
 
-    /// <summary>A web page in the browser: the game leaves fullscreen first, so the browser isn't hidden behind it.</summary>
-    void OpenUrl(string url)
-    {
-        if (_player.Host is { Fullscreen: true } host) host.Fullscreen = false;
-        _player.Host?.OpenUrl(url);
-    }
-
     public void MouseDown(SKPoint p)
     {
         _mouse = p;
@@ -282,7 +275,7 @@ public sealed class HelpMenu
             else if (b["link"]?.GetValue<string>() is { } linkLabel && b["url"]?.GetValue<string>() is { } url)
             {
                 // A link: a button that opens a web page in the browser (the Report page's GitHub forms).
-                y = MoreButton(y, () => OpenUrl(url), linkLabel) + 2;
+                y = MoreButton(y, () => _player.Host?.OpenUrl(url), linkLabel) + 2;
             }
             else if (b["picture"] is JsonObject pic && b["align"]?.GetValue<string>() == "left")
             {

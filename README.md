@@ -66,7 +66,7 @@ file (`backups/`) are kept in `%APPDATA%\MataNuiOnlineGame`.
 
 ## Reporting bugs and sounds
 
-The Help's **Report** page links to both forms. [Report a bug](https://github.com/Vortyne/OpenMNOG/issues/new?template=bug_report.yml)
+The Help's **Report a bug** page links to both forms. [Report a bug](https://github.com/Vortyne/OpenMNOG/issues/new?template=bug_report.yml)
 in the game, or, if you recognise one of the game's sounds, [report where it comes from](https://github.com/Vortyne/OpenMNOG/issues/new?template=sound_found.yml)
 so it can be replaced with the high-quality original. The [sound list](https://vortyne.github.io/OpenMNOG/) plays
 every sound still without a high-quality source in the browser (`site/`, published by `.github/workflows/sound-list.yml`).

@@ -3,15 +3,10 @@ description: Something in the game doesn't work as it should.
 title: "[Bug]: "
 labels: ["bug"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for reporting. The more exactly you can say where it happened, the quicker it can be found.
   - type: textarea
     id: what
     attributes:
       label: What happened?
-      description: What went wrong, and what you expected instead.
       placeholder: The music stopped when I walked into the mine...
     validations:
       required: true
@@ -19,37 +14,6 @@ body:
     id: where
     attributes:
       label: Where in the game?
-      description: The area or cutscene, as near as you can say (the debug panel shows the scene's name, e.g. XII.6-E, if you have it open).
       placeholder: Onu-Koro, near the lava; or the Episode 9-1 cutscene
     validations:
       required: true
-  - type: textarea
-    id: steps
-    attributes:
-      label: How can it be made to happen again?
-      description: The steps, if you know them.
-      placeholder: |
-        1. Fix the lava flow
-        2. Walk back to Onu-Koro
-        3. ...
-  - type: dropdown
-    id: settings
-    attributes:
-      label: Settings that might matter
-      multiple: true
-      options:
-        - Widescreen on
-        - Smoothing on
-        - Vectorized pictures on
-        - High quality audio on
-        - Fullscreen
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: Shown on the title screen ("OpenMNOG v...").
-  - type: textarea
-    id: extra
-    attributes:
-      label: Screenshots, logs, anything else
-      description: Drop screenshots in here. If the game crashed, attach the newest `crash-...log` from its `build` folder.

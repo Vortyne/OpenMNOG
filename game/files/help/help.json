@@ -18,7 +18,7 @@
    "page": "controls"
   },
   {
-   "title": "Report",
+   "title": "Report a bug",
    "page": "report"
   }
  ],
@@ -779,7 +779,7 @@
    ]
   },
   "report": {
-   "title": "Report",
+   "title": "Report a bug",
    "blocks": [
     {
      "heading": "Found a problem?"
@@ -795,7 +795,7 @@
      "heading": "Found a sound effect?"
     },
     {
-     "text": "Many of the game's sounds are being replaced with high-quality originals from the sound libraries they came from. If you recognise one, say which sound and where it comes from: the library, CD and track, or a link."
+     "text": "Many of the game's sounds are being replaced with high quality originals. If you recognise one, say which sound and where it comes from: the library, CD and track, or a link."
     },
     {
      "text": "You can listen to the sounds that still need a source on the sound list."
