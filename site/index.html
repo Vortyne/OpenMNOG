@@ -23,7 +23,7 @@ body { background: #c9b48a; color: var(--ink); font: 15px/1.4 system-ui, "Segoe 
 /* The scenery in three layers: the beach, its water (animated), then the pods and sand over the water. */
 .scene, .scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
-h1 { position: absolute; left: 52%; top: 11%; transform: translateX(-50%); margin: 0; width: min(50 * var(--u), 92vw); }
+h1 { position: absolute; left: 52%; top: 22%; transform: translateX(-50%); margin: 0; width: min(50 * var(--u), 92vw); }
 h1 img { display: block; width: 100%; height: auto; filter: drop-shadow(0 calc(.15 * var(--u)) calc(.3 * var(--u)) rgba(255, 255, 255, .5)); }
 
 .get { position: absolute; left: 52%; top: 68%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(40 * var(--u), 92vw); }
@@ -56,7 +56,7 @@ button.sound svg { display: block; width: 28px; height: 28px; fill: none; stroke
 button.sound[aria-pressed="false"] .waves, button.sound[aria-pressed="true"] .mute { display: none; }
 
 @media (max-width: 620px) {
-  h1 { left: 50%; top: 14%; }
+  h1 { left: 50%; top: 26%; }
   .get { left: 50%; top: auto; bottom: 6vh; }
 }
 @media (prefers-reduced-motion: reduce) { a.download { transition: none; } }

@@ -117,6 +117,14 @@ records a widescreen edge problem in `edge-reports/`.
 **Sounds.** `game/sound-groups.json` lists which cutscene and minigame sounds follow the Music slider and which
 the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are music).
 
+## Was AI used?
+
+| | |
+| --- | :---: |
+| Generating art | ❌ |
+| Generating music | ❌ |
+| Writing code | ✅ |
+
 ## Credits
 
 The *Mata Nui Online Game* is by Templar Studios for LEGO. The title music is *Beach Chant (HQ Remake by
