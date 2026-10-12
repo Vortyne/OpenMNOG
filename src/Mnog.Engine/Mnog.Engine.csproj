@@ -19,4 +19,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <!-- Release builds (release.sh, -p:MnogRelease=true): no console window behind the game's. -->
+  <PropertyGroup Condition="'$(MnogRelease)' == 'true'">
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+
 </Project>

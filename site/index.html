@@ -9,8 +9,7 @@
 <style>
 :root {
   --sand-shadow: rgba(40, 28, 10, .55);
-  --button: #3a3a3a; --button-hover: #474747; --button-edge: #9a9a9a;
-  --orange: #ff9900; --ink: #fff;
+  --ink: #fff;
   /* One stage unit: a hundredth of the scenery's width, as it's scaled to cover the window (16:9). */
   --u: max(1vw, 1.7778vh);
 }
@@ -31,19 +30,21 @@ h1 img { display: block; width: 100%; height: auto; filter: drop-shadow(0 calc(.
 a.download {
   display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;
   min-height: 64px; padding: 12px 28px; text-decoration: none; text-align: center;
-  background: var(--button); border: 3px solid var(--button-edge); color: var(--orange);
+  background: rgba(30, 22, 8, .3); border: 3px solid var(--ink); color: var(--ink);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
   font-size: clamp(20px, 2 * var(--u), 34px); font-weight: 700; letter-spacing: .02em;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, .35); transition: background .12s;
+  text-shadow: 0 1px 3px var(--sand-shadow); box-shadow: 0 2px 10px var(--sand-shadow);
+  transition: background .12s;
 }
-a.download:hover, a.download:focus-visible { background: var(--button-hover); color: var(--ink); }
+a.download:hover, a.download:focus-visible { background: rgba(30, 22, 8, .5); }
 a.download:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-a.download small { font-size: .5em; font-weight: 500; color: #d8d8d8; letter-spacing: 0; }
+a.download small { font-size: .5em; font-weight: 500; letter-spacing: 0; }
 .note { margin: 0; text-align: center; font-size: 14px; text-shadow: 0 1px 3px var(--sand-shadow); }
 nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: 14px; }
 nav a { color: var(--ink); text-decoration: none; text-shadow: 0 1px 3px var(--sand-shadow); white-space: nowrap; }
 nav a:hover { text-decoration: underline; }
 
-/* The sound switch: off at first; turned on, the waves (the game's HQ Amb_Waves) loop. */
+/* The sound switch: off at first; turned on, the waves loop. */
 button.sound {
   position: fixed; top: 12px; right: 12px; z-index: 2; padding: 8px; border: 0; background: none;
   color: var(--ink); cursor: pointer; opacity: .85; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .45));
@@ -144,8 +145,9 @@ fetch('water.svg').then(r => r.ok ? r.text() : Promise.reject()).then(text => {
   requestAnimationFrame(tick);
 }).catch(() => {});
 
-// The sound switch: the waves load the first time it's turned on (a large file), then loop without a gap.
-const WAVES = 'game/audio/hq/Amb_Waves.wav';
+// The sound switch: the waves (a 15 s loop of the HQ Amb_Waves) load the first time it's turned on, then loop
+// without a gap.
+const WAVES = 'waves.wav';
 let audio = null, waves = null, playing = null, soundOn = false;
 function soundState(text) {
   const button = document.getElementById('sound');
