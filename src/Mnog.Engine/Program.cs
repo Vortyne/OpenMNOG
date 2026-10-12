@@ -230,6 +230,22 @@ static void RunCommand(Player player, string raw)
                     Console.WriteLine($"wallsvg {p[1]} {p[2]}: {(img != null ? p[3] : "none")}");
                     break;
                 }
+            case "titlesvg":
+                {
+                    // titlesvg FILE W H: the title screen's scenery, without its logo and menu, saved as an SVG.
+                    using var svgFile = File.Create(p[1]);
+                    bool saved = player.SaveTitleSvg(svgFile, int.Parse(p[2]), int.Parse(p[3]));
+                    Console.WriteLine($"titlesvg: {(saved ? p[1] : "no title screen")}");
+                    break;
+                }
+            case "titlelayers":
+                {
+                    // titlelayers DIR W H: the title scenery in layers, with each frame of its water (Player.SaveTitleLayers).
+                    Directory.CreateDirectory(p[1]);
+                    bool saved = player.SaveTitleLayers(p[1], int.Parse(p[2]), int.Parse(p[3]));
+                    Console.WriteLine($"titlelayers: {(saved ? p[1] : "no title screen")}");
+                    break;
+                }
             case "wallshot":
                 {
                     // wallshot SLOT N FILE [W H]: a chronicle slot's Nth wallpaper (wallpapers.json) saved as a PNG.

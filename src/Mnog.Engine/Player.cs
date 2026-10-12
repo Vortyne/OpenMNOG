@@ -2362,6 +2362,75 @@ public sealed class Player
     }
 
 
+    /// <summary>The title screen's scenery (its beach and sand, without the logo and menu) as an SVG of that size, framed
+    /// as the window shows it (the project page's background).</summary>
+    public bool SaveTitleSvg(Stream svg, int width, int height)
+    {
+        if (GetLevel(TitleLevel) is not { } title) return false;
+        var ui = title.ChildByName("ui");
+        bool shown = ui?.Visible ?? false;
+        if (ui != null) ui.Visible = false;
+        var (scale, ox, oy) = Viewport(width, height);
+        using (var canvas = SKSvgCanvas.Create(SKRect.Create(width, height), svg))
+        {
+            canvas.Clear(SKColors.Black);
+            var matrix = SKMatrix.CreateScaleTranslation(scale, scale, ox, oy);
+            new Mnog.Engine.Render.RenderContext(canvas, matrix, this, 1) { ClipMasks = true }
+                .DrawContainer(title.Children, title.Matrix, CxForm.Identity);
+        }
+        if (ui != null) ui.Visible = shown;
+        return true;
+    }
+
+    /// <summary>
+    /// The title screen's scenery in layers, for the project page to animate its water: back.svg (everything beneath the
+    /// water), front.svg (the pods and sand over it, transparent elsewhere), and each frame of the water's loops alone
+    /// (sparkle-NNN, foam-NNN, waves-NNN.svg, transparent). Into <paramref name="dir"/>, at that size.
+    /// </summary>
+    public bool SaveTitleLayers(string dir, int width, int height)
+    {
+        if (GetLevel(TitleLevel) is not { } title || title.ChildByName("holder") is not MovieClip holder ||
+            holder.ChildByName("Middle-Ground") is not MovieClip middle) return false;
+        // The beach's (I.1-S) water clips, by their symbols: the sparkle, the foam lines and the waves on the shore.
+        var loops = new (string Name, int Symbol)[] { ("sparkle", 25), ("foam", 32), ("waves", 37) };
+        var water = middle.Children.Values.OfType<MovieClip>().Where(c => loops.Any(l => l.Symbol == c.Asset?.Id)).ToList();
+        if (water.Count == 0) return false;
+        int top = water.Max(c => c.Depth);
+        var all = title.Children.Values.Concat(holder.Children.Values).Concat(middle.Children.Values).ToList();
+        var was = all.ToDictionary(o => o, o => o.Visible);
+        var (scale, ox, oy) = Viewport(width, height);
+        void Save(string name, bool opaque, Func<DisplayObject, bool> shown)
+        {
+            foreach (var o in all) o.Visible = was[o] && shown(o);
+            // (The containers on the way to what's shown stay shown.)
+            holder.Visible = middle.Visible = true;
+            if (title.ChildByName("ui") is { } ui) ui.Visible = false;
+            using var file = File.Create(Path.Combine(dir, name + ".svg"));
+            using var canvas = SKSvgCanvas.Create(SKRect.Create(width, height), file);
+            if (opaque) canvas.Clear(SKColors.Black);
+            var matrix = SKMatrix.CreateScaleTranslation(scale, scale, ox, oy);
+            new Mnog.Engine.Render.RenderContext(canvas, matrix, this, 1) { ClipMasks = true, SkyGradients = false }
+                .DrawContainer(title.Children, title.Matrix, CxForm.Identity);
+        }
+        bool InMiddle(DisplayObject o) => o.Parent == middle;
+        Save("back", true, o => !InMiddle(o) ? o.Parent == holder && o.Name == "Back-Ground" || o == holder : o.Depth < top && !water.Contains(o));
+        Save("front", false, o => !InMiddle(o) ? o.Name != "Back-Ground" : o.Depth > top);
+        var at = water.ToDictionary(c => c, c => c.CurrentFrame);
+        foreach (var (name, symbol) in loops)
+        {
+            var clips = water.Where(c => c.Asset?.Id == symbol).ToList();
+            if (clips.Count == 0) continue;
+            for (int f = 1; f <= clips[0].FrameCount; f++)
+            {
+                foreach (var c in clips) c.GotoFrame(f);
+                Save($"{name}-{f:000}", false, o => !InMiddle(o) ? o == holder : clips.Contains(o));
+            }
+        }
+        foreach (var (c, f) in at) c.GotoFrame(f);
+        foreach (var (o, v) in was) o.Visible = v;
+        return true;
+    }
+
     /// <summary>A message from another thread (the save dialog's), shown on the next tick.</summary>
     volatile string? _pendingMessage;
 

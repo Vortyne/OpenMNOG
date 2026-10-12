@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        The game's sounds are being replaced with high-quality originals. The ones still needing a source are on the [sound list](https://vortyne.github.io/OpenMNOG/), where you can listen to each.
+        The game's sounds are being replaced with high-quality originals. The ones still needing a source are on the [sound list](https://vortyne.github.io/OpenMNOG/sounds/), where you can listen to each.
   - type: input
     id: sound
     attributes:

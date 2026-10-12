@@ -1,11 +1,13 @@
-name: Sound list page
+name: Project page
 
-# Publishes site/ (the sound list) to GitHub Pages, with the game's own sound files it lists (copied as they are, by
-# their paths in site/sounds.json). Repository Settings > Pages > Source must be "GitHub Actions".
+# Publishes site/ to GitHub Pages: the download page (its button follows version_number.txt; its sound is the HQ
+# Amb_Waves) and the sound list (sounds/), with the game's own sound files it lists (copied as they are, by their
+# paths in site/sounds/sounds.json).
+# Repository Settings > Pages > Source must be "GitHub Actions".
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/sound-list.yml"]
+    paths: ["site/**", "version_number.txt", "game/audio/hq/Amb_Waves.wav", ".github/workflows/site.yml"]
   workflow_dispatch:
 
 permissions:
@@ -25,13 +27,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Assemble the page and its sounds
+      - name: Assemble the pages and the sounds
         run: |
           mkdir -p _site
-          cp site/index.html site/sounds.json _site/
+          cp -r site/. _site/
+          cp version_number.txt _site/
+          # (The download page's waves, played when its sound is turned on.)
+          mkdir -p _site/game/audio/hq
+          cp game/audio/hq/Amb_Waves.wav _site/game/audio/hq/
           python3 - <<'EOF'
           import json, os, shutil
-          for s in json.load(open('site/sounds.json', encoding='utf-8'))['sounds']:
+          for s in json.load(open('site/sounds/sounds.json', encoding='utf-8'))['sounds']:
               dst = os.path.join('_site', s['file'])
               os.makedirs(os.path.dirname(dst), exist_ok=True)
               shutil.copyfile(s['file'], dst)

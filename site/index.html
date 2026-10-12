@@ -3,144 +3,187 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OpenMNOG Sound List</title>
-<meta name="description" content="Listen to the Mata Nui Online Game's sounds that still need a high-quality source, and report the ones you recognise.">
+<title>OpenMNOG</title>
+<meta name="description" content="Download OpenMNOG, a native, Flash-free version of the Mata Nui Online Game with widescreen, smooth motion and other enhancements.">
+<link rel="preload" href="back.svg" as="image" type="image/svg+xml">
 <style>
 :root {
-  --bg: #f4f2ec; --card: #ffffff; --fg: #1d1c19; --muted: #6a675f; --line: #e1ddd2;
-  --accent: #b5651d; --accent-fg: #ffffff; --lead: #2f7d4f; --chip: #ece8dd;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #15140f; --card: #1f1d17; --fg: #ece8df; --muted: #a39e92; --line: #343128;
-    --accent: #e08a3c; --accent-fg: #1a1208; --lead: #58b07c; --chip: #2a2820;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #15140f; --card: #1f1d17; --fg: #ece8df; --muted: #a39e92; --line: #343128;
-  --accent: #e08a3c; --accent-fg: #1a1208; --lead: #58b07c; --chip: #2a2820;
+  --sand-shadow: rgba(40, 28, 10, .55);
+  --button: #3a3a3a; --button-hover: #474747; --button-edge: #9a9a9a;
+  --orange: #ff9900; --ink: #fff;
+  /* One stage unit: a hundredth of the scenery's width, as it's scaled to cover the window (16:9). */
+  --u: max(1vw, 1.7778vh);
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; }
-main { max-width: 980px; margin: 0 auto; padding: 28px 16px 64px; }
-h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
-.lede { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
-.lede a { color: var(--accent); }
-.bar { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 10px 0 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid var(--line); }
-input[type=search] { flex: 1 1 240px; min-width: 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg); font: inherit; }
-.chip { border: 1px solid var(--line); background: var(--chip); color: var(--fg); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
-.count { color: var(--muted); font-size: 13px; margin-left: auto; }
-ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
-li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: center; }
-.name { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
-.meta { color: var(--muted); font-size: 13px; }
-.tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--chip); color: var(--muted); margin-left: 6px; vertical-align: 1px; }
-.tag.lead { background: transparent; border: 1px solid var(--lead); color: var(--lead); }
-.plays { grid-column: 1 / -1; color: var(--muted); font-size: 13px; }
-audio { width: 260px; max-width: 100%; height: 34px; }
-.actions { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
-a.report { color: var(--accent); font-size: 13px; text-decoration: none; white-space: nowrap; }
-a.report:hover { text-decoration: underline; }
-.empty { color: var(--muted); padding: 24px 0; }
-@media (max-width: 620px) {
-  li { grid-template-columns: 1fr; }
-  .actions { justify-content: flex-start; }
-  audio { width: 100%; }
+html, body { margin: 0; height: 100%; }
+body { background: #c9b48a; color: var(--ink); font: 15px/1.4 system-ui, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+
+/* The title screen's beach, cropped to fill the window; everything on it is placed in its own proportions, so the
+   button stays under the pods whatever the window's shape. */
+.stage { position: fixed; left: 50%; top: 50%; width: calc(100 * var(--u)); aspect-ratio: 16 / 9; transform: translate(-50%, -50%); }
+/* The scenery in three layers: the beach, its water (animated), then the pods and sand over the water. */
+.scene, .scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+h1 { position: absolute; left: 52%; top: 11%; transform: translateX(-50%); margin: 0; width: min(50 * var(--u), 92vw); }
+h1 img { display: block; width: 100%; height: auto; filter: drop-shadow(0 calc(.15 * var(--u)) calc(.3 * var(--u)) rgba(255, 255, 255, .5)); }
+
+.get { position: absolute; left: 52%; top: 68%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(40 * var(--u), 92vw); }
+a.download {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;
+  min-height: 64px; padding: 12px 28px; text-decoration: none; text-align: center;
+  background: var(--button); border: 3px solid var(--button-edge); color: var(--orange);
+  font-size: clamp(20px, 2 * var(--u), 34px); font-weight: 700; letter-spacing: .02em;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, .35); transition: background .12s;
 }
+a.download:hover, a.download:focus-visible { background: var(--button-hover); color: var(--ink); }
+a.download:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+a.download small { font-size: .5em; font-weight: 500; color: #d8d8d8; letter-spacing: 0; }
+.note { margin: 0; text-align: center; font-size: 14px; text-shadow: 0 1px 3px var(--sand-shadow); }
+nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: 14px; }
+nav a { color: var(--ink); text-decoration: none; text-shadow: 0 1px 3px var(--sand-shadow); white-space: nowrap; }
+nav a:hover { text-decoration: underline; }
+
+/* The sound switch: off at first; turned on, the waves (the game's HQ Amb_Waves) loop. */
+button.sound {
+  position: fixed; top: 12px; right: 12px; z-index: 2; padding: 8px; border: 0; background: none;
+  color: var(--ink); cursor: pointer; opacity: .85; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .45));
+}
+button.sound:hover, button.sound:focus-visible { opacity: 1; }
+button.sound:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+button.sound.loading { opacity: .5; }
+button.sound svg { display: block; width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+button.sound[aria-pressed="false"] .waves, button.sound[aria-pressed="true"] .mute { display: none; }
+
+@media (max-width: 620px) {
+  h1 { left: 50%; top: 14%; }
+  .get { left: 50%; top: auto; bottom: 6vh; }
+}
+@media (prefers-reduced-motion: reduce) { a.download { transition: none; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Sound list</h1>
-  <p class="lede">These are the <a href="https://github.com/Vortyne/OpenMNOG">OpenMNOG</a> sounds that still play from the game's
-    original low-quality files. Most came from commercial sound libraries. If you recognise one, say which library, CD and track it
-    comes from, and it can be replaced with the high-quality original. Each sound's <b>Report</b> link opens a form on GitHub.
-    (Some browsers, like Safari, may not play these Ogg files; use another browser if so.)</p>
-  <div class="bar">
-    <input type="search" id="q" placeholder="Search by name or where it plays" aria-label="Search sounds">
-    <button class="chip" data-kind="" aria-pressed="true">All</button>
-    <button class="chip" data-kind="effect" aria-pressed="false">Effects</button>
-    <button class="chip" data-kind="ambience" aria-pressed="false">Ambience</button>
-    <button class="chip" data-kind="music" aria-pressed="false">Music</button>
-    <span class="count" id="count"></span>
+<button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Sound" title="Sound off">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="waves" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="mute" d="m16 9 6 6m0-6-6 6"/></svg>
+</button>
+<div class="stage">
+  <img class="scene" src="back.svg" alt="">
+  <div class="scene" id="water"></div>
+  <img class="scene" src="front.svg" alt="">
+  <h1><img src="wordmark.svg" alt="OpenMNOG"></h1>
+  <div class="get">
+    <a class="download" id="download" href="https://github.com/Vortyne/OpenMNOG/releases/latest">
+      <span id="label">Download</span>
+      <small id="detail">Latest release</small>
+    </a>
+    <p class="note" id="note" hidden></p>
+    <nav>
+      <a href="https://github.com/Vortyne/OpenMNOG/releases" id="all">Other versions</a>
+      <a href="sounds/">Sound list</a>
+      <a href="https://github.com/Vortyne/OpenMNOG">Source code</a>
+      <a href="https://github.com/Vortyne/OpenMNOG/issues/new?template=bug_report.yml">Report a bug</a>
+    </nav>
   </div>
-  <ul id="list"></ul>
-  <p class="empty" id="empty" hidden>No sounds match.</p>
-</main>
+</div>
 <script>
 const REPO = 'https://github.com/Vortyne/OpenMNOG';
-// The sound files sit beside the page once published; opened from the repository (site/), they're one folder up.
-const BASE = location.pathname.includes('/site/') ? '../' : '';
-let sounds = [], kind = '', query = '';
+// Each system's download in a release: OpenMNOG-v{version}{suffix}, from the release tagged v{version}.
+// (ready: false: none made for it yet; its visitors are offered the Windows one.)
+const BUILDS = {
+  windows: { name: 'Windows', detail: '64-bit', suffix: '-win64.zip', ready: true },
+  macos:   { name: 'macOS',   detail: '',       suffix: '-macos.zip', ready: false },
+  linux:   { name: 'Linux',   detail: '64-bit', suffix: '-linux64.tar.gz', ready: false },
+};
 
-function report(s) {
-  const p = new URLSearchParams({ template: 'sound_found.yml', title: '[Sound]: ' + s.name, sound: s.name });
-  return `${REPO}/issues/new?${p}`;
+function system() {
+  const ua = navigator.userAgent;
+  const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+  if (/Android|iPhone|iPad|iPod/i.test(ua) || (/Mac/.test(platform) && navigator.maxTouchPoints > 1)) return 'mobile';
+  if (/Win/i.test(platform) || /Windows/.test(ua)) return 'windows';
+  if (/Mac/i.test(platform) || /Mac OS X/.test(ua)) return 'macos';
+  if (/Linux|X11|CrOS/i.test(platform + ua)) return 'linux';
+  return 'unknown';
 }
 
-function render() {
-  const list = document.getElementById('list');
-  const q = query.trim().toLowerCase();
-  const shown = sounds.filter(s => (!kind || s.kind === kind) &&
-    (!q || s.name.toLowerCase().includes(q) || s.plays.some(p => p.toLowerCase().includes(q))));
-  list.replaceChildren(...shown.map(s => {
-    const li = document.createElement('li');
-    const info = document.createElement('div');
-    const name = document.createElement('span');
-    name.className = 'name';
-    name.textContent = s.name;
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = s.kind;
-    info.append(name, tag);
-    if (s.lead) {
-      const lead = document.createElement('span');
-      lead.className = 'tag lead';
-      lead.textContent = 'a possible source is known';
-      info.append(lead);
+function show(version) {
+  const os = system();
+  const build = BUILDS[os] && BUILDS[os].ready ? BUILDS[os] : BUILDS.windows;
+  const tag = 'v' + version;
+  const file = `OpenMNOG-${tag}${build.suffix}`;
+  const link = document.getElementById('download');
+  link.href = `${REPO}/releases/download/${tag}/${file}`;
+  document.getElementById('label').textContent = `Download for ${build.name}`;
+  document.getElementById('detail').textContent = [tag, build.detail].filter(Boolean).join(' · ');
+  const note = document.getElementById('note');
+  if (os === 'mobile') note.textContent = 'OpenMNOG runs on a computer. Visit this page on one to play.';
+  else if (BUILDS[os] && !BUILDS[os].ready) note.textContent = `There's no ${BUILDS[os].name} version yet.`;
+  else if (os === 'unknown') note.textContent = "Your system couldn't be told; this is the Windows version.";
+  note.hidden = !note.textContent;
+}
+
+// The water: each of its loops (water.svg: the sparkle, foam and waves, a group of frames each) played at the
+// game's 18 frames a second, all from their first frame together as in the game. Held still for reduced motion.
+fetch('water.svg').then(r => r.ok ? r.text() : Promise.reject()).then(text => {
+  const box = document.getElementById('water');
+  box.innerHTML = text;
+  const loops = ['sparkle', 'foam', 'waves'].map(id => ({ frames: [...box.querySelector('#' + id).children], at: -1 }));
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const start = performance.now();
+  function show(frame) {
+    for (const loop of loops) {
+      const i = frame % loop.frames.length;
+      if (i === loop.at) continue;
+      if (loop.at >= 0) loop.frames[loop.at].setAttribute('display', 'none');
+      loop.frames[i].removeAttribute('display');
+      loop.at = i;
     }
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    meta.textContent = `${s.seconds.toFixed(2)} s`;
-    info.append(meta);
-    const actions = document.createElement('div');
-    actions.className = 'actions';
-    const audio = document.createElement('audio');
-    audio.controls = true;
-    audio.preload = 'none';
-    audio.src = BASE + s.file;
-    const a = document.createElement('a');
-    a.className = 'report';
-    a.href = report(s);
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.textContent = 'Report';
-    actions.append(audio, a);
-    const plays = document.createElement('div');
-    plays.className = 'plays';
-    plays.textContent = 'Plays in: ' + s.plays.join('; ');
-    li.append(info, actions, plays);
-    return li;
-  }));
-  document.getElementById('count').textContent = `${shown.length} of ${sounds.length}`;
-  document.getElementById('empty').hidden = shown.length > 0;
-}
+  }
+  function tick(now) {
+    show(still.matches ? 59 : Math.floor((now - start) * 18 / 1000));
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}).catch(() => {});
 
-// One sound at a time: starting one pauses the rest.
-document.addEventListener('play', e => {
-  for (const a of document.querySelectorAll('audio')) if (a !== e.target) a.pause();
-}, true);
-document.getElementById('q').addEventListener('input', e => { query = e.target.value; render(); });
-for (const chip of document.querySelectorAll('.chip')) {
-  chip.addEventListener('click', () => {
-    kind = chip.dataset.kind;
-    for (const c of document.querySelectorAll('.chip')) c.setAttribute('aria-pressed', String(c === chip));
-    render();
-  });
+// The sound switch: the waves load the first time it's turned on (a large file), then loop without a gap.
+const WAVES = 'game/audio/hq/Amb_Waves.wav';
+let audio = null, waves = null, playing = null, soundOn = false;
+function soundState(text) {
+  const button = document.getElementById('sound');
+  button.setAttribute('aria-pressed', String(soundOn));
+  button.classList.toggle('loading', text === 'Loading…');
+  button.title = text || (soundOn ? 'Sound on' : 'Sound off');
 }
-fetch('sounds.json').then(r => r.json()).then(d => { sounds = d.sounds; render(); })
-  .catch(() => { document.getElementById('empty').hidden = false; document.getElementById('empty').textContent = 'The sound list could not be loaded.'; });
+document.getElementById('sound').addEventListener('click', async () => {
+  soundOn = !soundOn;
+  soundState();
+  if (!soundOn) { if (playing) { playing.stop(); playing = null; } return; }
+  try {
+    audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+    if (audio.state === 'suspended') await audio.resume();
+    if (!waves) {
+      soundState('Loading…');
+      waves = fetch(WAVES).then(r => r.ok ? r.arrayBuffer() : Promise.reject()).then(b => audio.decodeAudioData(b));
+    }
+    const buffer = await waves;
+    if (!soundOn || playing) { soundState(); return; }
+    playing = audio.createBufferSource();
+    playing.buffer = buffer;
+    playing.loop = true;
+    playing.connect(audio.destination);
+    playing.start();
+    soundState();
+  } catch {
+    waves = null;
+    soundOn = false;
+    soundState("Sound couldn't load");
+  }
+});
+
+// The version to offer: version_number.txt, published beside this page. Without it, the latest release's page.
+fetch('version_number.txt', { cache: 'no-cache' })
+  .then(r => r.ok ? r.text() : Promise.reject())
+  .then(v => { v = v.trim(); if (/^[\w.-]+$/.test(v)) show(v); })
+  .catch(() => {});
 </script>
 </body>
 </html>

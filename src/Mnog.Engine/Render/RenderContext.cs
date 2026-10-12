@@ -232,6 +232,9 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
 
     /// <summary>Masks drawn as clip paths, not layers (SVG output: see DrawContainer).</summary>
     public bool ClipMasks;
+
+    /// <summary>With ClipMasks: the sky photos drawn as a gradient of their colours (false: as the photos).</summary>
+    public bool SkyGradients = true;
     SKShader? _svgShader;
 
     /// <summary>A mask's outline on the canvas (its shapes, as DrawMaskShapes fills them), added to <paramref name="into"/>.</summary>
@@ -335,7 +338,7 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
                 }
                 ConfigurePaint(part, s.Movie, cx, world);
                 long t0 = DrawProfile != null ? System.Diagnostics.Stopwatch.GetTimestamp() : 0;
-                if (ClipMasks && part.Fill is { Type: "bitmap", Bitmap: int skyId } skyFill &&
+                if (ClipMasks && SkyGradients && part.Fill is { Type: "bitmap", Bitmap: int skyId } skyFill &&
                     (s.Movie.Name.StartsWith("sky", StringComparison.OrdinalIgnoreCase) || s.Movie.Symbol(skyId) is ImageAsset { Image: { Width: 1156, Height: 302 } }) &&
                     SkyGradient(skyFill, s.Movie, cx) is { } sky)
                 {
