@@ -26,7 +26,8 @@ stale=$(find src/Mnog.Engine -name '*.cs' -not -path '*/obj/*' -newer "$DLL" | h
 
 [ -d "$SAVE" ] || fail "real save folder not found: $SAVE"
 
-MNOG_SAVEDIR="$SAVE" dotnet "$DLL" game > "$LOG" 2>&1 &
+# (Extra arguments go to the game, e.g. --autopilot "scene Episode_9-1; wait 40; goto holder 2205 play" to open it there.)
+MNOG_SAVEDIR="$SAVE" dotnet "$DLL" game "$@" > "$LOG" 2>&1 &
 for _ in $(seq 1 20); do grep -q "startup:" "$LOG" 2>/dev/null && break; sleep 0.5; done
 first=$(head -1 "$LOG")
 case "$first" in

@@ -155,6 +155,7 @@ public sealed class Player
         Storage = new SharedObjectStore(Environment.GetEnvironmentVariable("MNOG_SAVEDIR") is { Length: > 0 } saveDir ? saveDir : Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MataNuiOnlineGame", "sharedobjects"));
         Audio.LoadGroups(Path.Combine(GameDir, "sound-groups.json"));
+        Audio.Hq = new Mnog.Engine.Audio.HqSounds(GameDir);
         Log($"save: {Path.GetFullPath(Storage.Dir)}");
     }
 
@@ -246,7 +247,12 @@ public sealed class Player
                     var movie = MovieAsset.Load(name, movieDir);
                     foreach (var symbol in movie.Symbols.Values)
                         if (symbol is ImageAsset image) image.Preload(vector);
-                        else if (symbol is SoundAsset sound) _ = sound.Samples;
+                        else if (symbol is SoundAsset sound)
+                        {
+                            _ = sound.Samples;
+                            // (Its high-quality replacement too, while that's on, so it doesn't load as it plays.)
+                            if (Audio.UseHq) _ = Audio.Hq?.Asset(sound, ready: true)?.Samples;
+                        }
                     return movie;
                 }));
             }
@@ -328,7 +334,9 @@ public sealed class Player
     /// <summary>The live backdrop replacing a movie's image (see LiveBackdrop), with its scene copy made; null if none.</summary>
     public LiveBackdrop? Backdrop(MovieAsset movie, int image)
     {
-        var b = Backdrops(movie).FirstOrDefault(x => x.Image == image);
+        var level1 = GetLevel(1);
+        var b = Backdrops(movie).FirstOrDefault(x => x.Image == image &&
+            x.If.All(c => (level1 != null ? Vm.GetVariableAt(level1, c.Key).ToStr(6) : "") == c.Value));
         if (b == null) return null;
         b.Root ??= b.Build(this);
         if (b.Root == null) return null;
@@ -456,6 +464,21 @@ public sealed class Player
         Audio.Volume = Volume("volmaster") / 100f;
         Audio.GroupVolume[Mnog.Engine.Audio.AudioMixer.Music] = Volume("volmusic") / 100f;
         Audio.GroupVolume[Mnog.Engine.Audio.AudioMixer.Sfx] = Volume("volsfx") / 100f;
+        Audio.UseHq = HqAudio;
+        // (High quality on: the long songs start decoding now, so they're ready by the time they're needed.)
+        if (Audio.UseHq && Audio.Hq != null && GetMovie("player") is { } owner) Audio.Hq.WarmUp(owner);
+    }
+
+    /// <summary>The Audio menu's High quality option (saved as "hqaudio", off by default): the high-quality
+    /// replacements in game/audio/hq play instead of the game's own sounds (from the next sound started).</summary>
+    public bool HqAudio => SaveValue("hqaudio") == "1";
+
+    public void SetHqAudio(bool on)
+    {
+        if (SaveData() is not { } data) return;
+        data.SetOwn("hqaudio", Value.From(on ? "1" : "0"));
+        Storage.Flush("mata-nui-online-game", Vm);
+        ApplyVolumes();
     }
 
     bool _volumesApplied;

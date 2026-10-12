@@ -5,7 +5,8 @@ namespace Mnog.Engine;
 /// <summary>
 /// The Audio settings (opened from the settings dialog's Audio button, the "audiomenu" fscommand): volume sliders
 /// for everything, the music and the other sounds (ambience and effects). Each is saved in
-/// the game's save data as a percentage (see Player.Volumes); the back arrow returns to the settings dialog.
+/// the game's save data as a percentage (see Player.Volumes); below them, the High quality option (Player.HqAudio:
+/// high-quality replacements for the game's sounds, where found). The back arrow returns to the settings dialog.
 /// </summary>
 public sealed class AudioMenu(Player player)
 {
@@ -16,10 +17,12 @@ public sealed class AudioMenu(Player player)
     int? _dragging;
 
     // Layout in stage coordinates, centred on the stage like the settings dialog; the settings menus' look.
-    const float W = 360, RowH = 40, Top = 213 - (52 + RowH * 3 + 16) / 2, H = 52 + RowH * 3 + 16;
+    const float W = 360, RowH = 40, Top = 213 - (52 + RowH * 4 + 16) / 2, H = 52 + RowH * 4 + 16;
     static readonly SKRect Panel = new(385 - W / 2, Top, 385 + W / 2, Top + H);
     static readonly SKRect CloseBox = new(Panel.Right - 30, Top + 10, Panel.Right - 8, Top + 32);
     static readonly SKRect BackBox = new(Panel.Left + 8, Top + 10, Panel.Left + 30, Top + 32);
+    // The High quality option: a button across the row below the sliders, as the settings dialogs' options are.
+    static readonly SKRect HqBox = new(Panel.Left + 10, Top + 52 + RowH * 3 + 6, Panel.Right - 10, Top + 52 + RowH * 3 + 36);
     static SKRect Track(int i) => new(Panel.Left + 110, Top + 52 + RowH * i + 14, Panel.Right - 78, Top + 52 + RowH * i + 22);
     static readonly SKColor Orange = new(0xFF, 0x99, 0x00), Grey = new(0x99, 0x99, 0x99), Back = new(0x33, 0x33, 0x33, 0xF0);
 
@@ -34,6 +37,7 @@ public sealed class AudioMenu(Player player)
         _mouse = p;
         if (CloseBox.Contains(p) || !Panel.Contains(p)) { player.CloseAudioMenu(false); return; }
         if (BackBox.Contains(p)) { player.CloseAudioMenu(true); return; }
+        if (HqBox.Contains(p)) { player.SetHqAudio(!player.HqAudio); return; }
         for (int i = 0; i < Rows.Length; i++)
         {
             var t = Track(i);
@@ -100,5 +104,17 @@ public sealed class AudioMenu(Player player)
             string pct = $"{v}%";
             canvas.DrawText(pct, Panel.Right - 16 - label.MeasureText(pct), t.MidY + 5, label, text);
         }
+        bool hqLit = HqBox.Contains(_mouse);
+        fill.Color = new SKColor(0x33, 0x33, 0x33);
+        canvas.DrawRect(HqBox, fill);
+        stroke.Color = Grey;
+        canvas.DrawRect(HqBox, stroke);
+        string hq = $"High quality: {(player.HqAudio ? "On" : "Off")}";
+        text.Color = hqLit ? SKColors.White : Orange;
+        canvas.DrawText(hq, HqBox.MidX - label.MeasureText(hq) / 2, HqBox.MidY + 5, label, text);
+        if (hqLit)
+            MenuGlyphs.DrawHint(canvas, Panel,
+                "On: sounds and music play from high-quality originals, where they've been found.\nOff: the game's original sounds.",
+                player.MenuTypeface, player.DialogFont(13.5f), player.StageHeight);
     }
 }

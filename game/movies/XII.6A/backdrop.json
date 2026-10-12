@@ -1,183 +1,331 @@
 {
- "image": 1,
- "scene": "XII.6-E",
- "frame": 3,
- "vertical": true,
- "layers": {
-  "Back-Ground": 131.5,
-  "Middle-Ground": 26.5,
-  "Fore-Ground": -900.8
- },
- "hide": [
-  "Fore-Ground/Tohunga/Prospector",
-  "Fore-Ground/Tohunga/ProspectorBubble",
-  "Fore-Ground/Tohunga/talktobutton",
-  "Buttons"
- ],
- "zoom": 1.6,
- "x": 32.5,
- "y": 164.7,
- "blur": 3.0,
- "wide": true,
- "glows": [
+ "backdrops": [
   {
-   "x": 405,
-   "y": 64,
-   "r": 12
+   "image": 1,
+   "scene": "XII.6-E",
+   "frame": 3,
+   "vertical": true,
+   "layers": {
+    "Back-Ground": 131.5,
+    "Middle-Ground": 26.5,
+    "Fore-Ground": -900.8
+   },
+   "hide": [
+    "Fore-Ground/Tohunga/Prospector",
+    "Fore-Ground/Tohunga/ProspectorBubble",
+    "Fore-Ground/Tohunga/talktobutton",
+    "Buttons"
+   ],
+   "zoom": 1.6,
+   "x": 32.5,
+   "y": 164.7,
+   "blur": 3.0,
+   "wide": true,
+   "glows": [
+    {
+     "x": 405,
+     "y": 64,
+     "r": 12
+    },
+    {
+     "x": 173,
+     "y": 137,
+     "r": 12
+    },
+    {
+     "x": 761,
+     "y": 138,
+     "r": 12
+    },
+    {
+     "x": 392,
+     "y": 182,
+     "r": 12
+    },
+    {
+     "x": 177,
+     "y": 364,
+     "r": 12
+    },
+    {
+     "x": 758,
+     "y": 372,
+     "r": 12
+    },
+    {
+     "x": 0,
+     "y": 45,
+     "r": 21
+    },
+    {
+     "x": 8,
+     "y": 414,
+     "r": 23
+    }
+   ],
+   "note": "XII.6A: its backdrop is XII.6-E's telescope on its rock (placed by eye; the painting's rock differs), without the Astrologer; with the painting's distant lightstone glows added. (Once the lava is fixed: before that, the next one, without the glows.)",
+   "shapes": [
+    {
+     "points": [
+      [
+       -400,
+       0
+      ],
+      [
+       200,
+       0
+      ],
+      [
+       200,
+       164
+      ],
+      [
+       -400,
+       -73
+      ]
+     ],
+     "from": [
+      0,
+      10
+     ],
+     "to": [
+      150,
+      160
+     ],
+     "color": "#1A0D02"
+    },
+    {
+     "points": [
+      [
+       -400,
+       -73
+      ],
+      [
+       200,
+       164
+      ],
+      [
+       200,
+       223
+      ],
+      [
+       -400,
+       175
+      ]
+     ],
+     "from": [
+      0,
+      95
+     ],
+     "to": [
+      150,
+      222
+     ],
+     "color": "#361C03"
+    },
+    {
+     "points": [
+      [
+       -400,
+       175
+      ],
+      [
+       200,
+       223
+      ],
+      [
+       200,
+       290
+      ],
+      [
+       -400,
+       381
+      ]
+     ],
+     "from": [
+      0,
+      217
+     ],
+     "to": [
+      150,
+      291
+     ],
+     "color": "#2F1803"
+    },
+    {
+     "points": [
+      [
+       -400,
+       381
+      ],
+      [
+       200,
+       290
+      ],
+      [
+       200,
+       335
+      ],
+      [
+       -400,
+       590
+      ]
+     ],
+     "from": [
+      0,
+      330
+     ],
+     "to": [
+      150,
+      339
+     ],
+     "color": "#341A03"
+    }
+   ],
+   "if": {
+    "OnuKoroLava": "1"
+   }
   },
   {
-   "x": 173,
-   "y": 137,
-   "r": 12
-  },
-  {
-   "x": 761,
-   "y": 138,
-   "r": 12
-  },
-  {
-   "x": 392,
-   "y": 182,
-   "r": 12
-  },
-  {
-   "x": 177,
-   "y": 364,
-   "r": 12
-  },
-  {
-   "x": 758,
-   "y": 372,
-   "r": 12
-  },
-  {
-   "x": 0,
-   "y": 45,
-   "r": 21
-  },
-  {
-   "x": 8,
-   "y": 414,
-   "r": 23
-  }
- ],
- "note": "XII.6A: its backdrop is XII.6-E's telescope on its rock (placed by eye; the painting's rock differs), without the Astrologer; with the painting's distant lightstone glows added.",
- "shapes": [
-  {
-   "points": [
-    [
-     -400,
-     0
-    ],
-    [
-     200,
-     0
-    ],
-    [
-     200,
-     164
-    ],
-    [
-     -400,
-     -73
-    ]
+   "image": 1,
+   "scene": "XII.6-E",
+   "frame": 3,
+   "vertical": true,
+   "layers": {
+    "Back-Ground": 131.5,
+    "Middle-Ground": 26.5,
+    "Fore-Ground": -900.8
+   },
+   "hide": [
+    "Fore-Ground/Tohunga/Prospector",
+    "Fore-Ground/Tohunga/ProspectorBubble",
+    "Fore-Ground/Tohunga/talktobutton",
+    "Buttons"
    ],
-   "from": [
-    0,
-    10
-   ],
-   "to": [
-    150,
-    160
-   ],
-   "color": "#1A0D02"
-  },
-  {
-   "points": [
-    [
-     -400,
-     -73
-    ],
-    [
-     200,
-     164
-    ],
-    [
-     200,
-     223
-    ],
-    [
-     -400,
-     175
-    ]
-   ],
-   "from": [
-    0,
-    95
-   ],
-   "to": [
-    150,
-    222
-   ],
-   "color": "#361C03"
-  },
-  {
-   "points": [
-    [
-     -400,
-     175
-    ],
-    [
-     200,
-     223
-    ],
-    [
-     200,
-     290
-    ],
-    [
-     -400,
-     381
-    ]
-   ],
-   "from": [
-    0,
-    217
-   ],
-   "to": [
-    150,
-    291
-   ],
-   "color": "#2F1803"
-  },
-  {
-   "points": [
-    [
-     -400,
-     381
-    ],
-    [
-     200,
-     290
-    ],
-    [
-     200,
-     335
-    ],
-    [
-     -400,
-     590
-    ]
-   ],
-   "from": [
-    0,
-    330
-   ],
-   "to": [
-    150,
-    339
-   ],
-   "color": "#341A03"
+   "zoom": 1.6,
+   "x": 32.5,
+   "y": 164.7,
+   "blur": 3.0,
+   "wide": true,
+   "note": "XII.6A before Onu-Koro's lava is fixed (no lightstones yet): as the one above, without the lightstone glows.",
+   "shapes": [
+    {
+     "points": [
+      [
+       -400,
+       0
+      ],
+      [
+       200,
+       0
+      ],
+      [
+       200,
+       164
+      ],
+      [
+       -400,
+       -73
+      ]
+     ],
+     "from": [
+      0,
+      10
+     ],
+     "to": [
+      150,
+      160
+     ],
+     "color": "#1A0D02"
+    },
+    {
+     "points": [
+      [
+       -400,
+       -73
+      ],
+      [
+       200,
+       164
+      ],
+      [
+       200,
+       223
+      ],
+      [
+       -400,
+       175
+      ]
+     ],
+     "from": [
+      0,
+      95
+     ],
+     "to": [
+      150,
+      222
+     ],
+     "color": "#361C03"
+    },
+    {
+     "points": [
+      [
+       -400,
+       175
+      ],
+      [
+       200,
+       223
+      ],
+      [
+       200,
+       290
+      ],
+      [
+       -400,
+       381
+      ]
+     ],
+     "from": [
+      0,
+      217
+     ],
+     "to": [
+      150,
+      291
+     ],
+     "color": "#2F1803"
+    },
+    {
+     "points": [
+      [
+       -400,
+       381
+      ],
+      [
+       200,
+       290
+      ],
+      [
+       200,
+       335
+      ],
+      [
+       -400,
+       590
+      ]
+     ],
+     "from": [
+      0,
+      330
+     ],
+     "to": [
+      150,
+      339
+     ],
+     "color": "#341A03"
+    }
+   ]
   }
  ]
 }

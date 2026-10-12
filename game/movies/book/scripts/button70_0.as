@@ -1,3 +1,2 @@
 #version 4
-DownloadMovieName = eval("TextSlot" add CurrentTextSlot) add ".zip";
-getURL(DownloadMovieName, "_self");
+// (OpenMNOG: this button downloaded the episode as a .zip from the original website, which is gone; it does nothing.)

@@ -1,0 +1,40 @@
+name: Sound effect found
+description: You know where one of the game's sounds comes from (a sound library, CD or recording).
+title: "[Sound]: "
+labels: ["sound effect"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The game's sounds are being replaced with high-quality originals. The ones still needing a source are on the [sound list](https://vortyne.github.io/OpenMNOG/), where you can listen to each.
+  - type: input
+    id: sound
+    attributes:
+      label: Which sound?
+      description: Its name from the sound list (e.g. `Episode_9-1_501`), or where it plays in the game.
+      placeholder: Episode_9-1_501
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Where does it come from?
+      description: The library, CD and track, and where in the track if it's longer; or a link to it.
+      placeholder: Sound Ideas Series 6000, CD 6039, track 29 "robot servo motor", about 4 seconds in
+    validations:
+      required: true
+  - type: dropdown
+    id: match
+    attributes:
+      label: How sure are you?
+      options:
+        - It's exactly this recording
+        - It's this recording, but the game changed it (sped up, reversed, cut, an effect added...)
+        - It sounds like it, not sure
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: How the game's version differs, other places it plays, an attached file...

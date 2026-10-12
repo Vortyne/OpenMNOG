@@ -2186,6 +2186,7 @@
     "frameCount": 226,
     "frames": [
       {
+        "scripts": ["scripts/frame1.as"],
         "ops": [
           {"place": 1, "id": 1, "matrix": [1, 0, 0, 1, -53.05, -29.55]},
           {"place": 3, "id": 2, "matrix": [0.96907, 0, 0, 0.907898, 386.1, 231.05]},

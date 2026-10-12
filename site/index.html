@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenMNOG Sound List</title>
+<meta name="description" content="Listen to the Mata Nui Online Game's sounds that still need a high-quality source, and report the ones you recognise.">
+<style>
+:root {
+  --bg: #f4f2ec; --card: #ffffff; --fg: #1d1c19; --muted: #6a675f; --line: #e1ddd2;
+  --accent: #b5651d; --accent-fg: #ffffff; --lead: #2f7d4f; --chip: #ece8dd;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15140f; --card: #1f1d17; --fg: #ece8df; --muted: #a39e92; --line: #343128;
+    --accent: #e08a3c; --accent-fg: #1a1208; --lead: #58b07c; --chip: #2a2820;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15140f; --card: #1f1d17; --fg: #ece8df; --muted: #a39e92; --line: #343128;
+  --accent: #e08a3c; --accent-fg: #1a1208; --lead: #58b07c; --chip: #2a2820;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 980px; margin: 0 auto; padding: 28px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+.lede { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.lede a { color: var(--accent); }
+.bar { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 10px 0 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-bottom: 1px solid var(--line); }
+input[type=search] { flex: 1 1 240px; min-width: 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg); font: inherit; }
+.chip { border: 1px solid var(--line); background: var(--chip); color: var(--fg); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.count { color: var(--muted); font-size: 13px; margin-left: auto; }
+ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: center; }
+.name { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.meta { color: var(--muted); font-size: 13px; }
+.tag { display: inline-block; font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--chip); color: var(--muted); margin-left: 6px; vertical-align: 1px; }
+.tag.lead { background: transparent; border: 1px solid var(--lead); color: var(--lead); }
+.plays { grid-column: 1 / -1; color: var(--muted); font-size: 13px; }
+audio { width: 260px; max-width: 100%; height: 34px; }
+.actions { display: flex; gap: 8px; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+a.report { color: var(--accent); font-size: 13px; text-decoration: none; white-space: nowrap; }
+a.report:hover { text-decoration: underline; }
+.empty { color: var(--muted); padding: 24px 0; }
+@media (max-width: 620px) {
+  li { grid-template-columns: 1fr; }
+  .actions { justify-content: flex-start; }
+  audio { width: 100%; }
+}
+</style>
+</head>
+<body>
+<main>
+  <h1>Sound list</h1>
+  <p class="lede">These are the <a href="https://github.com/Vortyne/OpenMNOG">OpenMNOG</a> sounds that still play from the game's
+    original low-quality files. Most came from commercial sound libraries. If you recognise one, say which library, CD and track it
+    comes from, and it can be replaced with the high-quality original. Each sound's <b>Report</b> link opens a form on GitHub.
+    (Some browsers, like Safari, may not play these Ogg files; use another browser if so.)</p>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search by name or where it plays" aria-label="Search sounds">
+    <button class="chip" data-kind="" aria-pressed="true">All</button>
+    <button class="chip" data-kind="effect" aria-pressed="false">Effects</button>
+    <button class="chip" data-kind="ambience" aria-pressed="false">Ambience</button>
+    <button class="chip" data-kind="music" aria-pressed="false">Music</button>
+    <span class="count" id="count"></span>
+  </div>
+  <ul id="list"></ul>
+  <p class="empty" id="empty" hidden>No sounds match.</p>
+</main>
+<script>
+const REPO = 'https://github.com/Vortyne/OpenMNOG';
+// The sound files sit beside the page once published; opened from the repository (site/), they're one folder up.
+const BASE = location.pathname.includes('/site/') ? '../' : '';
+let sounds = [], kind = '', query = '';
+
+function report(s) {
+  const p = new URLSearchParams({ template: 'sound_found.yml', title: '[Sound]: ' + s.name, sound: s.name });
+  return `${REPO}/issues/new?${p}`;
+}
+
+function render() {
+  const list = document.getElementById('list');
+  const q = query.trim().toLowerCase();
+  const shown = sounds.filter(s => (!kind || s.kind === kind) &&
+    (!q || s.name.toLowerCase().includes(q) || s.plays.some(p => p.toLowerCase().includes(q))));
+  list.replaceChildren(...shown.map(s => {
+    const li = document.createElement('li');
+    const info = document.createElement('div');
+    const name = document.createElement('span');
+    name.className = 'name';
+    name.textContent = s.name;
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.textContent = s.kind;
+    info.append(name, tag);
+    if (s.lead) {
+      const lead = document.createElement('span');
+      lead.className = 'tag lead';
+      lead.textContent = 'a possible source is known';
+      info.append(lead);
+    }
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = `${s.seconds.toFixed(2)} s`;
+    info.append(meta);
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.preload = 'none';
+    audio.src = BASE + s.file;
+    const a = document.createElement('a');
+    a.className = 'report';
+    a.href = report(s);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'Report';
+    actions.append(audio, a);
+    const plays = document.createElement('div');
+    plays.className = 'plays';
+    plays.textContent = 'Plays in: ' + s.plays.join('; ');
+    li.append(info, actions, plays);
+    return li;
+  }));
+  document.getElementById('count').textContent = `${shown.length} of ${sounds.length}`;
+  document.getElementById('empty').hidden = shown.length > 0;
+}
+
+// One sound at a time: starting one pauses the rest.
+document.addEventListener('play', e => {
+  for (const a of document.querySelectorAll('audio')) if (a !== e.target) a.pause();
+}, true);
+document.getElementById('q').addEventListener('input', e => { query = e.target.value; render(); });
+for (const chip of document.querySelectorAll('.chip')) {
+  chip.addEventListener('click', () => {
+    kind = chip.dataset.kind;
+    for (const c of document.querySelectorAll('.chip')) c.setAttribute('aria-pressed', String(c === chip));
+    render();
+  });
+}
+fetch('sounds.json').then(r => r.json()).then(d => { sounds = d.sounds; render(); })
+  .catch(() => { document.getElementById('empty').hidden = false; document.getElementById('empty').textContent = 'The sound list could not be loaded.'; });
+</script>
+</body>
+</html>

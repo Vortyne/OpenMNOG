@@ -16,6 +16,10 @@
   {
    "title": "New Controls",
    "page": "controls"
+  },
+  {
+   "title": "Report",
+   "page": "report"
   }
  ],
  "pages": {
@@ -771,6 +775,41 @@
     {
      "key": "V",
      "text": "Switch the vectorized pictures (the smooth, redrawn sand and backgrounds) on or off until the game is closed, to compare them with the original art."
+    }
+   ]
+  },
+  "report": {
+   "title": "Report",
+   "blocks": [
+    {
+     "heading": "Found a problem?"
+    },
+    {
+     "text": "If something in the game doesn't work as it should, a scene that looks wrong, a sound that cuts out, anything that stops you playing, let us know. Say where you were and what happened."
+    },
+    {
+     "link": "Report a bug",
+     "url": "https://github.com/Vortyne/OpenMNOG/issues/new?template=bug_report.yml"
+    },
+    {
+     "heading": "Found a sound effect?"
+    },
+    {
+     "text": "Many of the game's sounds are being replaced with high-quality originals from the sound libraries they came from. If you recognise one, say which sound and where it comes from: the library, CD and track, or a link."
+    },
+    {
+     "text": "You can listen to the sounds that still need a source on the sound list."
+    },
+    {
+     "link": "Open the sound list",
+     "url": "https://vortyne.github.io/OpenMNOG/"
+    },
+    {
+     "link": "Report a sound effect",
+     "url": "https://github.com/Vortyne/OpenMNOG/issues/new?template=sound_found.yml"
+    },
+    {
+     "text": "The report buttons open a form on GitHub in your browser; you'll need a free GitHub account to send it."
     }
    ]
   }

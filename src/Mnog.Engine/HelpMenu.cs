@@ -81,6 +81,13 @@ public sealed class HelpMenu
     }
     bool? _hand;
 
+    /// <summary>A web page in the browser: the game leaves fullscreen first, so the browser isn't hidden behind it.</summary>
+    void OpenUrl(string url)
+    {
+        if (_player.Host is { Fullscreen: true } host) host.Fullscreen = false;
+        _player.Host?.OpenUrl(url);
+    }
+
     public void MouseDown(SKPoint p)
     {
         _mouse = p;
@@ -227,10 +234,9 @@ public sealed class HelpMenu
             if (click != null) _hits.Add((new SKRect(Content.Left, Math.Max(at - 13, Content.Top), Content.Right, Math.Min(end - 4, Content.Bottom)), click));
             return end;
         }
-        // "More...": a small button under a question's hints, for its next one.
-        float MoreButton(float at, Action click)
+        // "More...": a small button under a question's hints, for its next one (and the Report page's link buttons).
+        float MoreButton(float at, Action click, string label = "More...")
         {
-            const string label = "More...";
             float w = body.Measure(label) + 16;
             var r = new SKRect(left, at - 12, left + w, at + 6);
             bool hover = r.Contains(_mouse) && Content.Contains(_mouse);
@@ -272,6 +278,11 @@ public sealed class HelpMenu
                 left += CapWidth + 12; width -= CapWidth + 12;
                 y = Math.Max(Paragraph(Words(b["text"]?.GetValue<string>() ?? ""), y, body, Body), cap.Bottom + 13) + Gap;
                 left -= CapWidth + 12; width += CapWidth + 12;
+            }
+            else if (b["link"]?.GetValue<string>() is { } linkLabel && b["url"]?.GetValue<string>() is { } url)
+            {
+                // A link: a button that opens a web page in the browser (the Report page's GitHub forms).
+                y = MoreButton(y, () => OpenUrl(url), linkLabel) + 2;
             }
             else if (b["picture"] is JsonObject pic && b["align"]?.GetValue<string>() == "left")
             {

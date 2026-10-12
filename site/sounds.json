@@ -1,0 +1,4833 @@
+{
+ "note": "Written by the workspace tools/sound_list.py: the sounds still without a high-quality source.",
+ "sounds": [
+  {
+   "name": "Amb_Jungle_1",
+   "kind": "ambience",
+   "seconds": 8.39,
+   "plays": [
+    "Amb Jungle, sound 1",
+    "Episode 6-2 cutscene, sound 13"
+   ],
+   "file": "game/movies/Amb_Jungle/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Amb_Jungle_2",
+   "kind": "ambience",
+   "seconds": 15.85,
+   "plays": [
+    "Amb Jungle, sound 2"
+   ],
+   "file": "game/movies/Amb_Jungle/sounds/2.ogg",
+   "lead": false
+  },
+  {
+   "name": "Amb_KiniWaterfall",
+   "kind": "ambience",
+   "seconds": 5.43,
+   "plays": [
+    "Amb KiniWaterfall, sound 1",
+    "Episode 8-1 cutscene, sound 14",
+    "Episode 8-2 cutscene, sound 1",
+    "Sound WaterFall, sound 1"
+   ],
+   "file": "game/movies/Amb_KiniWaterfall/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Amb_MakutaTunnel_1",
+   "kind": "ambience",
+   "seconds": 3.3,
+   "plays": [
+    "Amb MakutaTunnel, sound 1",
+    "Episode 9-1 cutscene, sound 355",
+    "Episode 9-2 cutscene, sound 37",
+    "Episode 9-2 v4 sounded, sound 37",
+    "Episode 9-3 cutscene, sound 147"
+   ],
+   "file": "game/movies/Amb_MakutaTunnel/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Amb_MakutaTunnel_2",
+   "kind": "ambience",
+   "seconds": 7.44,
+   "plays": [
+    "Amb MakutaTunnel, sound 2"
+   ],
+   "file": "game/movies/Amb_MakutaTunnel/sounds/2.ogg",
+   "lead": false
+  },
+  {
+   "name": "Amb_MntCaves",
+   "kind": "ambience",
+   "seconds": 7.22,
+   "plays": [
+    "Amb MntCaves, sound 1",
+    "Amb Mountain, sound 1",
+    "Amb wind, sound 1",
+    "Episode 8-10 cutscene, sound 22",
+    "Episode 8-2 cutscene, sound 2",
+    "Episode 8-5 cutscene, sound 18"
+   ],
+   "file": "game/movies/Amb_MntCaves/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Amb_rockwind",
+   "kind": "ambience",
+   "seconds": 12.3,
+   "plays": [
+    "Amb rockwind, sound 1",
+    "Episode 8-3 cutscene, sound 14"
+   ],
+   "file": "game/movies/Amb_rockwind/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode1-1-SFX_landing1_1",
+   "kind": "ambience",
+   "seconds": 27.81,
+   "plays": [
+    "Episode1-1-SFX landing1, sound 1",
+    "Episode 1-1 cutscene, sound 10"
+   ],
+   "file": "game/movies/Episode1-1-SFX_landing1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "episode_3-3b_water_11",
+   "kind": "ambience",
+   "seconds": 4.92,
+   "plays": [
+    "Episode 3-2 cutscene, sound 48",
+    "Episode 3-3 cutscene, sound 17",
+    "episode 3-3b water, sound 11"
+   ],
+   "file": "game/movies/Episode_3-2/sounds/48.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-1_12",
+   "kind": "ambience",
+   "seconds": 4.79,
+   "plays": [
+    "Episode 4-1 cutscene, sound 12",
+    "Episode 4-2 cutscene, sound 14"
+   ],
+   "file": "game/movies/Episode_4-1/sounds/12.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_128",
+   "kind": "ambience",
+   "seconds": 9.91,
+   "plays": [
+    "Episode 4-3 cutscene, sound 128",
+    "Episode 4-3 (alternate) cutscene, sound 128"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/128.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_185",
+   "kind": "ambience",
+   "seconds": 7.22,
+   "plays": [
+    "Episode 4-3 cutscene, sound 185",
+    "Episode 4-3 (alternate) cutscene, sound 185"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/185.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_554",
+   "kind": "ambience",
+   "seconds": 7.77,
+   "plays": [
+    "Episode 9-3 cutscene, sound 554"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/554.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_61",
+   "kind": "ambience",
+   "seconds": 10.0,
+   "plays": [
+    "Episode 9-6 cutscene, sound 61"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/61.ogg",
+   "lead": false
+  },
+  {
+   "name": "IV.3-W_64",
+   "kind": "ambience",
+   "seconds": 5.83,
+   "plays": [
+    "Scene IV.3-W, sound 64",
+    "Scene IV.7-E, sound 87",
+    "Scene XV.3A, sound 105"
+   ],
+   "file": "game/movies/IV.3-W/sounds/64.ogg",
+   "lead": false
+  },
+  {
+   "name": "IX.5-N_13",
+   "kind": "ambience",
+   "seconds": 6.16,
+   "plays": [
+    "Episode 4-2 cutscene, sound 13",
+    "Scene IX.5-N, sound 13",
+    "Scene IX.5-S, sound 16",
+    "Scene IX.6-N, sound 53"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/13.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Bubble4",
+   "kind": "ambience",
+   "seconds": 6.27,
+   "plays": [
+    "SFX Bubble4, sound 1"
+   ],
+   "file": "game/movies/SFX_Bubble4/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_desertbugs",
+   "kind": "ambience",
+   "seconds": 6.87,
+   "plays": [
+    "SFX desertbugs, sound 1"
+   ],
+   "file": "game/movies/SFX_desertbugs/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_GullFlock1",
+   "kind": "ambience",
+   "seconds": 3.71,
+   "plays": [
+    "SFX GullFlock1, sound 1"
+   ],
+   "file": "game/movies/SFX_GullFlock1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_GullFlock2",
+   "kind": "ambience",
+   "seconds": 5.07,
+   "plays": [
+    "SFX GullFlock2, sound 1"
+   ],
+   "file": "game/movies/SFX_GullFlock2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Marching",
+   "kind": "ambience",
+   "seconds": 1.94,
+   "plays": [
+    "SFX Marching, sound 1"
+   ],
+   "file": "game/movies/SFX_Marching/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_MntGust1",
+   "kind": "ambience",
+   "seconds": 5.0,
+   "plays": [
+    "SFX MntGust1, sound 1",
+    "SFX windgusts, sound 1"
+   ],
+   "file": "game/movies/SFX_MntGust1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_SeaSpray1",
+   "kind": "ambience",
+   "seconds": 4.92,
+   "plays": [
+    "SFX SeaSpray1, sound 1"
+   ],
+   "file": "game/movies/SFX_SeaSpray1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_SeaSpray2",
+   "kind": "ambience",
+   "seconds": 5.07,
+   "plays": [
+    "SFX SeaSpray2, sound 1"
+   ],
+   "file": "game/movies/SFX_SeaSpray2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_SeaSpray3",
+   "kind": "ambience",
+   "seconds": 10.0,
+   "plays": [
+    "SFX SeaSpray3, sound 1"
+   ],
+   "file": "game/movies/SFX_SeaSpray3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Splashpool",
+   "kind": "ambience",
+   "seconds": 7.91,
+   "plays": [
+    "SFX Splashpool, sound 1"
+   ],
+   "file": "game/movies/SFX_Splashpool/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Underwater",
+   "kind": "ambience",
+   "seconds": 5.49,
+   "plays": [
+    "SFX Underwater, sound 1"
+   ],
+   "file": "game/movies/SFX_Underwater/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_WaterA",
+   "kind": "ambience",
+   "seconds": 5.09,
+   "plays": [
+    "SFX WaterA, sound 1"
+   ],
+   "file": "game/movies/SFX_WaterA/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_WaterAmbiant_1",
+   "kind": "ambience",
+   "seconds": 10.48,
+   "plays": [
+    "SFX WaterAmbiant, sound 1"
+   ],
+   "file": "game/movies/SFX_WaterAmbiant/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_WaterB",
+   "kind": "ambience",
+   "seconds": 4.92,
+   "plays": [
+    "SFX WaterB, sound 1"
+   ],
+   "file": "game/movies/SFX_WaterB/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Waves-B",
+   "kind": "ambience",
+   "seconds": 10.0,
+   "plays": [
+    "SFX Waves-B, sound 1"
+   ],
+   "file": "game/movies/SFX_Waves-B/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Wind_Gust",
+   "kind": "ambience",
+   "seconds": 10.0,
+   "plays": [
+    "SFX Wind Gust, sound 1"
+   ],
+   "file": "game/movies/SFX_Wind_Gust/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Sound_LavaWorld",
+   "kind": "ambience",
+   "seconds": 15.15,
+   "plays": [
+    "Amb lavatunnel, sound 1",
+    "Sound LavaWorld, sound 2"
+   ],
+   "file": "game/movies/Amb_lavatunnel/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Sound_PoKoro_1",
+   "kind": "ambience",
+   "seconds": 16.8,
+   "plays": [
+    "Sound PoKoro, sound 1"
+   ],
+   "file": "game/movies/Sound_PoKoro/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Sound_PoKoro_2",
+   "kind": "ambience",
+   "seconds": 19.26,
+   "plays": [
+    "Sound PoKoro, sound 2"
+   ],
+   "file": "game/movies/Sound_PoKoro/sounds/2.ogg",
+   "lead": false
+  },
+  {
+   "name": "Sound_PoKoro_3",
+   "kind": "ambience",
+   "seconds": 4.47,
+   "plays": [
+    "Sound PoKoro, sound 3"
+   ],
+   "file": "game/movies/Sound_PoKoro/sounds/3.ogg",
+   "lead": false
+  },
+  {
+   "name": "Sound_Vakama_2",
+   "kind": "ambience",
+   "seconds": 6.73,
+   "plays": [
+    "Sound Vakama, sound 2"
+   ],
+   "file": "game/movies/Sound_Vakama/sounds/2.ogg",
+   "lead": false
+  },
+  {
+   "name": "V.7A_27",
+   "kind": "ambience",
+   "seconds": 3.93,
+   "plays": [
+    "Scene V.7A, sound 27"
+   ],
+   "file": "game/movies/V.7A/sounds/27.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.7A_27",
+   "kind": "ambience",
+   "seconds": 2.04,
+   "plays": [
+    "Scene XII.7A, sound 27"
+   ],
+   "file": "game/movies/XII.7A/sounds/27.ogg",
+   "lead": false
+  },
+  {
+   "name": "book_69",
+   "kind": "effect",
+   "seconds": 0.39,
+   "plays": [
+    "book, sound 69"
+   ],
+   "file": "game/movies/book/sounds/69.ogg",
+   "lead": false
+  },
+  {
+   "name": "book_87",
+   "kind": "effect",
+   "seconds": 0.21,
+   "plays": [
+    "book, sound 87"
+   ],
+   "file": "game/movies/book/sounds/87.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode1-1-SFX_happyday_1",
+   "kind": "effect",
+   "seconds": 3.15,
+   "plays": [
+    "Episode1-1-SFX happyday, sound 1",
+    "Episode 1-1 cutscene, sound 146"
+   ],
+   "file": "game/movies/Episode1-1-SFX_happyday/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_2-1_141",
+   "kind": "effect",
+   "seconds": 4.96,
+   "plays": [
+    "Episode 2-1 cutscene, sound 141"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/141.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_2-1_146",
+   "kind": "effect",
+   "seconds": 4.23,
+   "plays": [
+    "Episode 2-1 cutscene, sound 146"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/146.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_2-1_153",
+   "kind": "effect",
+   "seconds": 11.71,
+   "plays": [
+    "Episode 2-1 cutscene, sound 153"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/153.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_2-1_34",
+   "kind": "effect",
+   "seconds": 5.75,
+   "plays": [
+    "Episode 2-1 cutscene, sound 34"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/34.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_2-1_37",
+   "kind": "effect",
+   "seconds": 1.38,
+   "plays": [
+    "Episode 2-1 cutscene, sound 37"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/37.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-2_49",
+   "kind": "effect",
+   "seconds": 3.37,
+   "plays": [
+    "Episode 3-2 cutscene, sound 49",
+    "Episode 3-3 cutscene, sound 71"
+   ],
+   "file": "game/movies/Episode_3-2/sounds/49.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-2_95",
+   "kind": "effect",
+   "seconds": 0.28,
+   "plays": [
+    "Episode 3-2 cutscene, sound 95"
+   ],
+   "file": "game/movies/Episode_3-2/sounds/95.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-2_98",
+   "kind": "effect",
+   "seconds": 2.58,
+   "plays": [
+    "Episode 3-2 cutscene, sound 98",
+    "Episode 3-3 cutscene, sound 184"
+   ],
+   "file": "game/movies/Episode_3-2/sounds/98.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-2_99",
+   "kind": "effect",
+   "seconds": 0.81,
+   "plays": [
+    "Episode 3-2 cutscene, sound 99"
+   ],
+   "file": "game/movies/Episode_3-2/sounds/99.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_124",
+   "kind": "effect",
+   "seconds": 0.3,
+   "plays": [
+    "Episode 3-3 cutscene, sound 124"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/124.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_131",
+   "kind": "effect",
+   "seconds": 0.37,
+   "plays": [
+    "Episode 3-3 cutscene, sound 131"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/131.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_181",
+   "kind": "effect",
+   "seconds": 5.49,
+   "plays": [
+    "Episode 3-3 cutscene, sound 181"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/181.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_197",
+   "kind": "effect",
+   "seconds": 1.67,
+   "plays": [
+    "Episode 3-3 cutscene, sound 197"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/197.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_76",
+   "kind": "effect",
+   "seconds": 7.0,
+   "plays": [
+    "Episode 3-3 cutscene, sound 76"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/76.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_89",
+   "kind": "effect",
+   "seconds": 0.35,
+   "plays": [
+    "Episode 3-3 cutscene, sound 89"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/89.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_95",
+   "kind": "effect",
+   "seconds": 1.52,
+   "plays": [
+    "Episode 3-3 cutscene, sound 95"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/95.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_104",
+   "kind": "effect",
+   "seconds": 1.33,
+   "plays": [
+    "Episode 4-2 cutscene, sound 104"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/104.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_108",
+   "kind": "effect",
+   "seconds": 1.21,
+   "plays": [
+    "Episode 4-2 cutscene, sound 108",
+    "Episode 4-3 cutscene, sound 21",
+    "Episode 4-3 (alternate) cutscene, sound 21"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/108.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_59",
+   "kind": "effect",
+   "seconds": 1.12,
+   "plays": [
+    "Episode 4-2 cutscene, sound 59",
+    "Episode 4-3 cutscene, sound 127",
+    "Scene IX.5-S, sound 13",
+    "Scene IX.6-N, sound 50",
+    "Episode 4-3 (alternate) cutscene, sound 127"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/59.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_60",
+   "kind": "effect",
+   "seconds": 1.01,
+   "plays": [
+    "Episode 4-2 cutscene, sound 60",
+    "Episode 4-3 cutscene, sound 25",
+    "Episode 4-3 (alternate) cutscene, sound 25"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/60.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_61",
+   "kind": "effect",
+   "seconds": 1.69,
+   "plays": [
+    "Episode 4-2 cutscene, sound 61",
+    "Episode 4-3 cutscene, sound 100",
+    "Minigame 4-1, sound 144",
+    "Scene IX.5-S, sound 15",
+    "Scene IX.6-N, sound 52",
+    "Episode 4-3 (alternate) cutscene, sound 100"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/61.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_69",
+   "kind": "effect",
+   "seconds": 0.95,
+   "plays": [
+    "Episode 4-2 cutscene, sound 69",
+    "Episode 4-3 cutscene, sound 15",
+    "Episode 4-3 (alternate) cutscene, sound 15"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/69.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_81",
+   "kind": "effect",
+   "seconds": 1.8,
+   "plays": [
+    "Episode 4-2 cutscene, sound 81",
+    "Episode 4-3 cutscene, sound 137",
+    "Episode 4-3 (alternate) cutscene, sound 137"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/81.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_83",
+   "kind": "effect",
+   "seconds": 0.23,
+   "plays": [
+    "Episode 4-2 cutscene, sound 83",
+    "Episode 4-3 cutscene, sound 14",
+    "Episode 4-3 (alternate) cutscene, sound 14"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/83.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-2_94",
+   "kind": "effect",
+   "seconds": 4.94,
+   "plays": [
+    "Episode 4-2 cutscene, sound 94",
+    "Episode 4-3 cutscene, sound 113",
+    "Episode 4-3 (alternate) cutscene, sound 113"
+   ],
+   "file": "game/movies/Episode_4-2/sounds/94.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_136",
+   "kind": "effect",
+   "seconds": 1.09,
+   "plays": [
+    "Episode 4-3 cutscene, sound 136",
+    "Episode 4-3 (alternate) cutscene, sound 136"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/136.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_174",
+   "kind": "effect",
+   "seconds": 2.11,
+   "plays": [
+    "Episode 4-3 cutscene, sound 174",
+    "Episode 4-3 (alternate) cutscene, sound 174"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/174.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_22",
+   "kind": "effect",
+   "seconds": 0.44,
+   "plays": [
+    "Episode 4-3 cutscene, sound 22",
+    "Episode 4-3 (alternate) cutscene, sound 22"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/22.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_50",
+   "kind": "effect",
+   "seconds": 2.49,
+   "plays": [
+    "Episode 4-3 cutscene, sound 50",
+    "Episode 4-3 (alternate) cutscene, sound 50"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/50.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_56",
+   "kind": "effect",
+   "seconds": 0.91,
+   "plays": [
+    "Episode 4-3 cutscene, sound 56",
+    "Episode 4-3 (alternate) cutscene, sound 56"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/56.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-3_77",
+   "kind": "effect",
+   "seconds": 1.8,
+   "plays": [
+    "Episode 4-3 cutscene, sound 77",
+    "Episode 4-3 (alternate) cutscene, sound 77"
+   ],
+   "file": "game/movies/Episode_4-3/sounds/77.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-1_31",
+   "kind": "effect",
+   "seconds": 8.64,
+   "plays": [
+    "Episode 5-1 cutscene, sound 31"
+   ],
+   "file": "game/movies/Episode_5-1/sounds/31.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-1_32",
+   "kind": "effect",
+   "seconds": 10.19,
+   "plays": [
+    "Episode 5-1 cutscene, sound 32"
+   ],
+   "file": "game/movies/Episode_5-1/sounds/32.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-1_34",
+   "kind": "effect",
+   "seconds": 2.16,
+   "plays": [
+    "Episode 5-1 cutscene, sound 34"
+   ],
+   "file": "game/movies/Episode_5-1/sounds/34.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-1_43",
+   "kind": "effect",
+   "seconds": 1.67,
+   "plays": [
+    "Episode 5-1 cutscene, sound 43"
+   ],
+   "file": "game/movies/Episode_5-1/sounds/43.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-1_46",
+   "kind": "effect",
+   "seconds": 1.27,
+   "plays": [
+    "Episode 5-1 cutscene, sound 46"
+   ],
+   "file": "game/movies/Episode_5-1/sounds/46.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-3_18",
+   "kind": "effect",
+   "seconds": 5.83,
+   "plays": [
+    "Episode 5-3 cutscene, sound 18"
+   ],
+   "file": "game/movies/Episode_5-3/sounds/18.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-3_20",
+   "kind": "effect",
+   "seconds": 1.0,
+   "plays": [
+    "Episode 5-3 cutscene, sound 20"
+   ],
+   "file": "game/movies/Episode_5-3/sounds/20.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-3_27",
+   "kind": "effect",
+   "seconds": 0.72,
+   "plays": [
+    "Episode 5-3 cutscene, sound 27"
+   ],
+   "file": "game/movies/Episode_5-3/sounds/27.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-3_32",
+   "kind": "effect",
+   "seconds": 3.85,
+   "plays": [
+    "Episode 5-3 cutscene, sound 32"
+   ],
+   "file": "game/movies/Episode_5-3/sounds/32.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_5-7_54",
+   "kind": "effect",
+   "seconds": 0.23,
+   "plays": [
+    "Episode 5-7 cutscene, sound 54",
+    "Episode 6-5 cutscene, sound 103",
+    "Scene VII.10-S, sound 19",
+    "Scene VII.7-W, sound 20",
+    "Scene VII.8-E, sound 2",
+    "Scene VII.9-N, sound 2",
+    "Scene VII.9-S, sound 27",
+    "Scene X.1-N, sound 33",
+    "Scene X.1-S, sound 2",
+    "Scene X.2-N, sound 19",
+    "Scene XII.9-E, sound 134",
+    "Scene XIII.11-S, sound 196",
+    "Scene XVII.1-N, sound 62",
+    "Scene XVIII.7, sound 129",
+    "vii.10-n gakoro, sound 1"
+   ],
+   "file": "game/movies/Episode_5-7/sounds/54.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-1_21",
+   "kind": "effect",
+   "seconds": 1.3,
+   "plays": [
+    "Episode 6-1 cutscene, sound 21"
+   ],
+   "file": "game/movies/Episode_6-1/sounds/21.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_104",
+   "kind": "effect",
+   "seconds": 0.53,
+   "plays": [
+    "Episode 6-2 cutscene, sound 104"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/104.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_17",
+   "kind": "effect",
+   "seconds": 0.81,
+   "plays": [
+    "Episode 6-2 cutscene, sound 17"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/17.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_28",
+   "kind": "effect",
+   "seconds": 0.44,
+   "plays": [
+    "Episode 6-2 cutscene, sound 28"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/28.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_29",
+   "kind": "effect",
+   "seconds": 0.28,
+   "plays": [
+    "Episode 6-2 cutscene, sound 29"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/29.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_34",
+   "kind": "effect",
+   "seconds": 0.35,
+   "plays": [
+    "Episode 6-2 cutscene, sound 34"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/34.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_75",
+   "kind": "effect",
+   "seconds": 3.13,
+   "plays": [
+    "Episode 6-2 cutscene, sound 75"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/75.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-2_90",
+   "kind": "effect",
+   "seconds": 0.16,
+   "plays": [
+    "Episode 6-2 cutscene, sound 90"
+   ],
+   "file": "game/movies/Episode_6-2/sounds/90.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_100",
+   "kind": "effect",
+   "seconds": 6.07,
+   "plays": [
+    "Episode 6-3 cutscene, sound 100"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/100.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_105",
+   "kind": "effect",
+   "seconds": 0.58,
+   "plays": [
+    "Episode 6-3 cutscene, sound 105"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/105.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_120",
+   "kind": "effect",
+   "seconds": 2.34,
+   "plays": [
+    "Episode 6-3 cutscene, sound 120"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/120.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_122",
+   "kind": "effect",
+   "seconds": 2.93,
+   "plays": [
+    "Episode 6-3 cutscene, sound 122"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/122.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_125",
+   "kind": "effect",
+   "seconds": 2.93,
+   "plays": [
+    "Episode 6-3 cutscene, sound 125"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/125.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_143",
+   "kind": "effect",
+   "seconds": 0.3,
+   "plays": [
+    "Episode 6-3 cutscene, sound 143"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/143.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_150",
+   "kind": "effect",
+   "seconds": 0.39,
+   "plays": [
+    "Episode 6-3 cutscene, sound 150"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/150.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_163",
+   "kind": "effect",
+   "seconds": 0.93,
+   "plays": [
+    "Episode 6-3 cutscene, sound 163"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/163.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_168",
+   "kind": "effect",
+   "seconds": 0.88,
+   "plays": [
+    "Episode 6-3 cutscene, sound 168"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/168.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_170",
+   "kind": "effect",
+   "seconds": 0.72,
+   "plays": [
+    "Episode 6-3 cutscene, sound 170"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/170.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_176",
+   "kind": "effect",
+   "seconds": 2.29,
+   "plays": [
+    "Episode 6-3 cutscene, sound 176",
+    "Episode 6-6 cutscene, sound 65",
+    "Episode 9-1 cutscene, sound 270"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/176.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-4_114",
+   "kind": "effect",
+   "seconds": 7.72,
+   "plays": [
+    "Episode 6-4 cutscene, sound 114",
+    "Episode 9-1 cutscene, sound 238"
+   ],
+   "file": "game/movies/Episode_6-4/sounds/114.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_114",
+   "kind": "effect",
+   "seconds": 1.18,
+   "plays": [
+    "Episode 6-5 cutscene, sound 114"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/114.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_12",
+   "kind": "effect",
+   "seconds": 2.28,
+   "plays": [
+    "Episode 6-5 cutscene, sound 12"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/12.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_125",
+   "kind": "effect",
+   "seconds": 1.09,
+   "plays": [
+    "Episode 6-5 cutscene, sound 125"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/125.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_148",
+   "kind": "effect",
+   "seconds": 2.35,
+   "plays": [
+    "Episode 6-5 cutscene, sound 148"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/148.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_17",
+   "kind": "effect",
+   "seconds": 5.32,
+   "plays": [
+    "Episode 6-5 cutscene, sound 17"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/17.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_213",
+   "kind": "effect",
+   "seconds": 2.94,
+   "plays": [
+    "Episode 6-5 cutscene, sound 213"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/213.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_235",
+   "kind": "effect",
+   "seconds": 3.08,
+   "plays": [
+    "Episode 6-5 cutscene, sound 235"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/235.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_236",
+   "kind": "effect",
+   "seconds": 1.16,
+   "plays": [
+    "Episode 6-5 cutscene, sound 236"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/236.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_241",
+   "kind": "effect",
+   "seconds": 1.49,
+   "plays": [
+    "Episode 6-5 cutscene, sound 241"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/241.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_59",
+   "kind": "effect",
+   "seconds": 1.61,
+   "plays": [
+    "Episode 6-5 cutscene, sound 59"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/59.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_118",
+   "kind": "effect",
+   "seconds": 7.85,
+   "plays": [
+    "Episode 6-6 cutscene, sound 118",
+    "Minigame 6-1, sound 79"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/118.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_13",
+   "kind": "effect",
+   "seconds": 2.28,
+   "plays": [
+    "Episode 6-6 cutscene, sound 13",
+    "Episode 6-7 cutscene, sound 179",
+    "Episode 9-1 cutscene, sound 251"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/13.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_145",
+   "kind": "effect",
+   "seconds": 2.12,
+   "plays": [
+    "Episode 6-6 cutscene, sound 145",
+    "Episode 9-1 cutscene, sound 44"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/145.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_146",
+   "kind": "effect",
+   "seconds": 3.07,
+   "plays": [
+    "Episode 6-6 cutscene, sound 146"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/146.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_157",
+   "kind": "effect",
+   "seconds": 2.84,
+   "plays": [
+    "Episode 6-6 cutscene, sound 157",
+    "Episode 9-1 cutscene, sound 22"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/157.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_158",
+   "kind": "effect",
+   "seconds": 4.65,
+   "plays": [
+    "Episode 6-6 cutscene, sound 158",
+    "Episode 9-1 cutscene, sound 21"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/158.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_159",
+   "kind": "effect",
+   "seconds": 0.72,
+   "plays": [
+    "Episode 6-6 cutscene, sound 159"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/159.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_161",
+   "kind": "effect",
+   "seconds": 0.58,
+   "plays": [
+    "Episode 6-6 cutscene, sound 161"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/161.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_162",
+   "kind": "effect",
+   "seconds": 0.35,
+   "plays": [
+    "Episode 6-6 cutscene, sound 162"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/162.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_163",
+   "kind": "effect",
+   "seconds": 0.07,
+   "plays": [
+    "Episode 6-6 cutscene, sound 163"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/163.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_180",
+   "kind": "effect",
+   "seconds": 0.63,
+   "plays": [
+    "Episode 6-6 cutscene, sound 180"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/180.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_24",
+   "kind": "effect",
+   "seconds": 1.42,
+   "plays": [
+    "Episode 6-6 cutscene, sound 24"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/24.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-6_41",
+   "kind": "effect",
+   "seconds": 14.23,
+   "plays": [
+    "Episode 6-6 cutscene, sound 41"
+   ],
+   "file": "game/movies/Episode_6-6/sounds/41.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_11",
+   "kind": "effect",
+   "seconds": 1.59,
+   "plays": [
+    "Episode 6-7 cutscene, sound 11"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/11.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_15",
+   "kind": "effect",
+   "seconds": 2.1,
+   "plays": [
+    "Episode 6-7 cutscene, sound 15"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/15.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_166",
+   "kind": "effect",
+   "seconds": 4.38,
+   "plays": [
+    "Episode 6-7 cutscene, sound 166",
+    "Episode 8-8 cutscene, sound 154"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/166.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_17",
+   "kind": "effect",
+   "seconds": 0.28,
+   "plays": [
+    "Episode 6-7 cutscene, sound 17"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/17.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_214",
+   "kind": "effect",
+   "seconds": 4.59,
+   "plays": [
+    "Episode 6-7 cutscene, sound 214",
+    "Episode 7-2 cutscene, sound 247",
+    "Episode 8-5 cutscene, sound 174"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/214.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_233",
+   "kind": "effect",
+   "seconds": 2.41,
+   "plays": [
+    "Episode 6-7 cutscene, sound 233",
+    "Episode 8-8 cutscene, sound 37",
+    "Episode 9-1 cutscene, sound 395"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/233.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_239",
+   "kind": "effect",
+   "seconds": 3.08,
+   "plays": [
+    "Episode 6-7 cutscene, sound 239"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/239.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_251",
+   "kind": "effect",
+   "seconds": 2.89,
+   "plays": [
+    "Episode 6-7 cutscene, sound 251"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/251.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_315",
+   "kind": "effect",
+   "seconds": 2.52,
+   "plays": [
+    "Episode 6-7 cutscene, sound 315"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/315.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_332",
+   "kind": "effect",
+   "seconds": 4.16,
+   "plays": [
+    "Episode 6-7 cutscene, sound 332"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/332.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_6-7_336",
+   "kind": "effect",
+   "seconds": 0.35,
+   "plays": [
+    "Episode 6-7 cutscene, sound 336",
+    "Episode 7-2 cutscene, sound 168",
+    "Minigame 8-1, sound 26"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/336.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_356",
+   "kind": "effect",
+   "seconds": 3.27,
+   "plays": [
+    "Episode 6-7 cutscene, sound 356"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/356.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_40",
+   "kind": "effect",
+   "seconds": 5.98,
+   "plays": [
+    "Episode 6-7 cutscene, sound 40"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/40.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-1_13",
+   "kind": "effect",
+   "seconds": 2.46,
+   "plays": [
+    "Episode 7-1 cutscene, sound 13"
+   ],
+   "file": "game/movies/Episode_7-1/sounds/13.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-1_14",
+   "kind": "effect",
+   "seconds": 2.24,
+   "plays": [
+    "Episode 7-1 cutscene, sound 14"
+   ],
+   "file": "game/movies/Episode_7-1/sounds/14.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-1_18",
+   "kind": "effect",
+   "seconds": 1.72,
+   "plays": [
+    "Episode 7-1 cutscene, sound 18"
+   ],
+   "file": "game/movies/Episode_7-1/sounds/18.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_112",
+   "kind": "effect",
+   "seconds": 0.3,
+   "plays": [
+    "Episode 7-2 cutscene, sound 112"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/112.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_121",
+   "kind": "effect",
+   "seconds": 0.77,
+   "plays": [
+    "Episode 7-2 cutscene, sound 121"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/121.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_127",
+   "kind": "effect",
+   "seconds": 0.65,
+   "plays": [
+    "Episode 7-2 cutscene, sound 127"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/127.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_160",
+   "kind": "effect",
+   "seconds": 1.66,
+   "plays": [
+    "Episode 7-2 cutscene, sound 160"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/160.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_161",
+   "kind": "effect",
+   "seconds": 5.8,
+   "plays": [
+    "Episode 7-2 cutscene, sound 161"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/161.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_162",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "Episode 7-2 cutscene, sound 162"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/162.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_163",
+   "kind": "effect",
+   "seconds": 6.03,
+   "plays": [
+    "Episode 7-2 cutscene, sound 163"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/163.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_169",
+   "kind": "effect",
+   "seconds": 0.33,
+   "plays": [
+    "Episode 7-2 cutscene, sound 169"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/169.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_183",
+   "kind": "effect",
+   "seconds": 6.8,
+   "plays": [
+    "Episode 7-2 cutscene, sound 183"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/183.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_208",
+   "kind": "effect",
+   "seconds": 0.33,
+   "plays": [
+    "Episode 7-2 cutscene, sound 208"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/208.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_209",
+   "kind": "effect",
+   "seconds": 0.88,
+   "plays": [
+    "Episode 7-2 cutscene, sound 209"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/209.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_220",
+   "kind": "effect",
+   "seconds": 0.72,
+   "plays": [
+    "Episode 7-2 cutscene, sound 220",
+    "Episode 9-1 cutscene, sound 91",
+    "Minigame 8-1, sound 335"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/220.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_264",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "Episode 7-2 cutscene, sound 264",
+    "Minigame 8-1, sound 105"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/264.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_269",
+   "kind": "effect",
+   "seconds": 5.85,
+   "plays": [
+    "Episode 7-2 cutscene, sound 269"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/269.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_282",
+   "kind": "effect",
+   "seconds": 1.8,
+   "plays": [
+    "Episode 7-2 cutscene, sound 282"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/282.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_303",
+   "kind": "effect",
+   "seconds": 1.63,
+   "plays": [
+    "Episode 7-2 cutscene, sound 303",
+    "Episode 9-3 cutscene, sound 573"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/303.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_66",
+   "kind": "effect",
+   "seconds": 6.18,
+   "plays": [
+    "Episode 7-2 cutscene, sound 66"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/66.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_94",
+   "kind": "effect",
+   "seconds": 0.91,
+   "plays": [
+    "Episode 7-2 cutscene, sound 94",
+    "Minigame 8-1, sound 50",
+    "Scene XX.1-N, sound 34"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/94.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-10_23",
+   "kind": "effect",
+   "seconds": 0.46,
+   "plays": [
+    "Episode 8-10 cutscene, sound 23"
+   ],
+   "file": "game/movies/Episode_8-10/sounds/23.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-1_32",
+   "kind": "effect",
+   "seconds": 0.51,
+   "plays": [
+    "Episode 8-1 cutscene, sound 32"
+   ],
+   "file": "game/movies/Episode_8-1/sounds/32.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-1_38",
+   "kind": "effect",
+   "seconds": 0.49,
+   "plays": [
+    "Episode 8-1 cutscene, sound 38"
+   ],
+   "file": "game/movies/Episode_8-1/sounds/38.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-1_42",
+   "kind": "effect",
+   "seconds": 3.07,
+   "plays": [
+    "Episode 8-1 cutscene, sound 42"
+   ],
+   "file": "game/movies/Episode_8-1/sounds/42.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-2_100",
+   "kind": "effect",
+   "seconds": 0.09,
+   "plays": [
+    "Episode 8-2 cutscene, sound 100"
+   ],
+   "file": "game/movies/Episode_8-2/sounds/100.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-2_136",
+   "kind": "effect",
+   "seconds": 1.82,
+   "plays": [
+    "Episode 8-2 cutscene, sound 136"
+   ],
+   "file": "game/movies/Episode_8-2/sounds/136.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-2_137",
+   "kind": "effect",
+   "seconds": 0.26,
+   "plays": [
+    "Episode 8-2 cutscene, sound 137"
+   ],
+   "file": "game/movies/Episode_8-2/sounds/137.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-2_150",
+   "kind": "effect",
+   "seconds": 0.39,
+   "plays": [
+    "Episode 8-2 cutscene, sound 150"
+   ],
+   "file": "game/movies/Episode_8-2/sounds/150.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-2_99",
+   "kind": "effect",
+   "seconds": 2.86,
+   "plays": [
+    "Episode 8-2 cutscene, sound 99"
+   ],
+   "file": "game/movies/Episode_8-2/sounds/99.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_24",
+   "kind": "effect",
+   "seconds": 0.67,
+   "plays": [
+    "Episode 8-3 cutscene, sound 24"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/24.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_41",
+   "kind": "effect",
+   "seconds": 0.67,
+   "plays": [
+    "Episode 8-3 cutscene, sound 41"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/41.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_46",
+   "kind": "effect",
+   "seconds": 0.72,
+   "plays": [
+    "Episode 8-3 cutscene, sound 46"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/46.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_47",
+   "kind": "effect",
+   "seconds": 2.85,
+   "plays": [
+    "Episode 8-3 cutscene, sound 47",
+    "Episode 8-8 cutscene, sound 205"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/47.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_58",
+   "kind": "effect",
+   "seconds": 2.22,
+   "plays": [
+    "Episode 8-3 cutscene, sound 58"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/58.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_59",
+   "kind": "effect",
+   "seconds": 0.19,
+   "plays": [
+    "Episode 8-3 cutscene, sound 59"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/59.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_61",
+   "kind": "effect",
+   "seconds": 3.98,
+   "plays": [
+    "Episode 8-3 cutscene, sound 61"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/61.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_65",
+   "kind": "effect",
+   "seconds": 2.4,
+   "plays": [
+    "Episode 8-3 cutscene, sound 65"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/65.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_66",
+   "kind": "effect",
+   "seconds": 3.27,
+   "plays": [
+    "Episode 8-3 cutscene, sound 66"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/66.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_69",
+   "kind": "effect",
+   "seconds": 1.04,
+   "plays": [
+    "Episode 8-3 cutscene, sound 69"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/69.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_70",
+   "kind": "effect",
+   "seconds": 0.81,
+   "plays": [
+    "Episode 8-3 cutscene, sound 70"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/70.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-3_72",
+   "kind": "effect",
+   "seconds": 1.71,
+   "plays": [
+    "Episode 8-3 cutscene, sound 72"
+   ],
+   "file": "game/movies/Episode_8-3/sounds/72.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_101",
+   "kind": "effect",
+   "seconds": 16.18,
+   "plays": [
+    "Episode 8-5 cutscene, sound 101"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/101.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_172",
+   "kind": "effect",
+   "seconds": 1.51,
+   "plays": [
+    "Episode 8-5 cutscene, sound 172"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/172.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_173",
+   "kind": "effect",
+   "seconds": 2.02,
+   "plays": [
+    "Episode 8-5 cutscene, sound 173"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/173.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_187",
+   "kind": "effect",
+   "seconds": 2.37,
+   "plays": [
+    "Episode 8-5 cutscene, sound 187",
+    "Episode 9-3 cutscene, sound 456"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/187.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_226",
+   "kind": "effect",
+   "seconds": 8.17,
+   "plays": [
+    "Episode 8-5 cutscene, sound 226"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/226.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_8-6_102",
+   "kind": "effect",
+   "seconds": 1.27,
+   "plays": [
+    "Episode 8-6 cutscene, sound 102",
+    "Episode 8-7 cutscene, sound 28"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/102.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_103",
+   "kind": "effect",
+   "seconds": 1.18,
+   "plays": [
+    "Episode 8-6 cutscene, sound 103",
+    "Episode 8-7 cutscene, sound 29"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/103.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_22",
+   "kind": "effect",
+   "seconds": 1.94,
+   "plays": [
+    "Episode 8-6 cutscene, sound 22"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/22.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_4",
+   "kind": "effect",
+   "seconds": 3.04,
+   "plays": [
+    "Episode 8-6 cutscene, sound 4",
+    "Episode 8-7 cutscene, sound 4"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/4.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_60",
+   "kind": "effect",
+   "seconds": 5.94,
+   "plays": [
+    "Episode 8-6 cutscene, sound 60"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/60.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_91",
+   "kind": "effect",
+   "seconds": 1.26,
+   "plays": [
+    "Episode 8-6 cutscene, sound 91",
+    "Episode 8-7 cutscene, sound 15"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/91.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_98",
+   "kind": "effect",
+   "seconds": 1.22,
+   "plays": [
+    "Episode 8-6 cutscene, sound 98",
+    "Episode 8-7 cutscene, sound 24"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/98.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_43",
+   "kind": "effect",
+   "seconds": 1.08,
+   "plays": [
+    "Episode 8-7 cutscene, sound 43",
+    "Episode 9-3 cutscene, sound 534"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/43.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_54",
+   "kind": "effect",
+   "seconds": 4.82,
+   "plays": [
+    "Episode 8-7 cutscene, sound 54"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/54.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_64",
+   "kind": "effect",
+   "seconds": 2.04,
+   "plays": [
+    "Episode 8-7 cutscene, sound 64"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/64.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_82",
+   "kind": "effect",
+   "seconds": 9.1,
+   "plays": [
+    "Episode 8-7 cutscene, sound 82"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/82.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_87",
+   "kind": "effect",
+   "seconds": 4.8,
+   "plays": [
+    "Episode 8-7 cutscene, sound 87"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/87.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_88",
+   "kind": "effect",
+   "seconds": 5.96,
+   "plays": [
+    "Episode 8-7 cutscene, sound 88"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/88.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_89",
+   "kind": "effect",
+   "seconds": 8.2,
+   "plays": [
+    "Episode 8-7 cutscene, sound 89"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/89.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-7_90",
+   "kind": "effect",
+   "seconds": 3.47,
+   "plays": [
+    "Episode 8-7 cutscene, sound 90"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/90.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_12",
+   "kind": "effect",
+   "seconds": 5.71,
+   "plays": [
+    "Episode 8-8 cutscene, sound 12"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/12.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_130",
+   "kind": "effect",
+   "seconds": 3.58,
+   "plays": [
+    "Episode 8-8 cutscene, sound 130",
+    "Episode 9-1 cutscene, sound 421"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/130.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_131",
+   "kind": "effect",
+   "seconds": 2.7,
+   "plays": [
+    "Episode 8-8 cutscene, sound 131"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/131.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_15",
+   "kind": "effect",
+   "seconds": 7.56,
+   "plays": [
+    "Episode 8-8 cutscene, sound 15",
+    "Episode 9-1 cutscene, sound 388"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/15.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_19",
+   "kind": "effect",
+   "seconds": 4.54,
+   "plays": [
+    "Episode 8-8 cutscene, sound 19",
+    "Episode 9-1 cutscene, sound 423"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/19.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_219",
+   "kind": "effect",
+   "seconds": 1.08,
+   "plays": [
+    "Episode 8-8 cutscene, sound 219",
+    "Episode 9-1 cutscene, sound 328"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/219.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_227",
+   "kind": "effect",
+   "seconds": 0.95,
+   "plays": [
+    "Episode 8-8 cutscene, sound 227"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/227.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_28",
+   "kind": "effect",
+   "seconds": 5.96,
+   "plays": [
+    "Episode 8-8 cutscene, sound 28",
+    "Episode 9-1 cutscene, sound 439"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/28.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_4",
+   "kind": "effect",
+   "seconds": 3.04,
+   "plays": [
+    "Episode 8-8 cutscene, sound 4",
+    "Episode 9-1 cutscene, sound 349"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/4.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_149",
+   "kind": "effect",
+   "seconds": 1.69,
+   "plays": [
+    "Episode 9-1 cutscene, sound 149"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/149.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_150",
+   "kind": "effect",
+   "seconds": 1.12,
+   "plays": [
+    "Episode 9-1 cutscene, sound 150"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/150.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_164",
+   "kind": "effect",
+   "seconds": 1.61,
+   "plays": [
+    "Episode 9-1 cutscene, sound 164"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/164.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_226",
+   "kind": "effect",
+   "seconds": 1.61,
+   "plays": [
+    "Episode 9-1 cutscene, sound 226"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/226.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_236",
+   "kind": "effect",
+   "seconds": 1.54,
+   "plays": [
+    "Episode 9-1 cutscene, sound 236"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/236.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_316",
+   "kind": "effect",
+   "seconds": 1.83,
+   "plays": [
+    "Episode 9-1 cutscene, sound 316"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/316.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_319",
+   "kind": "effect",
+   "seconds": 4.75,
+   "plays": [
+    "Episode 9-1 cutscene, sound 319"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/319.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_327",
+   "kind": "effect",
+   "seconds": 0.77,
+   "plays": [
+    "Episode 9-1 cutscene, sound 327"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/327.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_332",
+   "kind": "effect",
+   "seconds": 3.9,
+   "plays": [
+    "Episode 9-1 cutscene, sound 332"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/332.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_334",
+   "kind": "effect",
+   "seconds": 0.33,
+   "plays": [
+    "Episode 9-1 cutscene, sound 334"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/334.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_335",
+   "kind": "effect",
+   "seconds": 3.31,
+   "plays": [
+    "Episode 9-1 cutscene, sound 335"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/335.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_342",
+   "kind": "effect",
+   "seconds": 1.94,
+   "plays": [
+    "Episode 9-1 cutscene, sound 342"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/342.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_343",
+   "kind": "effect",
+   "seconds": 1.72,
+   "plays": [
+    "Episode 9-1 cutscene, sound 343"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/343.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_364",
+   "kind": "effect",
+   "seconds": 1.31,
+   "plays": [
+    "Episode 9-1 cutscene, sound 364"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/364.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_365",
+   "kind": "effect",
+   "seconds": 1.22,
+   "plays": [
+    "Episode 9-1 cutscene, sound 365"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/365.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_368",
+   "kind": "effect",
+   "seconds": 1.26,
+   "plays": [
+    "Episode 9-1 cutscene, sound 368"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/368.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_372",
+   "kind": "effect",
+   "seconds": 0.86,
+   "plays": [
+    "Episode 9-1 cutscene, sound 372"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/372.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_387",
+   "kind": "effect",
+   "seconds": 0.7,
+   "plays": [
+    "Episode 9-1 cutscene, sound 387"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/387.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_393",
+   "kind": "effect",
+   "seconds": 3.26,
+   "plays": [
+    "Episode 9-1 cutscene, sound 393"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/393.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_394",
+   "kind": "effect",
+   "seconds": 2.04,
+   "plays": [
+    "Episode 9-1 cutscene, sound 394"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/394.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_408",
+   "kind": "effect",
+   "seconds": 2.14,
+   "plays": [
+    "Episode 9-1 cutscene, sound 408"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/408.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_410",
+   "kind": "effect",
+   "seconds": 2.17,
+   "plays": [
+    "Episode 9-1 cutscene, sound 410"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/410.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_420",
+   "kind": "effect",
+   "seconds": 2.86,
+   "plays": [
+    "Episode 9-1 cutscene, sound 420"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/420.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_438",
+   "kind": "effect",
+   "seconds": 8.48,
+   "plays": [
+    "Episode 9-1 cutscene, sound 438"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/438.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_458",
+   "kind": "effect",
+   "seconds": 1.27,
+   "plays": [
+    "Episode 9-1 cutscene, sound 458"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/458.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_459",
+   "kind": "effect",
+   "seconds": 1.18,
+   "plays": [
+    "Episode 9-1 cutscene, sound 459"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/459.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_472",
+   "kind": "effect",
+   "seconds": 2.25,
+   "plays": [
+    "Episode 9-1 cutscene, sound 472"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/472.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_473",
+   "kind": "effect",
+   "seconds": 6.43,
+   "plays": [
+    "Episode 9-1 cutscene, sound 473"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/473.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_484",
+   "kind": "effect",
+   "seconds": 4.78,
+   "plays": [
+    "Episode 9-1 cutscene, sound 484"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/484.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_502",
+   "kind": "effect",
+   "seconds": 3.72,
+   "plays": [
+    "Episode 9-1 cutscene, sound 502"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/502.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_520",
+   "kind": "effect",
+   "seconds": 6.0,
+   "plays": [
+    "Episode 9-1 cutscene, sound 520"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/520.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_9-1_552",
+   "kind": "effect",
+   "seconds": 2.02,
+   "plays": [
+    "Episode 9-1 cutscene, sound 552"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/552.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_593",
+   "kind": "effect",
+   "seconds": 7.26,
+   "plays": [
+    "Episode 9-1 cutscene, sound 593",
+    "Scene XII.10-E, sound 64"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/593.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_594",
+   "kind": "effect",
+   "seconds": 6.78,
+   "plays": [
+    "Episode 9-1 cutscene, sound 594",
+    "Scene XII.10-E, sound 77",
+    "Scene XII.10-E_b, sound 77"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/594.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_607",
+   "kind": "effect",
+   "seconds": 15.39,
+   "plays": [
+    "Episode 9-1 cutscene, sound 607"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/607.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_9-1_63",
+   "kind": "effect",
+   "seconds": 2.81,
+   "plays": [
+    "Episode 9-1 cutscene, sound 63"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/63.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_76",
+   "kind": "effect",
+   "seconds": 4.83,
+   "plays": [
+    "Episode 9-1 cutscene, sound 76"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/76.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_113",
+   "kind": "effect",
+   "seconds": 1.49,
+   "plays": [
+    "Episode 9-2 cutscene, sound 113",
+    "Episode 9-2 v4 sounded, sound 113"
+   ],
+   "file": "game/movies/Episode_9-2/sounds/113.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_4",
+   "kind": "effect",
+   "seconds": 3.49,
+   "plays": [
+    "Episode 9-2 cutscene, sound 4",
+    "Episode 9-2 v4 sounded, sound 4"
+   ],
+   "file": "game/movies/Episode_9-2/sounds/4.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_5",
+   "kind": "effect",
+   "seconds": 1.17,
+   "plays": [
+    "Episode 9-2 cutscene, sound 5",
+    "Episode 9-2 v4 sounded, sound 5"
+   ],
+   "file": "game/movies/Episode_9-2/sounds/5.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_60",
+   "kind": "effect",
+   "seconds": 5.03,
+   "plays": [
+    "Episode 9-2 cutscene, sound 60",
+    "Episode 9-2 v4 sounded, sound 60"
+   ],
+   "file": "game/movies/Episode_9-2/sounds/60.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_63",
+   "kind": "effect",
+   "seconds": 0.44,
+   "plays": [
+    "Episode 9-2 cutscene, sound 63",
+    "Episode 9-2 v4 sounded, sound 63"
+   ],
+   "file": "game/movies/Episode_9-2/sounds/63.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_66",
+   "kind": "effect",
+   "seconds": 1.0,
+   "plays": [
+    "Episode 9-2 cutscene, sound 66",
+    "Episode 9-2 v4 sounded, sound 66",
+    "Scene XII.11-E, sound 10"
+   ],
+   "file": "game/movies/Episode_9-2/sounds/66.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_154",
+   "kind": "effect",
+   "seconds": 3.31,
+   "plays": [
+    "Episode 9-3 cutscene, sound 154"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/154.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_196",
+   "kind": "effect",
+   "seconds": 0.33,
+   "plays": [
+    "Episode 9-3 cutscene, sound 196"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/196.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_286",
+   "kind": "effect",
+   "seconds": 5.38,
+   "plays": [
+    "Episode 9-3 cutscene, sound 286"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/286.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_321",
+   "kind": "effect",
+   "seconds": 2.81,
+   "plays": [
+    "Episode 9-3 cutscene, sound 321"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/321.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_322",
+   "kind": "effect",
+   "seconds": 2.89,
+   "plays": [
+    "Episode 9-3 cutscene, sound 322"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/322.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_334",
+   "kind": "effect",
+   "seconds": 2.28,
+   "plays": [
+    "Episode 9-3 cutscene, sound 334"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/334.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_369",
+   "kind": "effect",
+   "seconds": 4.79,
+   "plays": [
+    "Episode 9-3 cutscene, sound 369"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/369.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_398",
+   "kind": "effect",
+   "seconds": 2.33,
+   "plays": [
+    "Episode 9-3 cutscene, sound 398"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/398.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_450",
+   "kind": "effect",
+   "seconds": 4.59,
+   "plays": [
+    "Episode 9-3 cutscene, sound 450"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/450.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_455",
+   "kind": "effect",
+   "seconds": 0.37,
+   "plays": [
+    "Episode 9-3 cutscene, sound 455"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/455.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_477",
+   "kind": "effect",
+   "seconds": 0.37,
+   "plays": [
+    "Episode 9-3 cutscene, sound 477"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/477.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_478",
+   "kind": "effect",
+   "seconds": 4.34,
+   "plays": [
+    "Episode 9-3 cutscene, sound 478"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/478.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_487",
+   "kind": "effect",
+   "seconds": 0.21,
+   "plays": [
+    "Episode 9-3 cutscene, sound 487"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/487.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_492",
+   "kind": "effect",
+   "seconds": 6.0,
+   "plays": [
+    "Episode 9-3 cutscene, sound 492"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/492.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_9-3_512",
+   "kind": "effect",
+   "seconds": 3.72,
+   "plays": [
+    "Episode 9-3 cutscene, sound 512"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/512.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_513",
+   "kind": "effect",
+   "seconds": 3.21,
+   "plays": [
+    "Episode 9-3 cutscene, sound 513"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/513.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_514",
+   "kind": "effect",
+   "seconds": 7.26,
+   "plays": [
+    "Episode 9-3 cutscene, sound 514"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/514.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_521",
+   "kind": "effect",
+   "seconds": 8.02,
+   "plays": [
+    "Episode 9-3 cutscene, sound 521"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/521.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_526",
+   "kind": "effect",
+   "seconds": 5.0,
+   "plays": [
+    "Episode 9-3 cutscene, sound 526"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/526.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_546",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "Episode 9-3 cutscene, sound 546"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/546.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_553",
+   "kind": "effect",
+   "seconds": 5.8,
+   "plays": [
+    "Episode 9-3 cutscene, sound 553"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/553.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_558",
+   "kind": "effect",
+   "seconds": 4.83,
+   "plays": [
+    "Episode 9-3 cutscene, sound 558"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/558.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_561",
+   "kind": "effect",
+   "seconds": 4.79,
+   "plays": [
+    "Episode 9-3 cutscene, sound 561"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/561.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_563",
+   "kind": "effect",
+   "seconds": 6.36,
+   "plays": [
+    "Episode 9-3 cutscene, sound 563"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/563.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_572",
+   "kind": "effect",
+   "seconds": 8.17,
+   "plays": [
+    "Episode 9-3 cutscene, sound 572"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/572.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_9-3_600",
+   "kind": "effect",
+   "seconds": 3.44,
+   "plays": [
+    "Episode 9-3 cutscene, sound 600"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/600.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_691",
+   "kind": "effect",
+   "seconds": 0.84,
+   "plays": [
+    "Episode 9-3 cutscene, sound 691"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/691.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_703",
+   "kind": "effect",
+   "seconds": 2.88,
+   "plays": [
+    "Episode 9-3 cutscene, sound 703"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/703.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_784",
+   "kind": "effect",
+   "seconds": 0.19,
+   "plays": [
+    "Episode 9-3 cutscene, sound 784"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/784.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-4_7",
+   "kind": "effect",
+   "seconds": 0.67,
+   "plays": [
+    "Episode 9-1 cutscene, sound 301",
+    "Episode 9-4 cutscene, sound 7"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/301.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_168",
+   "kind": "effect",
+   "seconds": 1.23,
+   "plays": [
+    "Episode 9-6 cutscene, sound 168"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/168.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_178",
+   "kind": "effect",
+   "seconds": 3.32,
+   "plays": [
+    "Episode 9-6 cutscene, sound 178"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/178.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_180",
+   "kind": "effect",
+   "seconds": 0.59,
+   "plays": [
+    "Episode 9-6 cutscene, sound 180"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/180.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_187",
+   "kind": "effect",
+   "seconds": 1.47,
+   "plays": [
+    "Episode 9-6 cutscene, sound 187"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/187.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_188",
+   "kind": "effect",
+   "seconds": 0.8,
+   "plays": [
+    "Episode 9-6 cutscene, sound 188"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/188.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_33",
+   "kind": "effect",
+   "seconds": 0.71,
+   "plays": [
+    "Episode 9-6 cutscene, sound 33"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/33.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_70",
+   "kind": "effect",
+   "seconds": 0.36,
+   "plays": [
+    "Episode 9-6 cutscene, sound 70"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/70.ogg",
+   "lead": false
+  },
+  {
+   "name": "FluteNoteA_1",
+   "kind": "effect",
+   "seconds": 3.29,
+   "plays": [
+    "FluteNoteA, sound 1"
+   ],
+   "file": "game/movies/FluteNoteA/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "FluteNoteB_1",
+   "kind": "effect",
+   "seconds": 3.29,
+   "plays": [
+    "FluteNoteB, sound 1"
+   ],
+   "file": "game/movies/FluteNoteB/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "FluteNoteC_1",
+   "kind": "effect",
+   "seconds": 3.29,
+   "plays": [
+    "FluteNoteC, sound 1"
+   ],
+   "file": "game/movies/FluteNoteC/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "FluteNoteD_1",
+   "kind": "effect",
+   "seconds": 3.29,
+   "plays": [
+    "FluteNoteD, sound 1"
+   ],
+   "file": "game/movies/FluteNoteD/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "FluteNoteE_1",
+   "kind": "effect",
+   "seconds": 3.29,
+   "plays": [
+    "FluteNoteE, sound 1"
+   ],
+   "file": "game/movies/FluteNoteE/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_4-1_126",
+   "kind": "effect",
+   "seconds": 0.44,
+   "plays": [
+    "Minigame 4-1, sound 126"
+   ],
+   "file": "game/movies/Game_4-1/sounds/126.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_4-1_132",
+   "kind": "effect",
+   "seconds": 1.8,
+   "plays": [
+    "Minigame 4-1, sound 132"
+   ],
+   "file": "game/movies/Game_4-1/sounds/132.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_4-1_49",
+   "kind": "effect",
+   "seconds": 0.91,
+   "plays": [
+    "Minigame 4-1, sound 49"
+   ],
+   "file": "game/movies/Game_4-1/sounds/49.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_4-1_80",
+   "kind": "effect",
+   "seconds": 0.56,
+   "plays": [
+    "Minigame 4-1, sound 80"
+   ],
+   "file": "game/movies/Game_4-1/sounds/80.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_80",
+   "kind": "effect",
+   "seconds": 3.07,
+   "plays": [
+    "Minigame 6-1, sound 80"
+   ],
+   "file": "game/movies/Game_6-1/sounds/80.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_146",
+   "kind": "effect",
+   "seconds": 1.5,
+   "plays": [
+    "Minigame 8-1, sound 146"
+   ],
+   "file": "game/movies/Game_8-1/sounds/146.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_193",
+   "kind": "effect",
+   "seconds": 0.49,
+   "plays": [
+    "Minigame 8-1, sound 193"
+   ],
+   "file": "game/movies/Game_8-1/sounds/193.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_275",
+   "kind": "effect",
+   "seconds": 0.3,
+   "plays": [
+    "Minigame 8-1, sound 275"
+   ],
+   "file": "game/movies/Game_8-1/sounds/275.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_31",
+   "kind": "effect",
+   "seconds": 0.33,
+   "plays": [
+    "Minigame 8-1, sound 31"
+   ],
+   "file": "game/movies/Game_8-1/sounds/31.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_330",
+   "kind": "effect",
+   "seconds": 0.26,
+   "plays": [
+    "Minigame 8-1, sound 330"
+   ],
+   "file": "game/movies/Game_8-1/sounds/330.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_37",
+   "kind": "effect",
+   "seconds": 1.32,
+   "plays": [
+    "Minigame 8-1, sound 37"
+   ],
+   "file": "game/movies/Game_8-1/sounds/37.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_47",
+   "kind": "effect",
+   "seconds": 0.51,
+   "plays": [
+    "Minigame 8-1, sound 47"
+   ],
+   "file": "game/movies/Game_8-1/sounds/47.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_71",
+   "kind": "effect",
+   "seconds": 0.09,
+   "plays": [
+    "Minigame 8-1, sound 71"
+   ],
+   "file": "game/movies/Game_8-1/sounds/71.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_76",
+   "kind": "effect",
+   "seconds": 1.28,
+   "plays": [
+    "Minigame 8-1, sound 76"
+   ],
+   "file": "game/movies/Game_8-1/sounds/76.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_8-1_82",
+   "kind": "effect",
+   "seconds": 0.86,
+   "plays": [
+    "Minigame 8-1, sound 82"
+   ],
+   "file": "game/movies/Game_8-1/sounds/82.ogg",
+   "lead": false
+  },
+  {
+   "name": "IV.3-W_57",
+   "kind": "effect",
+   "seconds": 1.93,
+   "plays": [
+    "Scene IV.3-W, sound 57",
+    "Scene IV.7-E, sound 81"
+   ],
+   "file": "game/movies/IV.3-W/sounds/57.ogg",
+   "lead": false
+  },
+  {
+   "name": "IV.3-W_63",
+   "kind": "effect",
+   "seconds": 1.49,
+   "plays": [
+    "Scene IV.3-W, sound 63",
+    "Scene IV.7-E, sound 70"
+   ],
+   "file": "game/movies/IV.3-W/sounds/63.ogg",
+   "lead": false
+  },
+  {
+   "name": "IX.4A_19",
+   "kind": "effect",
+   "seconds": 5.58,
+   "plays": [
+    "Scene IX.4A, sound 19",
+    "Scene IX.4B, sound 19",
+    "Scene IX.4C, sound 19",
+    "Scene IX.4D, sound 19",
+    "Scene IX.4E, sound 19",
+    "Scene IX.4F, sound 19"
+   ],
+   "file": "game/movies/IX.4A/sounds/19.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_birdtweet1",
+   "kind": "effect",
+   "seconds": 2.56,
+   "plays": [
+    "SFX birdtweet1, sound 1"
+   ],
+   "file": "game/movies/SFX_birdtweet1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_birdtweet2",
+   "kind": "effect",
+   "seconds": 1.6,
+   "plays": [
+    "SFX birdtweet2, sound 1"
+   ],
+   "file": "game/movies/SFX_birdtweet2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_birdtweet3",
+   "kind": "effect",
+   "seconds": 0.63,
+   "plays": [
+    "Episode 6-3 cutscene, sound 169",
+    "SFX birdtweet3, sound 1"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/169.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_cavedrip1",
+   "kind": "effect",
+   "seconds": 2.38,
+   "plays": [
+    "SFX cavedrip1, sound 1"
+   ],
+   "file": "game/movies/SFX_cavedrip1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_cavedrip2",
+   "kind": "effect",
+   "seconds": 1.94,
+   "plays": [
+    "SFX cavedrip2, sound 1"
+   ],
+   "file": "game/movies/SFX_cavedrip2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_cavedrip3",
+   "kind": "effect",
+   "seconds": 1.77,
+   "plays": [
+    "SFX cavedrip3, sound 1"
+   ],
+   "file": "game/movies/SFX_cavedrip3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_ForestSteps1",
+   "kind": "effect",
+   "seconds": 1.89,
+   "plays": [
+    "SFX ForestSteps1, sound 1"
+   ],
+   "file": "game/movies/SFX_ForestSteps1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_ForestSteps2",
+   "kind": "effect",
+   "seconds": 2.72,
+   "plays": [
+    "SFX ForestSteps2, sound 1"
+   ],
+   "file": "game/movies/SFX_ForestSteps2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_ForestSteps3",
+   "kind": "effect",
+   "seconds": 2.31,
+   "plays": [
+    "SFX ForestSteps3, sound 1"
+   ],
+   "file": "game/movies/SFX_ForestSteps3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Gakorosting",
+   "kind": "effect",
+   "seconds": 7.86,
+   "plays": [
+    "SFX Gakorosting, sound 1"
+   ],
+   "file": "game/movies/SFX_Gakorosting/sounds/1.ogg",
+   "lead": true
+  },
+  {
+   "name": "SFX_Gull1",
+   "kind": "effect",
+   "seconds": 0.77,
+   "plays": [
+    "SFX Gull1, sound 1"
+   ],
+   "file": "game/movies/SFX_Gull1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Gull2",
+   "kind": "effect",
+   "seconds": 0.98,
+   "plays": [
+    "SFX Gull2, sound 1"
+   ],
+   "file": "game/movies/SFX_Gull2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Gull3",
+   "kind": "effect",
+   "seconds": 0.81,
+   "plays": [
+    "SFX Gull3, sound 1"
+   ],
+   "file": "game/movies/SFX_Gull3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_LavaCrackle1",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "SFX LavaCrackle1, sound 1"
+   ],
+   "file": "game/movies/SFX_LavaCrackle1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_LavaCrackle2",
+   "kind": "effect",
+   "seconds": 0.51,
+   "plays": [
+    "SFX LavaCrackle2, sound 1"
+   ],
+   "file": "game/movies/SFX_LavaCrackle2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_LavaCrackle3",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "SFX LavaCrackle3, sound 1"
+   ],
+   "file": "game/movies/SFX_LavaCrackle3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_LavaCrackle4",
+   "kind": "effect",
+   "seconds": 2.33,
+   "plays": [
+    "SFX LavaCrackle4, sound 1"
+   ],
+   "file": "game/movies/SFX_LavaCrackle4/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_LavaHiss1",
+   "kind": "effect",
+   "seconds": 2.34,
+   "plays": [
+    "SFX LavaHiss1, sound 1",
+    "SFX LavaHiss2, sound 1"
+   ],
+   "file": "game/movies/SFX_LavaHiss1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_LavaHiss3",
+   "kind": "effect",
+   "seconds": 2.11,
+   "plays": [
+    "SFX LavaHiss3, sound 1"
+   ],
+   "file": "game/movies/SFX_LavaHiss3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Spelunk",
+   "kind": "effect",
+   "seconds": 5.21,
+   "plays": [
+    "SFX Spelunk, sound 1"
+   ],
+   "file": "game/movies/SFX_Spelunk/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SpecialSFX_Telescope_1",
+   "kind": "effect",
+   "seconds": 1.79,
+   "plays": [
+    "SpecialSFX Telescope, sound 1"
+   ],
+   "file": "game/movies/SpecialSFX_Telescope/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SpecialSFX_Telescope_2",
+   "kind": "effect",
+   "seconds": 1.15,
+   "plays": [
+    "SpecialSFX Telescope, sound 2"
+   ],
+   "file": "game/movies/SpecialSFX_Telescope/sounds/2.ogg",
+   "lead": false
+  },
+  {
+   "name": "V.7B_10",
+   "kind": "effect",
+   "seconds": 2.92,
+   "plays": [
+    "Scene V.7B, sound 10"
+   ],
+   "file": "game/movies/V.7B/sounds/10.ogg",
+   "lead": false
+  },
+  {
+   "name": "V.7B_14",
+   "kind": "effect",
+   "seconds": 1.24,
+   "plays": [
+    "Scene V.7B, sound 14"
+   ],
+   "file": "game/movies/V.7B/sounds/14.ogg",
+   "lead": false
+  },
+  {
+   "name": "V.7B_9",
+   "kind": "effect",
+   "seconds": 1.14,
+   "plays": [
+    "Scene V.7B, sound 9"
+   ],
+   "file": "game/movies/V.7B/sounds/9.ogg",
+   "lead": false
+  },
+  {
+   "name": "VI.2A_14",
+   "kind": "effect",
+   "seconds": 0.46,
+   "plays": [
+    "Scene VI.2A, sound 14"
+   ],
+   "file": "game/movies/VI.2A/sounds/14.ogg",
+   "lead": false
+  },
+  {
+   "name": "VII.8-W_34",
+   "kind": "effect",
+   "seconds": 0.23,
+   "plays": [
+    "Scene VII.8-W, sound 34",
+    "Scene VIII.3-E, sound 35"
+   ],
+   "file": "game/movies/VII.8-W/sounds/34.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.4-N_11",
+   "kind": "effect",
+   "seconds": 0.86,
+   "plays": [
+    "Scene VIII.4-N, sound 11"
+   ],
+   "file": "game/movies/VIII.4-N/sounds/11.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.4-N_14",
+   "kind": "effect",
+   "seconds": 0.42,
+   "plays": [
+    "Scene VIII.4-N, sound 14"
+   ],
+   "file": "game/movies/VIII.4-N/sounds/14.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.4A_14",
+   "kind": "effect",
+   "seconds": 0.49,
+   "plays": [
+    "Scene VIII.4A, sound 14"
+   ],
+   "file": "game/movies/VIII.4A/sounds/14.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.5-E_31",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "Scene VIII.5-E, sound 31"
+   ],
+   "file": "game/movies/VIII.5-E/sounds/31.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.5-E_46",
+   "kind": "effect",
+   "seconds": 4.22,
+   "plays": [
+    "Scene VIII.5-E, sound 46",
+    "Scene VIII.5A, sound 24"
+   ],
+   "file": "game/movies/VIII.5-E/sounds/46.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.5A_10",
+   "kind": "effect",
+   "seconds": 1.11,
+   "plays": [
+    "Scene VIII.5A, sound 10"
+   ],
+   "file": "game/movies/VIII.5A/sounds/10.ogg",
+   "lead": false
+  },
+  {
+   "name": "VIII.5A_16",
+   "kind": "effect",
+   "seconds": 0.6,
+   "plays": [
+    "Scene VIII.5A, sound 16"
+   ],
+   "file": "game/movies/VIII.5A/sounds/16.ogg",
+   "lead": false
+  },
+  {
+   "name": "X.6-S_25",
+   "kind": "effect",
+   "seconds": 0.93,
+   "plays": [
+    "Scene X.6-S, sound 25",
+    "Scene XI.2-E, sound 29"
+   ],
+   "file": "game/movies/X.6-S/sounds/25.ogg",
+   "lead": false
+  },
+  {
+   "name": "X.6-S_26",
+   "kind": "effect",
+   "seconds": 2.85,
+   "plays": [
+    "Scene X.6-S, sound 26",
+    "Scene XI.2-E, sound 30",
+    "Scene XI.CrabRide1, sound 28"
+   ],
+   "file": "game/movies/X.6-S/sounds/26.ogg",
+   "lead": false
+  },
+  {
+   "name": "X.6-S_46",
+   "kind": "effect",
+   "seconds": 2.64,
+   "plays": [
+    "Scene X.6-S, sound 46"
+   ],
+   "file": "game/movies/X.6-S/sounds/46.ogg",
+   "lead": false
+  },
+  {
+   "name": "X.6-S_47",
+   "kind": "effect",
+   "seconds": 0.7,
+   "plays": [
+    "Scene X.6-S, sound 47"
+   ],
+   "file": "game/movies/X.6-S/sounds/47.ogg",
+   "lead": false
+  },
+  {
+   "name": "X.6A_12",
+   "kind": "effect",
+   "seconds": 0.7,
+   "plays": [
+    "Scene X.6A, sound 12"
+   ],
+   "file": "game/movies/X.6A/sounds/12.ogg",
+   "lead": false
+  },
+  {
+   "name": "XI.1-N_105",
+   "kind": "effect",
+   "seconds": 0.74,
+   "plays": [
+    "Scene XI.1-N, sound 105",
+    "Scene XI.2-E, sound 59"
+   ],
+   "file": "game/movies/XI.1-N/sounds/105.ogg",
+   "lead": false
+  },
+  {
+   "name": "XI.1A_12",
+   "kind": "effect",
+   "seconds": 0.67,
+   "plays": [
+    "Scene XI.1A, sound 12"
+   ],
+   "file": "game/movies/XI.1A/sounds/12.ogg",
+   "lead": false
+  },
+  {
+   "name": "XI.2-E_28",
+   "kind": "effect",
+   "seconds": 3.25,
+   "plays": [
+    "Scene XI.2-E, sound 28"
+   ],
+   "file": "game/movies/XI.2-E/sounds/28.ogg",
+   "lead": false
+  },
+  {
+   "name": "XI.CrabRide1_26",
+   "kind": "effect",
+   "seconds": 0.67,
+   "plays": [
+    "Scene XI.CrabRide1, sound 26"
+   ],
+   "file": "game/movies/XI.CrabRide1/sounds/26.ogg",
+   "lead": false
+  },
+  {
+   "name": "XI.CrabRide1_27",
+   "kind": "effect",
+   "seconds": 0.63,
+   "plays": [
+    "Scene XI.CrabRide1, sound 27"
+   ],
+   "file": "game/movies/XI.CrabRide1/sounds/27.ogg",
+   "lead": false
+  },
+  {
+   "name": "XI.CrabRide1_29",
+   "kind": "effect",
+   "seconds": 3.54,
+   "plays": [
+    "Scene XI.CrabRide1, sound 29"
+   ],
+   "file": "game/movies/XI.CrabRide1/sounds/29.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.10-E_95",
+   "kind": "effect",
+   "seconds": 2.3,
+   "plays": [
+    "Scene XII.10-E, sound 95"
+   ],
+   "file": "game/movies/XII.10-E/sounds/95.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.10-E_b_64",
+   "kind": "effect",
+   "seconds": 7.26,
+   "plays": [
+    "Scene XII.10-E_b, sound 64"
+   ],
+   "file": "game/movies/XII.10-E_b/sounds/64.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.10-E_b_95",
+   "kind": "effect",
+   "seconds": 2.3,
+   "plays": [
+    "Scene XII.10-E_b, sound 95"
+   ],
+   "file": "game/movies/XII.10-E_b/sounds/95.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.11-E_11",
+   "kind": "effect",
+   "seconds": 0.98,
+   "plays": [
+    "Scene XII.11-E, sound 11"
+   ],
+   "file": "game/movies/XII.11-E/sounds/11.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.11-E_22",
+   "kind": "effect",
+   "seconds": 1.14,
+   "plays": [
+    "Scene XII.11-E, sound 22"
+   ],
+   "file": "game/movies/XII.11-E/sounds/22.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.4-E_83",
+   "kind": "effect",
+   "seconds": 0.33,
+   "plays": [
+    "Scene XII.4-E, sound 83"
+   ],
+   "file": "game/movies/XII.4-E/sounds/83.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.4-E_88",
+   "kind": "effect",
+   "seconds": 1.32,
+   "plays": [
+    "Scene XII.4-E, sound 88"
+   ],
+   "file": "game/movies/XII.4-E/sounds/88.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.7A_24",
+   "kind": "effect",
+   "seconds": 2.19,
+   "plays": [
+    "Scene XII.7A, sound 24"
+   ],
+   "file": "game/movies/XII.7A/sounds/24.ogg",
+   "lead": false
+  },
+  {
+   "name": "XII.7A_26",
+   "kind": "effect",
+   "seconds": 0.58,
+   "plays": [
+    "Scene XII.7A, sound 26"
+   ],
+   "file": "game/movies/XII.7A/sounds/26.ogg",
+   "lead": false
+  },
+  {
+   "name": "XIII.11-S_95",
+   "kind": "effect",
+   "seconds": 2.65,
+   "plays": [
+    "Scene XIII.11-S, sound 95",
+    "Scene XV.5-S, sound 95"
+   ],
+   "file": "game/movies/XIII.11-S/sounds/95.ogg",
+   "lead": false
+  },
+  {
+   "name": "XIX.1-N_20",
+   "kind": "effect",
+   "seconds": 2.13,
+   "plays": [
+    "Scene XIX.1-N, sound 20"
+   ],
+   "file": "game/movies/XIX.1-N/sounds/20.ogg",
+   "lead": false
+  },
+  {
+   "name": "XIX.3A_33",
+   "kind": "effect",
+   "seconds": 11.13,
+   "plays": [
+    "Scene XIX.3A, sound 33"
+   ],
+   "file": "game/movies/XIX.3A/sounds/33.ogg",
+   "lead": false
+  },
+  {
+   "name": "XIX.4-N_16",
+   "kind": "effect",
+   "seconds": 3.0,
+   "plays": [
+    "Scene IX.4A, sound 20",
+    "Scene IX.4B, sound 20",
+    "Scene IX.4C, sound 20",
+    "Scene IX.4D, sound 20",
+    "Scene IX.4E, sound 20",
+    "Scene IX.4F, sound 20",
+    "Scene XIX.4-N, sound 16",
+    "Scene XIX.7-N, sound 62"
+   ],
+   "file": "game/movies/IX.4A/sounds/20.ogg",
+   "lead": false
+  },
+  {
+   "name": "XIX.7-N_1",
+   "kind": "effect",
+   "seconds": 0.49,
+   "plays": [
+    "Scene XIX.7-N, sound 1"
+   ],
+   "file": "game/movies/XIX.7-N/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "XV.1-S_68",
+   "kind": "effect",
+   "seconds": 3.58,
+   "plays": [
+    "Scene XV.1-S, sound 68"
+   ],
+   "file": "game/movies/XV.1-S/sounds/68.ogg",
+   "lead": false
+  },
+  {
+   "name": "XV.2-N_41",
+   "kind": "effect",
+   "seconds": 3.58,
+   "plays": [
+    "Scene XV.2-N, sound 41"
+   ],
+   "file": "game/movies/XV.2-N/sounds/41.ogg",
+   "lead": false
+  },
+  {
+   "name": "XV.3A_87",
+   "kind": "effect",
+   "seconds": 1.39,
+   "plays": [
+    "Scene XV.3A, sound 87"
+   ],
+   "file": "game/movies/XV.3A/sounds/87.ogg",
+   "lead": false
+  },
+  {
+   "name": "XV.5-S_27",
+   "kind": "effect",
+   "seconds": 1.32,
+   "plays": [
+    "Scene XV.5-S, sound 27"
+   ],
+   "file": "game/movies/XV.5-S/sounds/27.ogg",
+   "lead": false
+  },
+  {
+   "name": "XVII.3-S_50",
+   "kind": "effect",
+   "seconds": 2.25,
+   "plays": [
+    "Episode 6-7 cutscene, sound 57",
+    "Scene XVII.3-S, sound 50"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/57.ogg",
+   "lead": false
+  },
+  {
+   "name": "XVIII.5A_12",
+   "kind": "effect",
+   "seconds": 2.29,
+   "plays": [
+    "Scene XVIII.5A, sound 12"
+   ],
+   "file": "game/movies/XVIII.5A/sounds/12.ogg",
+   "lead": false
+  },
+  {
+   "name": "XXI.8-N_43",
+   "kind": "effect",
+   "seconds": 0.91,
+   "plays": [
+    "Scene XXI.8-N, sound 43"
+   ],
+   "file": "game/movies/XXI.8-N/sounds/43.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode1-1-SFX_darkness_1",
+   "kind": "music",
+   "seconds": 16.38,
+   "plays": [
+    "Episode1-1-SFX darkness, sound 1",
+    "Episode 1-1 cutscene, sound 92"
+   ],
+   "file": "game/movies/Episode1-1-SFX_darkness/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode1-1-SFX_makuta_1",
+   "kind": "music",
+   "seconds": 7.22,
+   "plays": [
+    "Episode1-1-SFX makuta, sound 1",
+    "Episode 1-1 cutscene, sound 78",
+    "Episode 4-2 cutscene, sound 56"
+   ],
+   "file": "game/movies/Episode1-1-SFX_makuta/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode1-1-SFX_sunloop_1",
+   "kind": "music",
+   "seconds": 10.08,
+   "plays": [
+    "Episode1-1-SFX sunloop, sound 1",
+    "Episode 1-1 cutscene, sound 145"
+   ],
+   "file": "game/movies/Episode1-1-SFX_sunloop/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_2-1_170",
+   "kind": "music",
+   "seconds": 3.57,
+   "plays": [
+    "Episode 2-1 cutscene, sound 170"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/170.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_30",
+   "kind": "music",
+   "seconds": 7.44,
+   "plays": [
+    "Episode 3-3 cutscene, sound 30"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/30.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_57",
+   "kind": "music",
+   "seconds": 7.44,
+   "plays": [
+    "Episode 3-3 cutscene, sound 57"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/57.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_3-3_83",
+   "kind": "music",
+   "seconds": 7.44,
+   "plays": [
+    "Episode 3-3 cutscene, sound 83"
+   ],
+   "file": "game/movies/Episode_3-3/sounds/83.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_4-1_9",
+   "kind": "music",
+   "seconds": 11.69,
+   "plays": [
+    "Episode 4-1 cutscene, sound 9"
+   ],
+   "file": "game/movies/Episode_4-1/sounds/9.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-1_27",
+   "kind": "music",
+   "seconds": 9.58,
+   "plays": [
+    "Episode 6-1 cutscene, sound 27"
+   ],
+   "file": "game/movies/Episode_6-1/sounds/27.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_20",
+   "kind": "music",
+   "seconds": 3.01,
+   "plays": [
+    "Episode 6-3 cutscene, sound 20"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/20.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_45",
+   "kind": "music",
+   "seconds": 3.09,
+   "plays": [
+    "Episode 6-3 cutscene, sound 45"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/45.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_79",
+   "kind": "music",
+   "seconds": 4.78,
+   "plays": [
+    "Episode 6-3 cutscene, sound 79"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/79.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-3_99",
+   "kind": "music",
+   "seconds": 1.91,
+   "plays": [
+    "Episode 6-3 cutscene, sound 99"
+   ],
+   "file": "game/movies/Episode_6-3/sounds/99.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-4_25",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Episode 6-4 cutscene, sound 25",
+    "Minigame 6-1, sound 14"
+   ],
+   "file": "game/movies/Episode_6-4/sounds/25.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-4_65",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Episode 6-4 cutscene, sound 65"
+   ],
+   "file": "game/movies/Episode_6-4/sounds/65.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_207",
+   "kind": "music",
+   "seconds": 3.65,
+   "plays": [
+    "Episode 6-5 cutscene, sound 207"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/207.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-5_56",
+   "kind": "music",
+   "seconds": 6.8,
+   "plays": [
+    "Episode 6-5 cutscene, sound 56"
+   ],
+   "file": "game/movies/Episode_6-5/sounds/56.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_6-7_474",
+   "kind": "music",
+   "seconds": 11.07,
+   "plays": [
+    "Episode 6-7 cutscene, sound 474"
+   ],
+   "file": "game/movies/Episode_6-7/sounds/474.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_103",
+   "kind": "music",
+   "seconds": 2.66,
+   "plays": [
+    "Episode 7-2 cutscene, sound 103"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/103.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_117",
+   "kind": "music",
+   "seconds": 3.33,
+   "plays": [
+    "Episode 7-2 cutscene, sound 117"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/117.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_7-2_3",
+   "kind": "music",
+   "seconds": 18.93,
+   "plays": [
+    "Episode 7-2 cutscene, sound 3"
+   ],
+   "file": "game/movies/Episode_7-2/sounds/3.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_100",
+   "kind": "music",
+   "seconds": 16.18,
+   "plays": [
+    "Episode 8-5 cutscene, sound 100"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/100.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_97",
+   "kind": "music",
+   "seconds": 16.18,
+   "plays": [
+    "Episode 8-5 cutscene, sound 97"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/97.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_98",
+   "kind": "music",
+   "seconds": 16.18,
+   "plays": [
+    "Episode 8-5 cutscene, sound 98"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/98.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-5_99",
+   "kind": "music",
+   "seconds": 16.18,
+   "plays": [
+    "Episode 8-5 cutscene, sound 99"
+   ],
+   "file": "game/movies/Episode_8-5/sounds/99.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-6_18",
+   "kind": "music",
+   "seconds": 15.39,
+   "plays": [
+    "Episode 8-6 cutscene, sound 18"
+   ],
+   "file": "game/movies/Episode_8-6/sounds/18.ogg",
+   "lead": true
+  },
+  {
+   "name": "Episode_8-7_11",
+   "kind": "music",
+   "seconds": 10.65,
+   "plays": [
+    "Episode 8-7 cutscene, sound 11",
+    "Episode 8-8 cutscene, sound 5",
+    "Episode 9-1 cutscene, sound 356"
+   ],
+   "file": "game/movies/Episode_8-7/sounds/11.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_8-8_6",
+   "kind": "music",
+   "seconds": 10.65,
+   "plays": [
+    "Episode 8-8 cutscene, sound 6",
+    "Episode 9-1 cutscene, sound 357"
+   ],
+   "file": "game/movies/Episode_8-8/sounds/6.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_118",
+   "kind": "music",
+   "seconds": 6.48,
+   "plays": [
+    "Episode 9-1 cutscene, sound 118"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/118.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_144",
+   "kind": "music",
+   "seconds": 3.66,
+   "plays": [
+    "Episode 9-1 cutscene, sound 144"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/144.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_153",
+   "kind": "music",
+   "seconds": 3.17,
+   "plays": [
+    "Episode 9-1 cutscene, sound 153"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/153.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_320",
+   "kind": "music",
+   "seconds": 4.24,
+   "plays": [
+    "Episode 9-1 cutscene, sound 320"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/320.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-1_553",
+   "kind": "music",
+   "seconds": 10.0,
+   "plays": [
+    "Episode 9-1 cutscene, sound 553",
+    "Episode 9-3 cutscene, sound 639"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/553.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-2_v4_sounded_114",
+   "kind": "music",
+   "seconds": 10.02,
+   "plays": [
+    "Episode 9-2 v4 sounded, sound 114"
+   ],
+   "file": "game/movies/Episode_9-2_v4_sounded/sounds/114.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_150",
+   "kind": "music",
+   "seconds": 3.66,
+   "plays": [
+    "Episode 9-3 cutscene, sound 150"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/150.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_229",
+   "kind": "music",
+   "seconds": 7.27,
+   "plays": [
+    "Episode 9-3 cutscene, sound 229"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/229.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_272",
+   "kind": "music",
+   "seconds": 6.74,
+   "plays": [
+    "Episode 9-3 cutscene, sound 272"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/272.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_275",
+   "kind": "music",
+   "seconds": 7.33,
+   "plays": [
+    "Episode 9-3 cutscene, sound 275"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/275.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-3_693",
+   "kind": "music",
+   "seconds": 7.33,
+   "plays": [
+    "Episode 9-3 cutscene, sound 693"
+   ],
+   "file": "game/movies/Episode_9-3/sounds/693.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_114",
+   "kind": "music",
+   "seconds": 23.99,
+   "plays": [
+    "Episode 9-6 cutscene, sound 114"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/114.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_115",
+   "kind": "music",
+   "seconds": 24.0,
+   "plays": [
+    "Episode 9-6 cutscene, sound 115"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/115.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_116",
+   "kind": "music",
+   "seconds": 24.0,
+   "plays": [
+    "Episode 9-6 cutscene, sound 116"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/116.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_117",
+   "kind": "music",
+   "seconds": 24.0,
+   "plays": [
+    "Episode 9-6 cutscene, sound 117"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/117.ogg",
+   "lead": false
+  },
+  {
+   "name": "Episode_9-6_118",
+   "kind": "music",
+   "seconds": 11.93,
+   "plays": [
+    "Episode 9-6 cutscene, sound 118"
+   ],
+   "file": "game/movies/Episode_9-6/sounds/118.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_13",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Minigame 6-1, sound 13"
+   ],
+   "file": "game/movies/Game_6-1/sounds/13.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_15",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Minigame 6-1, sound 15"
+   ],
+   "file": "game/movies/Game_6-1/sounds/15.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_16",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Minigame 6-1, sound 16"
+   ],
+   "file": "game/movies/Game_6-1/sounds/16.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_52",
+   "kind": "music",
+   "seconds": 14.77,
+   "plays": [
+    "Minigame 6-1, sound 52"
+   ],
+   "file": "game/movies/Game_6-1/sounds/52.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_53",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Minigame 6-1, sound 53"
+   ],
+   "file": "game/movies/Game_6-1/sounds/53.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_81",
+   "kind": "music",
+   "seconds": 3.69,
+   "plays": [
+    "Minigame 6-1, sound 81"
+   ],
+   "file": "game/movies/Game_6-1/sounds/81.ogg",
+   "lead": false
+  },
+  {
+   "name": "Game_6-1_82",
+   "kind": "music",
+   "seconds": 7.38,
+   "plays": [
+    "Minigame 6-1, sound 82"
+   ],
+   "file": "game/movies/Game_6-1/sounds/82.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Digsite_3",
+   "kind": "music",
+   "seconds": 9.31,
+   "plays": [
+    "Music Digsite, sound 3"
+   ],
+   "file": "game/movies/Music_Digsite/sounds/3.ogg",
+   "lead": true
+  },
+  {
+   "name": "Music_Forest_1",
+   "kind": "music",
+   "seconds": 20.43,
+   "plays": [
+    "Music Forest, sound 1"
+   ],
+   "file": "game/movies/Music_Forest/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Jungle_1",
+   "kind": "music",
+   "seconds": 12.59,
+   "plays": [
+    "Music Jungle, sound 1"
+   ],
+   "file": "game/movies/Music_Jungle/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Jungle_2",
+   "kind": "music",
+   "seconds": 12.59,
+   "plays": [
+    "Music Jungle, sound 2"
+   ],
+   "file": "game/movies/Music_Jungle/sounds/2.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Jungle_3",
+   "kind": "music",
+   "seconds": 12.59,
+   "plays": [
+    "Music Jungle, sound 3"
+   ],
+   "file": "game/movies/Music_Jungle/sounds/3.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Jungle_4",
+   "kind": "music",
+   "seconds": 12.59,
+   "plays": [
+    "Music Jungle, sound 4"
+   ],
+   "file": "game/movies/Music_Jungle/sounds/4.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Jungle_5",
+   "kind": "music",
+   "seconds": 12.59,
+   "plays": [
+    "Music Jungle, sound 5"
+   ],
+   "file": "game/movies/Music_Jungle/sounds/5.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Lightstone_3",
+   "kind": "music",
+   "seconds": 4.38,
+   "plays": [
+    "Music Lightstone, sound 3"
+   ],
+   "file": "game/movies/Music_Lightstone/sounds/3.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Monks_1",
+   "kind": "music",
+   "seconds": 9.05,
+   "plays": [
+    "Music Monks, sound 1"
+   ],
+   "file": "game/movies/Music_Monks/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Monks_3",
+   "kind": "music",
+   "seconds": 11.85,
+   "plays": [
+    "Music Monks, sound 3"
+   ],
+   "file": "game/movies/Music_Monks/sounds/3.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Monks_4",
+   "kind": "music",
+   "seconds": 11.85,
+   "plays": [
+    "Music Monks, sound 4"
+   ],
+   "file": "game/movies/Music_Monks/sounds/4.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Monks_5",
+   "kind": "music",
+   "seconds": 5.93,
+   "plays": [
+    "Music Monks, sound 5"
+   ],
+   "file": "game/movies/Music_Monks/sounds/5.ogg",
+   "lead": false
+  },
+  {
+   "name": "Music_Telescope",
+   "kind": "music",
+   "seconds": 4.63,
+   "plays": [
+    "Music Telescope, sound 1"
+   ],
+   "file": "game/movies/Music_Telescope/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_Bigdrums",
+   "kind": "music",
+   "seconds": 3.57,
+   "plays": [
+    "Episode 9-1 cutscene, sound 172",
+    "Minigame 8-1, sound 394",
+    "MusicSFX Bigdrums, sound 1"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/172.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_CreakySneak",
+   "kind": "music",
+   "seconds": 5.75,
+   "plays": [
+    "Episode 9-1 cutscene, sound 43",
+    "MusicSFX CreakySneak, sound 1"
+   ],
+   "file": "game/movies/Episode_9-1/sounds/43.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_eyegleam",
+   "kind": "music",
+   "seconds": 6.74,
+   "plays": [
+    "MusicSFX eyegleam, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_eyegleam/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_Fartflame",
+   "kind": "music",
+   "seconds": 1.38,
+   "plays": [
+    "MusicSFX Fartflame, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_Fartflame/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_flameon",
+   "kind": "music",
+   "seconds": 4.23,
+   "plays": [
+    "MusicSFX flameon, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_flameon/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_flamesword",
+   "kind": "music",
+   "seconds": 11.71,
+   "plays": [
+    "MusicSFX flamesword, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_flamesword/sounds/1.ogg",
+   "lead": true
+  },
+  {
+   "name": "MusicSFX_LonelyBig",
+   "kind": "music",
+   "seconds": 3.48,
+   "plays": [
+    "Episode 2-1 cutscene, sound 208",
+    "MusicSFX LonelyBig, sound 1"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/208.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_LonelySmall",
+   "kind": "music",
+   "seconds": 6.03,
+   "plays": [
+    "Episode 2-1 cutscene, sound 209",
+    "MusicSFX LonelySmall, sound 1"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/209.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_Niteloop",
+   "kind": "music",
+   "seconds": 18.02,
+   "plays": [
+    "Episode 2-1 cutscene, sound 21",
+    "MusicSFX Niteloop, sound 1"
+   ],
+   "file": "game/movies/Episode_2-1/sounds/21.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_StonesLoop",
+   "kind": "music",
+   "seconds": 11.29,
+   "plays": [
+    "Episode 1-1 cutscene, sound 6",
+    "MusicSFX StonesLoop, sound 1"
+   ],
+   "file": "game/movies/Episode_1-1/sounds/6.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeHigh",
+   "kind": "music",
+   "seconds": 12.23,
+   "plays": [
+    "MusicSFX TelescopeHigh, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeHigh/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeLow",
+   "kind": "music",
+   "seconds": 11.25,
+   "plays": [
+    "MusicSFX TelescopeLow, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeLow/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeNote1",
+   "kind": "music",
+   "seconds": 4.58,
+   "plays": [
+    "MusicSFX TelescopeNote1, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeNote1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeNote2",
+   "kind": "music",
+   "seconds": 6.28,
+   "plays": [
+    "MusicSFX TelescopeNote2, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeNote2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeNote3",
+   "kind": "music",
+   "seconds": 6.47,
+   "plays": [
+    "MusicSFX TelescopeNote3, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeNote3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeNote4",
+   "kind": "music",
+   "seconds": 4.96,
+   "plays": [
+    "MusicSFX TelescopeNote4, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeNote4/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "MusicSFX_TelescopeNote5",
+   "kind": "music",
+   "seconds": 6.82,
+   "plays": [
+    "MusicSFX TelescopeNote5, sound 1"
+   ],
+   "file": "game/movies/MusicSFX_TelescopeNote5/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_bionihead",
+   "kind": "music",
+   "seconds": 6.8,
+   "plays": [
+    "SFX bionihead, sound 1"
+   ],
+   "file": "game/movies/SFX_bionihead/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Monkhorn1",
+   "kind": "music",
+   "seconds": 5.73,
+   "plays": [
+    "SFX Monkhorn1, sound 1"
+   ],
+   "file": "game/movies/SFX_Monkhorn1/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Monkhorn2",
+   "kind": "music",
+   "seconds": 10.04,
+   "plays": [
+    "SFX Monkhorn2, sound 1"
+   ],
+   "file": "game/movies/SFX_Monkhorn2/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Monkhorn3",
+   "kind": "music",
+   "seconds": 11.83,
+   "plays": [
+    "SFX Monkhorn3, sound 1"
+   ],
+   "file": "game/movies/SFX_Monkhorn3/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Monkhorn4",
+   "kind": "music",
+   "seconds": 7.06,
+   "plays": [
+    "SFX Monkhorn4, sound 1"
+   ],
+   "file": "game/movies/SFX_Monkhorn4/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "SFX_Monkhorn5",
+   "kind": "music",
+   "seconds": 7.29,
+   "plays": [
+    "SFX Monkhorn5, sound 1"
+   ],
+   "file": "game/movies/SFX_Monkhorn5/sounds/1.ogg",
+   "lead": false
+  },
+  {
+   "name": "Sound_Vakama_1",
+   "kind": "music",
+   "seconds": 5.18,
+   "plays": [
+    "Sound Vakama, sound 1"
+   ],
+   "file": "game/movies/Sound_Vakama/sounds/1.ogg",
+   "lead": false
+  }
+ ]
+}

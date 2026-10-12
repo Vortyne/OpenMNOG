@@ -116,6 +116,10 @@ public sealed class LiveBackdrop
     /// <summary>"unbar": the episode's letterbox (a black frame bigger than the stage, drawn over the scene) left out,
     /// so a picture framed past its edge shows the art that goes on beneath it.</summary>
     public bool Unbar;
+    /// <summary>"if": shown only while the game's variables (on _level1) have these values ({"OnuKoroLava": "1"}); the first
+    /// backdrop for an image whose "if" holds is used, so a later one without it is the fallback (e.g. XII.6A's
+    /// lightstone glows only once Onu-Koro's lava is fixed).</summary>
+    public readonly Dictionary<string, string> If = [];
 
     /// <summary>Reads a movie's backdrop.json: one backdrop, or several ("backdrops": [..], one per image, e.g. the
     /// chronicle's pictures). Empty when it has none or it can't be read.</summary>
@@ -221,6 +225,7 @@ public sealed class LiveBackdrop
             b.Overlay = o["overlay"]?.GetValue<bool>() == true;
             b.Played = o["played"]?.GetValue<bool>() == true;
             b.Unbar = o["unbar"]?.GetValue<bool>() == true;
+            if (o["if"] is JsonObject cond) foreach (var (k, v) in cond) b.If[k] = v?.ToString() ?? "";
             if (o["clip"]?.GetValue<string>() is { Length: > 0 } clip) b.Clip = SKPath.ParseSvgPathData(clip);
             return b;
         }

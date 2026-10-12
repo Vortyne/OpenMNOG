@@ -572,6 +572,9 @@ public sealed class SoundAsset(MovieAsset m, SoundSymbol s) : SymbolAsset(m, s.I
 
     readonly object _load = new();
 
+    /// <summary>Whether it's decoded yet (Samples returns at once).</summary>
+    public bool Decoded => _samples != null;
+
     public float[] Samples
     {
         get
@@ -586,7 +589,15 @@ public sealed class SoundAsset(MovieAsset m, SoundSymbol s) : SymbolAsset(m, s.I
         {
             try
             {
-                // A lossless replacement next to it (sounds/N.flac beside sounds/N.ogg) is played instead.
+                // A lossless replacement next to it is played instead: sounds/N.wav (loads fastest: no decoding), or
+                // sounds/N.flac, beside sounds/N.ogg. (A replacement file given directly is read the same way.)
+                var wav = System.IO.Path.ChangeExtension(System.IO.Path.Combine(Movie.Dir, Doc.File), ".wav");
+                if (File.Exists(wav))
+                {
+                    (_samples, var rate, var channels) = WavDecoder.Decode(wav);
+                    (Rate, Channels) = (rate, channels);
+                    return _samples;
+                }
                 var flac = System.IO.Path.ChangeExtension(System.IO.Path.Combine(Movie.Dir, Doc.File), ".flac");
                 if (File.Exists(flac))
                 {

@@ -1,0 +1,46 @@
+name: Sound list page
+
+# Publishes site/ (the sound list) to GitHub Pages, with the game's own sound files it lists (copied as they are, by
+# their paths in site/sounds.json). Repository Settings > Pages > Source must be "GitHub Actions".
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/sound-list.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble the page and its sounds
+        run: |
+          mkdir -p _site
+          cp site/index.html site/sounds.json _site/
+          python3 - <<'EOF'
+          import json, os, shutil
+          for s in json.load(open('site/sounds.json', encoding='utf-8'))['sounds']:
+              dst = os.path.join('_site', s['file'])
+              os.makedirs(os.path.dirname(dst), exist_ok=True)
+              shutil.copyfile(s['file'], dst)
+          EOF
+          touch _site/.nojekyll
+          du -sh _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

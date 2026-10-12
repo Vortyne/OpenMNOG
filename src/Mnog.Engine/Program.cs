@@ -41,7 +41,9 @@ if (commands != null)
 
 using var host = new SdlHost(player, player.Manifest.Title);
 // --autopilot "<commands>": the game in its window (on the GPU), driven by test commands as if played: wait N lets N
-// game frames pass; "quit" (or the end) closes it. For measuring the real renderer (its frame times are logged).
+// game frames pass; "quit" closes it. For measuring the real renderer (its frame times are logged), or to take the
+// game somewhere (e.g. "scene Episode_9-1; wait 40; goto holder 2205 play") and hand it over: after the last
+// command it carries on as normal.
 if (autopilot != null)
 {
     var queue = new Queue<string>(autopilot.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries));
@@ -50,7 +52,8 @@ if (autopilot != null)
     {
         while (waiting == 0)
         {
-            if (!queue.TryDequeue(out var c) || c == "quit") return false;
+            if (!queue.TryDequeue(out var c)) { host.Autopilot = null; return true; }
+            if (c == "quit") return false;
             if (c.StartsWith("wait ")) waiting = int.Parse(c[5..]);
             else RunCommand(player, c);
         }
@@ -127,7 +130,15 @@ static void RunCommand(Player player, string raw)
                 {
                     player.Tick();
                     // Mix a frame's worth of audio too (as the host's audio callback would), so sound problems show.
-                    if (MixAudio) player.Audio.Mix(new float[44100 / 18 * 2]);
+                    if (MixAudio)
+                    {
+                        var mixed = new float[44100 / 18 * 2];
+                        player.Audio.Mix(mixed);
+                        // (MNOG_AUDIODUMP=file: the mixed audio appended there, raw 44.1 kHz stereo float, to measure.)
+                        if (Environment.GetEnvironmentVariable("MNOG_AUDIODUMP") is { Length: > 0 } dump)
+                            using (var f = new FileStream(dump, FileMode.Append))
+                                f.Write(System.Runtime.InteropServices.MemoryMarshal.AsBytes(mixed.AsSpan()));
+                    }
                 }
                 break;
             case "audio":

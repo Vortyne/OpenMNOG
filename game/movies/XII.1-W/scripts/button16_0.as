@@ -18,6 +18,18 @@ if ("5" < eval("/:Quest")) {
         Music_Movie = "Music_OnuKoro.swf";
     }
 }
+// (OpenMNOG: Onu-Koro's music by the lava, whatever the quest: the second once it's fixed, else the first.)
+if (eval("/:OnuKoroLava") eq "1") {
+    tellTarget ("/") {
+        Music_ChangeMusic = "1";
+        Music_Movie = "Music_OnuKoro_2.swf";
+    }
+} else {
+    tellTarget ("/") {
+        Music_ChangeMusic = "1";
+        Music_Movie = "Music_OnuKoro.swf";
+    }
+}
 tellTarget ("/") {
     MovieName = "XI.7-W.swf";
     BeginLoadMovie = "1";

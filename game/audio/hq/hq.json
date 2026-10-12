@@ -1,0 +1,485 @@
+{
+ "note": "High-quality replacements for the game's sounds, used when the Audio menu's High quality option is on. \"Movie#id\": {\"file\": a file in this folder} plays that file instead of the sound; {\"silent\": true} plays nothing (the sound is part of another file); \"group\": sounds that don't start while one of their group is playing. Written by the workspace's tools/hq_install.py.",
+ "sounds": {
+  "Amb_JewelRoom#1": {
+   "file": "Amb_JewelRoom.wav"
+  },
+  "Amb_KiniJungle#1": {
+   "file": "Amb_KiniJungle.wav"
+  },
+  "Amb_MntTunnel#1": {
+   "file": "Amb_MntTunnel.wav"
+  },
+  "Amb_Waves#1": {
+   "file": "Amb_Waves.wav"
+  },
+  "Amb_Windstorm#1": {
+   "file": "Episode_9-3_527.wav"
+  },
+  "Amb_hive#1": {
+   "file": "Amb_hive.wav"
+  },
+  "Amb_lavatunnel#2": {
+   "file": "Sound_LavaFlow.wav"
+  },
+  "Amb_lavatunnel#3": {
+   "file": "Amb_lavatunnel_3.wav"
+  },
+  "Amb_lavatunnel2#1": {
+   "file": "Amb_lavatunnel_3.wav"
+  },
+  "Amb_lavatunnel2#2": {
+   "gain": 3.2,
+   "file": "Amb_tunnel.wav"
+  },
+  "Amb_tunnel#1": {
+   "gain": 3.2,
+   "file": "Amb_tunnel.wav"
+  },
+  "Episode1-1-SFX_loop#1": {
+   "gain": 3.2,
+   "file": "../../movies/title/sounds/music.wav"
+  },
+  "Episode_1-1#7": {
+   "file": "MusicSFX_StonesPerc.wav"
+  },
+  "Episode_1-1#9": {
+   "gain": 3.2,
+   "file": "../../movies/title/sounds/music.wav"
+  },
+  "Episode_1-2#11": {
+   "gain": 3.2,
+   "file": "../../movies/title/sounds/music.wav"
+  },
+  "Episode_2-1#140": {
+   "file": "Episode_2-1_140.wav"
+  },
+  "Episode_2-1#168": {
+   "file": "Episode_2-1_168.wav"
+  },
+  "Episode_2-1#20": {
+   "file": "Episode_2-1_20.wav"
+  },
+  "Episode_2-1#235": {
+   "gain": 3.2,
+   "file": "../../movies/title/sounds/music.wav"
+  },
+  "Episode_2-1#82": {
+   "file": "Episode_2-1_82.wav"
+  },
+  "Episode_3-1#10": {
+   "file": "Episode_3-1_10.wav"
+  },
+  "Episode_3-2#28": {
+   "file": "Episode_3-1_10.wav"
+  },
+  "Episode_3-2#35": {
+   "file": "Episode_3-2_35.wav"
+  },
+  "Episode_3-2#83": {
+   "file": "Episode_3-2_83.wav",
+   "gain": 2.8
+  },
+  "Episode_3-3#104": {
+   "file": "Episode_3-2_83.wav",
+   "gain": 2.8
+  },
+  "Episode_4-2#116": {
+   "file": "Episode_4-2_116.wav"
+  },
+  "Episode_4-2#70": {
+   "file": "Episode_4-2_70.wav"
+  },
+  "Episode_4-3#13": {
+   "file": "Episode_4-2_116.wav"
+  },
+  "Episode_4-3#186": {
+   "file": "Episode_4-3_186.wav"
+  },
+  "Episode_6-4#81": {
+   "file": "Episode_6-4_81.wav"
+  },
+  "Episode_6-5#161": {
+   "file": "Episode_6-5_161.wav"
+  },
+  "Episode_6-5#55": {
+   "file": "Amb_hive.wav"
+  },
+  "Episode_6-6#29": {
+   "file": "Episode_6-6_29.wav"
+  },
+  "Episode_6-6#84": {
+   "file": "Episode_6-6_84.wav"
+  },
+  "Episode_6-7#136": {
+   "file": "Episode_6-6_29.wav"
+  },
+  "Episode_6-7#156": {
+   "file": "Episode_6-7_156.wav"
+  },
+  "Episode_6-7#178": {
+   "file": "Episode_6-7_178.wav"
+  },
+  "Episode_6-7#265": {
+   "file": "Episode_6-7_265.wav"
+  },
+  "Episode_6-7#277": {
+   "file": "Episode_6-7_277.wav"
+  },
+  "Episode_6-7#342": {
+   "file": "Episode_6-7_342.wav"
+  },
+  "Episode_6-7#350": {
+   "gain": 1.5,
+   "file": "Episode_6-7_350.wav"
+  },
+  "Episode_6-7#39": {
+   "file": "Episode_6-7_39.wav"
+  },
+  "Episode_6-7#420": {
+   "file": "Episode_6-7_420.wav"
+  },
+  "Episode_6-7#430": {
+   "file": "Episode_6-7_430.wav"
+  },
+  "Episode_6-7#8": {
+   "file": "Episode_6-7_8.wav"
+  },
+  "Episode_7-1#37": {
+   "file": "Music_Monks_2.wav"
+  },
+  "Episode_7-2#143": {
+   "file": "Episode_7-2_143.wav"
+  },
+  "Episode_7-2#16": {
+   "file": "Episode_9-3_527.wav"
+  },
+  "Episode_7-2#22": {
+   "file": "Episode_7-2_22.wav"
+  },
+  "Episode_7-2#227": {
+   "file": "Episode_6-7_178.wav"
+  },
+  "Episode_7-2#228": {
+   "file": "Episode_7-2_228.wav"
+  },
+  "Episode_7-2#26": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "Episode_7-2#43": {
+   "file": "Amb_MntTunnel.wav"
+  },
+  "Episode_7-2#6": {
+   "file": "Episode_7-2_6.wav"
+  },
+  "Episode_7-2#73": {
+   "file": "Episode_7-2_73.wav"
+  },
+  "Episode_8-1#110": {
+   "file": "SFX_WaterAmbiant_2.wav"
+  },
+  "Episode_8-1#30": {
+   "file": "Episode_8-1_30.wav"
+  },
+  "Episode_8-1#43": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "Episode_8-2#3": {
+   "file": "Amb_KiniJungle.wav"
+  },
+  "Episode_8-2#35": {
+   "file": "Episode_8-2_35.wav"
+  },
+  "Episode_8-2#36": {
+   "file": "Episode_8-2_36.wav"
+  },
+  "Episode_8-3#10": {
+   "file": "Episode_8-3_10.wav"
+  },
+  "Episode_8-3#11": {
+   "file": "Episode_8-3_11.wav"
+  },
+  "Episode_8-3#12": {
+   "file": "Episode_8-3_12.wav"
+  },
+  "Episode_8-3#13": {
+   "file": "Episode_8-3_13.wav"
+  },
+  "Episode_8-3#15": {
+   "file": "Episode_8-1_30.wav"
+  },
+  "Episode_8-3#9": {
+   "file": "Episode_8-2_35.wav"
+  },
+  "Episode_8-4#17": {
+   "file": "Episode_8-2_35.wav"
+  },
+  "Episode_8-4#18": {
+   "file": "Episode_8-2_36.wav"
+  },
+  "Episode_8-4#19": {
+   "file": "Episode_8-4_19.wav"
+  },
+  "Episode_8-4#20": {
+   "file": "Episode_8-3_11.wav"
+  },
+  "Episode_8-4#21": {
+   "file": "Episode_8-3_12.wav"
+  },
+  "Episode_8-5#235": {
+   "file": "Episode_8-5_235.wav"
+  },
+  "Episode_8-6#6": {
+   "file": "Episode_8-6_6.wav"
+  },
+  "Episode_8-6#89": {
+   "file": "Episode_8-6_89.wav"
+  },
+  "Episode_8-7#62": {
+   "file": "Episode_8-7_62.wav"
+  },
+  "Episode_8-7#83": {
+   "file": "Episode_8-7_83.wav"
+  },
+  "Episode_8-8#183": {
+   "file": "Episode_8-7_83.wav"
+  },
+  "Episode_8-8#54": {
+   "file": "Episode_8-8_54.wav"
+  },
+  "Episode_8-9#50": {
+   "file": "Amb_KiniJungle.wav"
+  },
+  "Episode_8-9#51": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "Episode_8-9#64": {
+   "file": "Episode_8-9_64.wav"
+  },
+  "Episode_8-9#69": {
+   "file": "Episode_7-2_22.wav"
+  },
+  "Episode_9-1#111": {
+   "file": "Episode_9-3_423.wav"
+  },
+  "Episode_9-1#114": {
+   "file": "Episode_7-2_22.wav"
+  },
+  "Episode_9-1#115": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "Episode_9-1#177": {
+   "file": "Episode_7-2_73.wav"
+  },
+  "Episode_9-1#227": {
+   "file": "MusicSFX_Suspense1.wav"
+  },
+  "Episode_9-1#230": {
+   "file": "Episode_9-1_230.wav"
+  },
+  "Episode_9-1#345": {
+   "file": "Episode_8-9_64.wav"
+  },
+  "Episode_9-1#389": {
+   "file": "Episode_8-7_83.wav"
+  },
+  "Episode_9-1#414": {
+   "file": "Episode_9-1_414.wav"
+  },
+  "Episode_9-1#467": {
+   "file": "Episode_9-1_467.wav"
+  },
+  "Episode_9-1#501": {
+   "file": "Episode_9-1_501.wav"
+  },
+  "Episode_9-2#6": {
+   "file": "Episode_9-2_6.wav"
+  },
+  "Episode_9-2_v4_sounded#6": {
+   "file": "Episode_9-2_6.wav"
+  },
+  "Episode_9-3#148": {
+   "file": "Episode_9-3_148.wav",
+   "gain": 3.3
+  },
+  "Episode_9-3#15": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "Episode_9-3#20": {
+   "gain": 0.9,
+   "file": "Episode_7-2_73.wav"
+  },
+  "Episode_9-3#332": {
+   "file": "Episode_9-3_332.wav"
+  },
+  "Episode_9-3#333": {
+   "file": "Episode_9-3_333.wav"
+  },
+  "Episode_9-3#335": {
+   "file": "Episode_9-1_230.wav"
+  },
+  "Episode_9-3#34": {
+   "file": "Episode_7-2_22.wav"
+  },
+  "Episode_9-3#423": {
+   "file": "Episode_9-3_423.wav"
+  },
+  "Episode_9-3#458": {
+   "file": "Episode_9-1_414.wav"
+  },
+  "Episode_9-3#527": {
+   "file": "Episode_9-3_527.wav"
+  },
+  "Episode_9-3#560": {
+   "file": "Episode_6-7_420.wav"
+  },
+  "Episode_9-3#663": {
+   "file": "Episode_9-3_663.wav"
+  },
+  "Episode_9-3#689": {
+   "file": "Episode_9-3_689.wav"
+  },
+  "Episode_9-3#692": {
+   "file": "Episode_9-3_692.wav"
+  },
+  "Episode_9-6#26": {
+   "file": "Amb_Waves.wav"
+  },
+  "Episode_9-6#27": {
+   "gain": 3.2,
+   "file": "../../movies/title/sounds/music.wav"
+  },
+  "Episode_9-6#28": {
+   "gain": 2.3,
+   "file": "Episode_7-2_73.wav"
+  },
+  "Episode_9-6#44": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "Game_4-1#145": {
+   "file": "Game_4-1_145.wav"
+  },
+  "Game_6-1#39": {
+   "file": "Game_6-1_39.wav"
+  },
+  "MusicSFX_Beastloop1#1": {
+   "file": "Episode_2-1_20.wav"
+  },
+  "MusicSFX_StonesPerc#1": {
+   "file": "MusicSFX_StonesPerc.wav"
+  },
+  "MusicSFX_Suspense1#1": {
+   "file": "MusicSFX_Suspense1.wav"
+  },
+  "MusicSFX_Suspense2#1": {
+   "file": "Episode_2-1_140.wav"
+  },
+  "MusicSFX_SuspenseEnd#1": {
+   "file": "MusicSFX_SuspenseEnd.wav"
+  },
+  "MusicSFX_Tahu#1": {
+   "gain": 3.2,
+   "file": "../../movies/title/sounds/music.wav"
+  },
+  "MusicSFX_TelescopeChoir#1": {
+   "file": "MusicSFX_TelescopeChoir.wav"
+  },
+  "Music_Digsite#1": {
+   "file": "Music_OnuKoro.wav"
+  },
+  "Music_Digsite#2": {
+   "file": "Music_OnuKoro_2 (Digsite).wav"
+  },
+  "Music_Forest#2": {
+   "file": "Music_Forest_2.wav"
+  },
+  "Music_Lightstone#1": {
+   "file": "Amb_JewelRoom.wav"
+  },
+  "Music_Lightstone#2": {
+   "file": "Music_Lightstone_2.wav"
+  },
+  "Music_Monks#2": {
+   "file": "Music_Monks_2.wav"
+  },
+  "Music_OnuKoro#1": {
+   "file": "Music_OnuKoro.wav"
+  },
+  "Music_OnuKoro_2#1": {
+   "gain": 10.1,
+   "file": "Music_OnuKoro_2 (long).wav"
+  },
+  "Music_Underwater#1": {
+   "gain": 0.9,
+   "noEnvelope": true,
+   "file": "Music_Underwater (Underwater song).wav"
+  },
+  "Music_Underwater#2": {
+   "silent": true
+  },
+  "Music_Underwater#3": {
+   "silent": true
+  },
+  "Music_band#1": {
+   "gain": -3.4,
+   "noEnvelope": true,
+   "file": "Music_band (Le-Koro Band).wav"
+  },
+  "Music_band#2": {
+   "silent": true
+  },
+  "Music_band#3": {
+   "silent": true
+  },
+  "Music_band#4": {
+   "silent": true
+  },
+  "Music_band#5": {
+   "silent": true
+  },
+  "SFX_Bubble1#1": {
+   "file": "SFX_Bubble1.wav"
+  },
+  "SFX_Bubble2#1": {
+   "file": "SFX_Bubble2.wav"
+  },
+  "SFX_Bubble3#1": {
+   "file": "SFX_Bubble3.wav"
+  },
+  "SFX_WaterAmbiant#2": {
+   "silent": true
+  },
+  "SFX_WaterAmbiant#3": {
+   "gain": -6.4,
+   "noEnvelope": true,
+   "file": "Ga-Koro theme (full).wav"
+  },
+  "Sound_Forest#1": {
+   "file": "Episode_2-1_20.wav"
+  },
+  "Sound_Forest#2": {
+   "file": "Sound_Forest_2.wav"
+  },
+  "Sound_LavaCooled#1": {
+   "file": "Sound_LavaCooled.wav"
+  },
+  "Sound_LavaFlow#2": {
+   "file": "Sound_LavaFlow.wav"
+  },
+  "Sound_SteamCooling#2": {
+   "file": "Sound_LavaCooled.wav"
+  },
+  "Sound_Waves#1": {
+   "file": "Amb_Waves.wav"
+  },
+  "XX.1-N#31": {
+   "file": "Episode_7-2_26.wav"
+  },
+  "episode_4-3e#13": {
+   "file": "Episode_4-2_116.wav"
+  },
+  "episode_4-3e#186": {
+   "file": "Episode_4-3_186.wav"
+  }
+ }
+}

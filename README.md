@@ -37,7 +37,10 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
   it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, dialog speed, panning speed and edge
   zone, title screen, and volume for master, music and sound effects.
 - **Skip** button for cutscenes, and fixes for flaws in the original artwork.
-- High-quality music: a FLAC file beside a sound's Ogg (`sounds/NAME.flac`) is played in its place.
+- **High quality audio** (Audio menu, off by default): sounds and music play from high-quality originals where
+  they've been found. The files are in `game/audio/hq` (WAV, so they load at once), and `game/audio/hq/hq.json` says
+  which of the game's sounds each replaces. Separately, a WAV or FLAC beside a sound's Ogg (`sounds/NAME.wav`) is
+  always played in its place (the title music).
 
 ## Controls
 
@@ -60,6 +63,13 @@ The original mouse controls all work as before. New keys:
 Settings and progress are saved in `%APPDATA%\MataNuiOnlineGame\sharedobjects` (a Flash-style shared object, as
 the Project Brick patch used). Slot 1 is the original save. Slot pictures (`pictures/`) and backups of the save
 file (`backups/`) are kept in `%APPDATA%\MataNuiOnlineGame`.
+
+## Reporting bugs and sounds
+
+The Help's **Report** page links to both forms. [Report a bug](https://github.com/Vortyne/OpenMNOG/issues/new?template=bug_report.yml)
+in the game, or, if you recognise one of the game's sounds, [report where it comes from](https://github.com/Vortyne/OpenMNOG/issues/new?template=sound_found.yml)
+so it can be replaced with the high-quality original. The [sound list](https://vortyne.github.io/OpenMNOG/) plays
+every sound still without a high-quality source in the browser (`site/`, published by `.github/workflows/sound-list.yml`).
 
 ## Repository
 

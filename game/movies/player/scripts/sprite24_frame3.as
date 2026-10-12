@@ -105,10 +105,5 @@ vars = "1";
 Backpack = eval("/:Backpack");
 ShowBackPack = eval("/:ShowBackPack");
 I4WVisited = eval("/:I4WVisited");
-if (_level0 && _level0.__matanui) {
-    _level0.__matanui.setstate(this);
-} else if (_root && typeof _root.setstate_url == "string" && _root.setstate_url.length) {
-    loadVariables(_root.setstate_url, "/State-holder", "GET");
-} else {
-    loadVariables("setstate.asp", "/State-holder", "GET");
-}
+// (OpenMNOG: saved locally; nothing is sent to the original website's setstate.asp.)
+_level0.__matanui.setstate(this);

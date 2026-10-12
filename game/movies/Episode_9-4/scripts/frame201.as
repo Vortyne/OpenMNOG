@@ -6,7 +6,12 @@ tellTarget ("/") {
     Sound_ChangeSFXMovie = "1";
     Sound_SFXMovie = "blank.swf";
     Music_ChangeMusic = "1";
-    Music_Movie = "Music_OnuKoro_2.swf";
+    // (OpenMNOG: Onu-Koro's second music only once the lava is fixed; before that, its first.)
+    if (eval("/:OnuKoroLava") eq "1") {
+        Music_Movie = "Music_OnuKoro_2.swf";
+    } else {
+        Music_Movie = "Music_OnuKoro.swf";
+    }
     ShiftOff = "0";
     VerticalShift = "0";
     HorizontalShift = "1";
