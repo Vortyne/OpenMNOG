@@ -1,0 +1,4 @@
+These soundtrack files are part of OpenMNOG: the Chronicle's music button plays them from this folder.
+Moving, renaming or deleting them removes those tracks from the game.
+
+To keep a copy for yourself, COPY the files somewhere else instead of moving them.
