@@ -6,7 +6,8 @@ name: Project page
 on:
   push:
     branches: [main]
-    paths: ["site/**", "version_number.txt", ".github/workflows/site.yml"]
+    # (The game's sounds and its high-quality replacements too: the sound list's percentage is counted from them.)
+    paths: ["site/**", "version_number.txt", ".github/workflows/site.yml", "game/audio/hq/hq.json", "game/movies/*/sounds/**"]
   workflow_dispatch:
 
 permissions:
@@ -38,6 +39,9 @@ jobs:
               os.makedirs(os.path.dirname(dst), exist_ok=True)
               shutil.copyfile(s['file'], dst)
           EOF
+          # How much of the game plays in high quality (the page's percentage), from the game's own files.
+          python3 site/sounds/progress.py _site/sounds/sounds.json
+          rm _site/sounds/progress.py
           touch _site/.nojekyll
           du -sh _site
       - uses: actions/configure-pages@v5

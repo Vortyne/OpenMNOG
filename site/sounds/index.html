@@ -31,6 +31,12 @@ input[type=search] { flex: 1 1 240px; min-width: 0; padding: 9px 12px; border: 1
 .chip { border: 1px solid var(--line); background: var(--chip); color: var(--fg); border-radius: 999px; padding: 6px 12px; font: inherit; font-size: 13px; cursor: pointer; }
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
 .count { color: var(--muted); font-size: 13px; margin-left: auto; }
+.progress { margin: 0 0 18px; max-width: 70ch; }
+.progress-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+.progress-head b { font-size: 22px; }
+.progress-head span { color: var(--muted); font-size: 13px; }
+.track { height: 10px; border-radius: 999px; background: var(--chip); border: 1px solid var(--line); overflow: hidden; }
+.fill { height: 100%; width: 0; background: var(--lead); }
 ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
 li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: center; }
 .name { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
@@ -57,6 +63,10 @@ a.report:hover { text-decoration: underline; }
     original low-quality files. Most came from commercial sound libraries. If you recognise one, say which library, CD and track it
     comes from, and it can be replaced with the high-quality original. Each sound's <b>Report</b> link opens a form on GitHub.
     (Some browsers, like Safari, may not play these Ogg files; use another browser if so.)</p>
+  <div class="progress" id="progress" hidden>
+    <div class="progress-head"><b id="pct"></b><span id="pct-detail"></span></div>
+    <div class="track" role="progressbar" aria-label="Sounds in high quality" aria-valuemin="0" aria-valuemax="100" id="track"><div class="fill" id="fill"></div></div>
+  </div>
   <div class="bar">
     <input type="search" id="q" placeholder="Search by name or where it plays" aria-label="Search sounds">
     <button class="chip" data-kind="" aria-pressed="true">All</button>
@@ -139,7 +149,19 @@ for (const chip of document.querySelectorAll('.chip')) {
     render();
   });
 }
-fetch('sounds.json').then(r => r.json()).then(d => { sounds = d.sounds; render(); })
+fetch('sounds.json').then(r => r.json()).then(d => {
+  sounds = d.sounds;
+  // How much of the game already plays in high quality.
+  if (d.progress && d.progress.total) {
+    const pct = Math.round(d.progress.hq / d.progress.total * 100);
+    document.getElementById('pct').textContent = `${pct}% in high quality`;
+    document.getElementById('pct-detail').textContent = `${d.progress.hq} of ${d.progress.total} sounds`;
+    document.getElementById('fill').style.width = pct + '%';
+    document.getElementById('track').setAttribute('aria-valuenow', pct);
+    document.getElementById('progress').hidden = false;
+  }
+  render();
+})
   .catch(() => { document.getElementById('empty').hidden = false; document.getElementById('empty').textContent = 'The sound list could not be loaded.'; });
 </script>
 </body>
