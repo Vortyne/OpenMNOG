@@ -89,7 +89,7 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         return true;
     }
 
-    static string WindowStateFile => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MataNuiOnlineGame", "window.json");
+    static string WindowStateFile => Path.Combine(SaveLocation.Folder, "window.json");
 
     static void SaveWindowState(bool fullscreen)
     {

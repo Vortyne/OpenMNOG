@@ -192,6 +192,71 @@ public sealed class AudioMixer
     /// <summary>The sounds playing now, as "Movie#id" (for the debug overlay).</summary>
     public List<string> Describe() { lock (_lock) return _playing.Select(i => $"{i.Sound.Movie.Name}#{i.Sound.Id}{(i.Owner != null ? " (stream)" : "")} [{i.Sound.Samples.Length} samples, {i.Sound.Channels} ch, {i.Sound.Rate} Hz]").ToList(); }
 
+    // ---- A soundtrack track (the chronicle's music window) ----
+    // One whole piece of music, played apart from the game's sounds: paused and resumed, moved to any point, at the
+    // Music volume.
+
+    float[]? _track;
+    int _trackChannels;
+    double _trackStep, _trackPos;
+    bool _trackPlaying;
+
+    /// <summary>Sets the track (decoded samples, interleaved), stopped at its start; null removes it.</summary>
+    public void SetTrack(float[]? samples, int rate = OutputRate, int channels = 2)
+    {
+        lock (_lock)
+        {
+            _track = samples;
+            _trackChannels = Math.Max(1, channels);
+            _trackStep = rate / (double)OutputRate;
+            _trackPos = 0;
+            _trackPlaying = false;
+        }
+    }
+
+    /// <summary>Whether the track is playing (false once it reaches its end).</summary>
+    public bool TrackPlaying { get { lock (_lock) return _trackPlaying; } set { lock (_lock) _trackPlaying = value && _track != null; } }
+
+    /// <summary>The track's length and where it's at, in seconds.</summary>
+    public (double At, double Length) TrackTime
+    {
+        get
+        {
+            lock (_lock)
+            {
+                if (_track == null) return (0, 0);
+                double rate = _trackStep * OutputRate;
+                return (_trackPos / rate, _track.Length / _trackChannels / rate);
+            }
+        }
+    }
+
+    /// <summary>Moves the track to that point (seconds).</summary>
+    public void SeekTrack(double seconds)
+    {
+        lock (_lock)
+            if (_track != null)
+                _trackPos = Math.Clamp(seconds * _trackStep * OutputRate, 0, _track.Length / _trackChannels - 1);
+    }
+
+    void MixTrack(Span<float> buffer)
+    {
+        if (!_trackPlaying || _track is not { } t) return;
+        int frames = buffer.Length / 2, ch = _trackChannels, last = t.Length / ch - 1;
+        float volume = GroupVolume[Music];
+        for (int i = 0; i < frames; i++)
+        {
+            // (At the end: stopped, back at the start.)
+            if (_trackPos >= last) { _trackPlaying = false; _trackPos = 0; return; }
+            int i0 = (int)_trackPos, i1 = i0 + 1;
+            float f = (float)(_trackPos - i0);
+            float l = Lerp(t[i0 * ch], t[i1 * ch], f), r = ch == 1 ? l : Lerp(t[i0 * ch + 1], t[i1 * ch + 1], f);
+            buffer[i * 2] += l * volume;
+            buffer[i * 2 + 1] += r * volume;
+            _trackPos += _trackStep;
+        }
+    }
+
     /// <summary>Fills <paramref name="buffer"/> (interleaved stereo) with the next frames.</summary>
     public void Mix(Span<float> buffer)
     {
@@ -247,6 +312,7 @@ public sealed class AudioMixer
             }
             if (done) _playing.RemoveAt(n);
         }
+        MixTrack(buffer);
         Limit(buffer);
     }
 

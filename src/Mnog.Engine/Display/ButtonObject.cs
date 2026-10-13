@@ -9,6 +9,8 @@ public sealed class ButtonObject : DisplayObject
 {
     public readonly ButtonAsset Button;
     public ButtonState State { get; private set; } = ButtonState.Up;
+    /// <summary>Not pressable (the mouse passes over it): e.g. the chronicle's music button for an entry without music.</summary>
+    public bool Disabled;
     readonly SortedList<int, DisplayObject> _children = [];
     /// <summary>The objects of the current state (what's drawn).</summary>
     public IList<DisplayObject> StateChildren => _children.Values;

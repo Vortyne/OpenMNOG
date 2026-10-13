@@ -2,7 +2,7 @@
 # play.sh: the one way to open the game for playing. Builds the Release engine, checks the converted data is
 # in place, then opens the game on the real save. Refuses (and says why) instead of opening anything wrong.
 cd "$(dirname "$0")"
-SAVE='//localhost/c$/Users/Michael/AppData/Roaming/MataNuiOnlineGame/sharedobjects'   # forward slashes: Git Bash mangles backslashes
+SAVE='//localhost/c$/Users/Michael/Documents/My Games/OpenMNOG/sharedobjects'   # forward slashes: Git Bash mangles backslashes
 DLL=src/Mnog.Engine/bin/Release/net10.0/Mnog.Engine.dll
 LOG=build/game-run.log
 
@@ -31,7 +31,7 @@ MNOG_SAVEDIR="$SAVE" dotnet "$DLL" game "$@" > "$LOG" 2>&1 &
 for _ in $(seq 1 20); do grep -q "startup:" "$LOG" 2>/dev/null && break; sleep 0.5; done
 first=$(head -1 "$LOG")
 case "$first" in
-  *"save: \\\\localhost\\c\$\\Users\\Michael\\AppData\\Roaming\\MataNuiOnlineGame\\sharedobjects"*) ;;
+  *"save: \\\\localhost\\c\$\\Users\\Michael\\Documents\\My Games\\OpenMNOG\\sharedobjects"*) ;;
   *) fail "wrong save path in log: $first" ;;
 esac
 grep "loaded\|startup" "$LOG"

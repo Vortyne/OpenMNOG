@@ -30,7 +30,7 @@ public sealed class WallpaperMenu
     // Bottom left: the wallpaper as an SVG (vector, any size).
     static readonly SKRect SvgBox = new(Panel.Left + 16, Top + 80 + PreviewH + 62, Panel.Left + 86, Top + 80 + PreviewH + 94);
     static readonly SKRect CancelBox = new(Panel.Right - 16 - 100, Top + 80 + PreviewH + 62, Panel.Right - 16, Top + 80 + PreviewH + 94);
-    static readonly SKColor Orange = new(0xFF, 0x99, 0x00), Grey = new(0x99, 0x99, 0x99), Back = new(0x33, 0x33, 0x33, 0xF0);
+    internal static readonly SKColor Orange = new(0xFF, 0x99, 0x00), Grey = new(0x99, 0x99, 0x99), Back = new(0x33, 0x33, 0x33, 0xF0);
 
     public WallpaperMenu(Player player, int slot)
     {

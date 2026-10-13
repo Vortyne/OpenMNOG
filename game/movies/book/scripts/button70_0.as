@@ -1,2 +1,4 @@
 #version 4
-// (OpenMNOG: this button downloaded the episode as a .zip from the original website, which is gone; it does nothing.)
+// (Was: download the episode for Windows. Now: listen to this entry's music, Player's MusicMenu; disabled for
+// entries without any yet.)
+getURL("FSCommand:music", CurrentTextSlot);

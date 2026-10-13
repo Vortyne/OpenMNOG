@@ -4,11 +4,12 @@
 #
 # The zip holds one folder, OpenMNOG-v{version}-win64/, with:
 #   OpenMNOG.exe (the engine, self-contained: players need no .NET), its native libraries (Skia, SDL),
-#   game/ (the committed game files only) and version_number.txt (shown on the title screen).
+#   game/ (the committed game files only), version_number.txt (shown on the title screen) and OpenMNOG.ini (where
+#   the save goes).
 #
 # usage: bash release.sh [--allow-dirty]
-#   --allow-dirty: build even with uncommitted changes in game/, src/ or version_number.txt (they're left out of
-#   game/ but would be in the engine, so the release wouldn't match any commit).
+#   --allow-dirty: build even with uncommitted changes in game/, src/, version_number.txt or OpenMNOG.ini (they're
+#   left out of game/ but would be in the engine, so the release wouldn't match any commit).
 cd "$(dirname "$0")"
 fail() { echo "NOT BUILT: $*"; exit 1; }
 
@@ -21,7 +22,7 @@ ZIP="$OUT/$NAME.zip"
 
 # What's released is what's committed.
 if [ "$1" != "--allow-dirty" ]; then
-  dirty=$(git status --porcelain -- game src version_number.txt | head -5)
+  dirty=$(git status --porcelain -- game src version_number.txt OpenMNOG.ini | head -5)
   [ -z "$dirty" ] || fail "uncommitted changes (commit them, or pass --allow-dirty):
 $dirty"
 fi
@@ -41,7 +42,7 @@ cp "$OUT/engine-win64/Mnog.Engine.exe" "$STAGE/OpenMNOG.exe"
 for f in "$OUT/engine-win64"/*; do
   case "$(basename "$f")" in Mnog.Engine.exe|*.pdb) ;; *) cp -r "$f" "$STAGE/" ;; esac
 done
-cp version_number.txt "$STAGE/"
+cp version_number.txt OpenMNOG.ini "$STAGE/"
 
 # The game files: those committed (git ls-files), not whatever else is lying in game/.
 echo "Copying game files..."

@@ -31,6 +31,9 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
 - **Title screen**: the first beach view with the BIONICLE logo and the Beach Chant, with Continue, New Game,
   Exit, Settings and Save Slot.
 - **Save slots**: 12 slots, each with a picture of where it was last saved. The game saves by itself.
+- **Chronicle music**: an entry's music button plays its soundtrack in full quality (FLAC, in
+  `game/audio/soundtrack`; `soundtrack.json` says which entries have which tracks), and Download opens that folder.
+  Entries without music yet have the button greyed out.
 - **In-game Help**: the original support site's General, Tips and Hints and Bionicle Decoder pages, rebuilt inside
   the game (pictures are live frames of the game itself), plus the new keyboard controls.
 - **Settings**, grouped into Language, Graphics, Gameplay and Audio, each option described when the mouse is over
@@ -60,9 +63,13 @@ The original mouse controls all work as before. New keys:
 
 ## Save data
 
-Settings and progress are saved in `%APPDATA%\MataNuiOnlineGame\sharedobjects` (a Flash-style shared object, as
+Settings and progress are saved in `Documents\My Games\OpenMNOG\sharedobjects` (a Flash-style shared object, as
 the Project Brick patch used). Slot 1 is the original save. Slot pictures (`pictures/`) and backups of the save
-file (`backups/`) are kept in `%APPDATA%\MataNuiOnlineGame`.
+file (`backups/`) are kept in `Documents\My Games\OpenMNOG`. A save from before it moved there (in
+`%APPDATA%\MataNuiOnlineGame`) is copied over the first time the game opens.
+
+To keep them somewhere else, set `Folder` in `OpenMNOG.ini`, beside the `game` folder: a full path, one with
+environment variables (`%USERPROFILE%\Saves`), or one relative to the ini (`saves`, to keep them with the game).
 
 ## Reporting bugs and sounds
 

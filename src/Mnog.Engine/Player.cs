@@ -151,12 +151,13 @@ public sealed class Player
         foreach (var d in Directory.GetDirectories(Path.Combine(gameDir, "movies")))
             _movieDirs[Path.GetFileName(d)] = d;
         Vm = new Interpreter(this);
-        // MNOG_SAVEDIR points the save somewhere else (test runs use a copy, leaving the player's own save alone).
-        Storage = new SharedObjectStore(Environment.GetEnvironmentVariable("MNOG_SAVEDIR") is { Length: > 0 } saveDir ? saveDir : Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MataNuiOnlineGame", "sharedobjects"));
+        // (Documents\My Games\OpenMNOG, or as OpenMNOG.ini or MNOG_SAVEDIR says: see SaveLocation.)
+        SaveLocation.Resolve(gameDir);
+        Storage = new SharedObjectStore(SaveLocation.SharedObjects);
         Audio.LoadGroups(Path.Combine(GameDir, "sound-groups.json"));
         Audio.Hq = new Mnog.Engine.Audio.HqSounds(GameDir);
         Log($"save: {Path.GetFullPath(Storage.Dir)}");
+        Log($"save folder from {SaveLocation.Source}");
     }
 
     public MovieClip Level0Root => Levels.GetValueOrDefault(0) ?? Levels.Values.First();
@@ -291,6 +292,7 @@ public sealed class Player
         }
         TickCount++;
         if (!_volumesApplied) { _volumesApplied = true; ApplyVolumes(); }
+        UpdateMusicButton();
         // The view's edges, for the game's panning (Patches.PanSettings measures its edge zone from them).
         Vm.SetVariableAt(Level0Root, "ViewLeft", Value.From((double)(Widescreen ? ViewLeft : 0)));
         Vm.SetVariableAt(Level0Root, "ViewRight", Value.From((double)(Widescreen ? ViewRight : StageWidth)));
@@ -1014,6 +1016,7 @@ public sealed class Player
             case "fullscreen": if (Host != null) Host.Fullscreen = arg.Equals("true", StringComparison.OrdinalIgnoreCase); break;
             case "widescreen": Widescreen = arg is "1" or "true"; break;
             case "wallpaper": if (int.TryParse(arg, out int wallSlot)) Wallpaper = new WallpaperMenu(this, wallSlot); break;
+            case "music": if (int.TryParse(arg, out int musicSlot) && MusicMenu.Tracks(this, musicSlot).Count > 0) Music = new MusicMenu(this, musicSlot); break;
             case "vectorsand": if (VectorImages != (arg is "1" or "true")) { VectorImages = arg is "1" or "true"; _layerCache.Clear(); } break;
             // Smoothing: 0 off, 1 partial (scripted motion, and the scenes marked for it), 2 full (all animation).
             case "smooth": Smooth = arg is "1" or "2" or "true"; SmoothAll = arg == "2"; break;
@@ -1144,7 +1147,7 @@ public sealed class Player
     /// <summary>Whether a menu covers the game: the engine's own (the Help, save slots, audio settings, warp, wallpaper,
     /// the ending) or one of the overlay's dialogs (settings and its pages, timestamp, progress, quit).</summary>
     public bool MenuOpen => SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Warp != null ||
-        Wallpaper != null || GetLevel(10001)?.ChildByName("matanui_overlay") is MovieClip overlay &&
+        Wallpaper != null || Music != null || GetLevel(10001)?.ChildByName("matanui_overlay") is MovieClip overlay &&
         overlay.Children.TryGetValue(16384 + 1, out var dialog) && dialog is MovieClip { Removed: false };
 
     /// <summary>
@@ -1218,7 +1221,7 @@ public sealed class Player
             // The title screen's backdrop scene is only scenery.
             if (c is MovieClip { Name: "holder", Parent: MovieClip { Level: TitleLevel } }) continue;
             if (c is MovieClip mc && ButtonIn(mc, p, w) is { } b) return b;
-            if (c is ButtonObject btn && btn.HitTest(p, w)) return btn;
+            if (c is ButtonObject { Disabled: false } btn && btn.HitTest(p, w)) return btn;
         }
         return null;
     }
@@ -1229,6 +1232,7 @@ public sealed class Player
         if (SlotMenu != null) { SlotMenu.MouseMove(stage); return; }
         if (Ending != null) { Ending.MouseMove(stage); return; }
         if (Wallpaper != null) { Wallpaper.MouseMove(stage); return; }
+        if (Music != null) { Music.MouseMove(stage); return; }
         if (AudioSettings != null) { AudioSettings.MouseMove(stage); return; }
         if (Help != null) { Help.MouseMove(stage); return; }
         if (Warp != null) { Warp.MouseMove(stage); return; }
@@ -1288,6 +1292,7 @@ public sealed class Player
         if (SlotMenu != null) { SlotMenu.MouseDown(MouseStage); return; }
         if (Ending != null) { Ending.MouseDown(MouseStage); return; }
         if (Wallpaper != null) { Wallpaper.MouseDown(MouseStage); return; }
+        if (Music != null) { Music.MouseDown(MouseStage); return; }
         if (AudioSettings != null) { AudioSettings.MouseDown(MouseStage); return; }
         if (Help != null) { Help.MouseDown(MouseStage); return; }
         if (Warp != null) { Warp.MouseDown(MouseStage); return; }
@@ -1310,7 +1315,7 @@ public sealed class Player
     {
         AudioSettings?.MouseUp();
         Help?.MouseUp();
-        if (Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null) return;
+        if (Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || Music != null) return;
         MouseDown = false;
         if (_pressed != null)
         {
@@ -1413,6 +1418,7 @@ public sealed class Player
         if (SlotMenu != null) { SlotMenu.KeyDown(flashKeyCode); return; }
         if (Ending != null) return;
         if (Wallpaper != null) { Wallpaper.KeyDown(flashKeyCode); return; }
+        if (Music != null) { Music.KeyDown(flashKeyCode); return; }
         if (AudioSettings != null) { AudioSettings.KeyDown(flashKeyCode); return; }
         if (Help != null) { Help.KeyDown(flashKeyCode); return; }
         if (Warp != null) { Warp.KeyDown(flashKeyCode); return; }
@@ -2062,6 +2068,27 @@ public sealed class Player
     /// <summary>The wallpaper menu (the chronicle's "mac" button): a preview, the size, and Save.</summary>
     public WallpaperMenu? Wallpaper;
 
+    /// <summary>The chronicle's music window (its music button: the entry's soundtrack), while open.</summary>
+    public MusicMenu? Music;
+
+    readonly Dictionary<int, bool> _hasMusic = [];
+
+    /// <summary>The chronicle's music button (the book's button 70) greyed and not pressable for the chosen entry
+    /// when it has no music yet.</summary>
+    void UpdateMusicButton()
+    {
+        if (GetLevel(1)?.ChildByName("holder") is not MovieClip { Movie.Name: "book" } book) return;
+        if (book.Children.Values.FirstOrDefault(c => c is ButtonObject { Asset.Id: 70 }) is not ButtonObject button) return;
+        int slot = (int)Vm.GetVariableAt(book, "CurrentTextSlot").ToNumber(6);
+        if (!_hasMusic.TryGetValue(slot, out bool has)) _hasMusic[slot] = has = MusicMenu.Tracks(this, slot).Count > 0;
+        if (button.Disabled == !has) return;
+        button.Disabled = !has;
+        button.ColorTransform = has ? CxForm.Identity : new CxForm(0.4f, 0.4f, 0.4f, 0.75f, 0, 0, 0, 0);
+        button.TransformedByScript = true;
+        button.TransformedByScript = true;
+        if (!has && _hover == button) { _hover = null; Host?.SetHandCursor(false); }
+    }
+
     /// <summary>The chronicle's entry names (its list's TextSlotN), for naming what's saved from it.</summary>
     public string ChronicleTitle(int slot)
     {
@@ -2663,7 +2690,7 @@ public sealed class Player
         if (!_capturing && !_picturing) DrawTransition(canvas, width, height);
         if (!_picturing && TitleShowing) { canvas.Save(); canvas.SetMatrix(baseMatrix); DrawTitleSlot(canvas); canvas.Restore(); }
         if (!_picturing) { canvas.Save(); canvas.SetMatrix(baseMatrix); DrawSettingsHint(canvas); canvas.Restore(); }
-        if (!_picturing && (SkipVisible || Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || _message != null))
+        if (!_picturing && (SkipVisible || Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || Music != null || _message != null))
         {
             canvas.Save();
             canvas.SetMatrix(baseMatrix);
@@ -2673,6 +2700,7 @@ public sealed class Player
             AudioSettings?.Draw(canvas);
             Help?.Draw(canvas);
             Wallpaper?.Draw(canvas);
+            Music?.Draw(canvas);
             SlotMenu?.Draw(canvas);
             DrawMessage(canvas);
             canvas.Restore();

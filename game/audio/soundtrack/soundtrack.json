@@ -1,0 +1,19 @@
+{
+ "note": "The chronicle's music window: each entry's (its slot) tracks, files in this folder, played from the original FLAC. A track's name is its file's, without the \"MNOG OST - \" in front. A track whose file isn't here yet is left out, and an entry with none has its music button disabled.",
+ "chronicle": {
+  "1": ["MNOG OST - Beach Chant (Remake by Essenger).flac"],
+  "5": ["MNOG OST - Underwater.flac", "MNOG OST - Ga-Koro theme (uncut).flac"],
+  "7": ["MNOG OST - Pohatu vs. Nui-Jaga (Remaster by Essenger).flac"],
+  "12": ["MNOG OST - Killing Machines (Paul Hardcastle).flac", "MNOG OST - Le-Koro band theme (Remake by Essenger).flac"],
+  "13": ["MNOG OST - Killing Machines (Paul Hardcastle).flac"],
+  "14": ["MNOG OST - The Chronicler's Company (HQ Remake by Essenger).flac"],
+  "15": ["MNOG OST - The Chronicler's Company (HQ Remake by Essenger).flac"],
+  "16": ["MNOG OST - The Chronicler's Company (HQ Remake by Essenger).flac"],
+  "17": ["MNOG OST - The Chronicler's Company (HQ Remake by Essenger).flac"],
+  "19": ["MNOG OST - The Battle Below (HQ Remake by Essenger).flac"],
+  "20": ["MNOG OST - The Battle Below (HQ Remake by Essenger).flac"],
+  "21": ["MNOG OST - The Battle Below (HQ Remake by Essenger).flac"],
+  "22": ["MNOG OST - The Battle Below (HQ Remake by Essenger).flac"],
+  "24": ["MNOG OST - Killing Machines (Paul Hardcastle).flac"]
+ }
+}
