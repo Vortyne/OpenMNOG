@@ -200,6 +200,8 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         double next = 0;
         while (_running)
         {
+            Watchdog.Beat(_player.CurrentSceneName ?? "-");
+            Watchdog.Phase("input (mouse, keys, window)");
             PumpEvents();
             double now = clock.Elapsed.TotalMilliseconds;
             int ticks = 0;
@@ -209,6 +211,7 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             {
                 if (Autopilot != null && _player.Started && !Autopilot()) { _running = false; break; }
                 long tickStart = Stopwatch.GetTimestamp();
+                Watchdog.Phase("game logic (scripts, loading scenes)");
                 _player.Tick();
                 _tickMs += Stopwatch.GetElapsedTime(tickStart).TotalMilliseconds;
                 next += interval;
@@ -245,7 +248,9 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         var out_ = new Span<float>(stream, floats);
         if (!_player.Started) { out_.Clear(); return; }
         if (_callbackBuffer.Length != floats) _callbackBuffer = new float[floats];
+        Watchdog.Mixing(true);
         _player.Audio.Mix(_callbackBuffer);
+        Watchdog.Mixing(false);
         _callbackBuffer.CopyTo(out_);
     }
 
@@ -412,11 +417,14 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             using var target = new GRBackendRenderTarget(w, h, 0, 8, new GRGlFramebufferInfo(0, GlRgba8));
             using var gpuSurface = SKSurface.Create(_gr, target, GRSurfaceOrigin.BottomLeft, SKColorType.Rgba8888);
             long t0 = Stopwatch.GetTimestamp();
+            Watchdog.Phase("drawing the frame");
             _player.Render(gpuSurface.Canvas, w, h, t);
             long t1 = Stopwatch.GetTimestamp();
+            Watchdog.Phase("handing the frame to the GPU");
             gpuSurface.Flush();
             _gr.Flush();
             long t2 = Stopwatch.GetTimestamp();
+            Watchdog.Phase("presenting the frame (waiting for the display)");
             _sdl.GLSwapWindow(_window);
             _buildMs = Stopwatch.GetElapsedTime(t0, t1).TotalMilliseconds;
             _flushMs = Stopwatch.GetElapsedTime(t1, t2).TotalMilliseconds;
@@ -436,9 +444,11 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         var info = new SKImageInfo(w, h, SKColorType.Bgra8888, SKAlphaType.Premul);
         using (var surface = SKSurface.Create(info, (IntPtr)pixels, pitch))
         {
+            Watchdog.Phase("drawing the frame");
             _player.Render(surface.Canvas, w, h, t);
             surface.Canvas.Flush();
         }
+        Watchdog.Phase("presenting the frame (waiting for the display)");
         _sdl.UnlockTexture(_texture);
         _sdl.RenderClear(_renderer);
         _sdl.RenderCopy(_renderer, _texture, null, null);

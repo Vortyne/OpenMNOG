@@ -210,8 +210,11 @@ public sealed class Player
         MovieAsset? m = null;
         // Loaded ahead in the background (PreloadNeighbours): taken (waited for, if it's still loading).
         if (_preloads.TryRemove(name, out var ahead))
-            try { m = ahead.Result; } catch (AggregateException) { }
-        m ??= MovieAsset.Load(name, dir);
+            using (Watchdog.Wait($"{name}, being loaded ahead in the background"))
+                try { m = ahead.Result; } catch (AggregateException) { }
+        if (m == null)
+            using (Watchdog.Wait($"{name}, loading"))
+                m = MovieAsset.Load(name, dir);
         foreach (var e in m.Errors) Log($"{name}: {e}");
         if (sw.ElapsedMilliseconds > 100) Log($"loaded {name} in {sw.ElapsedMilliseconds} ms");
         lock (_movies) return _movies[name] = m;
@@ -245,6 +248,7 @@ public sealed class Player
                 if (loaded || !_movieDirs.TryGetValue(name, out var movieDir)) continue;
                 _preloads.GetOrAdd(name, key => System.Threading.Tasks.Task.Run(() =>
                 {
+                    using var job = Watchdog.Job($"loading {name} ahead");
                     var movie = MovieAsset.Load(name, movieDir);
                     foreach (var symbol in movie.Symbols.Values)
                         if (symbol is ImageAsset image) image.Preload(vector);

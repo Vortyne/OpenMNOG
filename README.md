@@ -26,13 +26,14 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
   scene's artwork reaches (skies and some backdrops are extended to fit).
 - **Smoothing**: drawing runs at the display's refresh rate. Panning and fades are smoothed between the game's
   18 fps frames; with Full (or Partial, in scenes marked for it) animation is too.
-- **Vectorized pictures**: the photographic sand, sky and other pictures are redrawn as vector art that stays sharp
-  at any size. Some images are upscaled instead.
+- **Vectorized pictures**: the photographic sand, sky, Mt. Ihu and other pictures are redrawn as vector art that
+  stays sharp at any size. Some images are upscaled instead.
 - **Title screen**: the first beach view with the BIONICLE logo and the Beach Chant, with Continue, New Game,
   Exit, Settings and Save Slot.
 - **Save slots**: 12 slots, each with a picture of where it was last saved. The game saves by itself.
 - **Chronicle music**: an entry's music button plays its soundtrack in full quality (FLAC, in
-  `game/audio/soundtrack`; `soundtrack.json` says which entries have which tracks), and Download opens that folder.
+  `game/audio/soundtrack`; `soundtrack.json` says which entries have which tracks), and Download opens that folder
+  with the track selected (a note there asks players to copy the files rather than move or delete them).
   Entries without music yet have the button greyed out.
 - **In-game Help**: the original support site's General, Tips and Hints and Bionicle Decoder pages, rebuilt inside
   the game (pictures are live frames of the game itself), plus the new keyboard controls.
@@ -100,12 +101,16 @@ dotnet run --project src/Mnog.Engine -- game --run "wait 40; click 690 255; wait
 | Command | Does |
 | --- | --- |
 | `wait N` | Run N frames |
-| `move X Y`, `click X Y`, `key CODE`, `type TEXT` | Mouse and keyboard input |
+| `move X Y`, `click X Y`, `key CODE [BUTTON]`, `type TEXT` | Mouse and keyboard input (BUTTON: the code buttons' keyPress events see, e.g. `key 8 8` for Backspace) |
 | `shot FILE [W H [T]]` | Screenshot (T: partway between game frames) |
 | `scene NAME` | Go to a scene, as the warp menu does |
 | `set VAR VALUE`, `get PATH` | Variables, relative to `_level1` (e.g. `get /Backpack/Backpack/:Slot1`) |
 | `load URL TARGET` | loadMovie (e.g. `load blank.swf _level1/Music-holder`) |
-| `widescreen 0\|1`, `smooth 0\|1` | Settings for the run |
+| `widescreen 0\|1`, `smooth 0\|1`, `fs COMMAND ARG` | Settings for the run (`fs` as the game's scripts call them, e.g. `fs vectorsand 0`) |
+| `vimg MOVIE ID SCALE FILE` | An image's vector replacement alone, as the engine draws it |
+| `art X Y` | The shapes drawn at a stage point |
+| `playframes FILE W H [FROM TO]` | The scene played through, every frame appended to FILE as raw RGB (frame numbers in FILE.idx) |
+| `freeze MS` | Stall the game (tests the freeze watchdog, with `MNOG_WATCHDOG=1`) |
 | `sounds`, `tree [depth]`, `pos PATH...` | Playing sounds, the display list, clip positions |
 | `bench N W H`, `profile N W H` | Frame timings |
 | `cache 0\|1`, `cachestats`, `drawprof`, `extentms` | Rendering diagnostics |
@@ -115,10 +120,13 @@ dotnet run --project src/Mnog.Engine -- game --run "wait 40; click 690 255; wait
 **Environment variables.** `MNOG_SAVEDIR` uses another save folder (test runs use a copy, so your save is never
 touched). `MNOG_NOVSYNC=1` draws as fast as possible. `MNOG_NOCACHE=1` turns off the layer cache: artwork that
 isn't changing is drawn from cached images (`src/Mnog.Engine/Render/LayerCache.cs`), so panning slides them
-instead of redrawing every shape.
+instead of redrawing every shape. `MNOG_WATCHDOG=1` turns the freeze watchdog on in test runs (it's always on in
+the game). `MNOG_VECDBG=1` logs each vector picture as it's drawn, and `MNOG_PLAYT` makes `playframes` capture
+partway between game frames (0..1), as Smoothing draws them.
 
 **Logs.** `play.sh` writes the game's log to `build/game-run.log` (frame timings for each scene, slow frames). A
-crash writes its details to `build/crash-<time>.log`.
+crash writes its details to `build/crash-<time>.log`, and a freeze (no frame for 3 seconds) writes what the game
+was doing and waiting for to `build/hang-<time>.log`.
 
 **Sounds.** `game/sound-groups.json` lists which cutscene and minigame sounds follow the Music slider and which
 the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are music).

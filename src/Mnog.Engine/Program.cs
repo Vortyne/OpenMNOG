@@ -64,11 +64,15 @@ if (autopilot != null)
 // The game opens fullscreen, or as it was last left (F11 / Alt+Enter or the bar's button toggle it, and the
 // choice is remembered); --windowed starts in a window this time.
 if (!args.Contains("--windowed") && SdlHost.SavedFullscreen()) host.Fullscreen = true;
-// A crash leaves its details in build/crash-<time>.log (next to the game data) as well as on the console.
+// A crash leaves its details in build/crash-<time>.log (next to the game data) as well as on the console (and a freeze,
+// build/hang-<time>.log: Watchdog).
 AppDomain.CurrentDomain.UnhandledException += (_, e) => WriteCrash(gameDir, player, e.ExceptionObject as Exception);
 try
 {
     player.Start();
+    // A freeze (the main loop not coming round for a few seconds) leaves build/hang-<time>.log, as a crash does.
+    Watchdog.Beat("-");
+    Watchdog.Start(player, Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), "build"));
     host.Run();
 }
 catch (Exception e)
@@ -113,8 +117,14 @@ static string? FindGameDir()
 static void RunHeadless(Player player, string commands)
 {
     player.Start();
+    // (MNOG_WATCHDOG=1: the freeze watchdog on, each command counting as a frame; "freeze N" tests it.)
+    bool watch = Environment.GetEnvironmentVariable("MNOG_WATCHDOG") == "1";
+    if (watch) Watchdog.Start(player, Path.Combine(Path.GetFullPath(Path.Combine(player.GameDir, "..")), "build"));
     foreach (var raw in commands.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+    {
+        if (watch) { Watchdog.Beat(player.CurrentSceneName ?? "-"); Watchdog.Phase($"test command: {raw}"); }
         RunCommand(player, raw);
+    }
 }
 
 /// <summary>One test command (see the usage above); wait N plays N game frames.</summary>
@@ -125,6 +135,11 @@ static void RunCommand(Player player, string raw)
         float F(int i) => float.Parse(p[i], CultureInfo.InvariantCulture);
         switch (p[0])
         {
+            case "freeze":
+                // freeze MS: the game stuck that long (tests the watchdog: MNOG_WATCHDOG=1).
+                using (Watchdog.Wait("the freeze test command"))
+                    System.Threading.Thread.Sleep(int.Parse(p[1]));
+                break;
             case "wait":
                 for (int i = 0; i < int.Parse(p[1]); i++)
                 {

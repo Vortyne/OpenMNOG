@@ -1,1 +1,1 @@
-[{"Sprite": 6, "Depth": 1, "ScaleX": 1.04, "Anchor": 0, "Split": null, "Id": 1}]
+[{"Sprite": 6, "Depth": 1, "ScaleX": 1.04, "Anchor": 0, "Split": null, "Id": 1}, {"Sprite": 0, "Depth": 13, "Id": 2, "ScaleX": 1.06, "Anchor": 0.5, "Split": null}, {"Sprite": 3, "Depth": 1, "Id": 2, "ScaleX": 1.05, "Anchor": 0, "Split": null}]

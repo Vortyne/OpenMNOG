@@ -332,8 +332,10 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
                     continue;
                 }
                 // ("hideImage": the photo not drawn beneath its replacement: its soft edge would show past the
-                // replacement's crisp one. The replacement, if it has shapes, still is.)
-                if (player.VectorImages && part.Fill is { Type: "bitmap", Bitmap: int hid } && s.Movie.Symbol(hid) is ImageAsset { Vector: not null, VectorHidesImage: true } hidden)
+                // replacement's crisp one. The replacement, if it has shapes, still is; until it's first been drawn (in
+                // the background), the photo shows in its place, as with any other replacement.)
+                if (player.VectorImages && part.Fill is { Type: "bitmap", Bitmap: int hid } && s.Movie.Symbol(hid) is ImageAsset { Vector: not null, VectorHidesImage: true } hidden &&
+                    !(hidden.Vector.Count > 0 && hidden.VectorCache.Count == 0 && hidden.VectorDone.IsEmpty))
                 {
                     if (hidden.Vector.Count > 0) DrawVectorImage(part, s.Movie, cx);
                     continue;
@@ -457,6 +459,7 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
             System.Threading.Tasks.Task.Run(() =>
             {
                 long t0 = System.Diagnostics.Stopwatch.GetTimestamp();
+                using var job = Watchdog.Job($"drawing vector picture {image.Movie.Name}#{image.Id} at x{at}");
                 SKImage? made = null;
                 try { made = RenderVectorImage(image, img, at); }
                 catch (Exception e) { Console.WriteLine($"vector image {image.Movie.Name}#{image.Id}: {e.Message}"); }

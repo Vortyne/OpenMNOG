@@ -353,7 +353,7 @@ public sealed class ImageAsset(MovieAsset m, ImageSymbol s) : SymbolAsset(m, s.I
     {
         get
         {
-            if (!_tried) lock (_load) if (!_tried)
+            if (!_tried) using (Watchdog.Hold(_load, $"picture {Movie.Name}#{Id}, being loaded by another thread")) if (!_tried)
             {
                 // (Decoded now, not when first drawn: a large picture would stall that frame.)
                 try { _image = SKImage.FromEncodedData(System.IO.Path.Combine(Movie.Dir, s.File))?.ToRasterImage(true); }
@@ -378,7 +378,7 @@ public sealed class ImageAsset(MovieAsset m, ImageSymbol s) : SymbolAsset(m, s.I
     {
         get
         {
-            if (!_hiResTried) lock (_load) if (!_hiResTried)
+            if (!_hiResTried) using (Watchdog.Hold(_load, $"picture {Movie.Name}#{Id}, being loaded by another thread")) if (!_hiResTried)
             {
                 var file = System.IO.Path.Combine(Movie.Dir, "upscaled-images", $"{Id}.png");
                 // (Or another movie's: upscaled-images/<id>.ref names it, e.g. "sky1/upscaled-images/1.png", for a
@@ -515,7 +515,7 @@ public sealed class ImageAsset(MovieAsset m, ImageSymbol s) : SymbolAsset(m, s.I
         get
         {
             if (_vectorTried) return _vector;
-            lock (_load)
+            using (Watchdog.Hold(_load, $"vector picture {Movie.Name}#{Id}, being read by another thread"))
             {
                 if (!_vectorTried) ReadVector();
                 return _vector;
@@ -527,6 +527,11 @@ public sealed class ImageAsset(MovieAsset m, ImageSymbol s) : SymbolAsset(m, s.I
     {
         {
             var file = System.IO.Path.Combine(Movie.Dir, "vector-images", $"{Id}.json");
+            // (Or another movie's: vector-images/<id>.ref names it, e.g. "I.2-N/vector-images/17.json", for a copy of
+            // the same picture embedded in another movie, so it's stored once.)
+            var redirect = System.IO.Path.ChangeExtension(file, ".ref");
+            if (!File.Exists(file) && File.Exists(redirect))
+                file = System.IO.Path.Combine(Movie.Dir, "..", File.ReadAllText(redirect).Trim());
             if (!File.Exists(file)) { _vectorTried = true; return; }
             try
             {
@@ -646,7 +651,7 @@ public sealed class SoundAsset(MovieAsset m, SoundSymbol s) : SymbolAsset(m, s.I
         get
         {
             if (_samples != null) return _samples;
-            lock (_load) return _samples ?? Decode();
+            using (Watchdog.Hold(_load, $"sound {Movie.Name}#{Id}, being decoded by another thread")) return _samples ?? Decode();
         }
     }
 
