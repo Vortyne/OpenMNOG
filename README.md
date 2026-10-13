@@ -27,7 +27,7 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
 - **Smoothing**: drawing runs at the display's refresh rate. Panning and fades are smoothed between the game's
   18 fps frames; with Full (or Partial, in scenes marked for it) animation is too.
 - **Vectorized pictures**: the photographic sand, sky, Mt. Ihu and other pictures are redrawn as vector art that
-  stays sharp at any size. Some images are upscaled instead.
+  stays sharp at any size. Skyboxes were upscaled instead, to keep their aesthetic.
 - **Title screen**: the first beach view with the BIONICLE logo and the Beach Chant, with Continue, New Game,
   Exit, Settings and Save Slot.
 - **Save slots**: 12 slots, each with a picture of where it was last saved. The game saves by itself.
@@ -40,7 +40,8 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
 - **Settings**, grouped into Language, Graphics, Gameplay and Audio, each option described when the mouse is over
   it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, textbox transparency, dialog speed,
   panning speed and edge zone, title screen, and volume for master, music and sound effects.
-- **Skip** button for cutscenes, and fixes for flaws in the original artwork.
+- **Skip** button for cutscenes
+- fixes for small errors in the original artwork.
 - **High quality audio** (Audio menu, off by default): sounds and music play from high-quality originals where
   they've been found. The files are in `game/audio/hq` (WAV, so they load at once), and `game/audio/hq/hq.json` says
   which of the game's sounds each replaces. Separately, a WAV or FLAC beside a sound's Ogg (`sounds/NAME.wav`) is
