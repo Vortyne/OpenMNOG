@@ -19,6 +19,9 @@ public sealed class EndingPrompt(Player player)
 
     public void MouseMove(SKPoint p) => _mouse = p;
 
+    /// <summary>Whether a click there does something (the pointer cursor shows): one of the three choices.</summary>
+    public bool OverClickable(SKPoint p) => RestartBox.Contains(p) || ChronicleBox.Contains(p) || TitleBox.Contains(p);
+
     public void MouseDown(SKPoint p)
     {
         _mouse = p;

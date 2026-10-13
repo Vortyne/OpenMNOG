@@ -3463,8 +3463,9 @@
       "id": 110,
       "bounds": [-1, -1, 301, 31],
       "parts": [
-        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
-        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
       ]
     },
     {
@@ -3493,7 +3494,8 @@
       "kind": "button",
       "id": 111,
       "records": [
-        {"states": ["up", "over", "down"], "id": 109, "depth": 1},
+        {"states": ["up"], "id": 109, "depth": 1},
+        {"states": ["over", "down"], "id": 292, "depth": 1},
         {"states": ["hit"], "id": 108, "depth": 2, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_language_eng_button.as"}]
@@ -3548,8 +3550,9 @@
       "id": 116,
       "bounds": [-1, -1, 301, 31],
       "parts": [
-        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
-        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
       ]
     },
     {
@@ -3578,7 +3581,8 @@
       "kind": "button",
       "id": 117,
       "records": [
-        {"states": ["up", "over", "down"], "id": 115, "depth": 1},
+        {"states": ["up"], "id": 115, "depth": 1},
+        {"states": ["over", "down"], "id": 295, "depth": 1},
         {"states": ["hit"], "id": 114, "depth": 2, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_language_deu_button.as"}]
@@ -3806,8 +3810,7 @@
       "id": 164,
       "records": [
         {"states": ["up"], "id": 163, "depth": 1},
-        {"states": ["over"], "id": 163, "depth": 1},
-        {"states": ["down"], "id": 163, "depth": 1},
+        {"states": ["over", "down"], "id": 297, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_panspeed_button.as"}]
@@ -3873,8 +3876,7 @@
       "id": 169,
       "records": [
         {"states": ["up"], "id": 168, "depth": 1},
-        {"states": ["over"], "id": 168, "depth": 1},
-        {"states": ["down"], "id": 168, "depth": 1},
+        {"states": ["over", "down"], "id": 298, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_vectorsand_button.as"}]
@@ -3978,8 +3980,7 @@
       "id": 176,
       "records": [
         {"states": ["up"], "id": 175, "depth": 1},
-        {"states": ["over"], "id": 175, "depth": 1},
-        {"states": ["down"], "id": 175, "depth": 1},
+        {"states": ["over", "down"], "id": 299, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_panzone_button.as"}]
@@ -4124,7 +4125,8 @@
       "kind": "button",
       "id": 193,
       "records": [
-        {"states": ["up", "over", "down"], "id": 192, "depth": 1},
+        {"states": ["up"], "id": 192, "depth": 1},
+        {"states": ["over", "down"], "id": 301, "depth": 1},
         {"states": ["hit"], "id": 191, "depth": 2, "matrix": [1, 0, 0, 1, -73.5, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_quit_yes.as"}]
@@ -4175,7 +4177,8 @@
       "kind": "button",
       "id": 197,
       "records": [
-        {"states": ["up", "over", "down"], "id": 196, "depth": 1},
+        {"states": ["up"], "id": 196, "depth": 1},
+        {"states": ["over", "down"], "id": 303, "depth": 1},
         {"states": ["hit"], "id": 195, "depth": 2, "matrix": [1, 0, 0, 1, -73.5, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_quit_no.as"}]
@@ -4286,8 +4289,7 @@
       "actions": [
         {"on": ["release"], "script": "scripts/patch_settings_close.as"},
         {"on": ["keyPress"], "key": 8, "script": "scripts/patch_debug_key.as"},
-        {"on": ["keyPress"], "key": 119, "script": "scripts/patch_warp_key.as"},
-        {"on": ["keyPress"], "key": 87, "script": "scripts/patch_warp_key.as"}
+        {"on": ["keyPress"], "key": 61, "script": "scripts/patch_warp_key.as"}
       ]
     },
     {
@@ -4326,8 +4328,7 @@
       "id": 210,
       "records": [
         {"states": ["up"], "id": 209, "depth": 1},
-        {"states": ["over"], "id": 209, "depth": 1},
-        {"states": ["down"], "id": 209, "depth": 1},
+        {"states": ["over", "down"], "id": 304, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_open_language.as"}]
@@ -4393,8 +4394,7 @@
       "id": 215,
       "records": [
         {"states": ["up"], "id": 214, "depth": 1},
-        {"states": ["over"], "id": 214, "depth": 1},
-        {"states": ["down"], "id": 214, "depth": 1},
+        {"states": ["over", "down"], "id": 305, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_widescreen_button.as"}]
@@ -4435,8 +4435,7 @@
       "id": 219,
       "records": [
         {"states": ["up"], "id": 218, "depth": 1},
-        {"states": ["over"], "id": 218, "depth": 1},
-        {"states": ["down"], "id": 218, "depth": 1},
+        {"states": ["over", "down"], "id": 306, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_open_audio.as"}]
@@ -4521,8 +4520,7 @@
       "id": 225,
       "records": [
         {"states": ["up"], "id": 224, "depth": 1},
-        {"states": ["over"], "id": 224, "depth": 1},
-        {"states": ["down"], "id": 224, "depth": 1},
+        {"states": ["over", "down"], "id": 307, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_smooth_button.as"}]
@@ -4607,8 +4605,7 @@
       "id": 231,
       "records": [
         {"states": ["up"], "id": 230, "depth": 1},
-        {"states": ["over"], "id": 230, "depth": 1},
-        {"states": ["down"], "id": 230, "depth": 1},
+        {"states": ["over", "down"], "id": 308, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_textspeed_button.as"}]
@@ -4674,8 +4671,7 @@
       "id": 236,
       "records": [
         {"states": ["up"], "id": 235, "depth": 1},
-        {"states": ["over"], "id": 235, "depth": 1},
-        {"states": ["down"], "id": 235, "depth": 1},
+        {"states": ["over", "down"], "id": 309, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_title_button.as"}]
@@ -4742,8 +4738,7 @@
       "id": 241,
       "records": [
         {"states": ["up"], "id": 240, "depth": 1},
-        {"states": ["over"], "id": 240, "depth": 1},
-        {"states": ["down"], "id": 240, "depth": 1},
+        {"states": ["over", "down"], "id": 310, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_loadscreen_button.as"}]
@@ -4974,8 +4969,7 @@
       "id": 283,
       "records": [
         {"states": ["up"], "id": 282, "depth": 1},
-        {"states": ["over"], "id": 282, "depth": 1},
-        {"states": ["down"], "id": 282, "depth": 1},
+        {"states": ["over", "down"], "id": 311, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_fullscreen_button.as"}]
@@ -5102,8 +5096,7 @@
       "id": 273,
       "records": [
         {"states": ["up"], "id": 272, "depth": 1},
-        {"states": ["over"], "id": 272, "depth": 1},
-        {"states": ["down"], "id": 272, "depth": 1},
+        {"states": ["over", "down"], "id": 312, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_open_graphics.as"}]
@@ -5144,8 +5137,7 @@
       "id": 277,
       "records": [
         {"states": ["up"], "id": 276, "depth": 1},
-        {"states": ["over"], "id": 276, "depth": 1},
-        {"states": ["down"], "id": 276, "depth": 1},
+        {"states": ["over", "down"], "id": 313, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_open_gameplay.as"}]
@@ -5220,11 +5212,259 @@
       "id": 289,
       "records": [
         {"states": ["up"], "id": 288, "depth": 1},
-        {"states": ["over"], "id": 288, "depth": 1},
-        {"states": ["down"], "id": 288, "depth": 1},
+        {"states": ["over", "down"], "id": 314, "depth": 1},
         {"states": ["hit"], "id": 55, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/patch_textboxalpha_button.as"}]
+    },
+    {
+      "kind": "shape",
+      "id": 290,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 291,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 292,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/patch_language_eng_state.as"]},
+          {"ops": [{"place": 1, "id": 290, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 106, "matrix": [1, 0, 0, 1, -37.6, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]},
+          {"ops": [{"place": 1, "id": 291, "move": true, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 107, "move": true, "matrix": [1, 0, 0, 1, -37.6, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 293,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 294,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 295,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/patch_language_deu_state.as"]},
+          {"ops": [{"place": 1, "id": 293, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 112, "matrix": [1, 0, 0, 1, -50.92, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]},
+          {"ops": [{"place": 1, "id": 294, "move": true, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 113, "move": true, "matrix": [1, 0, 0, 1, -50.92, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 296,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 297,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 162, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 298,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 167, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 299,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 174, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 300,
+      "bounds": [-1, -1, 148, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M147 0 L0 0 L0 30 L147 30 L147 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L147 0 L147 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 301,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 300, "matrix": [1, 0, 0, 1, -73.5, -15]}, {"place": 2, "id": 190, "matrix": [1, 0, 0, 1, -20.74, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 302,
+      "bounds": [-1, -1, 148, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M147 0 L0 0 L0 30 L147 30 L147 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L147 0 L147 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 303,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 302, "matrix": [1, 0, 0, 1, -73.5, -15]}, {"place": 2, "id": 194, "matrix": [1, 0, 0, 1, -14.4, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 304,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 208, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 305,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 213, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 306,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 217, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 307,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 223, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 308,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 229, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 309,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 234, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 310,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 239, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 311,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 281, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 312,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 271, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 313,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 275, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 314,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 287, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
     }
   ],
   "timeline": {

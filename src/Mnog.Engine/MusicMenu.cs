@@ -101,6 +101,16 @@ public sealed class MusicMenu
 
     public void MouseMove(SKPoint p) => _mouse = p;
 
+    /// <summary>Whether a click there does something (the pointer cursor shows): close, Done, play and download, and the
+    /// playing track's bar.</summary>
+    public bool OverClickable(SKPoint p)
+    {
+        if (_closeBox.Contains(p) || _doneBox.Contains(p)) return true;
+        for (int i = 0; i < _tracks.Count; i++)
+            if (PlayBox(i).Contains(p) || DownloadBox(i).Contains(p) || i == _current && SKRect.Inflate(BarBox(i), 0, 6).Contains(p)) return true;
+        return false;
+    }
+
     public void MouseDown(SKPoint p)
     {
         _mouse = p;

@@ -60,7 +60,7 @@ The original mouse controls all work as before. New keys:
 | < / > | In a movie: go back / forward one frame (pauses it) |
 | / or Pause | In a movie: pause or play on |
 | V | Toggle vectorized pictures (to compare with the original art) |
-| W, Backspace (with Settings open) | Warp menu (every scene, cutscene and minigame) / debug panel |
+| =, Backspace (with Settings open) | Warp menu (every scene, cutscene and minigame) / debug panel |
 
 ## Save data
 

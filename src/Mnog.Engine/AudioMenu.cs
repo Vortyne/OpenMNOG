@@ -47,6 +47,18 @@ public sealed class AudioMenu(Player player)
 
     public void MouseUp() => _dragging = null;
 
+    /// <summary>Whether a click there does something (the pointer cursor shows): the buttons and the sliders.</summary>
+    public bool OverClickable(SKPoint p)
+    {
+        if (_dragging != null || CloseBox.Contains(p) || BackBox.Contains(p) || HqBox.Contains(p)) return true;
+        for (int i = 0; i < Rows.Length; i++)
+        {
+            var t = Track(i);
+            if (new SKRect(t.Left - 8, t.Top - 10, t.Right + 8, t.Bottom + 10).Contains(p)) return true;
+        }
+        return false;
+    }
+
     public void KeyDown(int code)
     {
         if (code == 27) player.CloseAudioMenu(false);

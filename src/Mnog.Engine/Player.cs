@@ -1037,8 +1037,18 @@ public sealed class Player
             case "warp": Warp = new WarpMenu(this); break;
             case "gameend": Ending = new EndingPrompt(this); break;
             case "audiomenu": AudioSettings = new AudioMenu(this); break;
-            case "help": Help = _help ??= new HelpMenu(this); Help.Reopen(); break;
-            case "saveslots": SlotMenu = new SaveSlotMenu(this, arg == "title" ? SaveSlotMenu.Mode.Title : SaveSlotMenu.Mode.Game); break;
+            // (The settings dialog, if open, closed: these menus replace it.)
+            case "help": CloseSettingsDialog(); Help = _help ??= new HelpMenu(this); Help.Reopen(); break;
+            case "saveslots": CloseSettingsDialog(); SlotMenu = new SaveSlotMenu(this, arg == "title" ? SaveSlotMenu.Mode.Title : SaveSlotMenu.Mode.Game); break;
+            // The bar's (and the title screen's) Settings button: the settings dialog opened, or closed if it (or one of
+            // its pages) is open.
+            case "settings":
+                if (!CloseSettingsDialog())
+                {
+                    if (TitleShowing && GetLevel(TitleLevel) is { } title) RunScript("this.attachMovie(\"matanui_dialog_settings\", \"matanui_dialog_settings\", 1);", title);
+                    else if (GetLevel(10001)?.ChildByName("matanui_overlay") is MovieClip bar) RunScript("this.attachMovie(\"matanui_dialog_settings\", \"matanui_dialog_settings\", 1);", bar);
+                }
+                break;
             case "scenesounds": FillSceneSounds(); break;
             case "message": ShowMessage(arg); break;
             case "loadscreen": SkipLoadScreen = arg == "0"; break;
@@ -1142,6 +1152,12 @@ public sealed class Player
 
     ButtonObject? ButtonAt(SKPoint p)
     {
+        // Under one of the engine's menus, nothing (the game ticking on mustn't hover, or point at, what's beneath).
+        if (EngineMenuOpen) return null;
+        // Over an open dialog (settings and its pages, the quit dialog...): only its own buttons. Its box covers what's
+        // beneath, in the scene, which mustn't be pointed at or clicked through it.
+        if (OpenDialog() is { } dialog && dialog.WorldMatrix.MapRect(dialog.LocalBounds).Contains(p))
+            return ButtonIn(dialog, p, dialog.WorldMatrix);
         // On the bottom bar (from stage y 425), only it and what's drawn over it: what's hidden under it (dialog
         // answers still scrolling up from below) can't be clicked through it.
         int barLevel = Levels.FirstOrDefault(kv => kv.Value.Movie.Name == "overlay").Key;
@@ -1157,6 +1173,11 @@ public sealed class Player
     }
 
     /// <summary>The dialog's red "continue" arrow (TextSub's button 13), when it's showing.</summary>
+    /// <summary>One of the engine's own menus is open (the Help, save slots, audio settings, warp, wallpaper, music, the
+    /// ending): it takes the mouse, and sets the cursor.</summary>
+    bool EngineMenuOpen => SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Warp != null ||
+        Wallpaper != null || Music != null;
+
     /// <summary>Whether a menu covers the game: the engine's own (the Help, save slots, audio settings, warp, wallpaper,
     /// the ending) or one of the overlay's dialogs (settings and its pages, timestamp, progress, quit).</summary>
     public bool MenuOpen => SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Warp != null ||
@@ -1242,13 +1263,14 @@ public sealed class Player
     public void OnMouseMove(SKPoint stage)
     {
         MouseStage = stage;
-        if (SlotMenu != null) { SlotMenu.MouseMove(stage); return; }
-        if (Ending != null) { Ending.MouseMove(stage); return; }
-        if (Wallpaper != null) { Wallpaper.MouseMove(stage); return; }
-        if (Music != null) { Music.MouseMove(stage); return; }
-        if (AudioSettings != null) { AudioSettings.MouseMove(stage); return; }
+        // (The engine's menus: the pointer cursor over what can be clicked in them, nothing beneath them counting.)
+        if (SlotMenu != null) { SlotMenu.MouseMove(stage); Host?.SetHandCursor(SlotMenu.OverClickable(stage)); return; }
+        if (Ending != null) { Ending.MouseMove(stage); Host?.SetHandCursor(Ending.OverClickable(stage)); return; }
+        if (Wallpaper != null) { Wallpaper.MouseMove(stage); Host?.SetHandCursor(Wallpaper.OverClickable(stage)); return; }
+        if (Music != null) { Music.MouseMove(stage); Host?.SetHandCursor(Music.OverClickable(stage)); return; }
+        if (AudioSettings != null) { AudioSettings.MouseMove(stage); Host?.SetHandCursor(AudioSettings.OverClickable(stage)); return; }
         if (Help != null) { Help.MouseMove(stage); return; }
-        if (Warp != null) { Warp.MouseMove(stage); return; }
+        if (Warp != null) { Warp.MouseMove(stage); Host?.SetHandCursor(Warp.OverClickable(stage)); return; }
         UpdateDrag();
         UpdateHover();
         Host?.SetHandCursor(_hover != null || OverSkip);
@@ -1299,7 +1321,8 @@ public sealed class Player
             _hover.SetState(ButtonState.Over);
             ButtonEvent(_hover, "rollOver");
         }
-        Host?.SetHandCursor(_hover != null || OverSkip);
+        // (An engine menu sets the cursor itself, for what's clickable in it.)
+        if (!EngineMenuOpen) Host?.SetHandCursor(_hover != null || OverSkip);
     }
 
     public void OnMouseDown()
@@ -1441,7 +1464,7 @@ public sealed class Player
         if (flashKeyCode == 86 && !(Focus?.Editable ?? false))
         {
             FsCommand("vectorsand", VectorImages ? "0" : "1");
-            ShowMessage(VectorImages ? "Vectorize bitmaps: on" : "Vectorize bitmaps: off");
+            ShowMessage(VectorImages ? "Vectorize bitmaps: on" : "Vectorize bitmaps: off", bar: true);
             return;
         }
         // Episodes frame by frame: < (,) pauses and steps back a frame, > (.) pauses and steps on one, / or Pause|Break
@@ -1621,7 +1644,7 @@ public sealed class Player
 
     // ---- Warp menu (debug) ----
 
-    /// <summary>The warp menu, while open (W in the settings dialog).</summary>
+    /// <summary>The warp menu, while open (= in the settings dialog).</summary>
     public WarpMenu? Warp;
 
     public void CloseWarpMenu() => Warp = null;
@@ -2009,6 +2032,27 @@ public sealed class Player
         foreach (var name in new[] { "continueButton", "newGameButton", "exitButton" })
             if (ui.ChildByName(name) is { } b) b.Visible = !settings && (name != "continueButton" || canContinue);
     }
+
+    /// <summary>The dialog open over the game (the overlay's, at depth 16385: settings and its pages, quit, timestamp,
+    /// progress) or the title screen (its own copies), if any.</summary>
+    /// <summary>Closes the settings dialog or one of its pages (Graphics, Audio...), if open; false if none was.</summary>
+    bool CloseSettingsDialog()
+    {
+        bool closed = AudioSettings != null;
+        AudioSettings = null;
+        if (OpenDialog() is { Name: var name } dialog && name.StartsWith("matanui_dialog_settings", StringComparison.Ordinal)
+            && dialog.Parent is MovieClip parent)
+        {
+            parent.RemoveChild(dialog);
+            closed = true;
+        }
+        return closed;
+    }
+
+    MovieClip? OpenDialog() =>
+        TitleShowing ? GetLevel(TitleLevel)?.Children.Values.LastOrDefault(c => c is MovieClip { Removed: false, Visible: true } && c.Name.StartsWith("matanui_dialog_", StringComparison.Ordinal)) as MovieClip
+        : GetLevel(10001)?.ChildByName("matanui_overlay") is MovieClip overlay && overlay.Children.TryGetValue(16384 + 1, out var d)
+            && d is MovieClip { Removed: false, Visible: true } m ? m : null;
 
     /// <summary>The settings dialog open over the game (the overlay's) or the title screen (its own copy), if any.</summary>
     MovieClip? SettingsDialog =>
@@ -2513,26 +2557,34 @@ public sealed class Player
 
     // ---- Messages ----
 
-    (string Text, long At)? _message;
+    (string Text, long At, bool Bar)? _message;
     const double MessageMs = 3500;
+    /// <summary>A message in the bar (a setting just switched): only a quick confirmation.</summary>
+    const double BarMessageMs = 1500;
 
-    /// <summary>A short message shown over the view for a few seconds (the "message" fscommand).</summary>
-    public void ShowMessage(string text)
+    /// <summary>A short message shown over the view for a few seconds (the "message" fscommand); with
+    /// <paramref name="bar"/>, in the middle of the bar along the bottom instead, clear of the scene (not on the title
+    /// screen, whose menu buttons are there).</summary>
+    public void ShowMessage(string text, bool bar = false)
     {
-        _message = (text, ElapsedMs);
+        _message = (text, ElapsedMs, bar);
         Log($"message: {text}");
     }
 
-    void DrawMessage(SKCanvas canvas)
+    /// <summary>The message, if it's shown in the bar (<paramref name="inBar"/>) or over the view (not).</summary>
+    void DrawMessage(SKCanvas canvas, bool inBar)
     {
-        if (_message is not { } m) return;
+        if (_message is not { } m || (m.Bar && !TitleShowing) != inBar) return;
         double age = ElapsedMs - m.At;
-        if (age > MessageMs) { _message = null; return; }
+        double shown = m.Bar ? BarMessageMs : MessageMs;
+        if (age > shown) { _message = null; return; }
         // Fades in and out over a quarter second.
-        double alpha = Math.Min(1, Math.Min(age, MessageMs - age) / 250);
+        double alpha = Math.Min(1, Math.Min(age, shown - age) / 250);
         using var font = new SKFont(MenuTypeface, 16);
         float w = font.MeasureText(m.Text) + 32, h = 34;
-        var box = new SKRect(385 - w / 2, 150, 385 + w / 2, 150 + h); // below the backpack, when it's open
+        // Below the backpack, when it's open; or centred in the bar (stage y 425 to 475).
+        float top = inBar ? 450 - h / 2 : 150;
+        var box = new SKRect(385 - w / 2, top, 385 + w / 2, top + h);
         byte a = (byte)Math.Round(alpha * 255);
         using var fill = new SKPaint { Color = new SKColor(0x22, 0x22, 0x22, a), IsAntialias = true };
         using var stroke = new SKPaint { Color = new SKColor(0x99, 0x99, 0x99, a), Style = SKPaintStyle.Stroke, StrokeWidth = 1.5f, IsAntialias = true };
@@ -2744,7 +2796,7 @@ public sealed class Player
             Wallpaper?.Draw(canvas);
             Music?.Draw(canvas);
             SlotMenu?.Draw(canvas);
-            DrawMessage(canvas);
+            DrawMessage(canvas, inBar: false);
             canvas.Restore();
         }
         // Not over the title screen, whose buttons reach down to where the panel is.
@@ -2755,6 +2807,14 @@ public sealed class Player
             canvas.Save();
             canvas.SetMatrix(baseMatrix);
             overlay.Draw(canvas, Widescreen ? ViewLeft : 0, Widescreen ? ViewRight : StageWidth);
+            canvas.Restore();
+        }
+        // (A message in the bar: over the debug panel, which fills the bar.)
+        if (!_picturing && _message != null)
+        {
+            canvas.Save();
+            canvas.SetMatrix(baseMatrix);
+            DrawMessage(canvas, inBar: true);
             canvas.Restore();
         }
         canvas.Restore();

@@ -156,10 +156,29 @@ public sealed class HelpMenu
             float h = 12 + lines.Count * 16;
             var r = new SKRect(IndexArea.Left, y, IndexArea.Right, y + h);
             bool open = i == _page, hover = r.Contains(_mouse);
-            fill.Color = open ? BoxLit : Box;
-            canvas.DrawRect(r, fill);
-            stroke.Color = open ? Orange : Grey;
-            canvas.DrawRect(r, stroke);
+            // Lit when open or pointed at (as the settings' buttons are); the open one's right side a point, towards its page.
+            using var tab = new SKPath();
+            tab.MoveTo(r.Left, r.Top);
+            if (open)
+            {
+                // (Its box carried on past the column's edge, then the point, over the divider and up to just short of
+                // the page's text, which starts at Content.Left.)
+                float tip = Content.Left - 3, start = tip - 9;
+                tab.LineTo(start, r.Top);
+                tab.LineTo(tip, r.MidY);
+                tab.LineTo(start, r.Bottom);
+            }
+            else
+            {
+                tab.LineTo(r.Right, r.Top);
+                tab.LineTo(r.Right, r.Bottom);
+            }
+            tab.LineTo(r.Left, r.Bottom);
+            tab.Close();
+            fill.Color = open || hover ? BoxLit : Box;
+            canvas.DrawPath(tab, fill);
+            stroke.Color = open || hover ? Orange : Grey;
+            canvas.DrawPath(tab, stroke);
             text.Color = open || hover ? SKColors.White : Orange;
             for (int l = 0; l < lines.Count; l++)
                 canvas.DrawText(lines[l], r.MidX - indexFont.MeasureText(lines[l]) / 2, r.Top + 18 + l * 16, indexFont, text);
@@ -167,6 +186,7 @@ public sealed class HelpMenu
             _hits.Add((r, () => Open(page)));
             y += h + 6;
         }
+        DrawGlobe(canvas, new SKRect(IndexArea.Left, y + 14, IndexArea.Right, IndexArea.Bottom - 8));
 
         // The page, scrolled, inside its area.
         canvas.Save();
@@ -216,7 +236,19 @@ public sealed class HelpMenu
                 x += w + space;
             }
             float end = lineTop + lineHeight;
-            bool hover = hit is { } h && new SKRect(Content.Left, at - 13, Content.Right, end - 4).Contains(_mouse) && Content.Contains(_mouse);
+            // Its click area: from its first line's top to its last's descenders (end is where the next line would
+            // start: going down to it would overlap the next paragraph's area, and a click there would go to this one).
+            var area = new SKRect(Content.Left, at - 13, Content.Right, end - Line + 4);
+            bool hover = click != null && area.Contains(_mouse) && Content.Contains(_mouse);
+            if (hover)
+            {
+                // Pointed at: lit as the settings' buttons are, a box behind the whole line.
+                var lit = new SKRect(Content.Left - 4, area.Top - 3, Content.Right + 2, area.Bottom + 3);
+                using var box = new SKPaint { IsAntialias = true, Color = BoxLit };
+                canvas.DrawRoundRect(lit, 3, 3, box);
+                box.Style = SKPaintStyle.Stroke; box.StrokeWidth = 1; box.Color = Orange;
+                canvas.DrawRoundRect(lit, 3, 3, box);
+            }
             paint.Color = hover ? SKColors.White : color;
             foreach (var (px, py, word, picture, size) in placed)
             {
@@ -224,7 +256,7 @@ public sealed class HelpMenu
                 if (picture != null) DrawPicture(canvas, picture, new SKRect(lx, py - 13, lx + size.Width, py - 13 + size.Height));
                 else font.Draw(canvas, word!, lx, py, paint);
             }
-            if (click != null) _hits.Add((new SKRect(Content.Left, Math.Max(at - 13, Content.Top), Content.Right, Math.Min(end - 4, Content.Bottom)), click));
+            if (click != null) _hits.Add((new SKRect(Content.Left, Math.Max(area.Top, Content.Top), Content.Right, Math.Min(area.Bottom, Content.Bottom)), click));
             return end;
         }
         // "More...": a small button under a question's hints, for its next one (and the Report page's link buttons).
@@ -319,17 +351,20 @@ public sealed class HelpMenu
             int ai = a;
             // (A triangle before it: pointing right while closed, down while open.)
             bool isOpen = _openArea == a;
+            float headingAt = y;
+            left = Content.Left + 16; width = Content.Width - 16;
+            y = Paragraph(Words(area.Name), y, heading, Orange, null, () => { _openArea = _openArea == ai ? null : ai; }) + 4;
+            // (After its heading, so the heading's hover box is behind it; white with the heading when that's lit.)
+            bool headingLit = paint.Color == SKColors.White;
             using (var tri = new SKPath())
             {
-                float tx = Content.Left + 2, ty = y - 10;
+                float tx = Content.Left + 2, ty = headingAt - 10;
                 if (isOpen) { tri.MoveTo(tx, ty + 1); tri.LineTo(tx + 10, ty + 1); tri.LineTo(tx + 5, ty + 9); }
                 else { tri.MoveTo(tx + 1, ty - 1); tri.LineTo(tx + 9, ty + 4); tri.LineTo(tx + 1, ty + 9); }
                 tri.Close();
-                paint.Color = Orange;
+                paint.Color = headingLit ? SKColors.White : Orange;
                 canvas.DrawPath(tri, paint);
             }
-            left = Content.Left + 16; width = Content.Width - 16;
-            y = Paragraph(Words(area.Name), y, heading, Orange, null, () => { _openArea = _openArea == ai ? null : ai; }) + 4;
             left = Content.Left; width = Content.Width;
             if (_openArea != a) continue;
             for (int q = 0; q < area.Questions.Count; q++)
@@ -390,6 +425,30 @@ public sealed class HelpMenu
         canvas.Restore();
         using var border = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Stroke, StrokeWidth = 1, Color = Grey };
         canvas.DrawRect(r, border);
+    }
+
+    /// <summary>The loading screen's globe of Mata Nui (the player movie's clip 34: the island in its ring), still,
+    /// fitted into the space below the index. Only its picture: the shading that sweeps over it on the loading screen
+    /// (clip 33, its depth 2) is left out here, as its first frame is a dark overlay.</summary>
+    void DrawGlobe(SKCanvas canvas, SKRect space)
+    {
+        if (!_scenes.TryGetValue("globe", out var globe) && _player.GetMovie("player") is { } player && player.Symbol(34) is Mnog.Engine.Assets.SpriteAsset sprite)
+        {
+            globe = new MovieClip(_player, player, sprite.Timeline) { Inert = true };
+            globe.Construct();
+            if (globe.Children.TryGetValue(2, out var shading)) shading.Visible = false;
+            _scenes["globe"] = globe;
+        }
+        if (globe == null || space.Height < 40) return;
+        var b = globe.LocalBounds;
+        if (b.Width <= 0 || b.Height <= 0) return;
+        // (No larger than it's drawn on the loading screen.)
+        float s = Math.Min(1, Math.Min(space.Width / b.Width, space.Height / b.Height));
+        var at = SKMatrix.CreateTranslation(space.MidX - b.MidX * s, space.MidY - b.MidY * s).PreConcat(SKMatrix.CreateScale(s, s));
+        canvas.Save();
+        var ctx = new Mnog.Engine.Render.RenderContext(canvas, canvas.TotalMatrix, _player, 1);
+        ctx.DrawContainer(globe.Children, at, CxForm.Identity);
+        canvas.Restore();
     }
 
     /// <summary>The cursors: the arrow and the pointing finger as the system draws them; the turn-around symbol as the game

@@ -105,6 +105,19 @@ public sealed class SaveSlotMenu
 
     public void MouseMove(SKPoint p) => _mouse = p;
 
+    /// <summary>Whether a click there does something (the pointer cursor shows): the confirmation's answers, or the
+    /// close button, page tabs and slots.</summary>
+    public bool OverClickable(SKPoint p)
+    {
+        if (_confirm != null) return YesBox.Contains(p) || NoBox.Contains(p);
+        if (CloseBox.Contains(p)) return true;
+        for (int i = 0; i < Slots / PerPage; i++)
+            if (Tab(i).Contains(p)) return true;
+        for (int i = 0; i < PerPage; i++)
+            if (Card(i).Contains(p)) return true;
+        return false;
+    }
+
     public void MouseDown(SKPoint p)
     {
         _mouse = p;

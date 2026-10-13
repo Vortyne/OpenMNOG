@@ -76,6 +76,22 @@ public sealed class WallpaperMenu
 
     public void MouseMove(SKPoint p) => _mouse = p;
 
+    /// <summary>Whether a click there does something (the pointer cursor shows).</summary>
+    public bool OverClickable(SKPoint p)
+    {
+        if (_listOpen)
+        {
+            for (int i = 0; i < _frames.Count; i++)
+                if (FrameItem(i).Contains(p)) return true;
+            return false;
+        }
+        if (FrameBox.Contains(p) && _frames.Count > 1) return true;
+        if (UpBox.Contains(p) || DownBox.Contains(p) || CloseBox.Contains(p) || CancelBox.Contains(p) || SvgBox.Contains(p) || SaveBox.Contains(p)) return true;
+        for (int i = 0; i < _sizes.Length; i++)
+            if (SizeBox(i).Contains(p)) return true;
+        return false;
+    }
+
     public void MouseDown(SKPoint p)
     {
         _mouse = p;

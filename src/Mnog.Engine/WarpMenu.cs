@@ -3,7 +3,7 @@ using SkiaSharp;
 namespace Mnog.Engine;
 
 /// <summary>
-/// Debug menu for jumping to any scene, cutscene (Episode) or minigame (Game). Opened with W in the settings
+/// Debug menu for jumping to any scene, cutscene (Episode) or minigame (Game). Opened with = in the settings
 /// dialog; type to filter, arrows/wheel to move, Enter or click to warp, Esc or a click outside to close.
 /// </summary>
 public sealed class WarpMenu
@@ -102,6 +102,9 @@ public sealed class WarpMenu
     {
         if (RowAt(p) is int i) _selected = i;
     }
+
+    /// <summary>Whether a click there does something (the pointer cursor shows): a scene in the list.</summary>
+    public bool OverClickable(SKPoint p) => p.X >= Left && p.X <= Left + Width && RowAt(p) != null;
 
     public void MouseDown(SKPoint p)
     {

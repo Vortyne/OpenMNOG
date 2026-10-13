@@ -135,6 +135,10 @@ static void RunCommand(Player player, string raw)
         float F(int i) => float.Parse(p[i], CultureInfo.InvariantCulture);
         switch (p[0])
         {
+            case "hover":
+                // hover: what the mouse is over (as the debug panel says it).
+                Console.WriteLine($"hover {player.MouseStage.X:0},{player.MouseStage.Y:0}: {player.HoverDescription}");
+                break;
             case "freeze":
                 // freeze MS: the game stuck that long (tests the watchdog: MNOG_WATCHDOG=1).
                 using (Watchdog.Wait("the freeze test command"))

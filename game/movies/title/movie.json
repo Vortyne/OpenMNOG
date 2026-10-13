@@ -3232,8 +3232,7 @@
       "actions": [
         {"on": ["release"], "script": "scripts/overlay_patch_settings_close.as"},
         {"on": ["keyPress"], "key": 8, "script": "scripts/overlay_patch_debug_key.as"},
-        {"on": ["keyPress"], "key": 119, "script": "scripts/overlay_patch_warp_key.as"},
-        {"on": ["keyPress"], "key": 87, "script": "scripts/overlay_patch_warp_key.as"}
+        {"on": ["keyPress"], "key": 61, "script": "scripts/overlay_patch_warp_key.as"}
       ]
     },
     {
@@ -3269,8 +3268,7 @@
       "id": 253,
       "records": [
         {"states": ["up"], "id": 254, "depth": 1},
-        {"states": ["over"], "id": 254, "depth": 1},
-        {"states": ["down"], "id": 254, "depth": 1},
+        {"states": ["over", "down"], "id": 437, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_open_language.as"}]
@@ -3320,8 +3318,7 @@
       "id": 258,
       "records": [
         {"states": ["up"], "id": 259, "depth": 1},
-        {"states": ["over"], "id": 259, "depth": 1},
-        {"states": ["down"], "id": 259, "depth": 1},
+        {"states": ["over", "down"], "id": 438, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_open_graphics.as"}]
@@ -3362,8 +3359,7 @@
       "id": 262,
       "records": [
         {"states": ["up"], "id": 263, "depth": 1},
-        {"states": ["over"], "id": 263, "depth": 1},
-        {"states": ["down"], "id": 263, "depth": 1},
+        {"states": ["over", "down"], "id": 439, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_open_audio.as"}]
@@ -3404,8 +3400,7 @@
       "id": 266,
       "records": [
         {"states": ["up"], "id": 267, "depth": 1},
-        {"states": ["over"], "id": 267, "depth": 1},
-        {"states": ["down"], "id": 267, "depth": 1},
+        {"states": ["over", "down"], "id": 440, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_open_gameplay.as"}]
@@ -3569,7 +3564,8 @@
       "kind": "button",
       "id": 281,
       "records": [
-        {"states": ["up", "over", "down"], "id": 282, "depth": 1},
+        {"states": ["up"], "id": 282, "depth": 1},
+        {"states": ["over", "down"], "id": 443, "depth": 1},
         {"states": ["hit"], "id": 283, "depth": 2, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_language_eng_button.as"}]
@@ -3628,8 +3624,9 @@
       "id": 285,
       "bounds": [-1, -1, 301, 31],
       "parts": [
-        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
-        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
       ]
     },
     {
@@ -3654,7 +3651,8 @@
       "kind": "button",
       "id": 287,
       "records": [
-        {"states": ["up", "over", "down"], "id": 288, "depth": 1},
+        {"states": ["up"], "id": 288, "depth": 1},
+        {"states": ["over", "down"], "id": 446, "depth": 1},
         {"states": ["hit"], "id": 289, "depth": 2, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_language_deu_button.as"}]
@@ -3713,8 +3711,9 @@
       "id": 291,
       "bounds": [-1, -1, 301, 31],
       "parts": [
-        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
-        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
       ]
     },
     {
@@ -3796,8 +3795,7 @@
       "id": 429,
       "records": [
         {"states": ["up"], "id": 428, "depth": 1},
-        {"states": ["over"], "id": 428, "depth": 1},
-        {"states": ["down"], "id": 428, "depth": 1},
+        {"states": ["over", "down"], "id": 447, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_fullscreen_button.as"}]
@@ -3944,8 +3942,7 @@
       "id": 304,
       "records": [
         {"states": ["up"], "id": 305, "depth": 1},
-        {"states": ["over"], "id": 305, "depth": 1},
-        {"states": ["down"], "id": 305, "depth": 1},
+        {"states": ["over", "down"], "id": 448, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_widescreen_button.as"}]
@@ -4011,8 +4008,7 @@
       "id": 309,
       "records": [
         {"states": ["up"], "id": 310, "depth": 1},
-        {"states": ["over"], "id": 310, "depth": 1},
-        {"states": ["down"], "id": 310, "depth": 1},
+        {"states": ["over", "down"], "id": 449, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_smooth_button.as"}]
@@ -4097,8 +4093,7 @@
       "id": 315,
       "records": [
         {"states": ["up"], "id": 316, "depth": 1},
-        {"states": ["over"], "id": 316, "depth": 1},
-        {"states": ["down"], "id": 316, "depth": 1},
+        {"states": ["over", "down"], "id": 450, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_vectorsand_button.as"}]
@@ -4164,8 +4159,7 @@
       "id": 320,
       "records": [
         {"states": ["up"], "id": 321, "depth": 1},
-        {"states": ["over"], "id": 321, "depth": 1},
-        {"states": ["down"], "id": 321, "depth": 1},
+        {"states": ["over", "down"], "id": 451, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_loadscreen_button.as"}]
@@ -4302,8 +4296,7 @@
       "id": 329,
       "records": [
         {"states": ["up"], "id": 330, "depth": 1},
-        {"states": ["over"], "id": 330, "depth": 1},
-        {"states": ["down"], "id": 330, "depth": 1},
+        {"states": ["over", "down"], "id": 452, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_textspeed_button.as"}]
@@ -4388,8 +4381,7 @@
       "id": 335,
       "records": [
         {"states": ["up"], "id": 336, "depth": 1},
-        {"states": ["over"], "id": 336, "depth": 1},
-        {"states": ["down"], "id": 336, "depth": 1},
+        {"states": ["over", "down"], "id": 453, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_panspeed_button.as"}]
@@ -4493,8 +4485,7 @@
       "id": 342,
       "records": [
         {"states": ["up"], "id": 343, "depth": 1},
-        {"states": ["over"], "id": 343, "depth": 1},
-        {"states": ["down"], "id": 343, "depth": 1},
+        {"states": ["over", "down"], "id": 454, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_panzone_button.as"}]
@@ -4598,8 +4589,7 @@
       "id": 349,
       "records": [
         {"states": ["up"], "id": 350, "depth": 1},
-        {"states": ["over"], "id": 350, "depth": 1},
-        {"states": ["down"], "id": 350, "depth": 1},
+        {"states": ["over", "down"], "id": 455, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_title_button.as"}]
@@ -6650,11 +6640,221 @@
       "id": 435,
       "records": [
         {"states": ["up"], "id": 434, "depth": 1},
-        {"states": ["over"], "id": 434, "depth": 1},
-        {"states": ["down"], "id": 434, "depth": 1},
+        {"states": ["over", "down"], "id": 456, "depth": 1},
         {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
       ],
       "actions": [{"on": ["release"], "script": "scripts/overlay_patch_textboxalpha_button.as"}]
+    },
+    {
+      "kind": "shape",
+      "id": 436,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 437,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 256, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 438,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 260, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 439,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 264, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 440,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 268, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 441,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 442,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 443,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_language_eng_state.as"]},
+          {"ops": [{"place": 1, "id": 441, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 284, "matrix": [1, 0, 0, 1, -37.6, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]},
+          {"ops": [{"place": 1, "id": 442, "move": true, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 286, "move": true, "matrix": [1, 0, 0, 1, -37.6, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "shape",
+      "id": 444,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"}
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 445,
+      "bounds": [-1, -1, 301, 31],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#4D4D4DFF"}, "path": "M300 0 L0 0 L0 30 L300 30 L300 0 Z"},
+        {"stroke": {"width": 2, "color": "#FF9900FF"}, "path": "M0 0 L300 0 L300 30 L0 30 L0 0"},
+        {"stroke": {"width": 3, "color": "#FF9900FF"}, "path": "M14 15.5 L19 20.5 L29 9.5"}
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 446,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_language_deu_state.as"]},
+          {"ops": [{"place": 1, "id": 444, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 290, "matrix": [1, 0, 0, 1, -50.92, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]},
+          {"ops": [{"place": 1, "id": 445, "move": true, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 292, "move": true, "matrix": [1, 0, 0, 1, -50.92, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 447,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 427, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 448,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 306, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 449,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 311, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 450,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 317, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 451,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 322, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 452,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 331, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 453,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 337, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 454,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 344, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 455,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 351, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 456,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {"ops": [{"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 433, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
     }
   ],
   "timeline": {

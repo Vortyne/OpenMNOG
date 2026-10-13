@@ -1,2 +1,3 @@
 #version 5
-_parent.attachMovie("matanui_dialog_settings", "matanui_dialog_settings", 1);
+// (OpenMNOG: opens the settings dialog, or closes it if it or one of its pages is open.)
+_level0.__matanui.util.fscommand("settings", "");
