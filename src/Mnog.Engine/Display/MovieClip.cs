@@ -107,6 +107,8 @@ public sealed class MovieClip : DisplayObject
         5 => FrameCount,
         12 => FrameCount,
         14 => Player.DropTarget(this),
+        // _url: the movie loaded there, as its file name (e.g. the chronicle remembering a sound holder's movie).
+        15 => Movie.Name + ".swf",
         _ => base.GetProperty(index, version),
     };
 

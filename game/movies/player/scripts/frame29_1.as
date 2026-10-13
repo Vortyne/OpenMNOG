@@ -27,6 +27,11 @@ if (BookOpen eq "0") {
         }
     }
 } else {
+    // (OpenMNOG: what's playing is what comes back when the Chronicle is closed, whatever the variables say: the
+    // boatman's dialog in Ga-Koro, for one, leaves them empty, and closing it brought back nothing.)
+    Sound_Background = getProperty("/Sound-Background", _url);
+    Sound_SFXMovie = getProperty("/Sound-SFX", _url);
+    Music_Movie = getProperty("/Music-holder", _url);
     loadMovie(BookMovieName, "/holder");
     loadMovie("blank.swf", "/Sound-Background");
     loadMovie("blank.swf", "/Sound-SFX");

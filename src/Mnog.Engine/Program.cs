@@ -159,7 +159,8 @@ static void RunCommand(Player player, string raw)
                 player.OnMouseUp();
                 break;
             case "key":
-                player.OnKeyDown(int.Parse(p[1]), 0);
+                // key CODE [BUTTONCODE]: a key pressed and let go (BUTTONCODE: as buttons' keyPress events see it).
+                player.OnKeyDown(int.Parse(p[1]), p.Length > 2 ? int.Parse(p[2]) : 0);
                 player.OnKeyUp(int.Parse(p[1]));
                 break;
             case "keydown":
@@ -199,7 +200,8 @@ static void RunCommand(Player player, string raw)
                         {
                             if (Environment.GetEnvironmentVariable("MNOG_UNBAR") == "1") Mnog.Engine.LiveBackdrop.HideLetterbox(holder, 0);
                             surface.Canvas.Clear(SKColors.Black);
-                            player.Render(surface.Canvas, w, h, 1);
+                            // (MNOG_PLAYT: drawn that far (0..1) between the previous and current frame, as smoothing draws it.)
+                            player.Render(surface.Canvas, w, h, float.TryParse(Environment.GetEnvironmentVariable("MNOG_PLAYT"), NumberStyles.Float, CultureInfo.InvariantCulture, out var playT) ? playT : 1);
                             using (var pix = surface.PeekPixels())
                             {
                                 var span = pix.GetPixelSpan();
@@ -238,6 +240,14 @@ static void RunCommand(Player player, string raw)
                     Console.WriteLine($"titlesvg: {(saved ? p[1] : "no title screen")}");
                     break;
                 }
+            case "useslot":
+                // useslot N [title]: switch save slot as the Save Slot menu does (in game: the slot loaded).
+                player.UseSaveSlot(int.Parse(p[1]), load: !(p.Length > 2 && p[2] == "title"));
+                break;
+            case "totitle":
+                // totitle: leave the game for the title screen (as the ending prompt and the quit menu do).
+                player.ReturnToTitle();
+                break;
             case "titlelayers":
                 {
                     // titlelayers DIR W H: the title scenery in layers, with each frame of its water (Player.SaveTitleLayers).
@@ -385,10 +395,18 @@ static void RunCommand(Player player, string raw)
                         surface.Canvas.Flush();
                         long t2 = System.Diagnostics.Stopwatch.GetTimestamp();
                         double tick = (t1 - t0) * 1000.0 / System.Diagnostics.Stopwatch.Frequency, draw = (t2 - t1) * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
-                        if (tick + draw > 30)
+                        // (profile N W H SUB MS: frames slower than MS reported, 30 by default.)
+                        if (tick + draw > (p.Length > 5 ? double.Parse(p[5], CultureInfo.InvariantCulture) : 30))
                         {
                             var holder = player.GetLevel(1)?.ChildByName("holder") as Mnog.Engine.Display.MovieClip;
-                            Console.WriteLine($"slow tick {player.TickCount} ({holder?.Movie.Name} frame {holder?.CurrentFrame}): logic {tick:0.0} ms, draw {draw:0.0} ms");
+                            Console.WriteLine($"slow tick {player.TickCount} ({holder?.Movie.Name} frame {holder?.CurrentFrame}): logic {tick:0.0} ms, draw {draw:0.0} ms" +
+                                              (sub > 1 ? $" ({draw / sub:0.0} ms a drawing)" : "") +
+                                              // (What the layer cache redrew meanwhile, as the window's slow-frame line has it.)
+                                              (Mnog.Engine.Render.LayerCache.FrameEvents.Count > 0 ? "; " + string.Join(", ", Mnog.Engine.Render.LayerCache.FrameEvents
+                                                  .GroupBy(e => e).Select(g => g.Count() > 1 ? $"{g.Key} x{g.Count()}" : g.Key).Take(8)) : ""));
+                        }
+                        Mnog.Engine.Render.LayerCache.FrameEvents.Clear();
+                        {
                         }
                     }
                     break;

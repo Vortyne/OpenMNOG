@@ -173,7 +173,11 @@ public sealed class LayerCache
         area.Inflate(view.Width / 2, view.Height / 4);
         // (Sideways, all of it when that fits one image: a panorama is then never redrawn partway through a pan, which
         // stalled panning across IX.4-E for a tenth of a second or more.)
-        if (bounds.Width <= 8192 && bounds.Width * area.Height <= 48_000_000)
+        // Up and down too when the whole of it fits: a quick vertical pan (IX.4B's, up its tall door) outran the margin,
+        // redrawing it every few frames until it counted as thrashing and was drawn live for seconds.
+        if (bounds.Width <= 8192 && bounds.Height <= 8192 && bounds.Width * bounds.Height <= 48_000_000)
+            area = SKRectI.Ceiling(bounds, true);
+        else if (bounds.Width <= 8192 && bounds.Width * area.Height <= 48_000_000)
             area = new SKRectI(Math.Min(area.Left, (int)Math.Floor(bounds.Left)), area.Top, Math.Max(area.Right, (int)Math.Ceiling(bounds.Right)), area.Bottom);
         var region = SKRectI.Ceiling(SKRect.Intersect(bounds, area), true);
         if (region.Width <= 0 || region.Height <= 0 || region.Width > 8192 || region.Height > 8192) return false;

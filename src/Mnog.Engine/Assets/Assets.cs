@@ -137,8 +137,6 @@ public sealed class ShapePart
     public bool HiResAlways;
     public SKColor Color;
     public bool ShaderReady;
-    /// <summary>An opaque colour or gradient fill: its edges are sealed (see RenderContext.Seal).</summary>
-    public bool Sealed;
 
     SKPath? _outline;
     /// <summary>The area a stroke covers (for hit testing), computed once.</summary>
@@ -202,6 +200,74 @@ public sealed class ShapeAsset : SymbolAsset
 
     public SKImage? Cached;
     public SKMatrix CachedFor;
+
+    SKPath?[]? _shared;
+
+    /// <summary>
+    /// The edges part <paramref name="i"/> has in common with another of the shape's fills (Flash
+    /// fills both sides of such an edge from the same record, so they match exactly), for it to seal. Each edge goes to
+    /// the lower of its fills, under the upper one's soft edge, or to the upper when the lower isn't opaque. Null when
+    /// it has none. Worked out on first use.
+    /// </summary>
+    public SKPath? SharedEdges(int i)
+    {
+        _shared ??= FindSharedEdges();
+        return i < _shared.Length ? _shared[i] : null;
+    }
+
+    readonly record struct EdgeKey(int X0, int Y0, int X1, int Y1, int CX, int CY, bool Quad);
+
+    static bool OpaqueFill(ShapePart p) => p.Stroke == null && p.Fill is { Type: not "bitmap" } f &&
+        (f.Type == "solid" ? Geo.Color(f.Color).Alpha == 255 : f.Stops is { Count: > 0 } stops && stops.All(s => Geo.Color(s.Color).Alpha == 255));
+
+    SKPath?[] FindSharedEdges()
+    {
+        var result = new SKPath?[Parts.Count];
+        var owners = new Dictionary<EdgeKey, (List<int> Parts, SKPoint[] Points)>();
+        // (In twips, Flash's own units: the same edge read from two paths rounds the same.)
+        static int T(float v) => (int)MathF.Round(v * 20);
+        void Add(int part, SKPoint a, SKPoint b, SKPoint? c)
+        {
+            // Either direction is the same edge: its ends in a set order.
+            bool swap = T(a.X) > T(b.X) || T(a.X) == T(b.X) && T(a.Y) > T(b.Y);
+            var (p, q) = swap ? (b, a) : (a, b);
+            var key = new EdgeKey(T(p.X), T(p.Y), T(q.X), T(q.Y), c is { } k ? T(k.X) : 0, c is { } k2 ? T(k2.Y) : 0, c != null);
+            if (key.X0 == key.X1 && key.Y0 == key.Y1 && !key.Quad) return;
+            if (!owners.TryGetValue(key, out var o)) owners[key] = o = ([], c is { } cc ? [a, cc, b] : [a, b]);
+            if (!o.Parts.Contains(part)) o.Parts.Add(part);
+        }
+        var pts = new SKPoint[4];
+        for (int i = 0; i < Parts.Count; i++)
+        {
+            if (Parts[i].Fill == null || Parts[i].Stroke != null) continue;
+            using var it = Parts[i].Path.CreateRawIterator();
+            SKPoint start = default, last = default;
+            SKPathVerb verb;
+            while ((verb = it.Next(pts)) != SKPathVerb.Done)
+            {
+                switch (verb)
+                {
+                    case SKPathVerb.Move: start = last = pts[0]; break;
+                    case SKPathVerb.Line: Add(i, pts[0], pts[1], null); last = pts[1]; break;
+                    case SKPathVerb.Quad: Add(i, pts[0], pts[2], pts[1]); last = pts[2]; break;
+                    case SKPathVerb.Cubic: last = pts[3]; break;
+                    case SKPathVerb.Conic: last = pts[2]; break;
+                    case SKPathVerb.Close: if (last != start) Add(i, last, start, null); last = start; break;
+                }
+            }
+        }
+        foreach (var (parts, points) in owners.Values)
+        {
+            if (parts.Count < 2) continue;
+            parts.Sort();
+            int sealer = parts.FirstOrDefault(p => OpaqueFill(Parts[p]), -1);
+            if (sealer < 0) continue;
+            var path = result[sealer] ??= new SKPath();
+            path.MoveTo(points[0]);
+            if (points.Length == 3) path.QuadTo(points[1], points[2]); else path.LineTo(points[1]);
+        }
+        return result;
+    }
 }
 
 /// <summary>Morph shape: start/end point lists with identical command structure.</summary>

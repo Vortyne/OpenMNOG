@@ -47,6 +47,7 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             if (_renderer == null) _renderer = _sdl.CreateRenderer(_window, -1, (uint)RendererFlags.Software);
             player.Log("rendering on the CPU");
         }
+        SetIcon(Path.Combine(player.GameDir, "files", "icon.png"));
 
         // The sound card pulls its audio on its own thread (AudioCallback), so a slow frame never starves it.
         _audioCallback = AudioCallback;
@@ -64,6 +65,30 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         _hand = _sdl.CreateSystemCursor(SystemCursor.SystemCursorHand);
         _sdl.StartTextInput();
         player.Host = this;
+    }
+
+    /// <summary>The window's icon (taskbar, title bar), from the game's icon.png: shown however the engine is run (the
+    /// program's own icon is only Windows' exe, not dotnet run's or Linux's).</summary>
+    void SetIcon(string file)
+    {
+        if (!File.Exists(file)) return;
+        try
+        {
+            using var image = SKImage.FromEncodedData(file);
+            if (image == null) return;
+            int w = image.Width, h = image.Height;
+            // (RGBA bytes, straight alpha: SDL's ABGR8888 on a little-endian machine.)
+            var pixels = new byte[w * h * 4];
+            fixed (byte* p = pixels)
+            {
+                if (!image.ReadPixels(new SKImageInfo(w, h, SKColorType.Rgba8888, SKAlphaType.Unpremul), (IntPtr)p, w * 4)) return;
+                var surface = _sdl.CreateRGBSurfaceWithFormatFrom(p, w, h, 32, w * 4, (uint)PixelFormatEnum.Abgr8888);
+                if (surface == null) return;
+                _sdl.SetWindowIcon(_window, surface);
+                _sdl.FreeSurface(surface);
+            }
+        }
+        catch (Exception e) when (e is IOException or ArgumentException) { _player.Log($"window icon: {e.Message}"); }
     }
 
     public bool Fullscreen
@@ -313,7 +338,6 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             case KeyCode.KLshift: case KeyCode.KRshift: return (16, 0);
             case KeyCode.KLctrl: case KeyCode.KRctrl: return (17, 0);
             case KeyCode.KPause: return (19, 0); // Pause|Break: pauses and plays on an episode
-            case KeyCode.KF8: return (119, 0); // the debug panel's edge report
         }
         if (sym is >= 'a' and <= 'z') return (sym - 32, 0);
         if (sym is >= '0' and <= '9') return (sym, 0);

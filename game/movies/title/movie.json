@@ -3217,7 +3217,8 @@
           "char": "~",
           "path": "M640.62494 -411.28122Q591.93744 -340.8125 495.84372 -340.81247Q462.53125 -340.81247 429.21872 -353.625Q395.90622 -366.43747 366.43747 -383.09375Q339.53125 -398.46869 309.42184 -411.92184Q279.3125 -425.37497 238.31248 -425.37497Q198.59373 -425.37497 153.74998 -410.64059Q108.90623 -395.90622 81.999992 -374.125L81.999992 -458.68747Q108.90624 -490.71872 149.26561 -516.34375Q189.62494 -541.96869 243.4375 -541.96869Q283.15625 -541.96869 310.0625 -531.71875Q336.96872 -521.46869 371.5625 -503.53122Q404.87497 -486.87494 442.67188 -472.14062Q480.46869 -457.40619 504.81247 -457.40625Q540.68744 -457.40625 574.64056 -466.37497Q608.59375 -475.34369 640.62494 -504.81247L640.62494 -411.28122Z",
           "advance": 717.5
-        }
+        },
+        {"char": "x", "path": "M599.625 0L389.5 -212.68748L178.09375 0L1.2812499 0L301.09375 -302.375L2.5624998 -602.1875L180.65623 -602.1875L389.5 -392.0625L597.06244 -602.1875L775.15619 -602.1875L477.90625 -302.375L777.71875 0L599.625 0Z", "advance": 780.28}
       ]
     },
     {
@@ -3230,8 +3231,7 @@
       ],
       "actions": [
         {"on": ["release"], "script": "scripts/overlay_patch_settings_close.as"},
-        {"on": ["keyPress"], "key": 100, "script": "scripts/overlay_patch_debug_key.as"},
-        {"on": ["keyPress"], "key": 68, "script": "scripts/overlay_patch_debug_key.as"},
+        {"on": ["keyPress"], "key": 8, "script": "scripts/overlay_patch_debug_key.as"},
         {"on": ["keyPress"], "key": 119, "script": "scripts/overlay_patch_warp_key.as"},
         {"on": ["keyPress"], "key": 87, "script": "scripts/overlay_patch_warp_key.as"}
       ]
@@ -3819,16 +3819,17 @@
         "frames": [
           {
             "ops": [
-              {"place": 1, "id": 430, "matrix": [1, 0, 0, 1, -156, -115], "name": "patch_dialog_graphics_box"},
-              {"place": 2, "id": 246, "matrix": [1, 0, 0, 1, -155, -71], "name": "patch_dialog_graphics_line"},
-              {"place": 3, "id": 295, "matrix": [1, 0, 0, 1, -68.54, -84.15], "name": "patch_dialog_graphics_title"},
-              {"place": 4, "id": 296, "matrix": [1, 0, 0, 1, 138, -93], "name": "patch_dialog_graphics_button_x"},
-              {"place": 5, "id": 300, "matrix": [1, 0, 0, 1, -138, -93], "name": "patch_dialog_graphics_button_back"},
-              {"place": 6, "id": 304, "matrix": [1, 0, 0, 1, 0, -14], "name": "patch_dialog_graphics_button_widescreen"},
-              {"place": 7, "id": 309, "matrix": [1, 0, 0, 1, 0, 22], "name": "patch_dialog_graphics_button_smooth"},
-              {"place": 8, "id": 315, "matrix": [1, 0, 0, 1, 0, 58], "name": "patch_dialog_graphics_button_vectorsand"},
-              {"place": 9, "id": 320, "matrix": [1, 0, 0, 1, 0, 94], "name": "patch_dialog_graphics_button_loadscreen"},
-              {"place": 10, "id": 429, "matrix": [1, 0, 0, 1, 0, -50], "name": "patch_dialog_graphics_button_fullscreen"}
+              {"place": 1, "id": 327, "matrix": [1, 0, 0, 1, -156, -133], "name": "patch_dialog_graphics_box"},
+              {"place": 2, "id": 246, "matrix": [1, 0, 0, 1, -155, -89], "name": "patch_dialog_graphics_line"},
+              {"place": 3, "id": 295, "matrix": [1, 0, 0, 1, -68.54, -102.15], "name": "patch_dialog_graphics_title"},
+              {"place": 4, "id": 296, "matrix": [1, 0, 0, 1, 138, -111], "name": "patch_dialog_graphics_button_x"},
+              {"place": 5, "id": 300, "matrix": [1, 0, 0, 1, -138, -111], "name": "patch_dialog_graphics_button_back"},
+              {"place": 6, "id": 304, "matrix": [1, 0, 0, 1, 0, -32], "name": "patch_dialog_graphics_button_widescreen"},
+              {"place": 7, "id": 309, "matrix": [1, 0, 0, 1, 0, 4], "name": "patch_dialog_graphics_button_smooth"},
+              {"place": 8, "id": 315, "matrix": [1, 0, 0, 1, 0, 40], "name": "patch_dialog_graphics_button_vectorsand"},
+              {"place": 9, "id": 320, "matrix": [1, 0, 0, 1, 0, 76], "name": "patch_dialog_graphics_button_loadscreen"},
+              {"place": 10, "id": 429, "matrix": [1, 0, 0, 1, 0, -68], "name": "patch_dialog_graphics_button_fullscreen"},
+              {"place": 11, "id": 435, "matrix": [1, 0, 0, 1, 0, 112], "name": "patch_dialog_graphics_button_textboxalpha"}
             ],
             "scripts": ["scripts/overlay_sprite77_frame1.as"]
           }
@@ -6587,6 +6588,73 @@
           "advances": [13, 13.95, 13.95, 11.45, 13.6, 4]
         }
       ]
+    },
+    {
+      "kind": "text",
+      "id": 431,
+      "bounds": [0, -13.19, 247.85, 3.957],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 13.19,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Textbox transparency: Low",
+          "glyphs": [16, 21, 95, 33, 86, 29, 95, 0, 33, 31, 18, 28, 32, 30, 18, 31, 21, 28, 19, 36, 5, 0, 43, 29, 35],
+          "advances": [10.3, 11.34, 10.05, 5.93, 11.62, 11.59, 10.05, 7.47, 5.93, 6.18, 11.59, 11.59, 10.56, 11.59, 11.59, 6.18, 11.34, 11.59, 9.53, 11.34, 4.12, 7.47, 10.82, 11.59, 16.49]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 432,
+      "bounds": [0, -13.19, 270.0, 3.957],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 13.19,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Textbox transparency: Normal",
+          "glyphs": [16, 21, 95, 33, 86, 29, 95, 0, 33, 31, 18, 28, 32, 30, 18, 31, 21, 28, 19, 36, 5, 0, 12, 29, 31, 27, 18, 26],
+          "advances": [10.3, 11.34, 10.05, 5.93, 11.62, 11.59, 10.05, 7.47, 5.93, 6.18, 11.59, 11.59, 10.56, 11.59, 11.59, 6.18, 11.34, 11.59, 9.53, 11.34, 4.12, 7.47, 12.37, 11.59, 6.18, 15.97, 11.59, 3.35]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 433,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_textboxalpha_label.as"]},
+          {"ops": [{"place": 1, "id": 431, "matrix": [1, 0, 0, 1, -123.92, 4.6]}]},
+          {"ops": [{"place": 1, "id": 432, "move": true, "matrix": [1, 0, 0, 1, -135.0, 4.6]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 434,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 433}]}]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 435,
+      "records": [
+        {"states": ["up"], "id": 434, "depth": 1},
+        {"states": ["over"], "id": 434, "depth": 1},
+        {"states": ["down"], "id": 434, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_textboxalpha_button.as"}]
     }
   ],
   "timeline": {

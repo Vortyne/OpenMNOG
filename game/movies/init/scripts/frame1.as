@@ -300,6 +300,16 @@ _level0.__matanui.toggleVectorsand = function() {
     this.save.vectorsand.set(this.save.vectorsand.get() == "0" ? "1" : "0");
     this.applyVectorsand();
 };
+// Textbox transparency (Graphics): the conversations' text boxes see-through, as the original's (Normal, "1"), or much
+// less (Low, "0").
+_level0.__matanui.save.textboxalpha = _level0.__matanui.save._setting("textboxalpha", "1");
+_level0.__matanui.applyTextboxalpha = function() {
+    this.util.fscommand("textboxalpha", this.save.textboxalpha.get() == "0" ? "0" : "1");
+};
+_level0.__matanui.toggleTextboxalpha = function() {
+    this.save.textboxalpha.set(this.save.textboxalpha.get() == "0" ? "1" : "0");
+    this.applyTextboxalpha();
+};
 _level0.__matanui.save.panspeed = _level0.__matanui.save._setting("panspeed", "100");
 _level0.__matanui.save.panzone = _level0.__matanui.save._setting("panzone", "120");
 _level0.__matanui.cyclePanspeed = function() {
@@ -341,9 +351,18 @@ _level0.__matanui.panScene = function() {
     }
     var zone = Number(this.save.panzone.get());
     var speed = Number(this.save.panspeed.get()) / 100;
+    // (A scene can slow its own panning: PanSpeed on the scene, e.g. "0.5" for half the setting's speed, where its
+    // close foreground otherwise races past, as in XV.2-S.)
+    var own = Number(p.holder.PanSpeed);
+    if (own > 0) {
+        speed = speed * own;
+    }
     var mx = p.mousedrag._x;
     var my = p.mousedrag._y;
-    var open = p.Backpack.BackpackOpen == "1";
+    // (By slash paths: _level1's Backpack is also a variable, "1" once the backpack's found, which p.Backpack gives
+    // instead of the clip. The party's bar: the companion chosen, top right.)
+    var open = eval("_level1/Backpack/:BackpackOpen") == "1";
+    var party = eval("_level1/Backpack/cBar/:cBarOpen") == "1";
     var mg = p.holder["Middle-Ground"];
     var fg = p.holder["Fore-Ground"];
     var bg = p.holder["Back-Ground"];
@@ -376,20 +395,24 @@ _level0.__matanui.panScene = function() {
             bg._x = bg._x + c / 2;
         }
     } else {
-        if (!open) {
-            if (mg._y < 395 && mx < 720) {
+        // (Not at all while the items or the party are open, over the top of the view: neither the mouse nor the keys
+        // move it under them.)
+        if (!open && !party) {
+            // (Not up from the top right, where the party and bag buttons are: the original kept clear of x 720 on,
+            // which still left the party button (from x 692) and half the bag panning the view as they were pointed at.)
+            if (mg._y < 395 && mx < 670) {
                 step = step + this.panBand(my, zone);
             }
             if (mg._y > 30) {
                 step = step - this.panBand(425 - my, zone);
             }
-        }
-        // Arrow keys and W/S.
-        if (mg._y < 395 && (Key.isDown(38) || Key.isDown(87))) {
-            step = step + 30;
-        }
-        if (mg._y > 30 && (Key.isDown(40) || Key.isDown(83))) {
-            step = step - 30;
+            // Arrow keys and W/S.
+            if (mg._y < 395 && (Key.isDown(38) || Key.isDown(87))) {
+                step = step + 30;
+            }
+            if (mg._y > 30 && (Key.isDown(40) || Key.isDown(83))) {
+                step = step - 30;
+            }
         }
         step = step * speed;
         if (step != 0) {

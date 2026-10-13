@@ -6,3 +6,4 @@ _level0.__matanui.applyDebug();
 _level0.__matanui.applyTextspeed();
 _level0.__matanui.applyLoadscreen();
 _level0.__matanui.applyVectorsand();
+_level0.__matanui.applyTextboxalpha();

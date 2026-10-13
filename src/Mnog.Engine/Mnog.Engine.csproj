@@ -19,6 +19,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- The program's icon (Explorer, shortcuts); the window's own comes from game/files/icon.png. -->
+    <ApplicationIcon>..\..\assets\icon\OpenMNOG.ico</ApplicationIcon>
   </PropertyGroup>
 
   <!-- Release builds (release.sh, -p:MnogRelease=true): no console window behind the game's. -->

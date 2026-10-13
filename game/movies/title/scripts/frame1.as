@@ -11,9 +11,11 @@ leaving = 0;
 fade = 0;
 // The logo and buttons fade in over 2 seconds (36 frames).
 ui._alpha = 0;
-// Continue is there when the selected save slot has a save.
+// Continue is there when the selected save slot has a save (ui.canContinue: the engine keeps it hidden otherwise,
+// as it shows and hides the menu around the settings dialog).
 refreshSlot = function() {
-    ui.continueButton._visible = _level0.__matanui.hasSave();
+    ui.canContinue = _level0.__matanui.hasSave();
+    ui.continueButton._visible = ui.canContinue;
 };
 refreshSlot();
 ui.versionText = System.mnogVersion != undefined && System.mnogVersion != "" ? "OpenMNOG v" + System.mnogVersion : "";

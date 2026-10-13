@@ -1515,7 +1515,8 @@
           {"place": 10, "id": 8, "matrix": [1, 0, 0, 1, 380.1, 383.85]},
           {"place": 11, "id": 9, "matrix": [1, 0, 0, 1, 378.65, 202.05]}
         ],
-        "sounds": [{"id": 10, "loops": 57599, "envelope": [[0, 16384, 16384]]}]
+        "sounds": [{"id": 10, "loops": 57599, "envelope": [[0, 16384, 16384]]}],
+        "scripts": ["scripts/frame5.as"]
       },
       {
         "ops": [

@@ -173,7 +173,7 @@ public sealed class Player
     /// <summary>The latest log lines (shown by the debug overlay).</summary>
     public readonly List<string> RecentLog = [];
 
-    /// <summary>Debug overlay: diagnostic info drawn over the bottom bar (toggled with D in the settings menu).</summary>
+    /// <summary>Debug overlay: diagnostic info drawn over the bottom bar (toggled with Backspace in the settings menu).</summary>
     public bool Debug;
     DebugOverlay? _overlay;
 
@@ -752,6 +752,12 @@ public sealed class Player
                 if (!isTurn) angle = 0;
             }
             bool turnedOnly = angle != 0;
+            // A flip (mirrored, or turned more than 60 degrees from one frame to the next: Episode 3-3's speed-line
+            // backgrounds, flipped about every frame to make the lines flicker) is a cut: blending it would squash the
+            // shape through nothing on the way. Shown at once, in Full too.
+            float detA = a.ScaleX * a.ScaleY - a.SkewX * a.SkewY, detB = b.ScaleX * b.ScaleY - b.SkewX * b.SkewY;
+            float lenA = MathF.Sqrt(a.ScaleX * a.ScaleX + a.SkewY * a.SkewY), lenB = MathF.Sqrt(b.ScaleX * b.ScaleX + b.SkewY * b.SkewY);
+            bool flipped = detA * detB < 0 || lenA > 0 && lenB > 0 && (a.ScaleX * b.ScaleX + a.SkewY * b.SkewY) / (lenA * lenB) < 0.5f;
             // (Not one that drew nothing until now: a clip moved into place and started as it appears, like the Ta-Koro
             // guard's turn, would otherwise be seen sliding in from wherever it waited.)
             o.LerpMatrix = o.Snapshotted && !o.PrevEmpty && (moved || turnedOnly) && (sameShape || turnedOnly) && o.TransformedByScript && _drag?.Clip != o &&
@@ -761,7 +767,7 @@ public sealed class Player
             o.LerpFull = false;
             // A script resizing something a little each frame (the Ta-Koro cable car's rope stretching as the view
             // pans): blended too, so it keeps pace with what's sliding smoothly around it.
-            if (!o.LerpMatrix && !o.PrevEmpty && !sameShape && !turnedOnly && o.Snapshotted && o.TransformedByScript && _drag?.Clip != o &&
+            if (!o.LerpMatrix && !o.PrevEmpty && !sameShape && !turnedOnly && !flipped && o.Snapshotted && o.TransformedByScript && _drag?.Clip != o &&
                 // (Skews compared loosely: a mirrored one (the XVIII.3-S bridge's right rope) carries a rounding
                 // leftover there. A change counts as little if small either way: a shrinking rope's steps grow
                 // relative to its size.)
@@ -781,7 +787,9 @@ public sealed class Player
             bool reset = step.X * last.X + step.Y * last.Y < 0 || step.S * last.S < 0;
             // After a reset the motion starts over: the next step is compared with nothing.
             o.LastStep = reset ? default : step;
-            if (slowed && o.Snapshotted && !o.LerpMatrix && !reset && _drag?.Clip != o && (moved || !sameShape) &&
+            // (Not one that drew nothing until now, as above: the Ta-Koro guards' turn, moved to the walking guard as
+            // it appears when clicked, would slide in from where it waited.)
+            if (slowed && o.Snapshotted && !o.PrevEmpty && !o.LerpMatrix && !reset && !flipped && _drag?.Clip != o && (moved || !sameShape) &&
                 Math.Abs(b.TransX - a.TransX) <= maxSlide && Math.Abs(b.TransY - a.TransY) <= maxSlide)
             {
                 o.LerpMatrix = true;
@@ -1018,6 +1026,7 @@ public sealed class Player
             case "wallpaper": if (int.TryParse(arg, out int wallSlot)) Wallpaper = new WallpaperMenu(this, wallSlot); break;
             case "music": if (int.TryParse(arg, out int musicSlot) && MusicMenu.Tracks(this, musicSlot).Count > 0) Music = new MusicMenu(this, musicSlot); break;
             case "vectorsand": if (VectorImages != (arg is "1" or "true")) { VectorImages = arg is "1" or "true"; _layerCache.Clear(); } break;
+            case "textboxalpha": if (LowTextboxTransparency != (arg == "0")) { LowTextboxTransparency = arg == "0"; _layerCache.Clear(); } break;
             // Smoothing: 0 off, 1 partial (scripted motion, and the scenes marked for it), 2 full (all animation).
             case "smooth": Smooth = arg is "1" or "2" or "true"; SmoothAll = arg == "2"; break;
             case "debug": Debug = arg is "1" or "true"; break;
@@ -1251,11 +1260,13 @@ public sealed class Player
         {
             // The button under the mouse was removed (e.g. clicking it loaded a new scene). In Flash the new
             // content arrived after a delay, so the mouse had usually left the button and its rollOut ran; run it
-            // now so what rollOver set up, like the game's custom cursor, is undone.
+            // now so what rollOver set up, like the game's custom cursor, is undone. Not when only its own clip went
+            // to another frame (its clip still there): Flash runs no rollOut then, and XV.3A's switches, which go to
+            // their "on" animation as they're clicked, were sent back "off" by it.
             var removed = _removedHover.ToArray();
             _removedHover.Clear();
             foreach (var b in removed)
-                if (b.Parent is MovieClip host)
+                if (b.Parent is MovieClip { Removed: true } host)
                     foreach (var a in b.Button.Actions)
                         if (a.Script != null && a.On.Contains("rollOut")) Vm.Run(a.Script, host);
             RunQueue();
@@ -1297,7 +1308,6 @@ public sealed class Player
         if (Help != null) { Help.MouseDown(MouseStage); return; }
         if (Warp != null) { Warp.MouseDown(MouseStage); return; }
         if (OverSkip) { SkipMovie(); return; }
-        if (Debug && !TitleShowing && _overlay != null && _overlay.ReportButton.Contains(MouseStage)) { ReportEdgeIssue(); return; }
         MouseDown = true;
         UpdateHover();
         if (_hover != null)
@@ -1423,7 +1433,6 @@ public sealed class Player
         if (Help != null) { Help.KeyDown(flashKeyCode); return; }
         if (Warp != null) { Warp.KeyDown(flashKeyCode); return; }
         if (flashKeyCode == 27) { ToggleQuitDialog(); return; }
-        if (flashKeyCode == 119 && Debug) { ReportEdgeIssue(); return; } // F8
         // V toggles Vectorize bitmaps for this session (for comparing with the original art; the setting isn't changed).
         if (flashKeyCode == 86 && !(Focus?.Editable ?? false))
         {
@@ -1991,8 +2000,10 @@ public sealed class Player
         // Progress...) is open (where their descriptions go).
         bool settings = AudioSettings != null || GetLevel(TitleLevel) is MovieClip title && title.Children.Values.Any(c =>
             c is MovieClip { Removed: false } && c.Name.StartsWith("matanui_dialog_", StringComparison.Ordinal));
+        // (Continue only for a save slot that's been started: the title's canContinue.)
+        bool canContinue = Vm.GetVariableAt(ui, "canContinue").ToBool(6);
         foreach (var name in new[] { "continueButton", "newGameButton", "exitButton" })
-            if (ui.ChildByName(name) is { } b) b.Visible = !settings;
+            if (ui.ChildByName(name) is { } b) b.Visible = !settings && (name != "continueButton" || canContinue);
     }
 
     /// <summary>The settings dialog open over the game (the overlay's) or the title screen (its own copy), if any.</summary>
@@ -2010,6 +2021,7 @@ public sealed class Player
         ["fullscreen"] = "On: the game fills the whole screen.\nOff: the game plays in a window.\nF11 or Alt + Enter also switch between them.",
         ["widescreen"] = "On: full widescreen is used.\nOff: game's original aspect ratio is used.",
         ["smooth"] = "Off: animation moves in steps, as the original did.\nPartial: motion is smoothed where it looks best.\nFull: everything is smoothed.",
+        ["textboxalpha"] = "Normal: conversation text boxes are see-through, as the original's.\nLow: they're much less see-through, the scene behind them only faintly showing.",
         ["vectorsand"] = "On: the sand, sky and other photographic pictures are redrawn as smooth vector art that stays sharp at any size.\nOff: the original pictures.",
         ["loadscreen"] = "On: the fade and the loading animation between scenes, as in the original.\nSlow: loading shows for at least 3 seconds.\nOff: go straight to the next scene.",
         ["textspeed"] = "How fast conversations write out their text.\nNormal: the original's speed.\nFast: twice as fast.\nInstant: all of it at once.",
@@ -2070,6 +2082,9 @@ public sealed class Player
 
     /// <summary>The chronicle's music window (its music button: the entry's soundtrack), while open.</summary>
     public MusicMenu? Music;
+
+    /// <summary>Graphics > Textbox transparency Low: conversation text boxes less see-through (RenderContext.ConfigurePaint).</summary>
+    public bool LowTextboxTransparency;
 
     readonly Dictionary<int, bool> _hasMusic = [];
 
@@ -2862,51 +2877,6 @@ public sealed class Player
     }
 
     bool _panVertical;
-
-    // ---- Edge reports (debug) ----
-
-    /// <summary>Where edge reports go: build/edge-reports next to the converted game (a list plus screenshots).</summary>
-    public string EdgeReportDir => Path.GetFullPath(Path.Combine(GameDir, "..", "edge-reports"));
-
-    /// <summary>The last report, for the debug panel's confirmation (shown for a few seconds).</summary>
-    public (string Text, long At)? LastEdgeReport;
-
-    /// <summary>
-    /// Records the current view as having a widescreen edge problem (the debug panel's button, or F8 while it's
-    /// open): a line in edge-reports/reports.txt with what the edges are worked out from, and a screenshot.
-    /// </summary>
-    public void ReportEdgeIssue()
-    {
-        var level1 = GetLevel(1);
-        var scene = SceneRoot() as MovieClip;
-        string name = scene?.Movie.Name ?? "-";
-        string Layer(string n) => scene?.ChildByName(n) is { } l ? $"{l.X:0.0},{l.Y:0.0}" : "-";
-        string Var(string n) => level1 != null ? Vm.GetVariableAt(level1, n).ToStr(6) : "";
-        var stamp = DateTime.Now;
-        string shot = $"{stamp:yyyyMMdd-HHmmss}_{name}.png";
-        var line = string.Join("\t",
-            $"{stamp:yyyy-MM-dd HH:mm:ss}", name, $"frame {scene?.CurrentFrame}/{scene?.FrameCount}",
-            $"layers BG {Layer("Back-Ground")} MG {Layer("Middle-Ground")} FG {Layer("Fore-Ground")}",
-            $"shift off={Var("ShiftOff")} h={Var("HorizontalShift")} v={Var("VerticalShift")}",
-            $"window {_windowSize.W}x{_windowSize.H} view {ViewLeft:0.0}..{ViewRight:0.0}",
-            $"extent {_extent.Left:0.0}..{_extent.Right:0.0}",
-            double.IsInfinity(_panMin) ? "pan limits none" : $"pan limits {_panMin:0.0}..{_panMax:0.0}",
-            $"widescreen={Widescreen} smooth={Smooth} mouse {MouseStage.X:0},{MouseStage.Y:0}",
-            shot);
-        Directory.CreateDirectory(EdgeReportDir);
-        File.AppendAllText(Path.Combine(EdgeReportDir, "reports.txt"), line + Environment.NewLine);
-        if (_windowSize.W > 0)
-        {
-            using var surface = SKSurface.Create(new SKImageInfo(_windowSize.W, _windowSize.H));
-            Render(surface.Canvas, _windowSize.W, _windowSize.H);
-            using var image = surface.Snapshot();
-            using var png = image.Encode(SKEncodedImageFormat.Png, 100);
-            File.WriteAllBytes(Path.Combine(EdgeReportDir, shot), png.ToArray());
-        }
-        int count = File.ReadAllLines(Path.Combine(EdgeReportDir, "reports.txt")).Length;
-        LastEdgeReport = ($"Reported {name} ({count} in list)", ElapsedMs);
-        Log($"edge report saved: {name} ({shot})");
-    }
 
     /// <summary>Whether the scene is a panorama whose panning the limits keep within its scenery.</summary>
     /// <summary>Scenes that loop endlessly sideways (no ends to keep in view): no pan limits, shown the full width.</summary>

@@ -316,9 +316,11 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
         if (s.Detailed && DrawCached(s, world, cx)) return;
         SetMatrix(world);
         var drawn = player.VectorImages ? s.VectorBounds : s.Bounds;
+        int index = -1;
         if (!Canvas.QuickReject(drawn) || drawn.IsEmpty)
             foreach (var part in s.Parts)
             {
+                index++;
                 if (player.VectorImages && DrawLiveBackdrop(part, s.Movie, world, cx))
                 {
                     // Its vector replacement over it ("overlay": the chronicle orbs' glass).
@@ -348,7 +350,8 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
                 }
                 else if (ClipMasks && part.Fill is { Type: "bitmap" } && part.Stroke == null) RasterFill(part.Path);
                 else Canvas.DrawPath(part.Path, _paint);
-                if (part.Sealed && cx.IsOpaque) Seal(part.Path);
+                // (Only where it meets another of the shape's fills.)
+                if (cx.IsOpaque && s.SharedEdges(index) is { } shared) Seal(shared);
                 if (player.VectorImages) DrawVectorImage(part, s.Movie, cx);
                 if (DrawProfile != null)
                 {
@@ -379,17 +382,18 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
             using var surface = SKSurface.Create(new SKImageInfo(w, h, SKColorType.Rgba8888, SKAlphaType.Premul));
             surface.Canvas.SetMatrix(local);
             using var paint = new SKPaint { IsAntialias = true };
-            foreach (var part in s.Parts)
+            for (int i = 0; i < s.Parts.Count; i++)
             {
+                var part = s.Parts[i];
                 if (part.Fill == null || part.Fill.Type != "solid") return false;
                 paint.Color = Geo.Color(part.Fill.Color);
                 paint.Style = SKPaintStyle.Fill;
                 surface.Canvas.DrawPath(part.Path, paint);
-                if (part.Sealed)
+                if (paint.Color.Alpha == 255 && s.SharedEdges(i) is { } shared)
                 {
                     paint.Style = SKPaintStyle.Stroke;
                     paint.StrokeWidth = 0;
-                    surface.Canvas.DrawPath(part.Path, paint);
+                    surface.Canvas.DrawPath(shared, paint);
                 }
             }
             s.Cached?.Dispose();
@@ -872,8 +876,6 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
                 part.HiResAlways = hiImg.HiResAlways;
             }
             part.Color = Geo.Color(fill?.Color ?? part.Stroke?.Color);
-            part.Sealed = part.Stroke == null && part.Fill is { } f && f.Type != "bitmap" &&
-                          (f.Type == "solid" ? part.Color.Alpha == 255 : f.Stops is { Count: > 0 } stops && stops.All(s => Geo.Color(s.Color).Alpha == 255));
         }
         _paint.Reset();
         _paint.IsAntialias = true;
@@ -888,15 +890,24 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
             }
             else if (!cx.IsIdentity) _paint.ColorFilter = cx.ToFilter();
         }
-        else _paint.Color = cx.Apply(part.Color);
+        else
+        {
+            // Textbox transparency Low: the conversations' see-through white boxes (TextSub's and MiniSub's: the text's
+            // at 45%, the answers' at 35%) drawn much less see-through (85%, 72%); the faint highlight on the next-line
+            // arrow as it is.
+            var color = part.Color;
+            if (player.LowTextboxTransparency && movie.Name is "TextSub" or "MiniSub")
+                color = color.Alpha == 0x73 ? color.WithAlpha(0xD9) : color.Alpha == 0x5A ? color.WithAlpha(0xB8) : color;
+            _paint.Color = cx.Apply(color);
+        }
         if (part.Stroke is { } st) ConfigureStroke(st, world);
     }
 
     /// <summary>
     /// Fills meeting along an edge are each antialiased on their own, so the edge is only partly covered and
-    /// what's behind shows through as a thin seam (Flash fills a shape's regions together, without one). An
-    /// opaque fill also gets a hairline outline in its own paint, covering the edge pixel fully; it makes the
-    /// shape's outer edge at most half a pixel fuller.
+    /// what's behind shows through as a thin seam (Flash fills a shape's regions together, without one). The lower
+    /// of the two fills gets a hairline along the edge in its own paint (ShapeAsset.SharedEdges), covering the edge
+    /// pixel fully under the upper one's soft edge; the shape's outer edges are left as they are.
     /// </summary>
     void Seal(SKPath path)
     {

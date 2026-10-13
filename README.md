@@ -37,8 +37,8 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
 - **In-game Help**: the original support site's General, Tips and Hints and Bionicle Decoder pages, rebuilt inside
   the game (pictures are live frames of the game itself), plus the new keyboard controls.
 - **Settings**, grouped into Language, Graphics, Gameplay and Audio, each option described when the mouse is over
-  it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, dialog speed, panning speed and edge
-  zone, title screen, and volume for master, music and sound effects.
+  it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, textbox transparency, dialog speed,
+  panning speed and edge zone, title screen, and volume for master, music and sound effects.
 - **Skip** button for cutscenes, and fixes for flaws in the original artwork.
 - **High quality audio** (Audio menu, off by default): sounds and music play from high-quality originals where
   they've been found. The files are in `game/audio/hq` (WAV, so they load at once), and `game/audio/hq/hq.json` says
@@ -59,7 +59,7 @@ The original mouse controls all work as before. New keys:
 | < / > | In a movie: go back / forward one frame (pauses it) |
 | / or Pause | In a movie: pause or play on |
 | V | Toggle vectorized pictures (to compare with the original art) |
-| W, D (with Settings open) | Warp menu (every scene, cutscene and minigame) / debug panel |
+| W, Backspace (with Settings open) | Warp menu (every scene, cutscene and minigame) / debug panel |
 
 ## Save data
 
@@ -118,8 +118,7 @@ isn't changing is drawn from cached images (`src/Mnog.Engine/Render/LayerCache.c
 instead of redrawing every shape.
 
 **Logs.** `play.sh` writes the game's log to `build/game-run.log` (frame timings for each scene, slow frames). A
-crash writes its details to `build/crash-<time>.log`. The debug panel's **Report edge issue** button (or F8)
-records a widescreen edge problem in `edge-reports/`.
+crash writes its details to `build/crash-<time>.log`.
 
 **Sounds.** `game/sound-groups.json` lists which cutscene and minigame sounds follow the Music slider and which
 the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are music).

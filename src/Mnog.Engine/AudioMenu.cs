@@ -109,12 +109,13 @@ public sealed class AudioMenu(Player player)
         canvas.DrawRect(HqBox, fill);
         stroke.Color = Grey;
         canvas.DrawRect(HqBox, stroke);
-        string hq = $"High quality: {(player.HqAudio ? "On" : "Off")}";
+        // ("Partial": only some of the game's sounds have high-quality originals so far.)
+        string hq = $"High quality: {(player.HqAudio ? "Partial" : "Off")}";
         text.Color = hqLit ? SKColors.White : Orange;
         canvas.DrawText(hq, HqBox.MidX - label.MeasureText(hq) / 2, HqBox.MidY + 5, label, text);
         if (hqLit)
             MenuGlyphs.DrawHint(canvas, Panel,
-                "On: sounds and music play from high-quality originals, where they've been found.\nOff: the game's original sounds.",
+                "Partial: sounds and music play from high-quality originals, where they've been found so far.\nOff: the game's original sounds.",
                 player.MenuTypeface, player.DialogFont(13.5f), player.StageHeight);
     }
 }

@@ -29,6 +29,24 @@ public sealed class AudioMixer
         public int Group;            // Music or Sfx (volume settings)
         public string? HqGroup;      // a high-quality replacement's group (see HqSounds)
         public float Level = 1;      // a high-quality replacement's constant volume (its "gain")
+        public bool Releasing;       // stopped: fading out over Declick, then gone (no longer counts as playing)
+    }
+
+    /// <summary>
+    /// Output frames (6 ms) over which a sound fades in as it starts and out as it's stopped: too short to hear as a
+    /// fade, but a sound cut off (or begun) mid-wave otherwise jumps to or from silence, which clicks ("pops").
+    /// </summary>
+    const int Declick = OutputRate * 6 / 1000;
+
+    /// <summary>The sounds that match stopped: each fades out over Declick (or faster, if already fading so).</summary>
+    void Silence(Predicate<Instance> which)
+    {
+        foreach (var i in _playing)
+            if (!i.Releasing && which(i))
+            {
+                i.Releasing = true;
+                i.FadeStep = Math.Max(i.FadeStep, i.Gain / Declick);
+            }
     }
 
     /// <summary>High-quality replacements (game/audio/hq), played instead of the game's sounds while UseHq is on.</summary>
@@ -85,10 +103,10 @@ public sealed class AudioMixer
         bool Same(Instance i) => i.Game == game;
         if (r.Stop == true)
         {
-            lock (_lock) _playing.RemoveAll(Same);
+            lock (_lock) Silence(Same);
             return;
         }
-        if (r.NoMultiple == true) lock (_lock) if (_playing.Any(Same)) return;
+        if (r.NoMultiple == true) lock (_lock) if (_playing.Any(i => Same(i) && !i.Releasing)) return;
         // High quality: the replacement instead, nothing for a silent one, and not again while its group plays.
         var sound = game;
         string? hqGroup = null;
@@ -101,7 +119,7 @@ public sealed class AudioMixer
             if (hq.Silent) return;
             if (hq.Group is { } grp)
             {
-                lock (_lock) if (_playing.Any(i => i.HqGroup == grp)) return;
+                lock (_lock) if (_playing.Any(i => i.HqGroup == grp && !i.Releasing)) return;
                 hqGroup = grp;
             }
             if (Hq.Asset(game) is { } asset) { sound = asset; level = (float)Math.Pow(10, hq.Gain / 20); noEnvelope = hq.NoEnvelope; }
@@ -126,7 +144,7 @@ public sealed class AudioMixer
         if (sound != game) inst.Level = level;
         lock (_lock)
         {
-            if (r.NoMultiple == true && _playing.Any(Same)) return;
+            if (r.NoMultiple == true && _playing.Any(i => Same(i) && !i.Releasing)) return;
             _playing.Add(inst);
         }
     }
@@ -159,22 +177,22 @@ public sealed class AudioMixer
         var inst = Create(sound);
         lock (_lock)
         {
-            _playing.RemoveAll(i => i.Owner == owner);
+            Silence(i => i.Owner == owner);
             if (inst == null) return;
             inst.Owner = owner;
             _playing.Add(inst);
         }
     }
 
-    public void StopStream(object owner) { lock (_lock) _playing.RemoveAll(i => i.Owner == owner); }
+    public void StopStream(object owner) { lock (_lock) Silence(i => i.Owner == owner); }
 
     /// <summary>Stops every sound (stopAllSounds), or those whose source matches.</summary>
     public void StopAll(Func<object?, bool>? which = null)
     {
         lock (_lock)
         {
-            if (which == null) _playing.Clear();
-            else _playing.RemoveAll(i => which(i.Source));
+            if (which == null) Silence(_ => true);
+            else Silence(i => which(i.Source));
         }
     }
 
@@ -187,35 +205,45 @@ public sealed class AudioMixer
     }
 
     /// <summary>Stops the sounds started by a loaded movie (Flash stops them when the movie is unloaded).</summary>
-    public void StopSource(object source) { lock (_lock) _playing.RemoveAll(i => i.Source == source); }
+    public void StopSource(object source) { lock (_lock) Silence(i => i.Source == source); }
 
     /// <summary>The sounds playing now, as "Movie#id" (for the debug overlay).</summary>
-    public List<string> Describe() { lock (_lock) return _playing.Select(i => $"{i.Sound.Movie.Name}#{i.Sound.Id}{(i.Owner != null ? " (stream)" : "")} [{i.Sound.Samples.Length} samples, {i.Sound.Channels} ch, {i.Sound.Rate} Hz]").ToList(); }
+    public List<string> Describe() { lock (_lock) return _playing.Where(i => !i.Releasing).Select(i => $"{i.Sound.Movie.Name}#{i.Sound.Id}{(i.Owner != null ? " (stream)" : "")} [{i.Sound.Samples.Length} samples, {i.Sound.Channels} ch, {i.Sound.Rate} Hz]").ToList(); }
 
     // ---- A soundtrack track (the chronicle's music window) ----
     // One whole piece of music, played apart from the game's sounds: paused and resumed, moved to any point, at the
     // Music volume.
 
-    float[]? _track;
-    int _trackChannels;
-    double _trackStep, _trackPos;
-    bool _trackPlaying;
+    sealed class Track
+    {
+        public required float[] Samples;
+        public int Channels;
+        public double Step, Pos;
+        public bool Playing;     // wanted: it rises to full volume (or falls to silence) over Declick
+        public float Gain;       // how far it's risen
+    }
 
-    /// <summary>Sets the track (decoded samples, interleaved), stopped at its start; null removes it.</summary>
+    Track? _track;
+    // (Tracks let go of while still heard: faded out, then dropped.)
+    readonly List<Track> _released = [];
+
+    /// <summary>Sets the track (decoded samples, interleaved), stopped at its start; null removes it (the one playing
+    /// fades out).</summary>
     public void SetTrack(float[]? samples, int rate = OutputRate, int channels = 2)
     {
         lock (_lock)
         {
-            _track = samples;
-            _trackChannels = Math.Max(1, channels);
-            _trackStep = rate / (double)OutputRate;
-            _trackPos = 0;
-            _trackPlaying = false;
+            if (_track is { Gain: > 0 } old) { old.Playing = false; _released.Add(old); }
+            _track = samples == null ? null : new Track { Samples = samples, Channels = Math.Max(1, channels), Step = rate / (double)OutputRate };
         }
     }
 
-    /// <summary>Whether the track is playing (false once it reaches its end).</summary>
-    public bool TrackPlaying { get { lock (_lock) return _trackPlaying; } set { lock (_lock) _trackPlaying = value && _track != null; } }
+    /// <summary>Whether the track is playing (false once it reaches its end); playing and pausing fade over Declick.</summary>
+    public bool TrackPlaying
+    {
+        get { lock (_lock) return _track?.Playing ?? false; }
+        set { lock (_lock) if (_track != null) _track.Playing = value; }
+    }
 
     /// <summary>The track's length and where it's at, in seconds.</summary>
     public (double At, double Length) TrackTime
@@ -224,9 +252,9 @@ public sealed class AudioMixer
         {
             lock (_lock)
             {
-                if (_track == null) return (0, 0);
-                double rate = _trackStep * OutputRate;
-                return (_trackPos / rate, _track.Length / _trackChannels / rate);
+                if (_track is not { } t) return (0, 0);
+                double rate = t.Step * OutputRate;
+                return (t.Pos / rate, t.Samples.Length / t.Channels / rate);
             }
         }
     }
@@ -235,26 +263,38 @@ public sealed class AudioMixer
     public void SeekTrack(double seconds)
     {
         lock (_lock)
-            if (_track != null)
-                _trackPos = Math.Clamp(seconds * _trackStep * OutputRate, 0, _track.Length / _trackChannels - 1);
+            if (_track is { } t)
+                t.Pos = Math.Clamp(seconds * t.Step * OutputRate, 0, t.Samples.Length / t.Channels - 1);
     }
 
-    void MixTrack(Span<float> buffer)
+    void MixTracks(Span<float> buffer)
     {
-        if (!_trackPlaying || _track is not { } t) return;
-        int frames = buffer.Length / 2, ch = _trackChannels, last = t.Length / ch - 1;
-        float volume = GroupVolume[Music];
+        if (_track != null) MixTrack(_track, buffer);
+        for (int n = _released.Count - 1; n >= 0; n--)
+            if (!MixTrack(_released[n], buffer)) _released.RemoveAt(n);
+    }
+
+    /// <summary>One track into the buffer; false once it's silent and stopped.</summary>
+    bool MixTrack(Track t, Span<float> buffer)
+    {
+        if (!t.Playing && t.Gain <= 0) return false;
+        int frames = buffer.Length / 2, ch = t.Channels, last = t.Samples.Length / ch - 1;
+        float volume = GroupVolume[Music], step = 1f / Declick;
+        var x = t.Samples;
         for (int i = 0; i < frames; i++)
         {
+            t.Gain = t.Playing ? Math.Min(1, t.Gain + step) : Math.Max(0, t.Gain - step);
+            if (t.Gain <= 0) return false;
             // (At the end: stopped, back at the start.)
-            if (_trackPos >= last) { _trackPlaying = false; _trackPos = 0; return; }
-            int i0 = (int)_trackPos, i1 = i0 + 1;
-            float f = (float)(_trackPos - i0);
-            float l = Lerp(t[i0 * ch], t[i1 * ch], f), r = ch == 1 ? l : Lerp(t[i0 * ch + 1], t[i1 * ch + 1], f);
-            buffer[i * 2] += l * volume;
-            buffer[i * 2 + 1] += r * volume;
-            _trackPos += _trackStep;
+            if (t.Pos >= last) { t.Playing = false; t.Gain = 0; t.Pos = 0; return false; }
+            int i0 = (int)t.Pos, i1 = i0 + 1;
+            float f = (float)(t.Pos - i0);
+            float l = Lerp(x[i0 * ch], x[i1 * ch], f), r = ch == 1 ? l : Lerp(x[i0 * ch + 1], x[i1 * ch + 1], f);
+            buffer[i * 2] += l * volume * t.Gain;
+            buffer[i * 2 + 1] += r * volume * t.Gain;
+            t.Pos += t.Step;
         }
+        return true;
     }
 
     /// <summary>Fills <paramref name="buffer"/> (interleaved stereo) with the next frames.</summary>
@@ -298,6 +338,13 @@ public sealed class AudioMixer
                     l *= el;
                     r *= er;
                 }
+                // (Its first few milliseconds faded in.)
+                if (s.Played < Declick)
+                {
+                    float rise = (s.Played + 1f) / Declick;
+                    l *= rise;
+                    r *= rise;
+                }
                 if (s.FadeStep > 0)
                 {
                     s.Gain -= s.FadeStep;
@@ -312,7 +359,7 @@ public sealed class AudioMixer
             }
             if (done) _playing.RemoveAt(n);
         }
-        MixTrack(buffer);
+        MixTracks(buffer);
         Limit(buffer);
     }
 

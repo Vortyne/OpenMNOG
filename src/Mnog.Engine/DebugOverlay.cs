@@ -44,21 +44,7 @@ public sealed class DebugOverlay
             canvas.DrawText(line, left + 4, y, _font, _text);
             y += lineHeight;
         }
-        // The edge-report button, on the panel at its top right (clear of the dialog's red arrow above).
-        string label = _player.LastEdgeReport is { } r && _player.ElapsedMs - r.At < 3000 ? r.Text : "Report edge issue (F8)";
-        float w = _font.MeasureText(label) + 12;
-        ReportButton = new SKRect(right - w - 4, top + 1, right - 4, top + 10.5f);
-        bool over = ReportButton.Contains(_player.MouseStage);
-        canvas.DrawRect(ReportButton, over ? _buttonLit : _back);
-        canvas.DrawRect(ReportButton, _border);
-        canvas.DrawText(label, ReportButton.Left + 6, ReportButton.Bottom - 2.5f, _font, _text);
     }
-
-    /// <summary>Where the edge-report button was last drawn (stage coordinates).</summary>
-    public SKRect ReportButton { get; private set; }
-
-    readonly SKPaint _buttonLit = new() { Color = new SKColor(0x50, 0x40, 0x10, 0xE8) };
-    readonly SKPaint _border = new() { Color = new SKColor(0xFF, 0xE0, 0x80), Style = SKPaintStyle.Stroke, StrokeWidth = 0.75f, IsAntialias = true };
 
     List<string> Lines()
     {
