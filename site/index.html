@@ -94,7 +94,7 @@ const REPO = 'https://github.com/Vortyne/OpenMNOG';
 // (ready: false: none made for it yet; its visitors are offered the Windows one.)
 const BUILDS = {
   windows: { name: 'Windows', detail: '64-bit', suffix: '-win64.zip', ready: true },
-  macos:   { name: 'macOS',   detail: '',       suffix: '-macos.zip', ready: false },
+  macos:   { name: 'macOS',   detail: 'Apple silicon', suffix: '-macos-arm64.zip', ready: false },
   linux:   { name: 'Linux',   detail: '64-bit', suffix: '-linux64.tar.gz', ready: false },
 };
 
@@ -124,15 +124,20 @@ function show(version) {
   note.hidden = !note.textContent;
 }
 
-// The bird and the water: each of their loops (bird.svg: the bird's flight; water.svg: the sparkle, foam and waves;
-// a group of frames each) played at the game's 18 frames a second, all from their first frame together as in the
-// game. Held still for reduced motion.
+// The bird and the water: each of their loops (bird.svg: the bird turning and flapping; water.svg: the sparkle, foam
+// and waves; a group of frames each) played at the game's 18 frames a second, all from their first frame together as
+// in the game; the bird also carried along its own, longer loop of a path (its group's data-path: an offset for each
+// frame). Held still for reduced motion.
 const LOOPS = { bird: ['bird'], water: ['sparkle', 'foam', 'waves'] };
 const loops = [];
 const still = matchMedia('(prefers-reduced-motion: reduce)');
 const start = performance.now();
-function show(frame) {
+function showFrame(frame) {
   for (const loop of loops) {
+    if (loop.path) {
+      const [dx, dy] = loop.path[frame % loop.path.length];
+      loop.group.setAttribute('transform', `translate(${dx} ${dy})`);
+    }
     const i = frame % loop.frames.length;
     if (i === loop.at) continue;
     if (loop.at >= 0) loop.frames[loop.at].setAttribute('display', 'none');
@@ -141,14 +146,17 @@ function show(frame) {
   }
 }
 function tick(now) {
-  show(still.matches ? 59 : Math.floor((now - start) * 18 / 1000));
+  showFrame(still.matches ? 59 : Math.floor((now - start) * 18 / 1000));
   requestAnimationFrame(tick);
 }
 for (const [layer, names] of Object.entries(LOOPS)) {
   fetch(layer + '.svg').then(r => r.ok ? r.text() : Promise.reject()).then(text => {
     const box = document.getElementById(layer);
     box.innerHTML = text;
-    for (const id of names) loops.push({ frames: [...box.querySelector('#' + id).children], at: -1 });
+    for (const id of names) {
+      const group = box.querySelector('#' + id);
+      loops.push({ frames: [...group.children], at: -1, group, path: group.dataset.path ? JSON.parse(group.dataset.path) : null });
+    }
   }).catch(() => {});
 }
 requestAnimationFrame(tick);

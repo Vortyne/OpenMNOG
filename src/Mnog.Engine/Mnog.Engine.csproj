@@ -9,6 +9,8 @@
     <PackageReference Include="NVorbis" Version="0.10.5" />
     <PackageReference Include="Silk.NET.SDL" Version="2.23.0" />
     <PackageReference Include="SkiaSharp" Version="4.153.1" />
+    <!-- (Skia's library for Linux: Windows' and macOS's come with SkiaSharp itself.) -->
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="4.153.1" />
   </ItemGroup>
 
   <PropertyGroup>

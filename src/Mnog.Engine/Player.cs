@@ -2455,6 +2455,29 @@ public sealed class Player
         {
             var clips = moving.Where(c => c.Asset?.Id == symbol).ToList();
             if (clips.Count == 0) continue;
+            // A loop moving a clip with a loop of its own (the bird: a 199-frame path carrying its 39-frame turn and
+            // flap, each playing on by itself): the inner loop's frames at the path's start (NAME-NNN.svg), and the
+            // path as the inner clip's offset from there at each of its frames, in output pixels (NAME-path.json).
+            clips[0].GotoFrame(1);
+            if (clips.Count == 1 && clips[0].Children.Values.OfType<MovieClip>().FirstOrDefault(c => c.FrameCount > 1) is { } inner)
+            {
+                var origin = inner.WorldMatrix;
+                for (int f = 1; f <= inner.FrameCount; f++)
+                {
+                    inner.GotoFrame(f);
+                    Save($"{name}-{f:000}", false, o => Shown(o, clips.Contains, clips.Contains, false));
+                }
+                var path = new List<string>();
+                for (int f = 1; f <= clips[0].FrameCount; f++)
+                {
+                    clips[0].GotoFrame(f);
+                    if (clips[0].Children.Values.OfType<MovieClip>().FirstOrDefault(c => c.Asset == inner.Asset) is not { } now) continue;
+                    var m = now.WorldMatrix;
+                    path.Add($"[{(m.TransX - origin.TransX) * scale:0.##},{(m.TransY - origin.TransY) * scale:0.##}]");
+                }
+                File.WriteAllText(Path.Combine(dir, $"{name}-path.json"), "[" + string.Join(",", path) + "]\n");
+                continue;
+            }
             for (int f = 1; f <= clips[0].FrameCount; f++)
             {
                 foreach (var c in clips) c.GotoFrame(f);
