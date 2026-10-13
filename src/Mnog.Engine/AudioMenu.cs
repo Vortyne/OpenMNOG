@@ -84,7 +84,7 @@ public sealed class AudioMenu(Player player)
         canvas.DrawRect(Panel, stroke);
         canvas.DrawLine(Panel.Left + 8, Top + 42, Panel.Right - 8, Top + 42, stroke);
         text.Color = SKColors.White;
-        canvas.DrawText("Audio", 385 - title.MeasureText("Audio") / 2, Top + 30, title, text);
+        canvas.DrawText(Lang.T("Audio"), 385 - title.MeasureText(Lang.T("Audio")) / 2, Top + 30, title, text);
         // X and back arrow, as the settings dialogs draw them.
         MenuGlyphs.DrawClose(canvas, CloseBox, CloseBox.Contains(_mouse));
         using (var arrow = new SKPath())
@@ -101,7 +101,7 @@ public sealed class AudioMenu(Player player)
             int v = player.Volume(Rows[i].Key);
             bool lit = _dragging == i || new SKRect(t.Left - 8, t.Top - 10, t.Right + 8, t.Bottom + 10).Contains(_mouse);
             text.Color = lit ? SKColors.White : Orange;
-            canvas.DrawText(Rows[i].Label, Panel.Left + 16, t.MidY + 5, label, text);
+            canvas.DrawText(Lang.T(Rows[i].Label), Panel.Left + 16, t.MidY + 5, label, text);
             fill.Color = new SKColor(0x1A, 0x1A, 0x1A);
             canvas.DrawRoundRect(t, 4, 4, fill);
             fill.Color = Orange;
@@ -122,12 +122,12 @@ public sealed class AudioMenu(Player player)
         stroke.Color = Grey;
         canvas.DrawRect(HqBox, stroke);
         // ("Partial": only some of the game's sounds have high-quality originals so far.)
-        string hq = $"High quality: {(player.HqAudio ? "Partial" : "Off")}";
+        string hq = Lang.T(player.HqAudio ? "High quality: Partial" : "High quality: Off");
         text.Color = hqLit ? SKColors.White : Orange;
         canvas.DrawText(hq, HqBox.MidX - label.MeasureText(hq) / 2, HqBox.MidY + 5, label, text);
         if (hqLit)
             MenuGlyphs.DrawHint(canvas, Panel,
-                "Partial: sounds and music play from high-quality originals, where they've been found so far.\nOff: the game's original sounds.",
+                Lang.T("Partial: sounds and music play from high-quality originals, where they've been found so far.\nOff: the game's original sounds."),
                 player.MenuTypeface, player.DialogFont(13.5f), player.StageHeight);
     }
 }

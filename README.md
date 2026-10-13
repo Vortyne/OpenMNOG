@@ -144,3 +144,5 @@ the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are
 
 The *Mata Nui Online Game* is by Templar Studios for LEGO. The title music is *Beach Chant (HQ Remake by
 Essenger)*.
+
+The French translation is by ARROW_404.

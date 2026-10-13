@@ -164,7 +164,7 @@ public sealed class SaveSlotMenu
         _fill.Color = new SKColor(0, 0, 0, 0x99);
         canvas.DrawRect(new SKRect(_player.ViewLeft, 0, _player.ViewRight, _player.StageHeight), _fill);
         BoxAt(canvas, Panel, false);
-        Text(canvas, "Save Slots", L + 16, T + 32, _title, SKColors.White);
+        Text(canvas, Lang.T("Save Slots"), L + 16, T + 32, _title, SKColors.White);
         MenuGlyphs.DrawClose(canvas, CloseBox, CloseBox.Contains(_mouse));
         for (int i = 0; i < Slots / PerPage; i++)
         {
@@ -191,24 +191,24 @@ public sealed class SaveSlotMenu
         {
             canvas.DrawImage(image, pic, new SKSamplingOptions(SKFilterMode.Linear, SKMipmapMode.Linear));
         }
-        else Centered(canvas, info.Has ? "No picture yet" : "Empty", pic, _small, Grey);
+        else Centered(canvas, Lang.T(info.Has ? "No picture yet" : "Empty"), pic, _small, Grey);
         _stroke.Color = Grey;
         _stroke.StrokeWidth = 1;
         canvas.DrawRect(pic, _stroke);
         float x = pic.Right + 12, y = card.Top + 26;
-        Text(canvas, $"Slot {slot}", x, y, _label, lit ? SKColors.White : Orange);
-        if (slot == _current) Text(canvas, _mode == Mode.Game ? "Playing" : "Selected", x, y + 18, _small, SKColors.White);
+        Text(canvas, Lang.F("Slot {0}", slot), x, y, _label, lit ? SKColors.White : Orange);
+        if (slot == _current) Text(canvas, Lang.T(_mode == Mode.Game ? "Playing" : "Selected"), x, y + 18, _small, SKColors.White);
         if (info.Has)
         {
             Text(canvas, info.Scene, x, y + 36, _small, Grey);
-            if (info.Saved is DateTime saved) Text(canvas, saved.ToString("MMM d, HH:mm"), x, y + 52, _small, Grey);
+            if (info.Saved is DateTime saved) Text(canvas, saved.ToString("MMM d, HH:mm", Lang.Culture), x, y + 52, _small, Grey);
         }
-        else Text(canvas, "New game", x, y + 36, _small, Grey);
+        else Text(canvas, Lang.T("New game"), x, y + 36, _small, Grey);
         if (CanDelete(slot) || CanRestart(slot))
         {
             var del = DeleteBox(card);
             BoxAt(canvas, del, overDelete);
-            Centered(canvas, CanRestart(slot) ? "Restart" : "Delete", del, _small, overDelete ? SKColors.White : Orange);
+            Centered(canvas, Lang.T(CanRestart(slot) ? "Restart" : "Delete"), del, _small, overDelete ? SKColors.White : Orange);
         }
     }
 
@@ -217,9 +217,9 @@ public sealed class SaveSlotMenu
         _fill.Color = new SKColor(0, 0, 0, 0x80);
         canvas.DrawRect(Panel, _fill);
         BoxAt(canvas, ConfirmBox, false);
-        Text(canvas, _confirmRestart ? $"Restart slot {slot}?" : $"Delete slot {slot}?", ConfirmBox.Left + 16, ConfirmBox.Top + 30, _title, SKColors.White);
-        Text(canvas, _confirmRestart ? "Its progress is lost; this cannot be undone." : "This cannot be undone.", ConfirmBox.Left + 16, ConfirmBox.Top + 52, _small, Grey);
-        foreach (var (box, label) in new[] { (YesBox, _confirmRestart ? "Restart" : "Delete"), (NoBox, "Cancel") })
+        Text(canvas, Lang.F(_confirmRestart ? "Restart slot {0}?" : "Delete slot {0}?", slot), ConfirmBox.Left + 16, ConfirmBox.Top + 30, _title, SKColors.White);
+        Text(canvas, Lang.T(_confirmRestart ? "Its progress is lost; this cannot be undone." : "This cannot be undone."), ConfirmBox.Left + 16, ConfirmBox.Top + 52, _small, Grey);
+        foreach (var (box, label) in new[] { (YesBox, Lang.T(_confirmRestart ? "Restart" : "Delete")), (NoBox, Lang.T("Cancel")) })
         {
             bool lit = box.Contains(_mouse);
             BoxAt(canvas, box, lit);
@@ -244,7 +244,7 @@ public sealed class SaveSlotMenu
 
     void Centered(SKCanvas canvas, string s, SKRect r, SKFont font, SKColor color)
     {
-        float w = font.MeasureText(s);
-        Text(canvas, s, r.MidX - w / 2, r.MidY + font.Size * 0.35f, font, color);
+        _text.Color = color;
+        MenuGlyphs.DrawFitted(canvas, s, r, font, _text, 4);
     }
 }

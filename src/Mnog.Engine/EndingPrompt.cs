@@ -53,13 +53,14 @@ public sealed class EndingPrompt(Player player)
             canvas.DrawText(s, cx - font.MeasureText(s) / 2, y, font, text);
         }
         BoxAt(Box, false);
-        Centered("Thanks for playing!", Box.Top + 40, title, SKColors.White);
-        Centered($"Restart save slot {player.CurrentSaveSlot}?", Box.Top + 68, label, Grey);
-        foreach (var (r, s) in new[] { (RestartBox, "Restart slot"), (ChronicleBox, "Chronicle"), (TitleBox, player.TitleEnabled ? "Title screen" : "Save slots") })
+        Centered(Lang.T("Thanks for playing!"), Box.Top + 40, title, SKColors.White);
+        Centered(Lang.F("Restart save slot {0}?", player.CurrentSaveSlot), Box.Top + 68, label, Grey);
+        foreach (var (r, s) in new[] { (RestartBox, Lang.T("Restart slot")), (ChronicleBox, Lang.T("Chronicle")), (TitleBox, Lang.T(player.TitleEnabled ? "Title screen" : "Save slots")) })
         {
             bool lit = r.Contains(_mouse);
             BoxAt(r, lit);
-            Centered(s, r.MidY + label.Size * 0.35f, label, lit ? SKColors.White : Orange, r);
+            text.Color = lit ? SKColors.White : Orange;
+            MenuGlyphs.DrawFitted(canvas, s, r, label, text);
         }
     }
 }

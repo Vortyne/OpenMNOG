@@ -1,0 +1,1 @@
+NumStatements=3&Statement_1=Vous+pouvez+passer.&Statement_2=Jala+dit+que+nous+devons+rester+vigilants+pour+les+Rahi.&Statement_3=Si+le+pont+est+abaissé,+utilisez+la+salle+du+treuil.

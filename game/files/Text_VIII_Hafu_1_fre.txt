@@ -1,0 +1,1 @@
+NumStatements=5&Statement_1=Si+tu+cherches+Po-Koro,+voyageur,+prends+le+chemin+à+droite.+Ma+droite.+Ou+est-ce+à+ta+droite+?&Statement_2=Il+fait+assez+chaud+pour+toi+?&Statement_3=+Encore+un+original+signé+Hafu+!+&Statement_4=Tu+vois+ce+que+c’est+?&Statement_5=Waouh...+Parfois,+je+m'impressionne+moi-même+!

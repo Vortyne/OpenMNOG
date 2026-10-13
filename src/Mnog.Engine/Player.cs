@@ -155,6 +155,9 @@ public sealed class Player
         SaveLocation.Resolve(gameDir);
         Storage = new SharedObjectStore(SaveLocation.SharedObjects);
         Audio.LoadGroups(Path.Combine(GameDir, "sound-groups.json"));
+        // The menus in the chosen language (read once a tick: the save's "language").
+        Lang.Load(gameDir);
+        Lang.Current = () => _language;
         Audio.Hq = new Mnog.Engine.Audio.HqSounds(GameDir);
         Log($"save: {Path.GetFullPath(Storage.Dir)}");
         Log($"save folder from {SaveLocation.Source}");
@@ -285,6 +288,8 @@ public sealed class Player
 
     public void Tick()
     {
+        // (A new language: the menus' labels redrawn, not kept from the layer cache's pictures of them.)
+        if (SaveValue("language") is { Length: > 0 } language && language != _language) { _language = language; _layerCache.Clear(); }
         PreloadNeighbours();
         if (_pendingMessage is { } note) { _pendingMessage = null; ShowMessage(note); }
         // Paused: the game held (nothing runs) but for the steps asked for; unpaused when the episode's left.
@@ -544,6 +549,8 @@ public sealed class Player
 
     AsObject? SaveData() =>
         Storage.GetLocal("mata-nui-online-game", Vm).TryGetOwn("data", out var d) ? d.Object as AsObject : null;
+
+    string _language = "eng";
 
     string SaveValue(string key) => SaveData() is { } data && data.TryGetOwn(key, out var v) && !v.IsUndefined ? v.ToStr(6) : "";
 
@@ -944,6 +951,9 @@ public sealed class Player
     public void LoadVariables(string url, Value target, DisplayObject relativeTo)
     {
         var path = FilePath(url);
+        // French ("_fre"): a file not translated yet is read in English.
+        if (path == null && System.Text.RegularExpressions.Regex.IsMatch(url, @"_fre\.txt$", System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+            path = FilePath(System.Text.RegularExpressions.Regex.Replace(url, @"_fre\.txt$", "_eng.txt", System.Text.RegularExpressions.RegexOptions.IgnoreCase));
         if (path == null) { Log($"loadVariables: file not found: {url}"); return; }
         DisplayObject? t;
         if (target.IsString && target.RawString.StartsWith("_level", StringComparison.OrdinalIgnoreCase) &&
@@ -1464,7 +1474,7 @@ public sealed class Player
         if (flashKeyCode == 86 && !(Focus?.Editable ?? false))
         {
             FsCommand("vectorsand", VectorImages ? "0" : "1");
-            ShowMessage(VectorImages ? "Vectorize bitmaps: on" : "Vectorize bitmaps: off", bar: true);
+            ShowMessage(Lang.T(VectorImages ? "Vectorize bitmaps: on" : "Vectorize bitmaps: off"), bar: true);
             return;
         }
         // Episodes frame by frame: < (,) pauses and steps back a frame, > (.) pauses and steps on one, / or Pause|Break
@@ -2066,6 +2076,7 @@ public sealed class Player
     {
         ["english"] = "Play the game in English: its dialog, text and the voices' subtitles.",
         ["deutsche"] = "Play the game in German (Deutsch): its dialog, text and the voices' subtitles.",
+        ["francais"] = "Play the game in French (Français). Text not yet translated is in English.",
         ["fullscreen"] = "On: the game fills the whole screen.\nOff: the game plays in a window.\nF11 or Alt + Enter also switch between them.",
         ["widescreen"] = "On: full widescreen is used.\nOff: game's original aspect ratio is used.",
         ["smooth"] = "Off: animation moves in steps, as the original did.\nPartial: motion is smoothed where it looks best.\nFull: everything is smoothed.",
@@ -2089,6 +2100,7 @@ public sealed class Player
         int at = button.Name.IndexOf("_button_", StringComparison.Ordinal);
         if (at < 0 || button.Name.StartsWith("matanui_dialog_settings_", StringComparison.Ordinal)) return;
         if (!SettingsHints.TryGetValue(button.Name[(at + 8)..], out var hint)) return;
+        hint = Lang.T(hint);
         // Below the dialog's box (its first child, the panel).
         var box = dialog.Children.Values.FirstOrDefault(c => c.Name.EndsWith("_box", StringComparison.Ordinal)) ?? dialog;
         var r = box.WorldMatrix.MapRect(box.LocalBounds);
@@ -2103,7 +2115,7 @@ public sealed class Player
         {
             using var warnFont = new SKFont(MenuTypeface, 15.85f);
             using var warn = new SKPaint { Color = new SKColor(0xFF, 0x99, 0x00), IsAntialias = true };
-            canvas.DrawText($"Save slot {CurrentSaveSlot} will be erased.", 189, 216, warnFont, warn);
+            canvas.DrawText(Lang.F("Save slot {0} will be erased.", CurrentSaveSlot), 189, 216, warnFont, warn);
         }
         if (GetLevel(TitleLevel)?.ChildByName("ui") is not { Visible: true } ui) return;
         float alpha = ui.DrawColor(1).AM;
@@ -2119,7 +2131,7 @@ public sealed class Player
         canvas.DrawRect(box, border);
         using var font = new SKFont(MenuTypeface, 10);
         using var paint = new SKPaint { Color = new SKColor(0xFF, 0x99, 0x00, a), IsAntialias = true };
-        string label = $"Slot {CurrentSaveSlot}";
+        string label = Lang.F("Slot {0}", CurrentSaveSlot);
         canvas.DrawText(label, box.MidX - font.MeasureText(label) / 2, box.MidY + 3.5f, font, paint);
     }
 
@@ -2430,7 +2442,7 @@ public sealed class Player
         using (var svgStream = asSvg ? new MemoryStream() : null)
         {
             using var picture = RenderWallpaper(slot, width, height, shot, svgStream);
-            if (picture == null) { ShowMessage("No picture for this entry"); return; }
+            if (picture == null) { ShowMessage(Lang.T("No picture for this entry")); return; }
             png = svgStream != null ? svgStream.ToArray() : picture.Encode(SKEncodedImageFormat.Png, 100).ToArray();
         }
         string ext = asSvg ? "svg" : "png";
@@ -2440,7 +2452,7 @@ public sealed class Player
         if (Environment.GetEnvironmentVariable("MNOG_SAVETO") is { Length: > 0 } saveTo)
         {
             File.WriteAllBytes(Path.Combine(saveTo, name), png);
-            ShowMessage($"Wallpaper saved: {name}");
+            ShowMessage(Lang.F("Wallpaper saved: {0}", name));
             return;
         }
         SaveDialog.Ask("Save wallpaper", Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), name, asSvg ? "SVG image" : "PNG image", ext, path =>
@@ -2613,9 +2625,9 @@ public sealed class Player
         }
         else
         {
-            textWidth = _skipFont.MeasureText("Skip");
+            textWidth = _skipFont.MeasureText(Lang.T("Skip"));
             x = SkipRect.MidX - (textWidth + gap + arrow) / 2;
-            canvas.DrawText("Skip", x, y + 4.5f, SKTextAlign.Left, _skipFont, paint);
+            canvas.DrawText(Lang.T("Skip"), x, y + 4.5f, SKTextAlign.Left, _skipFont, paint);
         }
         using var tri = new SKPath();
         tri.MoveTo(x + textWidth + gap, y - 4.5f);

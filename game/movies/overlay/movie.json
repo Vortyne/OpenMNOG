@@ -1887,7 +1887,8 @@
           "path": "M640.62494 -411.28122Q591.93744 -340.8125 495.84372 -340.81247Q462.53125 -340.81247 429.21872 -353.625Q395.90622 -366.43747 366.43747 -383.09375Q339.53125 -398.46869 309.42184 -411.92184Q279.3125 -425.37497 238.31248 -425.37497Q198.59373 -425.37497 153.74998 -410.64059Q108.90623 -395.90622 81.999992 -374.125L81.999992 -458.68747Q108.90624 -490.71872 149.26561 -516.34375Q189.62494 -541.96869 243.4375 -541.96869Q283.15625 -541.96869 310.0625 -531.71875Q336.96872 -521.46869 371.5625 -503.53122Q404.87497 -486.87494 442.67188 -472.14062Q480.46869 -457.40619 504.81247 -457.40625Q540.68744 -457.40625 574.64056 -466.37497Q608.59375 -475.34369 640.62494 -504.81247L640.62494 -411.28122Z",
           "advance": 717.5
         },
-        {"char": "x", "path": "M599.625 0L389.5 -212.68748L178.09375 0L1.2812499 0L301.09375 -302.375L2.5624998 -602.1875L180.65623 -602.1875L389.5 -392.0625L597.06244 -602.1875L775.15619 -602.1875L477.90625 -302.375L777.71875 0L599.625 0Z", "advance": 780.28}
+        {"char": "x", "path": "M599.625 0L389.5 -212.68748L178.09375 0L1.2812499 0L301.09375 -302.375L2.5624998 -602.1875L180.65623 -602.1875L389.5 -392.0625L597.06244 -602.1875L775.15619 -602.1875L477.90625 -302.375L777.71875 0L599.625 0Z", "advance": 780.28},
+        {"char": "ç", "path": "M230 0 Q126 0 83 -48 Q40 -95 40 -187 L40 -414 Q40 -457 49 -492 Q58 -526 80 -550 Q102 -575 138 -588 Q175 -600 230 -600 L709 -600 L709 -480 L254 -480 Q217 -480 201 -466 Q185 -453 185 -420 L185 -181 Q185 -148 201 -134 Q217 -120 254 -120 L714 -120 L714 0 L230 0 Z M330 0 L430 0 L430 50 L480 50 Q520 50 520 90 L520 140 Q520 180 480 180 L250 180 L250 120 L440 120 L440 105 L330 105 Z", "advance": 740}
       ]
     },
     {
@@ -3698,13 +3699,14 @@
         "frames": [
           {
             "ops": [
-              {"place": 1, "id": 128, "matrix": [1, 0, 0, 1, -156, -61], "name": "patch_dialog_language_box"},
-              {"place": 2, "id": 53, "matrix": [1, 0, 0, 1, -155, -17], "name": "patch_dialog_language_line"},
-              {"place": 3, "id": 118, "matrix": [1, 0, 0, 1, -81.88, -30.15], "name": "patch_dialog_language_title"},
-              {"place": 4, "id": 123, "matrix": [1, 0, 0, 1, 138, -39], "name": "patch_dialog_language_button_x"},
-              {"place": 5, "id": 127, "matrix": [1, 0, 0, 1, -138, -39], "name": "patch_dialog_language_button_back"},
-              {"place": 6, "id": 111, "matrix": [1, 0, 0, 1, 0, 4], "name": "patch_dialog_language_button_english"},
-              {"place": 7, "id": 117, "matrix": [1, 0, 0, 1, 0, 40], "name": "patch_dialog_language_button_deutsche"}
+              {"place": 1, "id": 320, "matrix": [1, 0, 0, 1, -156, -79.0], "name": "patch_dialog_language_box"},
+              {"place": 2, "id": 53, "matrix": [1, 0, 0, 1, -155, -35.0], "name": "patch_dialog_language_line"},
+              {"place": 3, "id": 118, "matrix": [1, 0, 0, 1, -81.88, -48.15], "name": "patch_dialog_language_title"},
+              {"place": 4, "id": 123, "matrix": [1, 0, 0, 1, 138, -57.0], "name": "patch_dialog_language_button_x"},
+              {"place": 5, "id": 127, "matrix": [1, 0, 0, 1, -138, -57.0], "name": "patch_dialog_language_button_back"},
+              {"place": 6, "id": 111, "matrix": [1, 0, 0, 1, 0, -14.0], "name": "patch_dialog_language_button_english"},
+              {"place": 7, "id": 117, "matrix": [1, 0, 0, 1, 0, 22.0], "name": "patch_dialog_language_button_deutsche"},
+              {"place": 8, "id": 319, "matrix": [1, 0, 0, 1, 0, 58.0], "name": "patch_dialog_language_button_francais"}
             ],
             "scripts": ["scripts/sprite77_frame1.as"]
           }
@@ -5465,6 +5467,95 @@
           {"ops": [{"place": 1, "id": 296, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 287, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
         ]
       }
+    },
+    {
+      "kind": "text",
+      "id": 315,
+      "bounds": [0, -15.85, 89.76, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 3,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Français",
+          "glyphs": [10, 31, 18, 28, 96, 18, 25, 32],
+          "advances": [12.69, 7.43, 13.93, 13.93, 11.45, 13.93, 3.71, 12.69]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 316,
+      "bounds": [0, -15.85, 89.76, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 3,
+          "size": 15.85,
+          "color": "#FFFFFFFF",
+          "x": 0,
+          "y": 0,
+          "text": "Français",
+          "glyphs": [10, 31, 18, 28, 96, 18, 25, 32],
+          "advances": [12.69, 7.43, 13.93, 13.93, 11.45, 13.93, 3.71, 12.69]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 317,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/patch_language_fre_state.as"]},
+          {
+            "ops": [
+              {"place": 1, "id": 114, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 315, "matrix": [1, 0, 0, 1, -44.88, 4.6]}
+            ]
+          },
+          {
+            "ops": [
+              {"place": 1, "id": 116, "move": true, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 316, "move": true, "matrix": [1, 0, 0, 1, -44.88, 4.6]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 318,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/patch_language_fre_state.as"]},
+          {"ops": [{"place": 1, "id": 293, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 315, "matrix": [1, 0, 0, 1, -44.88, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]},
+          {"ops": [{"place": 1, "id": 294, "move": true, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 316, "move": true, "matrix": [1, 0, 0, 1, -44.88, 4.6], "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}]}
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 319,
+      "records": [
+        {"states": ["up"], "id": 317, "depth": 1},
+        {"states": ["over", "down"], "id": 318, "depth": 1},
+        {"states": ["hit"], "id": 114, "depth": 2, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/patch_language_fre_button.as"}]
+    },
+    {
+      "kind": "shape",
+      "id": 320,
+      "bounds": [-1, -1, 313, 159],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M312 0 L0 0 L0 158 L312 158 L312 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L312 0 L312 158 L0 158 L0 0"}
+      ]
     }
   ],
   "timeline": {

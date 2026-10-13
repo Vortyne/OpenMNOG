@@ -1,0 +1,1 @@
+NumStatements=3&Statement_1=Salutation,+héros+!+Merci+de+nous+avoir+sauvées+!+Maintenant+nous+pouvons+reprendre+la+pêche+!&Statement_2=J'ai+déjà+attrapé+un+poisson+aussi+gros+que+ÇA+!&Statement_3=Nokama+vous+cherche+:+elle+a+une+tâche+de+grande+importance+pour+vous.

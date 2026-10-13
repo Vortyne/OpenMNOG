@@ -1,0 +1,1 @@
+NumStatements=2&Statement_1=Salutation,+héros+!+Merci+de+nous+avoir+sauvées+!+Maintenant+nous+pouvons+retourner+à+la+pêche+!&Statement_2=J'ai+déjà+attrapé+un+poisson+aussi+gros+que+ÇA+!

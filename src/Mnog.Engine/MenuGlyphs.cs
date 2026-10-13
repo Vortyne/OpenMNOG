@@ -6,6 +6,15 @@ namespace Mnog.Engine;
 /// <summary>Marks the engine's own menus share with the overlay's settings dialogs.</summary>
 public static class MenuGlyphs
 {
+    /// <summary>A label centred in a box, its text made smaller if it wouldn't fit across it (a longer translation).</summary>
+    public static void DrawFitted(SKCanvas canvas, string s, SKRect box, SKFont font, SKPaint paint, float pad = 8)
+    {
+        float w = font.MeasureText(s), room = box.Width - pad * 2;
+        if (w <= room || w <= 0) { canvas.DrawText(s, box.MidX - w / 2, box.MidY + font.Size * 0.35f, font, paint); return; }
+        using var small = new SKFont(font.Typeface, font.Size * room / w);
+        canvas.DrawText(s, box.MidX - room / 2, box.MidY + small.Size * 0.35f, small, paint);
+    }
+
     static readonly SKColor Orange = new(0xFF, 0x99, 0x00);
 
     // The settings dialogs' close X (the overlay's shape 179): 14 x 14 about its centre.
@@ -26,9 +35,10 @@ public static class MenuGlyphs
         var paras = new List<(string? Value, float Indent, List<string> Lines)>();
         foreach (var para in text.Split('\n'))
         {
-            var m = System.Text.RegularExpressions.Regex.Match(para, @"^([A-Z][A-Za-z ]{0,11}):\s+(.*)$");
-            string? value = m.Success ? m.Groups[1].Value + ":" : null;
-            string rest = m.Success ? m.Groups[2].Value : para;
+            // ("Partial: ...", and in German and French "Teilweise: ...", "Très lente : ...".)
+            var m = System.Text.RegularExpressions.Regex.Match(para, @"^(\p{Lu}[\p{L} ]{0,13}?)( ?:)\s+(.*)$");
+            string? value = m.Success ? m.Groups[1].Value + m.Groups[2].Value : null;
+            string rest = m.Success ? m.Groups[3].Value : para;
             float indent = value != null ? valueFont.MeasureText(value) + 6 : 0;
             var lines = new List<string>();
             string line = "";

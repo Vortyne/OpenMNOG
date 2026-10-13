@@ -625,6 +625,8 @@ public sealed class TextAsset(MovieAsset m, TextSymbol t) : SymbolAsset(m, t.Id)
     public readonly TextSymbol Doc = t;
     public readonly SKMatrix Matrix = Geo.Matrix(t.Matrix);
     public readonly SKRect Bounds = Geo.Rect(t.Bounds);
+    /// <summary>Its translation's width, as last measured (DisplayObject's bounds for a translated label).</summary>
+    public (string Text, float Width)? TranslatedWidth;
 }
 
 public sealed class EditTextAsset(MovieAsset m, EditTextSymbol e) : SymbolAsset(m, e.Id)

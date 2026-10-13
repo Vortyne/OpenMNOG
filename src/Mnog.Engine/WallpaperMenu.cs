@@ -37,7 +37,7 @@ public sealed class WallpaperMenu
         _player = player;
         _slot = slot;
         var (sw, sh) = player.WindowSize;
-        _sizes = [("1080p", 1920, 1080), ("1440p", 2560, 1440), ("4K", 3840, 2160), ("Screen", Math.Max(sw, 640), Math.Max(sh, 360))];
+        _sizes = [("1080p", 1920, 1080), ("1440p", 2560, 1440), ("4K", 3840, 2160), (Lang.T("Screen"), Math.Max(sw, 640), Math.Max(sh, 360))];
         _chosen = 0;
         _frames = player.WallpaperFrames(slot);
         Preview();
@@ -50,7 +50,7 @@ public sealed class WallpaperMenu
         _preview = _player.RenderWallpaper(_slot, 960, 540, _frames[_frame]);
     }
 
-    string FrameLabel(int i) => $"Wallpaper {i + 1}";
+    string FrameLabel(int i) => Lang.F("Wallpaper {0}", i + 1);
 
     // The frame dropdown: its box above the preview, its list opening down over it.
     static readonly SKRect FrameBox = new(Panel.Left + 16, Top + 48, Panel.Right - 16 - 56, Top + 72);
@@ -146,7 +146,7 @@ public sealed class WallpaperMenu
         canvas.DrawRect(Panel, stroke);
         canvas.DrawLine(Panel.Left + 8, Top + 42, Panel.Right - 8, Top + 42, stroke);
         text.Color = SKColors.White;
-        string heading = $"Wallpaper: {_player.ChronicleTitle(_slot)}";
+        string heading = Lang.F("Wallpaper: {0}", _player.ChronicleTitle(_slot));
         canvas.DrawText(heading, 385 - title.MeasureText(heading) / 2, Top + 29, title, text);
         MenuGlyphs.DrawClose(canvas, CloseBox, CloseBox.Contains(_mouse));
         // The preview: the wallpaper's own 16:9 (or the screen's shape for "Your screen"), fitted in the box.
@@ -174,12 +174,12 @@ public sealed class WallpaperMenu
             Button(canvas, SizeBox(i), _sizes[i].Label, !_svg && i == _chosen, size, fill, stroke, text);
         // The chosen size's pixels, under its button row.
         var (_, cw, ch) = _sizes[_chosen];
-        string px = _svg ? "SVG: vector, any size" : $"{cw} x {ch} pixels";
+        string px = _svg ? Lang.T("SVG: vector, any size") : Lang.F("{0} x {1} pixels", cw, ch);
         text.Color = Grey;
         canvas.DrawText(px, 385 - label.MeasureText(px) / 2, SizeBox(0).Bottom + 13, label, text);
-        Button(canvas, SaveBox, "Save", false, title, fill, stroke, text);
+        Button(canvas, SaveBox, Lang.T("Save"), false, title, fill, stroke, text);
         Button(canvas, SvgBox, "SVG", _svg, size, fill, stroke, text);
-        Button(canvas, CancelBox, "Cancel", false, title, fill, stroke, text);
+        Button(canvas, CancelBox, Lang.T("Cancel"), false, title, fill, stroke, text);
         // The frame dropdown, drawn last so its open list lies over the rest.
         bool many = _frames.Count > 1;
         fill.Color = new SKColor(0x22, 0x22, 0x22);
@@ -190,7 +190,7 @@ public sealed class WallpaperMenu
         canvas.DrawText(FrameLabel(_frame), FrameBox.Left + 8, FrameBox.MidY + 5, size, text);
         if (many)
         {
-            string count = $"{_frame + 1} of {_frames.Count}";
+            string count = Lang.F("{0} of {1}", _frame + 1, _frames.Count);
             text.Color = Grey;
             canvas.DrawText(count, FrameBox.Right - 30 - label.MeasureText(count), FrameBox.MidY + 4, label, text);
             using var tri = new SKPath();
@@ -237,6 +237,6 @@ public sealed class WallpaperMenu
         stroke.Color = chosen ? Orange : Grey;
         canvas.DrawRect(r, stroke);
         text.Color = lit || chosen ? SKColors.White : Orange;
-        canvas.DrawText(caption, r.MidX - font.MeasureText(caption) / 2, r.MidY + font.Size * 0.35f, font, text);
+        MenuGlyphs.DrawFitted(canvas, caption, r, font, text);
     }
 }

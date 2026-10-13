@@ -1,0 +1,1 @@
+NumStatements=3&Statement_1=Il+est+dangereux+de+parcourir+les+tunnels+en+ce+moment.&Statement_2=Les+Rahi+souterrains+se+montrent+implacables+dans+leurs+récentes+attaques.&Statement_3=Vous+ne+pouvez+pas+passer.

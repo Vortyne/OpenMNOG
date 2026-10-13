@@ -376,9 +376,25 @@ public sealed class GraphicObject : DisplayObject
     {
         ShapeAsset s => Player.VectorImages ? s.VectorBounds : s.Bounds,
         MorphAsset m => Lerp(m.StartBounds, m.EndBounds, Ratio),
-        TextAsset t => t.Bounds,
+        TextAsset t => TranslatedBounds(t),
         _ => SKRect.Empty,
     };
+
+    /// <summary>A label's bounds, wide enough for its translation (RenderContext.DrawTranslated draws it centred where the
+    /// English was): the drawing and the layer cache keep to the bounds, which would cut a longer one off.</summary>
+    SKRect TranslatedBounds(TextAsset t)
+    {
+        if (t.Doc.Runs.Count != 1 || t.Movie.Name is not ("overlay" or "title") || t.Doc.Runs[0].Text is not { Length: > 0 } english
+            || !Lang.Has(english, out var text)) return t.Bounds;
+        if (t.TranslatedWidth is not { } known || known.Text != text)
+        {
+            using var font = new SKFont(Player.MenuTypeface, (float)t.Doc.Runs[0].Size * 1.25f);
+            t.TranslatedWidth = known = (text, font.MeasureText(text));
+        }
+        // (And a little more: a tooltip's box widens to its label and past it, RenderContext.TooltipBox.)
+        float grow = Math.Max(0, (known.Width - t.Bounds.Width) / 2) + 8;
+        return new SKRect(t.Bounds.Left - grow, t.Bounds.Top - 4, t.Bounds.Right + grow, t.Bounds.Bottom + 2);
+    }
 
     static SKRect Lerp(SKRect a, SKRect b, float t) => new(
         a.Left + (b.Left - a.Left) * t, a.Top + (b.Top - a.Top) * t,

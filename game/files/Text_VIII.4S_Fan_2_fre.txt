@@ -1,0 +1,1 @@
+NumStatements=6&Statement_1=Allez+les+bruns+!&Statement_2=Tu+penses+que+qui+va+gagner+?&Statement_3=Aux+armes+!+Nous+sommes+les+Po-Koronans+!&Statement_4=Marquez+!+Marquez+!&Statement_5=C'était+une+faute+!+Il+fait+quoi,+l'arbitre+?&Statement_6=C'est+un+bon+jour+pour+le+Koli.&

@@ -145,14 +145,14 @@ public sealed class HelpMenu
         canvas.DrawLine(Panel.Left + 8, Panel.Top + TitleH, Panel.Right - 8, Panel.Top + TitleH, stroke);
         canvas.DrawLine(IndexArea.Right + 8, Panel.Top + TitleH + 8, IndexArea.Right + 8, Panel.Bottom - 8, stroke);
         text.Color = SKColors.White;
-        canvas.DrawText("Help", Panel.MidX - titleFont.MeasureText("Help") / 2, Panel.Top + 30, titleFont, text);
+        canvas.DrawText(Lang.T("Help"), Panel.MidX - titleFont.MeasureText(Lang.T("Help")) / 2, Panel.Top + 30, titleFont, text);
         MenuGlyphs.DrawClose(canvas, CloseBox, CloseBox.Contains(_mouse));
 
         // The index: a button for each entry, the open one lit.
         float y = IndexArea.Top;
         for (int i = 0; i < _index.Count; i++)
         {
-            var lines = Wrap(_index[i].Title, indexFont, IndexArea.Width - 16);
+            var lines = Wrap(Lang.T(_index[i].Title), indexFont, IndexArea.Width - 16);
             float h = 12 + lines.Count * 16;
             var r = new SKRect(IndexArea.Left, y, IndexArea.Right, y + h);
             bool open = i == _page, hover = r.Contains(_mouse);
@@ -260,8 +260,9 @@ public sealed class HelpMenu
             return end;
         }
         // "More...": a small button under a question's hints, for its next one (and the Report page's link buttons).
-        float MoreButton(float at, Action click, string label = "More...")
+        float MoreButton(float at, Action click, string? label = null)
         {
+            label ??= Lang.T("More...");
             float w = body.Measure(label) + 16;
             var r = new SKRect(left, at - 12, left + w, at + 6);
             bool hover = r.Contains(_mouse) && Content.Contains(_mouse);

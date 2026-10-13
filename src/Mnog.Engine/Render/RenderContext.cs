@@ -305,7 +305,7 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
         if (cx.AM <= 0 && cx.AA <= 0) return;
         switch (g.Asset)
         {
-            case ShapeAsset s: DrawShape(s, world, cx); break;
+            case ShapeAsset s: DrawShape(s, TooltipBox(g, s, world), cx); break;
             case MorphAsset m: DrawMorph(m, g.Ratio, world, cx); break;
             case TextAsset t: DrawText(t, world, cx); break;
         }
@@ -1058,6 +1058,7 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
     public void DrawText(TextAsset t, SKMatrix world, CxForm cx)
     {
         var m = world.PreConcat(t.Matrix);
+        if (DrawTranslated(t, m, cx)) return;
         foreach (var run in t.Doc.Runs)
         {
             if (t.Movie.Symbol(run.Font) is not FontAsset font) continue;
@@ -1078,6 +1079,53 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
             }
         }
         Canvas.ResetMatrix();
+    }
+
+    /// <summary>
+    /// A tooltip's box (the bar's: a clip of just a box and its label) widened about its middle for a label translated
+    /// wider than it, so the label stays inside.
+    /// </summary>
+    SKMatrix TooltipBox(GraphicObject g, ShapeAsset s, SKMatrix world)
+    {
+        if (s.Movie.Name is not ("overlay" or "title") || g.Parent is not MovieClip { Children.Count: 2 } clip) return world;
+        if (clip.Children.Values.FirstOrDefault(c => c != g) is not GraphicObject { Asset: TextAsset t } label) return world;
+        if (t.Doc.Runs.Count != 1 || t.Doc.Runs[0].Text is not { Length: > 0 } english || !Lang.Has(english, out _)) return world;
+        var box = g.Matrix.MapRect(s.Bounds);
+        // (Its label's own width, translated: not its bounds, which are padded to take in this box's edges.)
+        _ = label.LocalBounds;
+        if (t.TranslatedWidth is not { } measured) return world;
+        float need = Math.Abs(label.Matrix.ScaleX) * measured.Width + 8;
+        if (need <= box.Width) return world;
+        float sx = need / box.Width;
+        // (In the clip's coordinates, about the box's middle.)
+        return world.PreConcat(g.Matrix.Invert()).PreConcat(SKMatrix.CreateScale(sx, 1, box.MidX, 0)).PreConcat(g.Matrix);
+    }
+
+    /// <summary>
+    /// The settings dialogs' labels (the overlay's and the title screen's, one run each) in the chosen language
+    /// (Lang): drawn in the menus' own typeface (the label's font is it at 1.25 times the size, with only the letters
+    /// English needs), centred where the English was and narrowed if it's wider than the space a label has.
+    /// </summary>
+    bool DrawTranslated(TextAsset t, SKMatrix m, CxForm cx)
+    {
+        if (t.Doc.Runs.Count != 1 || t.Movie.Name is not ("overlay" or "title")) return false;
+        var run = t.Doc.Runs[0];
+        if (run.Text is not { Length: > 0 } english || !Lang.Has(english, out var text)) return false;
+        float size = (float)run.Size * 1.25f;
+        float englishWidth = (float)run.Advances.Sum();
+        using var font = new SKFont(player.MenuTypeface, size);
+        float width = font.MeasureText(text);
+        // (No wider than the English, or than the 280 a dialog's button leaves for its label, whichever is wider.)
+        float room = Math.Max(englishWidth, 280);
+        float squeeze = width > room ? room / width : 1;
+        float x = (float)run.X + (englishWidth - width * squeeze) / 2;
+        _paint.Reset();
+        _paint.IsAntialias = true;
+        _paint.Color = cx.Apply(Geo.Color(run.Color));
+        SetMatrix(m.PreConcat(SKMatrix.CreateTranslation(x, (float)run.Y)).PreConcat(SKMatrix.CreateScale(squeeze, 1)));
+        Canvas.DrawText(text, 0, 0, SKTextAlign.Left, font, _paint);
+        Canvas.ResetMatrix();
+        return true;
     }
 
     static readonly Dictionary<string, SKTypeface> Typefaces = [];
@@ -1122,7 +1170,17 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
         var font = doc.Font is int fid ? e.Field.Movie.Symbol(fid) as FontAsset : null;
         bool outlines = doc.UseOutlines == true && font != null && font.Glyphs.Length > 0;
         float size = (float)doc.Size;
-        using var skFont = new SKFont(Typeface(font?.Doc.Name, font?.Doc.Bold == true, font?.Doc.Italic == true), size);
+        var typeface = Typeface(font?.Doc.Name, font?.Doc.Bold == true, font?.Doc.Italic == true);
+        float fullAscent = outlines && font!.Doc.Ascent is double fullAsc ? (float)(fullAsc / font.Doc.UnitsPerEm * size) : 0;
+        // A fixed line (not wrapped, not typed into: a cutscene's subtitle) whose text is wider than the field, as a
+        // translation's can be: made smaller to fit, rather than cut off at the field's edges.
+        if (doc.WordWrap != true && doc.ReadOnly == true && outlines && e.Text.Length > 0)
+        {
+            float room = bounds.Width - 4 - (float)(doc.LeftMargin + doc.RightMargin);
+            float widest = e.Text.Split('\r', '\n').Max(l => GlyphWidth(font!, l, size));
+            if (widest > room && widest > 0) size *= room / widest;
+        }
+        using var skFont = new SKFont(typeface, size);
         _paint.Reset();
         _paint.IsAntialias = true;
         _paint.Color = cx.Apply(Geo.Color(doc.Color ?? "#000000FF"));
@@ -1137,7 +1195,8 @@ public sealed class RenderContext(SKCanvas canvas, SKMatrix baseMatrix, Player p
         float ascent = outlines && font!.Doc.Ascent is double asc ? (float)(asc / font.Doc.UnitsPerEm * size) : -skFont.Metrics.Ascent;
         float descent = outlines && font!.Doc.Descent is double desc ? (float)(desc / font.Doc.UnitsPerEm * size) : skFont.Metrics.Descent;
         float lineHeight = ascent + descent + (float)doc.Leading;
-        float y = bounds.Top + 2 + ascent;
+        // (On the same baseline as at its own size, if made smaller.)
+        float y = bounds.Top + 2 + Math.Max(ascent, fullAscent);
         // Smooth mode, text being typed out (a dialog adds a few letters each game frame): between frames the
         // new letters appear one after another, each fading in, instead of all at once.
         double? revealed = player.Smooth && e.PrevText is { } prev && text.Length > prev.Length && text.StartsWith(prev, StringComparison.Ordinal)

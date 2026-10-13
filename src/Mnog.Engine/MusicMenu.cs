@@ -96,7 +96,7 @@ public sealed class MusicMenu
             _player.Audio.TrackPlaying = true;
             _current = i;
         }
-        else _player.ShowMessage($"Couldn't play {_tracks[i].Name}");
+        else _player.ShowMessage(Lang.F("Couldn't play {0}", _tracks[i].Name));
     }
 
     public void MouseMove(SKPoint p) => _mouse = p;
@@ -174,7 +174,7 @@ public sealed class MusicMenu
         canvas.DrawRect(_panel, stroke);
         canvas.DrawLine(_panel.Left + 8, _panel.Top + 42, _panel.Right - 8, _panel.Top + 42, stroke);
         text.Color = SKColors.White;
-        string heading = $"Music: {_player.ChronicleTitle(_slot)}";
+        string heading = Lang.F("Music: {0}", _player.ChronicleTitle(_slot));
         canvas.DrawText(heading, 385 - title.MeasureText(heading) / 2, _panel.Top + 29, title, text);
         MenuGlyphs.DrawClose(canvas, _closeBox, _closeBox.Contains(_mouse));
         var (at, length) = _player.Audio.TrackTime;
@@ -245,7 +245,7 @@ public sealed class MusicMenu
             canvas.DrawPath(glyphPath, arrow);
         }
         using var label = new SKFont(_player.MenuTypeface, 17);
-        Button(canvas, _doneBox, "Close", label, fill, stroke, text);
+        Button(canvas, _doneBox, Lang.T("Close"), label, fill, stroke, text);
     }
 
     /// <summary>A long name made smaller to fit the width (down to 11), then cut short with "..." if it still doesn't.</summary>
@@ -272,6 +272,6 @@ public sealed class MusicMenu
         stroke.Color = WallpaperMenu.Grey;
         canvas.DrawRect(r, stroke);
         text.Color = lit ? SKColors.White : WallpaperMenu.Orange;
-        canvas.DrawText(caption, r.MidX - font.MeasureText(caption) / 2, r.MidY + font.Size * 0.35f, font, text);
+        MenuGlyphs.DrawFitted(canvas, caption, r, font, text);
     }
 }
