@@ -8,7 +8,8 @@
 #
 # Each holds one folder, OpenMNOG-v{version}-{target}/, with: the engine (OpenMNOG.exe, or OpenMNOG elsewhere;
 # self-contained: players need no .NET) and its native libraries (Skia, SDL), game/ (the committed game files only),
-# version_number.txt (shown on the title screen) and OpenMNOG.ini (where the save goes). Linux's and macOS's keep
+# version_number.txt (shown on the title screen), OpenMNOG.ini (where the save goes) and README.txt (how to run the
+# game, from README-release.txt). Linux's and macOS's keep
 # OpenMNOG executable.
 #
 # usage: bash release.sh [--allow-dirty] [TARGET...]   (targets: win64 linux64 macos-arm64 macos-x64, or all;
@@ -36,7 +37,7 @@ OUT=build/release
 
 # What's released is what's committed.
 if [ $DIRTY = 0 ]; then
-  dirty=$(git status --porcelain -- game src version_number.txt OpenMNOG.ini | head -5)
+  dirty=$(git status --porcelain -- game src version_number.txt OpenMNOG.ini README-release.txt | head -5)
   [ -z "$dirty" ] || fail "uncommitted changes (commit them, or pass --allow-dirty):
 $dirty"
 fi
@@ -77,6 +78,7 @@ items = [(os.path.join(engine, exe), as_name, True)]
 items += [(os.path.join(engine, f), f, False) for f in sorted(os.listdir(engine))
           if f != exe and not f.endswith('.pdb') and os.path.isfile(os.path.join(engine, f))]
 items += [(f, f, False) for f in ('version_number.txt', 'OpenMNOG.ini')]
+items += [('README-release.txt', 'README.txt', False)]
 items += [(f, f, False) for f in open(listing, 'rb').read().decode('utf-8').split('\0') if f and os.path.isfile(f)]
 if out.endswith('.tar.gz'):
     with tarfile.open(out, 'w:gz', compresslevel=6) as t:

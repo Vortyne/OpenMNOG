@@ -7,7 +7,7 @@ namespace Mnog.Engine;
 /// Notices the game freezing. The main loop marks each frame (Beat) and what it's doing (Phase, and Wait around
 /// anything that may block on another thread); background jobs (pictures drawn, scenes loaded ahead) and the sound
 /// thread say when they start and finish. When the main loop hasn't come round for a few seconds, what everything was
-/// doing is written to build/hang-&lt;time&gt;.log next to the game (where crash logs go), with the recent log: it
+/// doing is written to logs/hang-&lt;time&gt;.log next to the game (where crash logs go), with the recent log: it
 /// can't say where the code was, but it says which part and what it was waiting for.
 /// </summary>
 public static class Watchdog

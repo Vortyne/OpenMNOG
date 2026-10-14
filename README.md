@@ -126,8 +126,8 @@ the game). `MNOG_VECDBG=1` logs each vector picture as it's drawn, and `MNOG_PLA
 partway between game frames (0..1), as Smoothing draws them.
 
 **Logs.** `play.sh` writes the game's log to `build/game-run.log` (frame timings for each scene, slow frames). A
-crash writes its details to `build/crash-<time>.log`, and a freeze (no frame for 3 seconds) writes what the game
-was doing and waiting for to `build/hang-<time>.log`.
+crash writes its details to `logs/crash-<time>.log`, and a freeze (no frame for 3 seconds) writes what the game
+was doing and waiting for to `logs/hang-<time>.log` (`logs/` is next to `game/`, beside the game's exe in a release).
 
 **Sounds.** `game/sound-groups.json` lists which cutscene and minigame sounds follow the Music slider and which
 the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are music).

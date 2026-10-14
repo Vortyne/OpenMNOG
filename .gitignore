@@ -12,6 +12,7 @@ build/
 
 # Written while running or testing the game
 edge-reports/
+logs/
 *.log
 *.stackdump
 

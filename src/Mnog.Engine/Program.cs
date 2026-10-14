@@ -64,15 +64,15 @@ if (autopilot != null)
 // The game opens fullscreen, or as it was last left (F11 / Alt+Enter or the bar's button toggle it, and the
 // choice is remembered); --windowed starts in a window this time.
 if (!args.Contains("--windowed") && SdlHost.SavedFullscreen()) host.Fullscreen = true;
-// A crash leaves its details in build/crash-<time>.log (next to the game data) as well as on the console (and a freeze,
-// build/hang-<time>.log: Watchdog).
+// A crash leaves its details in logs/crash-<time>.log (next to the game data) as well as on the console (and a freeze,
+// logs/hang-<time>.log: Watchdog).
 AppDomain.CurrentDomain.UnhandledException += (_, e) => WriteCrash(gameDir, player, e.ExceptionObject as Exception);
 try
 {
     player.Start();
-    // A freeze (the main loop not coming round for a few seconds) leaves build/hang-<time>.log, as a crash does.
+    // A freeze (the main loop not coming round for a few seconds) leaves logs/hang-<time>.log, as a crash does.
     Watchdog.Beat("-");
-    Watchdog.Start(player, Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), "build"));
+    Watchdog.Start(player, LogsDir(gameDir));
     host.Run();
 }
 catch (Exception e)
@@ -86,7 +86,7 @@ static void WriteCrash(string gameDir, Player player, Exception? e)
 {
     try
     {
-        var dir = Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), "build");
+        var dir = LogsDir(gameDir);
         Directory.CreateDirectory(dir);
         var file = Path.Combine(dir, $"crash-{DateTime.Now:yyyyMMdd-HHmmss}.log");
         var scene = (player.GetLevel(1)?.ChildByName("holder") as Mnog.Engine.Display.MovieClip) is { } h ? $"{h.Movie.Name} frame {h.CurrentFrame}" : "-";
@@ -100,6 +100,9 @@ static void WriteCrash(string gameDir, Player player, Exception? e)
     }
     catch (IOException) { }
 }
+
+/// <summary>Where crash and hang logs go: logs/ next to the game data (beside OpenMNOG.exe in a release).</summary>
+static string LogsDir(string gameDir) => Path.Combine(Path.GetFullPath(Path.Combine(gameDir, "..")), "logs");
 
 static string? FindGameDir()
 {
@@ -119,7 +122,7 @@ static void RunHeadless(Player player, string commands)
     player.Start();
     // (MNOG_WATCHDOG=1: the freeze watchdog on, each command counting as a frame; "freeze N" tests it.)
     bool watch = Environment.GetEnvironmentVariable("MNOG_WATCHDOG") == "1";
-    if (watch) Watchdog.Start(player, Path.Combine(Path.GetFullPath(Path.Combine(player.GameDir, "..")), "build"));
+    if (watch) Watchdog.Start(player, LogsDir(player.GameDir));
     foreach (var raw in commands.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
     {
         if (watch) { Watchdog.Beat(player.CurrentSceneName ?? "-"); Watchdog.Phase($"test command: {raw}"); }

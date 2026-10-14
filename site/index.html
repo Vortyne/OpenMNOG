@@ -41,6 +41,7 @@ a.download:hover, a.download:focus-visible { background: rgba(30, 22, 8, .5); }
 a.download:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 a.download small { font-size: .5em; font-weight: 500; letter-spacing: 0; }
 .note { margin: 0; text-align: center; font-size: 14px; text-shadow: 0 1px 3px var(--sand-shadow); }
+.note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: 14px; }
 nav a { color: var(--ink); text-decoration: none; text-shadow: 0 1px 3px var(--sand-shadow); white-space: nowrap; }
 nav a:hover { text-decoration: underline; }
@@ -93,9 +94,10 @@ const REPO = 'https://github.com/Vortyne/OpenMNOG';
 // Each system's download in a release: OpenMNOG-v{version}{suffix}, from the release tagged v{version}.
 // (ready: false: none made for it yet; its visitors are offered the Windows one.)
 const BUILDS = {
-  windows: { name: 'Windows', detail: '64-bit', suffix: '-win64.zip', ready: true },
-  macos:   { name: 'macOS',   detail: 'Apple silicon', suffix: '-macos-arm64.zip', ready: false },
-  linux:   { name: 'Linux',   detail: '64-bit', suffix: '-linux64.tar.gz', ready: false },
+  windows:  { name: 'Windows', detail: '64-bit', suffix: '-win64.zip', ready: true },
+  macos:    { name: 'macOS',   detail: 'Apple silicon', suffix: '-macos-arm64.zip', ready: true },
+  macintel: { name: 'macOS',   detail: 'Intel', suffix: '-macos-x64.zip', ready: true },
+  linux:    { name: 'Linux',   detail: '64-bit', suffix: '-linux64.tar.gz', ready: true },
 };
 
 function system() {
@@ -108,8 +110,21 @@ function system() {
   return 'unknown';
 }
 
-function show(version) {
-  const os = system();
+// A Mac's processor, where the browser says (Chromium's client hints): 'macintel' for an Intel one. Others don't tell,
+// so a Mac gets the Apple silicon version with a link to the Intel one.
+async function macKind() {
+  try {
+    const hints = await navigator.userAgentData?.getHighEntropyValues(['architecture']);
+    if (hints?.architecture === 'x86') return 'macintel';
+    if (hints?.architecture === 'arm') return 'macos';
+  } catch (e) { }
+  return null;
+}
+
+async function show(version) {
+  let os = system();
+  const known = os === 'macos' ? await macKind() : null;
+  if (known) os = known;
   const build = BUILDS[os] && BUILDS[os].ready ? BUILDS[os] : BUILDS.windows;
   const tag = 'v' + version;
   const file = `OpenMNOG-${tag}${build.suffix}`;
@@ -118,9 +133,18 @@ function show(version) {
   document.getElementById('label').textContent = `Download for ${build.name}`;
   document.getElementById('detail').textContent = [tag, build.detail].filter(Boolean).join(' · ');
   const note = document.getElementById('note');
+  note.textContent = '';
   if (os === 'mobile') note.textContent = 'OpenMNOG runs on a computer. Visit this page on one to play.';
   else if (BUILDS[os] && !BUILDS[os].ready) note.textContent = `There's no ${BUILDS[os].name} version yet.`;
   else if (os === 'unknown') note.textContent = "Your system couldn't be told; this is the Windows version.";
+  else if (os === 'macos' && !known) {
+    // (Which kind of Mac couldn't be told: the Intel version a click away.)
+    note.textContent = 'Mac with an Intel processor? ';
+    const intel = document.createElement('a');
+    intel.href = `${REPO}/releases/download/${tag}/OpenMNOG-${tag}${BUILDS.macintel.suffix}`;
+    intel.textContent = 'Download the Intel version';
+    note.append(intel);
+  }
   note.hidden = !note.textContent;
 }
 

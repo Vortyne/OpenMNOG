@@ -1483,12 +1483,12 @@ public sealed class Player
         {
             if (flashKeyCode is 191 or 19)
             {
-                if (FramePaused) { FramePaused = false; ShowMessage("Playing"); }
+                if (FramePaused) { FramePaused = false; ShowMessage(Lang.T("Playing on")); }
                 else
                 {
                     Audio.StopSource(episode);
                     FramePaused = true;
-                    ShowMessage($"{episode.Movie.Name} frame {episode.CurrentFrame} (paused: < > step, / play)");
+                    ShowMessage(Lang.F("Paused at frame {0}. < > to step, / to play.", episode.CurrentFrame));
                 }
                 return;
             }
@@ -1501,7 +1501,7 @@ public sealed class Player
                 episode.GotoFrame(episode.CurrentFrame - 1);
                 episode.Playing = true;
             }
-            ShowMessage($"{episode.Movie.Name} frame {episode.CurrentFrame + _stepFrames} (paused: < > step, / play)");
+            ShowMessage(Lang.F("Paused at frame {0}. < > to step, / to play.", episode.CurrentFrame + _stepFrames));
             return;
         }
         // Space continues a dialog, as clicking its red arrow does (when one is showing).

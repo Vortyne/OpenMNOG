@@ -103,6 +103,8 @@
   "Wallpaper saved: {0}": "Hintergrundbild gespeichert: {0}",
   "Vectorize bitmaps: on": "Vektorbilder: an",
   "Vectorize bitmaps: off": "Vektorbilder: aus",
+  "Playing on": "Wiedergabe",
+  "Paused at frame {0}. < > to step, / to play.": "Angehalten bei Bild {0}. < > zum Blättern, / zum Abspielen.",
 
   "Help": "Hilfe",
   "General": "Allgemeines",
@@ -231,6 +233,8 @@
   "Wallpaper saved: {0}": "Fond d'écran enregistré : {0}",
   "Vectorize bitmaps: on": "Images vectorielles : oui",
   "Vectorize bitmaps: off": "Images vectorielles : non",
+  "Playing on": "Lecture",
+  "Paused at frame {0}. < > to step, / to play.": "En pause à l'image {0}. < > pour avancer, / pour reprendre.",
 
   "Help": "Aide",
   "General": "Général",
