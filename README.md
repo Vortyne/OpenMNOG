@@ -80,6 +80,16 @@ in the game, or, if you recognise one of the game's sounds, [report where it com
 so it can be replaced with the high-quality original. The [sound list](https://vortyne.github.io/OpenMNOG/sounds/) plays
 every sound still without a high-quality source in the browser. The [project page](https://vortyne.github.io/OpenMNOG/) (`site/`, published by `.github/workflows/site.yml`) offers the download for the version in `version_number.txt`.
 
+## Documentation
+
+- [docs/FORMAT.md](docs/FORMAT.md): the game's files: movies, shapes, timelines and sounds as JSON, and the files
+  beside a movie that add the port's enhancements (widescreen stretches, pan limits, vector pictures...).
+- [docs/SCRIPT.md](docs/SCRIPT.md): the scripts (`.as`): the language, the built-in actions, the Flash objects and
+  methods, and the engine's additions and fscommands.
+- [README-release.txt](README-release.txt): the readme in each release download (running the game on each system,
+  where saves go, reporting a bug).
+- `game/files/menu-text.json`: the menus' German and French text (see its note).
+
 ## Repository
 
 | Path | Contents |
