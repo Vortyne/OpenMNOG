@@ -22,6 +22,18 @@ public sealed class MovieAsset
 
     public SymbolAsset? Symbol(int id) => Symbols.GetValueOrDefault(id);
 
+    /// <summary>
+    /// Loaded again (the settings' picture tweaks switched): its pictures the tweaks left as they were taken from the
+    /// load before, with what's been done with them (decoded, upscaled, vector replacements drawn), so they don't show
+    /// as photos again while their vector drawings are redone.
+    /// </summary>
+    public void KeepPictures(MovieAsset before)
+    {
+        foreach (var (id, s) in Symbols.ToList())
+            if (s is ImageAsset now && before.Symbol(id) is ImageAsset was && was.SourceFile == now.SourceFile)
+                Symbols[id] = was;
+    }
+
     public SymbolAsset? Export(string name)
     {
         if (Doc.Exports == null) return null;
@@ -338,6 +350,9 @@ public sealed class MorphAsset : SymbolAsset
 
 public sealed class ImageAsset(MovieAsset m, ImageSymbol s) : SymbolAsset(m, s.Id)
 {
+    /// <summary>The picture's file in its movie's folder (images/, or a tweak's own).</summary>
+    public string SourceFile => s.File;
+
     SKImage? _image;
     bool _tried;
     // (Its decoding and reading are done once, maybe ahead in the background: Player.PreloadNeighbours.)

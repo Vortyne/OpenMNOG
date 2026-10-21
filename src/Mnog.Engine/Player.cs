@@ -608,6 +608,9 @@ public sealed class Player
                 if (c is MovieClip mc) Shown(mc);
         }
         foreach (var level in Levels.Values) Shown(level);
+        // (The live backdrops' scene copies too (the chronicle's pictures): changed where they are, not when next made.)
+        var copies = _backdrops.Values.SelectMany(l => l).Select(b => b.Root).OfType<MovieClip>().ToList();
+        foreach (var copy in copies) Shown(copy);
         var map = new Dictionary<MovieAsset, MovieAsset>();
         lock (_movies)
             foreach (var (name, movie) in _movies.ToList())
@@ -616,9 +619,13 @@ public sealed class Player
                 if (!shown.Contains(movie)) { _movies.Remove(name); continue; }
                 using (Watchdog.Wait($"{name}, loading again for the tweaks"))
                     map[movie] = _movies[name] = MovieAsset.Load(name, movie.Dir);
+                // (Its pictures the tweaks don't change kept, vector drawings and all: no flash of the photos.)
+                map[movie].KeepPictures(movie);
+                if (_backdrops.Remove(movie, out var backdrops)) _backdrops[map[movie]] = backdrops;
                 foreach (var e in map[movie].Errors) Log($"{name}: {e}");
             }
         foreach (var level in Levels.Values) level.Retweak(map);
+        foreach (var copy in copies) copy.Retweak(map);
         _preloads.Clear();
         _preloadedFor = null;
         _layerCache.Clear();
