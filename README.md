@@ -11,18 +11,12 @@ it, never a reconversion. The converter that first made it is kept outside this 
 
 ## Screenshots
 
-In widescreen with vectorized pictures on:
-
 | | |
 | --- | --- |
 | ![The beach where the Toa's canisters washed ashore](docs/screenshots/beach.webp) | ![Ga-Koro](docs/screenshots/ga-koro.webp) |
-| The beach | Ga-Koro |
 | ![Ta-Koro in its lake of lava](docs/screenshots/ta-koro.webp) | ![Onu-Koro](docs/screenshots/onu-koro.webp) |
-| Ta-Koro, in its lake of lava | Onu-Koro |
 | ![Le-Koro](docs/screenshots/le-koro.webp) | ![Ko-Koro's guards in the snow](docs/screenshots/ko-koro.webp) |
-| Le-Koro | Ko-Koro's outskirts, its guards in the snow |
 | ![An ice cave](docs/screenshots/ice-cave.webp) | ![Po-Koro's mask statues](docs/screenshots/po-koro.webp) |
-| An ice cave | Po-Koro's mask statues |
 
 ## Running
 
