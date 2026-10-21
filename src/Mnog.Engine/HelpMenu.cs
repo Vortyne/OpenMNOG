@@ -275,7 +275,7 @@ public sealed class HelpMenu
             if (r.Bottom > Content.Top && r.Top < Content.Bottom) _hits.Add((r, click));
             return at + Line + 8;
         }
-        static List<(string?, JsonObject?)> Words(string s) => s.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(w => ((string?)w, (JsonObject?)null)).ToList();
+        static List<(string?, JsonObject?)> Words(string s) => Tweaks.Matoran(s).Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(w => ((string?)w, (JsonObject?)null)).ToList();
 
         y += 14;
         var blocks = page.Blocks;

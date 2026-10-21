@@ -102,7 +102,9 @@ Each frame may have:
 - `ops`: display list changes in order. `{"remove": depth}` clears a depth. `{"place": depth, ...}`
   places or modifies: `id` (symbol), `move` (true = modify/replace the object already there), `matrix`,
   `cxform`, `ratio`, `name`, `clipDepth` (this object masks depths up to `clipDepth`), `events` (Flash 5
-  clip events: `{"on": [...], "key"?, "script"}`).
+  clip events: `{"on": [...], "key"?, "script"}`). `from` (this port's own) moves the object at that depth to
+  `place`'s depth, the same object (it goes on animating and being smoothed, unlike one removed and placed anew);
+  a timeline looping back to a frame with `from` ops carries on from what's shown, as the next frame would.
 - `scripts`: files run, in order, after the frame's display list is in place.
 - `sounds`: `{"id", "stop"?, "noMultiple"?, "in"?, "out"? (44.1 kHz samples), "loops"?, "envelope"?:
   [[pos44, left 0..32768, right], ...]}`.
@@ -160,6 +162,18 @@ wrong there), even on Full.
 **`vector-moves.json`** — objects sitting on a vectorized picture moved to fit it while Vectorize bitmaps is on:
 `{"Middle-Ground/#7": [dx, dy]}` (a path; `#N` is the child at depth N), or for a clip whose frames show different
 things `{"1-24": [dx, dy], ...}` by its current frame; in the parent's coordinates.
+
+**`tweaks/<key>.json`** — the settings' Tweaks that change pictures (`colors`: Color consistency, `clones`: Clone
+replacement, `pakari`: Accurate Pakari, `ruru-accurate` and `ruru-classic`: Ruru on Variant 2 and Variant 1), laid
+over the movie as it loads while that tweak is on, in that order:
+`symbols`, whole symbols as in `movie.json` that replace the movie's ones of the same `id` or are added; `frames`,
+`{"N": [ops]}`, main-timeline frames (1-based) whose placed objects are replaced; and `with`, `{"colors": [symbols]}`,
+its own versions of symbols another tweak changes too, used while that one is on as well. Pictures a tweak changes are
+kept beside it (`tweaks/<key>/`, named by the image symbols' `file`). Made by the workspace's `tools/mnogim_tweaks.py`
+(from the MNOGIM patches) and `tools/pakari_bohrok.py` (the Pakari as the 2002 Bohrok-era BIONICLE.com animations draw it, in place of every
+wrongly drawn copy; `tools/pakari_tweak.py` made the one carving's, from a redrawn mask's SVG), and
+`tools/ruru_tweak.py` (each copy of the Ruru listed in `tools/ruru_copies.json` redrawn as the game's other drawing
+of it, fitted and recoloured to the copy; its eye shapes also in Color consistency's colour, under `with`).
 
 **`backdrop.json`** — live backdrops: an image (`image`) replaced by a live copy of a scene (`scene`, `frame`,
 `layers`, `zoom`/`x`/`y`, `blur`, `clip`, `overlay`, `if`, ...), as the chronicle's pictures are.

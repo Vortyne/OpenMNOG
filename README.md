@@ -9,6 +9,21 @@ format. Nothing from Adobe is used. The game was released as freeware, so its co
 repository in `game/`. That folder is now the game's source: this project's fixes and enhancements are edits to
 it, never a reconversion. The converter that first made it is kept outside this repository.
 
+## Screenshots
+
+In widescreen with vectorized pictures on:
+
+| | |
+| --- | --- |
+| ![The beach where the Toa's canisters washed ashore](docs/screenshots/beach.webp) | ![Ga-Koro](docs/screenshots/ga-koro.webp) |
+| The beach | Ga-Koro |
+| ![Ta-Koro in its lake of lava](docs/screenshots/ta-koro.webp) | ![Onu-Koro](docs/screenshots/onu-koro.webp) |
+| Ta-Koro, in its lake of lava | Onu-Koro |
+| ![Le-Koro](docs/screenshots/le-koro.webp) | ![Ko-Koro's guards in the snow](docs/screenshots/ko-koro.webp) |
+| Le-Koro | Ko-Koro's outskirts, its guards in the snow |
+| ![An ice cave](docs/screenshots/ice-cave.webp) | ![Po-Koro's mask statues](docs/screenshots/po-koro.webp) |
+| An ice cave | Po-Koro's mask statues |
+
 ## Running
 
 Requires the [.NET 10 SDK](https://dotnet.microsoft.com/download).
@@ -37,9 +52,12 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
   Entries without music yet have the button greyed out.
 - **In-game Help**: the original support site's General, Tips and Hints and Bionicle Decoder pages, rebuilt inside
   the game (pictures are live frames of the game itself), plus the new keyboard controls.
-- **Settings**, grouped into Language, Graphics, Gameplay and Audio, each option described when the mouse is over
-  it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, textbox transparency, dialog speed,
-  panning speed and edge zone, title screen, and volume for master, music and sound effects.
+- **Settings**, grouped into Language, Graphics, Gameplay, Audio and Tweaks, each option described when the mouse is
+  over it: fullscreen, widescreen, smoothing, vectorized pictures, loading screen, textbox transparency, dialog speed,
+  panning speed and edge zone, title screen, volume for master, music and sound effects, and tweaks: from fans'
+  patches (Tohunga or Matoran, color consistency, clone replacement), the Pakari drawn accurately, and the Ruru
+  drawn one way throughout (Original, Variant 1 or Variant 2). The Pakari and Ruru options show a picture of each
+  choice beside the menu (`game/files/previews`).
 - **Skip** button for cutscenes
 - fixes for small errors in the original artwork.
 - **High quality audio** (Audio menu, off by default): sounds and music play from high-quality originals where
@@ -118,7 +136,9 @@ dotnet run --project src/Mnog.Engine -- game --run "wait 40; click 690 255; wait
 | `set VAR VALUE`, `get PATH` | Variables, relative to `_level1` (e.g. `get /Backpack/Backpack/:Slot1`) |
 | `load URL TARGET` | loadMovie (e.g. `load blank.swf _level1/Music-holder`) |
 | `widescreen 0\|1`, `smooth 0\|1`, `fs COMMAND ARG` | Settings for the run (`fs` as the game's scripts call them, e.g. `fs vectorsand 0`) |
+| `setting KEY VALUE` | A saved setting changed as the settings menu changes it (e.g. `setting pakari 1`, `setting ruru 2`) |
 | `vimg MOVIE ID SCALE FILE` | An image's vector replacement alone, as the engine draws it |
+| `symshot MOVIE ID SCALE FILE [FRAME]` | One symbol alone (a sprite at FRAME), as the engine draws it, with the tweaks that are on |
 | `art X Y` | The shapes drawn at a stage point |
 | `playframes FILE W H [FROM TO]` | The scene played through, every frame appended to FILE as raw RGB (frame numbers in FILE.idx) |
 | `freeze MS` | Stall the game (tests the freeze watchdog, with `MNOG_WATCHDOG=1`) |
@@ -127,6 +147,8 @@ dotnet run --project src/Mnog.Engine -- game --run "wait 40; click 690 255; wait
 | `cache 0\|1`, `cachestats`, `drawprof`, `extentms` | Rendering diagnostics |
 
 `--run @file` reads the commands from a file, and `--movie NAME` starts a single movie instead of the game.
+`--pathop IN.json OUT.json` clips vector paths for the workspace's build tools (Skia's path operations, without
+starting the game).
 
 **Environment variables.** `MNOG_SAVEDIR` uses another save folder (test runs use a copy, so your save is never
 touched). `MNOG_NOVSYNC=1` draws as fast as possible. `MNOG_NOCACHE=1` turns off the layer cache: artwork that
@@ -155,4 +177,4 @@ the SFX slider; other sounds follow the engine's rules (the `Music_*` movies are
 The *Mata Nui Online Game* is by Templar Studios for LEGO. The title music is *Beach Chant (HQ Remake by
 Essenger)*.
 
-The French translation is by ARROW_404.
+The French translation is by ARROW_404. The Tweaks settings (Tohunga or Matoran, Color consistency, Clone replacement) come from the MNOGIM patches by Ontocron.

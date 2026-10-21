@@ -1,0 +1,16 @@
+{
+  "source": "MNOGIM Color Consistency V0.3, by Ontocron: its changes to the pictures",
+  "symbols": [
+    {
+      "kind": "shape",
+      "id": 3,
+      "bounds": [-22.75, -45.6, 21.2, -37.45],
+      "parts": [
+        {
+          "fill": {"type": "solid", "color": "#FF3A00FF"},
+          "path": "M21.2 -39.9 L18.4 -37.9 L9 -37.45 L10.65 -41.75 L20 -45.6 L21.2 -39.9 Z M-19.95 -37.9 L-22.75 -39.9 L-21.55 -45.6 L-12.2 -41.75 L-10.55 -37.45 L-19.95 -37.9 Z"
+        }
+      ]
+    }
+  ]
+}

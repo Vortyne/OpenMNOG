@@ -310,6 +310,25 @@ _level0.__matanui.toggleTextboxalpha = function() {
     this.save.textboxalpha.set(this.save.textboxalpha.get() == "0" ? "1" : "0");
     this.applyTextboxalpha();
 };
+// Tweaks: changes from fans' patches for the original (MNOGIM, by Ontocron), each Off ("0") unless chosen. The engine
+// reads them from the save: "matoran" says Matoran in place of Tohunga in the game's text; "colors" and "clones" are
+// the Color Consistency and Clone Replacement patches' changes to the pictures (the movies' tweaks/ files).
+_level0.__matanui.save.matoran = _level0.__matanui.save._setting("matoran", "0");
+_level0.__matanui.save.colors = _level0.__matanui.save._setting("colors", "0");
+_level0.__matanui.save.clones = _level0.__matanui.save._setting("clones", "0");
+// "pakari": the Pakari masks the original drew wrongly (most of Onua's and the Matoran's) redrawn accurately (the movies'
+// tweaks/pakari.json).
+_level0.__matanui.save.pakari = _level0.__matanui.save._setting("pakari", "0");
+// "ruru": the Ruru masks as the original drew them ("0"), or all of one of its two designs ("1": the first, "2": the
+// second; the movies' tweaks/ruru-classic.json, ruru-accurate.json).
+_level0.__matanui.save.ruru = _level0.__matanui.save._setting("ruru", "0");
+_level0.__matanui.cycleRuru = function() {
+    var v = this.save.ruru.get();
+    this.save.ruru.set(v == "0" ? "1" : (v == "1" ? "2" : "0"));
+};
+_level0.__matanui.toggleTweak = function(name) {
+    this.save[name].set(this.save[name].get() == "1" ? "0" : "1");
+};
 _level0.__matanui.save.panspeed = _level0.__matanui.save._setting("panspeed", "100");
 _level0.__matanui.save.panzone = _level0.__matanui.save._setting("panzone", "120");
 _level0.__matanui.cyclePanspeed = function() {

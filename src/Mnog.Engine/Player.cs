@@ -158,6 +158,7 @@ public sealed class Player
         // The menus in the chosen language (read once a tick: the save's "language").
         Lang.Load(gameDir);
         Lang.Current = () => _language;
+        Tweaks.IsOn = key => _tweaks.Contains("|" + key + "|", StringComparison.Ordinal);
         Audio.Hq = new Mnog.Engine.Audio.HqSounds(GameDir);
         Log($"save: {Path.GetFullPath(Storage.Dir)}");
         Log($"save folder from {SaveLocation.Source}");
@@ -271,7 +272,17 @@ public sealed class Player
     {
         LoadLevel(Manifest.EntryMovie, 0);
         RunQueue();
+        // The navigation tables a warp (and continuing a game with no saved sounds) works from: built in the
+        // background now, as reading every script takes seconds, which done on the first warp froze the game.
+        _navigationReady = System.Threading.Tasks.Task.Run(() =>
+        {
+            using var job = Watchdog.Job("working out the scenes' navigation");
+            SceneState("");
+        });
     }
+
+    System.Threading.Tasks.Task? _navigationReady;
+    readonly object _navigationLock = new();
 
     // ---- Frame loop ----
 
@@ -290,6 +301,10 @@ public sealed class Player
     {
         // (A new language: the menus' labels redrawn, not kept from the layer cache's pictures of them.)
         if (SaveValue("language") is { Length: > 0 } language && language != _language) { _language = language; _layerCache.Clear(); }
+        // (The Ruru setting has three: Original "0", Variant 1 "1", Variant 2 "2"; their tweaks are "ruru-classic",
+        // "ruru-accurate".)
+        string ruru = SaveValue("ruru") switch { "1" => "ruru-classic|", "2" => "ruru-accurate|", _ => "" };
+        if ("|" + string.Concat(TweakKeys.Where(k => SaveValue(k) == "1").Select(k => k + "|")) + ruru is var tweaks && tweaks != _tweaks) TweaksChanged(tweaks);
         PreloadNeighbours();
         if (_pendingMessage is { } note) { _pendingMessage = null; ShowMessage(note); }
         // Paused: the game held (nothing runs) but for the steps asked for; unpaused when the episode's left.
@@ -492,6 +507,14 @@ public sealed class Player
         ApplyVolumes();
     }
 
+    /// <summary>A saved setting changed (the test harness's "setting KEY VALUE"), as the settings menu changes it.</summary>
+    public void SetSetting(string key, string value)
+    {
+        if (SaveData() is not { } data) return;
+        data.SetOwn(key, Value.From(value));
+        Storage.Flush("mata-nui-online-game", Vm);
+    }
+
     bool _volumesApplied;
 
     /// <summary>Closes the Audio menu; back reopens the settings dialog it came from (the title screen's own copy while
@@ -551,6 +574,55 @@ public sealed class Player
         Storage.GetLocal("mata-nui-online-game", Vm).TryGetOwn("data", out var d) ? d.Object as AsObject : null;
 
     string _language = "eng";
+
+    /// <summary>The settings' Tweaks that are on, as "|colors|matoran|" (read once a tick from the save; Tweaks.IsOn is
+    /// asked from the background loads too).</summary>
+    volatile string _tweaks = "|";
+    static readonly string[] TweakKeys = ["matoran", "colors", "clones", "pakari"];
+
+    void TweaksChanged(string tweaks)
+    {
+        string was = _tweaks;
+        _tweaks = tweaks;
+        bool Switched(string key) => was.Contains("|" + key + "|") != tweaks.Contains("|" + key + "|");
+        // Tohunga or Matoran: the text already loaded (the clips' variables) said the new way too.
+        bool matoran = tweaks.Contains("|matoran|");
+        if (Switched("matoran"))
+        {
+            void Retext(MovieClip clip)
+            {
+                clip.MapStrings(s => Tweaks.Swap(s, matoran));
+                foreach (var c in clip.Children.Values)
+                    if (c is MovieClip mc) Retext(mc);
+            }
+            foreach (var level in Levels.Values) Retext(level);
+        }
+        if (!Tweaks.Pictures.Any(Switched)) return;
+        // A picture tweak switched: the movies it changes that are on screen loaded again and what's shown moved to
+        // them (MovieClip.Retweak); the others loaded again as they're next needed.
+        var shown = new HashSet<MovieAsset>();
+        void Shown(MovieClip clip)
+        {
+            shown.Add(clip.Movie);
+            foreach (var c in clip.Children.Values)
+                if (c is MovieClip mc) Shown(mc);
+        }
+        foreach (var level in Levels.Values) Shown(level);
+        var map = new Dictionary<MovieAsset, MovieAsset>();
+        lock (_movies)
+            foreach (var (name, movie) in _movies.ToList())
+            {
+                if (!Tweaks.HasPictures(movie.Dir)) continue;
+                if (!shown.Contains(movie)) { _movies.Remove(name); continue; }
+                using (Watchdog.Wait($"{name}, loading again for the tweaks"))
+                    map[movie] = _movies[name] = MovieAsset.Load(name, movie.Dir);
+                foreach (var e in map[movie].Errors) Log($"{name}: {e}");
+            }
+        foreach (var level in Levels.Values) level.Retweak(map);
+        _preloads.Clear();
+        _preloadedFor = null;
+        _layerCache.Clear();
+    }
 
     string SaveValue(string key) => SaveData() is { } data && data.TryGetOwn(key, out var v) && !v.IsUndefined ? v.ToStr(6) : "";
 
@@ -972,7 +1044,7 @@ public sealed class Player
                 int eq = pair.IndexOf('=');
                 if (eq <= 0) continue;
                 var k = Unescape(pair[..eq]).Trim('\r', '\n');
-                var v = Unescape(pair[(eq + 1)..]);
+                var v = Tweaks.Matoran(Unescape(pair[(eq + 1)..]));
                 t.Set(k, v, Vm);
             }
             if (t is MovieClip mc) FireClipEvent(mc, "data");
@@ -1706,6 +1778,7 @@ public sealed class Player
     /// </summary>
     public List<(string Name, string Value)> NavigationVars(string scene)
     {
+        lock (_navigationLock)
         if (_navigation == null)
         {
             _navigation = new(StringComparer.OrdinalIgnoreCase);
@@ -1770,6 +1843,7 @@ public sealed class Player
     /// </summary>
     Dictionary<string, string> SceneState(string scene)
     {
+        lock (_navigationLock)
         if (_sceneState == null)
         {
             NavigationVars(scene);
@@ -1839,6 +1913,7 @@ public sealed class Player
     {
         var level1 = GetLevel(1);
         if (level1 == null) return;
+        var timer = System.Diagnostics.Stopwatch.StartNew();
         var vars = NavigationVars(scene);
         // Defaults for what the navigation block may leave out; a warp always loads.
         Vm.SetVariableAt(level1, "BookOpen", Value.From("0"));
@@ -1862,7 +1937,7 @@ public sealed class Player
             if (flag != null) Vm.SetVariableAt(level1, flag, Value.From("1"));
         }
         Vm.SetVariableAt(level1, "BeginLoadMovie", Value.From("1"));
-        Log($"warp: {scene} ({string.Join(", ", vars.Select(v => v.Name + "=" + v.Value))}; {string.Join(", ", state.Select(v => v.Key + "=" + v.Value))})");
+        Log($"warp: {scene} in {timer.ElapsedMilliseconds} ms ({string.Join(", ", vars.Select(v => v.Name + "=" + v.Value))}; {string.Join(", ", state.Select(v => v.Key + "=" + v.Value))})");
     }
 
     // ---- Skip button (cutscenes) ----
@@ -2089,6 +2164,11 @@ public sealed class Player
         ["title"] = "On: the title screen shows when the game starts.\nOff: the game goes straight to where you left off.",
         ["timestamp"] = "The date the game believes it is, which decides the parts of the island that are open, as on the original site.",
         ["progress"] = "Your progress as a code: copy it to keep it or move it to another computer, or enter a code to load it.",
+        ["matoran"] = "Tohunga: the villagers are called Tohunga, as in the original.\nMatoran: they're called Matoran, the name later Bionicle stories gave them.",
+        ["colors"] = "On: some characters' colors are corrected where the original shows them wrongly.\nOff: the original's colors.",
+        ["clones"] = "On: a few villagers drawn as copies of others are redrawn to look like themselves.\nOff: as in the original.",
+        ["pakari"] = "On: the Pakari masks the original drew wrongly are redrawn as the real mask looks.\nOff: as in the original.",
+        ["ruru"] = "Original: each Ruru's mask as the original drew it.\nVariant 1 and Variant 2: every Ruru wears the same one of the original's two Ruru designs.",
     };
 
     void DrawSettingsHint(SKCanvas canvas)
@@ -2105,6 +2185,56 @@ public sealed class Player
         var box = dialog.Children.Values.FirstOrDefault(c => c.Name.EndsWith("_box", StringComparison.Ordinal)) ?? dialog;
         var r = box.WorldMatrix.MapRect(box.LocalBounds);
         MenuGlyphs.DrawHint(canvas, r, hint, MenuTypeface, DialogFont(13.5f), StageHeight);
+        DrawTweakPreview(canvas, r, button.Name[(at + 8)..]);
+    }
+
+    /// <summary>The settings whose difference is shown in pictures (game/files/previews): each picture and its name.</summary>
+    static readonly Dictionary<string, (string Image, string Label)[]> TweakPreviews = new()
+    {
+        ["pakari"] = [("pakari-original.png", "Original"), ("pakari-accurate.png", "Accurate")],
+        ["ruru"] = [("ruru-variant-1.png", "Variant 1"), ("ruru-variant-2.png", "Variant 2")],
+    };
+
+    readonly Dictionary<string, SKImage?> _previewImages = [];
+
+    SKImage? PreviewImage(string file)
+    {
+        if (!_previewImages.TryGetValue(file, out var image))
+        {
+            var path = Path.Combine(GameDir, "files", "previews", file);
+            _previewImages[file] = image = File.Exists(path) ? SKImage.FromEncodedData(path) : null;
+        }
+        return image;
+    }
+
+    /// <summary>A setting's pictures (the mask each way it draws it), side by side in a box right of the dialog's, each
+    /// named below it, in the hint box's look.</summary>
+    void DrawTweakPreview(SKCanvas canvas, SKRect dialog, string key)
+    {
+        if (!TweakPreviews.TryGetValue(key, out var items)) return;
+        var images = items.Select(i => PreviewImage(i.Image)).ToArray();
+        if (images.Any(i => i == null)) return;
+        const float Pad = 9, ImageHeight = 96, Gap = 12, LabelHeight = 18;
+        var widths = images.Select(i => ImageHeight * i!.Width / i.Height).ToArray();
+        float width = Pad * 2 + widths.Sum() + Gap * (items.Length - 1);
+        // (Level with the dialog's bottom, by the rows it shows.)
+        float height = Pad * 2 + ImageHeight + LabelHeight;
+        var box = new SKRect(dialog.Right + 8, dialog.Bottom - height, dialog.Right + 8 + width, dialog.Bottom);
+        using var paint = new SKPaint { IsAntialias = true, Color = new SKColor(0x33, 0x33, 0x33, 0xF4) };
+        canvas.DrawRect(box, paint);
+        paint.Style = SKPaintStyle.Stroke; paint.StrokeWidth = 2; paint.Color = new SKColor(0x99, 0x99, 0x99);
+        canvas.DrawRect(box, paint);
+        paint.Style = SKPaintStyle.Fill; paint.Color = new SKColor(0xFF, 0x99, 0x00);
+        using var font = new SKFont(MenuTypeface, 12.5f);
+        var sampling = new SKSamplingOptions(SKCubicResampler.Mitchell);
+        float x = box.Left + Pad;
+        for (int k = 0; k < items.Length; k++)
+        {
+            canvas.DrawImage(images[k]!, new SKRect(x, box.Top + Pad, x + widths[k], box.Top + Pad + ImageHeight), sampling);
+            string label = Lang.T(items[k].Label);
+            canvas.DrawText(label, x + widths[k] / 2 - font.MeasureText(label) / 2, box.Top + Pad + ImageHeight + 14, font, paint);
+            x += widths[k] + Gap;
+        }
     }
 
     void DrawTitleSlot(SKCanvas canvas)

@@ -9,6 +9,50 @@ using SkiaSharp;
 //   Mnog.Engine [gameDir] --run "<commands>"      headless test run; commands separated by ';':
 //       wait N | click X Y | move X Y | key CODE | shot FILE.png [W H [T]] | type TEXT | widescreen 0|1 | smooth 0|1 | tree [depth] | bench N W H
 
+// Mnog.Engine --pathop IN.json OUT.json: path clipping for the build tools (Skia's path operations): IN is
+// [{"subject": svg path, "clip": svg path, "near"?: svg path, "by"?: units}], OUT the subjects' parts inside their
+// clips (and, with "near", within "by" of that shape), as svg path data (the subject read even-odd, as shapes are).
+if (args.Length == 3 && args[0] == "--pathop")
+{
+    var tasks = System.Text.Json.JsonSerializer.Deserialize<List<Dictionary<string, string>>>(File.ReadAllText(args[1]))!;
+    var results = new List<string>();
+    foreach (var t in tasks)
+    {
+        try
+        {
+            using var subject = SKPath.ParseSvgPathData(t["subject"]) ?? new SKPath();
+            subject.FillType = SKPathFillType.EvenOdd;
+            var clip = SKPath.ParseSvgPathData(t["clip"]) ?? new SKPath();
+            clip.FillType = SKPathFillType.EvenOdd;
+            // ("near", "near2": within "by" of each of those shapes too.)
+            foreach (var key in new[] { "near", "near2" })
+            {
+                if (!t.TryGetValue(key, out var nearPath) || SKPath.ParseSvgPathData(nearPath) is not { } near) continue;
+                // (The shape grown by "by" all round: itself and its outline stroked twice that wide.)
+                using var paint = new SKPaint { Style = SKPaintStyle.Stroke, StrokeWidth = 2 * float.Parse(t["by"], CultureInfo.InvariantCulture), StrokeJoin = SKStrokeJoin.Round };
+                using var outline = new SKPath();
+                paint.GetFillPath(near, outline);
+                using var grown = near.Op(outline, SKPathOp.Union) ?? new SKPath(near);
+                var both = clip.Op(grown, SKPathOp.Intersect) ?? new SKPath();
+                clip.Dispose();
+                near.Dispose();
+                clip = both;
+            }
+            // ("minus": the subject's part outside the clip instead.)
+            using var result = subject.Op(clip, t.TryGetValue("op", out var op) && op == "minus" ? SKPathOp.Difference : SKPathOp.Intersect);
+            clip.Dispose();
+            results.Add(result?.ToSvgPathData() ?? "");
+        }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine($"pathop: {e.Message}");
+            results.Add("");
+        }
+    }
+    File.WriteAllText(args[2], System.Text.Json.JsonSerializer.Serialize(results));
+    return 0;
+}
+
 string? gameDir = null;
 string? commands = null;
 string? entry = null;
@@ -349,6 +393,10 @@ static void RunCommand(Player player, string raw)
                 // set PATH VALUE: set a variable (relative to _level1, e.g. "MovieName"), as a script would.
                 player.Vm.SetVariableAt(player.GetLevel(1) ?? player.Levels.Values.First(), p[1], Mnog.Engine.Script.Value.From(p[2]));
                 break;
+            case "setting":
+                // setting KEY VALUE: a saved setting changed, as the settings menu changes it (e.g. setting pakari 1).
+                player.SetSetting(p[1], p[2]);
+                break;
             case "hide":
             case "shift":
             case "goto":
@@ -444,6 +492,32 @@ static void RunCommand(Player player, string raw)
                         Console.WriteLine($"saved {p[4]} {vi.Width}x{vi.Height}");
                     }
                     else Console.WriteLine($"vimg: no vector for {p[1]}#{p[2]} " + string.Join("; ", m.Errors));
+                    break;
+                }
+            case "symshot":
+                // symshot MOVIE ID SCALE FILE [FRAME]: one symbol alone (a sprite at FRAME, 1 by default), as the
+                // engine draws it, on a transparent background, sized to its bounds.
+                {
+                    // (MOVIE: a game movie's name, or a converted movie's folder elsewhere, e.g. a scratch conversion.)
+                    var m = Directory.Exists(p[1]) ? Mnog.Engine.Assets.MovieAsset.Load(Path.GetFileName(Path.TrimEndingDirectorySeparator(p[1])), p[1]) : player.GetMovie(p[1]);
+                    if (m == null) { Console.WriteLine($"symshot: no movie {p[1]}"); break; }
+                    var holder = new Mnog.Engine.Display.MovieClip(player, m, m.Timeline) { Inert = true };
+                    // (ID 0: the movie's own timeline, at FRAME.)
+                    Mnog.Engine.Display.DisplayObject? obj = p[2] == "0" ? holder : holder.Create(int.Parse(p[2]), 1);
+                    if (obj == null) { Console.WriteLine($"symshot: no symbol {p[1]}#{p[2]}"); break; }
+                    var children = p[2] == "0" ? new SortedList<int, Mnog.Engine.Display.DisplayObject> { [1] = holder } : holder.Children;
+                    if (obj is Mnog.Engine.Display.MovieClip clip) { clip.Construct(); if (p.Length > 5) clip.GotoFrame(int.Parse(p[5])); }
+                    float scale = F(3);
+                    var b = obj.LocalBounds;
+                    int w = Math.Max(1, (int)Math.Ceiling(b.Width * scale) + 2), h = Math.Max(1, (int)Math.Ceiling(b.Height * scale) + 2);
+                    using var surface = SKSurface.Create(new SKImageInfo(w, h, SKColorType.Rgba8888, SKAlphaType.Premul));
+                    surface.Canvas.Clear(SKColors.Transparent);
+                    var matrix = SKMatrix.CreateScaleTranslation(scale, scale, -b.Left * scale + 1, -b.Top * scale + 1);
+                    new Mnog.Engine.Render.RenderContext(surface.Canvas, SKMatrix.Identity, player, 1).DrawContainer(children, matrix, Mnog.Engine.Assets.CxForm.Identity);
+                    using var img = surface.Snapshot();
+                    using var data = img.Encode(SKEncodedImageFormat.Png, 100);
+                    File.WriteAllBytes(p[4], data.ToArray());
+                    Console.WriteLine($"saved {p[4]} {w}x{h}");
                     break;
                 }
             case "art":

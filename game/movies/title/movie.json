@@ -2697,14 +2697,15 @@
         "frames": [
           {
             "ops": [
-              {"place": 1, "id": 245, "matrix": [1, 0, 0, 1, -156, -97], "name": "matanui_dialog_settings_box"},
-              {"place": 2, "id": 246, "matrix": [1, 0, 0, 1, -155, -53], "name": "matanui_dialog_settings_line"},
-              {"place": 3, "id": 247, "matrix": [1, 0, 0, 1, -63.08, -66.15], "name": "matanui_dialog_settings_title"},
-              {"place": 4, "id": 249, "matrix": [1, 0, 0, 1, 138, -75], "name": "matanui_dialog_settings_button_x"},
-              {"place": 6, "id": 253, "matrix": [1, 0, 0, 1, 0, -32], "name": "matanui_dialog_settings_button_language"},
-              {"place": 7, "id": 258, "matrix": [1, 0, 0, 1, 0, 4], "name": "matanui_dialog_settings_button_graphics"},
-              {"place": 8, "id": 266, "matrix": [1, 0, 0, 1, 0, 40], "name": "matanui_dialog_settings_button_gameplay"},
-              {"place": 9, "id": 262, "matrix": [1, 0, 0, 1, 0, 76], "name": "matanui_dialog_settings_button_audio"}
+              {"place": 1, "id": 468, "matrix": [1, 0, 0, 1, -156, -115], "name": "matanui_dialog_settings_box"},
+              {"place": 2, "id": 246, "matrix": [1, 0, 0, 1, -155, -71], "name": "matanui_dialog_settings_line"},
+              {"place": 3, "id": 247, "matrix": [1, 0, 0, 1, -63.08, -84.15], "name": "matanui_dialog_settings_title"},
+              {"place": 4, "id": 249, "matrix": [1, 0, 0, 1, 138, -93], "name": "matanui_dialog_settings_button_x"},
+              {"place": 6, "id": 253, "matrix": [1, 0, 0, 1, 0, -50], "name": "matanui_dialog_settings_button_language"},
+              {"place": 7, "id": 258, "matrix": [1, 0, 0, 1, 0, -14], "name": "matanui_dialog_settings_button_graphics"},
+              {"place": 8, "id": 266, "matrix": [1, 0, 0, 1, 0, 22], "name": "matanui_dialog_settings_button_gameplay"},
+              {"place": 9, "id": 262, "matrix": [1, 0, 0, 1, 0, 58], "name": "matanui_dialog_settings_button_audio"},
+              {"place": 10, "id": 467, "matrix": [1, 0, 0, 1, 0, 94], "name": "matanui_dialog_settings_button_tweaks"}
             ],
             "scripts": ["scripts/overlay_sprite77_frame1.as"]
           }
@@ -6946,6 +6947,656 @@
         {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M312 0 L0 0 L0 158 L312 158 L312 0 Z"},
         {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L312 0 L312 158 L0 158 L0 0"}
       ]
+    },
+    {
+      "kind": "text",
+      "id": 463,
+      "bounds": [0, -15.85, 82.34, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Tweaks",
+          "glyphs": [16, 35, 21, 18, 42, 32],
+          "advances": [12.38, 19.81, 13.62, 13.93, 9.91, 12.69]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 464,
+      "timeline": {"frameCount": 1, "frames": [{"ops": [{"place": 1, "id": 463, "matrix": [1, 0, 0, 1, -41.17, 4.6]}]}]}
+    },
+    {
+      "kind": "sprite",
+      "id": 465,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 464}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 466,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 464, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 467,
+      "records": [
+        {"states": ["up"], "id": 465, "depth": 1},
+        {"states": ["over", "down"], "id": 466, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_open_tweaks.as"}]
+    },
+    {
+      "kind": "shape",
+      "id": 468,
+      "bounds": [-1, -1, 313, 231],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M312 0 L0 0 L0 230 L312 230 L312 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L312 0 L312 230 L0 230 L0 0"}
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 469,
+      "bounds": [0, -23.55, 122.36, 7.065],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 23.55,
+          "color": "#FFFFFFFF",
+          "x": 0,
+          "y": 0,
+          "text": "Tweaks",
+          "glyphs": [16, 35, 21, 18, 42, 32],
+          "advances": [18.4, 29.44, 20.24, 20.7, 14.72, 18.86]
+        }
+      ]
+    },
+    {
+      "kind": "shape",
+      "id": 470,
+      "bounds": [-1, -1, 313, 159],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M312 0 L0 0 L0 158 L312 158 L312 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L312 0 L312 158 L0 158 L0 0"}
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 471,
+      "bounds": [0, -15.85, 95.96, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Tohunga",
+          "glyphs": [16, 29, 24, 34, 28, 23, 18],
+          "advances": [12.38, 13.93, 13.93, 13.93, 13.93, 13.93, 13.93]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 472,
+      "bounds": [0, -15.85, 90.24, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Matoran",
+          "glyphs": [44, 18, 33, 29, 31, 18, 28],
+          "advances": [19.97, 13.93, 7.12, 13.93, 7.43, 13.93, 13.93]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 473,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_matoran_label.as"]},
+          {"ops": [{"place": 1, "id": 471, "matrix": [1, 0, 0, 1, -47.98, 4.6]}]},
+          {"ops": [{"place": 1, "id": 472, "move": true, "matrix": [1, 0, 0, 1, -45.12, 4.6]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 474,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 473}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 475,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 473, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 476,
+      "records": [
+        {"states": ["up"], "id": 474, "depth": 1},
+        {"states": ["over", "down"], "id": 475, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_matoran_button.as"}]
+    },
+    {
+      "kind": "text",
+      "id": 477,
+      "bounds": [0, -15.85, 231.84, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Color consistency: Off",
+          "glyphs": [7, 29, 26, 29, 31, 0, 19, 29, 28, 32, 25, 32, 33, 21, 28, 19, 36, 5, 0, 13, 22, 22],
+          "advances": [13.0, 13.93, 4.02, 13.93, 7.43, 8.98, 11.45, 13.93, 13.93, 12.69, 3.71, 12.69, 7.12, 13.62, 13.93, 11.45, 13.62, 4.95, 8.98, 15.48, 6.5, 6.5]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 478,
+      "bounds": [0, -15.85, 232.77, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Color consistency: On",
+          "glyphs": [7, 29, 26, 29, 31, 0, 19, 29, 28, 32, 25, 32, 33, 21, 28, 19, 36, 5, 0, 13, 28],
+          "advances": [13.0, 13.93, 4.02, 13.93, 7.43, 8.98, 11.45, 13.93, 13.93, 12.69, 3.71, 12.69, 7.12, 13.62, 13.93, 11.45, 13.62, 4.95, 8.98, 15.48, 13.93]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 479,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_colors_label.as"]},
+          {"ops": [{"place": 1, "id": 477, "matrix": [1, 0, 0, 1, -115.92, 4.6]}]},
+          {"ops": [{"place": 1, "id": 478, "move": true, "matrix": [1, 0, 0, 1, -116.39, 4.6]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 480,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 479}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 481,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 479, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 482,
+      "records": [
+        {"states": ["up"], "id": 480, "depth": 1},
+        {"states": ["over", "down"], "id": 481, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_colors_button.as"}]
+    },
+    {
+      "kind": "text",
+      "id": 483,
+      "bounds": [0, -15.85, 241.75, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Clone replacement: Off",
+          "glyphs": [7, 26, 29, 28, 21, 0, 31, 21, 30, 26, 18, 19, 21, 27, 21, 28, 33, 5, 0, 13, 22, 22],
+          "advances": [13.0, 4.02, 13.93, 13.93, 13.62, 8.98, 7.43, 13.62, 13.93, 4.02, 13.93, 11.45, 13.62, 19.19, 13.62, 13.93, 7.12, 4.95, 8.98, 15.48, 6.5, 6.5]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 484,
+      "bounds": [0, -15.85, 242.68, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Clone replacement: On",
+          "glyphs": [7, 26, 29, 28, 21, 0, 31, 21, 30, 26, 18, 19, 21, 27, 21, 28, 33, 5, 0, 13, 28],
+          "advances": [13.0, 4.02, 13.93, 13.93, 13.62, 8.98, 7.43, 13.62, 13.93, 4.02, 13.93, 11.45, 13.62, 19.19, 13.62, 13.93, 7.12, 4.95, 8.98, 15.48, 13.93]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 485,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_clones_label.as"]},
+          {"ops": [{"place": 1, "id": 483, "matrix": [1, 0, 0, 1, -120.88, 4.6]}]},
+          {"ops": [{"place": 1, "id": 484, "move": true, "matrix": [1, 0, 0, 1, -121.34, 4.6]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 486,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 485}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 487,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 485, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 488,
+      "records": [
+        {"states": ["up"], "id": 486, "depth": 1},
+        {"states": ["over", "down"], "id": 487, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_clones_button.as"}]
+    },
+    {
+      "kind": "sprite",
+      "id": 489,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 511, "matrix": [1, 0, 0, 1, -156, -115], "name": "patch_dialog_tweaks_box"},
+              {"place": 2, "id": 246, "matrix": [1, 0, 0, 1, -155, -71], "name": "patch_dialog_tweaks_line"},
+              {"place": 3, "id": 469, "matrix": [1, 0, 0, 1, -61.18, -84.15], "name": "patch_dialog_tweaks_title"},
+              {"place": 4, "id": 296, "matrix": [1, 0, 0, 1, 138, -93], "name": "patch_dialog_tweaks_button_x"},
+              {"place": 5, "id": 300, "matrix": [1, 0, 0, 1, -138, -93], "name": "patch_dialog_tweaks_button_back"},
+              {"place": 6, "id": 476, "matrix": [1, 0, 0, 1, 0, -50], "name": "patch_dialog_tweaks_button_matoran"},
+              {"place": 7, "id": 482, "matrix": [1, 0, 0, 1, 0, -14], "name": "patch_dialog_tweaks_button_colors"},
+              {"place": 8, "id": 488, "matrix": [1, 0, 0, 1, 0, 22], "name": "patch_dialog_tweaks_button_clones"},
+              {"place": 9, "id": 493, "matrix": [1, 0, 0, 1, 0, 58], "name": "patch_dialog_tweaks_button_pakari"},
+              {"place": 10, "id": 504, "matrix": [1, 0, 0, 1, 0, 94], "name": "patch_dialog_tweaks_button_ruru"}
+            ],
+            "scripts": ["scripts/overlay_sprite77_frame1.as"]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "text",
+      "id": 490,
+      "bounds": [0, -15.85, 208.27, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Accurate Pakari: Off",
+          "glyphs": [71, 19, 19, 34, 31, 18, 33, 21, 0, 14, 18, 42, 18, 31, 25, 5, 0, 13, 22, 22],
+          "advances": [14.18, 11.45, 11.45, 13.93, 7.43, 13.93, 7.12, 13.62, 8.98, 14.86, 13.93, 9.91, 13.93, 7.43, 3.71, 4.95, 8.98, 15.48, 6.5, 6.5]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 491,
+      "bounds": [0, -15.85, 209.2, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Accurate Pakari: On",
+          "glyphs": [71, 19, 19, 34, 31, 18, 33, 21, 0, 14, 18, 42, 18, 31, 25, 5, 0, 13, 28],
+          "advances": [14.18, 11.45, 11.45, 13.93, 7.43, 13.93, 7.12, 13.62, 8.98, 14.86, 13.93, 9.91, 13.93, 7.43, 3.71, 4.95, 8.98, 15.48, 13.93]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 492,
+      "timeline": {
+        "frameCount": 3,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_pakari_label.as"]},
+          {"ops": [{"place": 1, "id": 490, "matrix": [1, 0, 0, 1, -104.14, 4.6]}]},
+          {"ops": [{"place": 1, "id": 491, "move": true, "matrix": [1, 0, 0, 1, -104.6, 4.6]}]}
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 494,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 492}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 495,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 492, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 496,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 492}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 497,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 492, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 498,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 492}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 499,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 492, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 493,
+      "records": [
+        {"states": ["up"], "id": 494, "depth": 1},
+        {"states": ["over", "down"], "id": 497, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_pakari_button.as"}]
+    },
+    {
+      "kind": "shape",
+      "id": 500,
+      "bounds": [-1, -1, 313, 195],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M312 0 L0 0 L0 194 L312 194 L312 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L312 0 L312 194 L0 194 L0 0"}
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 501,
+      "bounds": [0, -15.85, 140.11, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Ruru: Original",
+          "glyphs": [76, 34, 31, 34, 5, 0, 13, 31, 25, 23, 25, 28, 18, 26],
+          "advances": [14.75, 13.93, 7.43, 13.93, 4.95, 8.98, 15.48, 7.43, 3.71, 13.93, 3.71, 13.93, 13.93, 4.02]
+        }
+      ]
+    },
+    {
+      "kind": "text",
+      "id": 502,
+      "bounds": [0, -15.85, 154.05, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Ruru: Variant 1",
+          "glyphs": [76, 34, 31, 34, 5, 0, 77, 18, 31, 25, 18, 28, 33, 0, 2],
+          "advances": [14.75, 13.93, 7.43, 13.93, 4.95, 8.98, 14.24, 13.93, 7.43, 3.71, 13.93, 13.93, 7.12, 8.98, 6.81]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 503,
+      "timeline": {
+        "frameCount": 4,
+        "frames": [
+          {"scripts": ["scripts/overlay_patch_ruru_label.as"]},
+          {"ops": [{"place": 1, "id": 501, "matrix": [1, 0, 0, 1, -70.06, 4.6]}]},
+          {"ops": [{"place": 1, "id": 502, "move": true, "matrix": [1, 0, 0, 1, -77.03, 4.6]}]},
+          {"ops": [{"place": 1, "id": 512, "move": true, "matrix": [1, 0, 0, 1, -81.02, 4.6]}]}
+        ]
+      }
+    },
+    {
+      "kind": "text",
+      "id": 512,
+      "bounds": [0, -15.85, 162.03, 4.755],
+      "matrix": [1, 0, 0, 1, 0, 0],
+      "runs": [
+        {
+          "font": 248,
+          "size": 15.85,
+          "color": "#FF9900FF",
+          "x": 0,
+          "y": 0,
+          "text": "Ruru: Variant 2",
+          "glyphs": [76, 34, 31, 34, 5, 0, 77, 18, 31, 25, 18, 28, 33, 0, 60],
+          "advances": [14.75, 13.93, 7.43, 13.93, 4.95, 8.98, 14.24, 13.93, 7.43, 3.71, 13.93, 13.93, 7.12, 8.98, 14.79]
+        }
+      ]
+    },
+    {
+      "kind": "sprite",
+      "id": 505,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 503}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 506,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 503, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 507,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 503}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 508,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 503, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 509,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [{"ops": [{"place": 1, "id": 255, "matrix": [1, 0, 0, 1, -150, -15]}, {"place": 2, "id": 503}]}]
+      }
+    },
+    {
+      "kind": "sprite",
+      "id": 510,
+      "timeline": {
+        "frameCount": 1,
+        "frames": [
+          {
+            "ops": [
+              {"place": 1, "id": 436, "matrix": [1, 0, 0, 1, -150, -15]},
+              {"place": 2, "id": 503, "cxform": [1, 1, 1, 1, 0, 102, 255, 0]}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "button",
+      "id": 504,
+      "records": [
+        {"states": ["up"], "id": 505, "depth": 1},
+        {"states": ["over", "down"], "id": 508, "depth": 1},
+        {"states": ["hit"], "id": 255, "depth": 1, "matrix": [1, 0, 0, 1, -150, -15]}
+      ],
+      "actions": [{"on": ["release"], "script": "scripts/overlay_patch_ruru_button.as"}]
+    },
+    {
+      "kind": "shape",
+      "id": 511,
+      "bounds": [-1, -1, 313, 231],
+      "parts": [
+        {"fill": {"type": "solid", "color": "#333333FF"}, "path": "M312 0 L0 0 L0 230 L312 230 L312 0 Z"},
+        {"stroke": {"width": 2, "color": "#999999FF"}, "path": "M0 0 L312 0 L312 230 L0 230 L0 0"}
+      ]
     }
   ],
   "timeline": {
@@ -6975,6 +7626,7 @@
     "patch_dialog_graphics": 293,
     "patch_dialog_language": 270,
     "matanui_dialog_settings": 244,
-    "matanui_dialog_progress": 406
+    "matanui_dialog_progress": 406,
+    "patch_dialog_tweaks": 489
   }
 }

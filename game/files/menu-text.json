@@ -58,6 +58,20 @@
   "Edge Zone: Off": "Randzone: Aus",
   "Title screen: On": "Titelbildschirm: An",
   "Title screen: Off": "Titelbildschirm: Aus",
+  "Tweaks": "Anpassungen",
+  "Color consistency: On": "Einheitliche Farben: An",
+  "Color consistency: Off": "Einheitliche Farben: Aus",
+  "Clone replacement: On": "Klone ersetzen: An",
+  "Clone replacement: Off": "Klone ersetzen: Aus",
+  "Accurate Pakari: On": "Echte Pakari: An",
+  "Accurate Pakari: Off": "Echte Pakari: Aus",
+  "Ruru: Original": "Ruru: Original",
+  "Ruru: Variant 1": "Ruru: Variante 1",
+  "Ruru: Variant 2": "Ruru: Variante 2",
+  "Original": "Original",
+  "Accurate": "Genau",
+  "Variant 1": "Variante 1",
+  "Variant 2": "Variante 2",
   "18 FPS: Original": "18 FPS: Original",
   "30 FPS: Faster": "30 FPS: Schneller",
 
@@ -128,7 +142,12 @@
   "How near the edge the mouse pans the view.\nSmall: right by the edge.\nMedium: a little further in.\nNormal: as far in as the original.\nOff: only the arrow keys and W A S D move it.": "Wie nah am Rand die Maus die Ansicht schwenkt.\nKlein: direkt am Rand.\nMittel: etwas weiter innen.\nNormal: so weit innen wie im Original.\nAus: Nur die Pfeiltasten und W A S D bewegen sie.",
   "On: the title screen shows when the game starts.\nOff: the game goes straight to where you left off.": "An: Beim Start erscheint der Titelbildschirm.\nAus: Das Spiel geht direkt dorthin, wo du aufgehört hast.",
   "The date the game believes it is, which decides the parts of the island that are open, as on the original site.": "Das Datum, das das Spiel annimmt; es entscheidet, welche Teile der Insel offen sind, wie auf der ursprünglichen Website.",
-  "Your progress as a code: copy it to keep it or move it to another computer, or enter a code to load it.": "Dein Fortschritt als Code: Kopiere ihn, um ihn aufzubewahren oder auf einen anderen Computer zu übertragen, oder gib einen Code ein, um ihn zu laden."
+  "Your progress as a code: copy it to keep it or move it to another computer, or enter a code to load it.": "Dein Fortschritt als Code: Kopiere ihn, um ihn aufzubewahren oder auf einen anderen Computer zu übertragen, oder gib einen Code ein, um ihn zu laden.",
+  "Tohunga: the villagers are called Tohunga, as in the original.\nMatoran: they're called Matoran, the name later Bionicle stories gave them.": "Tohunga: Die Dorfbewohner heißen Tohunga, wie im Original.\nMatoran: Sie heißen Matoran, wie in späteren Bionicle-Geschichten.",
+  "On: some characters' colors are corrected where the original shows them wrongly.\nOff: the original's colors.": "An: Die Farben einiger Figuren werden korrigiert, wo das Original sie falsch zeigt.\nAus: die Farben des Originals.",
+  "On: a few villagers drawn as copies of others are redrawn to look like themselves.\nOff: as in the original.": "An: Einige Dorfbewohner, die als Kopien anderer gezeichnet sind, bekommen ihr eigenes Aussehen.\nAus: wie im Original.",
+  "On: the Pakari masks the original drew wrongly are redrawn as the real mask looks.\nOff: as in the original.": "An: Die Pakari-Masken, die das Original falsch gezeichnet hat, werden so gezeichnet, wie die echte Maske aussieht.\nAus: wie im Original.",
+  "Original: each Ruru's mask as the original drew it.\nVariant 1 and Variant 2: every Ruru wears the same one of the original's two Ruru designs.": "Original: jede Ruru-Maske so, wie das Original sie gezeichnet hat.\nVariante 1 und Variante 2: Jede Ruru trägt dieselbe der beiden Ruru-Gestaltungen des Originals."
  },
  "fre": {
   "Settings": "Paramètres",
@@ -188,6 +207,20 @@
   "Edge Zone: Off": "Zone de bord : Non",
   "Title screen: On": "Écran titre : Oui",
   "Title screen: Off": "Écran titre : Non",
+  "Tweaks": "Ajustements",
+  "Color consistency: On": "Couleurs cohérentes : Oui",
+  "Color consistency: Off": "Couleurs cohérentes : Non",
+  "Clone replacement: On": "Clones remplacés : Oui",
+  "Clone replacement: Off": "Clones remplacés : Non",
+  "Accurate Pakari: On": "Pakari fidèle : Oui",
+  "Accurate Pakari: Off": "Pakari fidèle : Non",
+  "Ruru: Original": "Ruru : Original",
+  "Ruru: Variant 1": "Ruru : Variante 1",
+  "Ruru: Variant 2": "Ruru : Variante 2",
+  "Original": "Original",
+  "Accurate": "Fidèle",
+  "Variant 1": "Variante 1",
+  "Variant 2": "Variante 2",
   "18 FPS: Original": "18 IPS : Original",
   "30 FPS: Faster": "30 IPS : Plus rapide",
 
@@ -258,6 +291,11 @@
   "How near the edge the mouse pans the view.\nSmall: right by the edge.\nMedium: a little further in.\nNormal: as far in as the original.\nOff: only the arrow keys and W A S D move it.": "À quelle distance du bord la souris fait défiler la vue.\nPetite : tout au bord.\nMoyenne : un peu plus loin.\nNormale : aussi loin qu'à l'origine.\nNon : seules les flèches et W A S D la déplacent.",
   "On: the title screen shows when the game starts.\nOff: the game goes straight to where you left off.": "Oui : l'écran titre s'affiche au lancement.\nNon : le jeu reprend directement là où vous vous êtes arrêté.",
   "The date the game believes it is, which decides the parts of the island that are open, as on the original site.": "La date que le jeu croit être, qui décide des parties de l'île ouvertes, comme sur le site d'origine.",
-  "Your progress as a code: copy it to keep it or move it to another computer, or enter a code to load it.": "Votre progression sous forme de code : copiez-le pour le garder ou le transférer sur un autre ordinateur, ou saisissez un code pour la charger."
+  "Your progress as a code: copy it to keep it or move it to another computer, or enter a code to load it.": "Votre progression sous forme de code : copiez-le pour le garder ou le transférer sur un autre ordinateur, ou saisissez un code pour la charger.",
+  "Tohunga: the villagers are called Tohunga, as in the original.\nMatoran: they're called Matoran, the name later Bionicle stories gave them.": "Tohunga : les villageois s'appellent Tohunga, comme dans l'original.\nMatoran : ils s'appellent Matoran, le nom que leur ont donné les histoires Bionicle suivantes.",
+  "On: some characters' colors are corrected where the original shows them wrongly.\nOff: the original's colors.": "Oui : les couleurs de certains personnages sont corrigées là où l'original les montre mal.\nNon : les couleurs de l'original.",
+  "On: a few villagers drawn as copies of others are redrawn to look like themselves.\nOff: as in the original.": "Oui : quelques villageois dessinés comme des copies d'autres retrouvent leur propre apparence.\nNon : comme dans l'original.",
+  "On: the Pakari masks the original drew wrongly are redrawn as the real mask looks.\nOff: as in the original.": "Oui : les masques Pakari que l'original dessinait mal sont redessinés comme le vrai masque.\nNon : comme dans l'original.",
+  "Original: each Ruru's mask as the original drew it.\nVariant 1 and Variant 2: every Ruru wears the same one of the original's two Ruru designs.": "Original : chaque masque Ruru comme l'original le dessinait.\nVariante 1 et Variante 2 : chaque Ruru porte le même des deux dessins de Ruru de l'original."
  }
 }

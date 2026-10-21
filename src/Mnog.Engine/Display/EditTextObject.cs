@@ -17,7 +17,7 @@ public sealed partial class EditTextObject : DisplayObject
     {
         Field = e;
         Asset = e;
-        _text = e.Doc.Text ?? "";
+        _text = Tweaks.Matoran(e.Doc.Text ?? "");
         if (e.Doc.Html == true) _text = StripHtml(_text);
     }
 

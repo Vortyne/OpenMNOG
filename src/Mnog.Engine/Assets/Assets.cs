@@ -33,6 +33,8 @@ public sealed class MovieAsset
     public static MovieAsset Load(string name, string dir)
     {
         var doc = Json.Load<MovieDoc>(Path.Combine(dir, "movie.json"));
+        // (The settings' picture tweaks that are on, laid over it.)
+        Tweaks.Apply(doc, dir);
         var m = new MovieAsset { Name = name, Dir = dir, Doc = doc };
         var stretchFile = Path.Combine(dir, "widescreen.json");
         if (File.Exists(stretchFile) && System.Text.Json.Nodes.JsonNode.Parse(File.ReadAllText(stretchFile)) is System.Text.Json.Nodes.JsonArray stretches)

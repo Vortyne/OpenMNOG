@@ -206,6 +206,13 @@ public sealed class MovieClip : DisplayObject
         target = Math.Clamp(target, 1, FrameCount);
         if (target == CurrentFrame) return;
         bool rewind = target < CurrentFrame;
+        // (A loop back to a frame that moves objects between depths (OpDoc.From): it carries on from what's shown, as
+        // the next frame would, rather than starting the display list over.)
+        if (rewind && target > 1 && Timeline.Frame(target).Ops.Any(o => o.From != null))
+        {
+            rewind = false;
+            CurrentFrame = target - 1;
+        }
         if (!sequential || rewind) StopStream();
 
         var state = new Dictionary<int, Placement>();
@@ -218,34 +225,18 @@ public sealed class MovieClip : DisplayObject
                     state[c.Depth] = new Placement { Id = c.Asset?.Id ?? 0, PlaceFrame = c.PlaceFrame, Existing = c };
         }
         for (int f = from; f <= target; f++)
-        {
-            foreach (var op in Timeline.Frame(f).Ops)
-            {
-                if (op.Remove is int rd) { state.Remove(rd); continue; }
-                if (op.Place is not int depth) continue;
-                state.TryGetValue(depth, out var p);
-                if (op.Id is int id && (op.Move != true || p == null || p.Id != id))
-                {
-                    var np = new Placement { Id = id, PlaceFrame = f };
-                    if (op.Move == true && p != null)
-                    {
-                        // Replacing the character keeps the old transform unless a new one is given.
-                        np.Matrix = p.Matrix ?? p.Existing?.Matrix;
-                        np.Cx = p.Cx ?? p.Existing?.ColorTransform;
-                        np.Name = p.Name ?? p.Existing?.Name;
-                        np.ClipDepth = p.ClipDepth;
-                    }
-                    p = state[depth] = np;
-                }
-                if (p == null) continue;
-                if (op.Matrix != null) p.Matrix = Geo.Matrix(op.Matrix);
-                if (op.Cxform != null) p.Cx = CxForm.From(op.Cxform);
-                if (op.Ratio is double r) p.Ratio = (float)r;
-                if (op.Name != null) p.Name = op.Name;
-                if (op.ClipDepth is int cd) p.ClipDepth = cd;
-            }
-        }
+            foreach (var op in Timeline.Frame(f).Ops) Step(state, op, f);
         CurrentFrame = target;
+
+        // Objects moved to another depth (OpDoc.From): moved there, before what's left at their new depth goes.
+        var moved = state.Where(kv => kv.Value.Existing is { } e && e.Depth != kv.Key && Children.GetValueOrDefault(e.Depth) == e).ToList();
+        foreach (var (_, p) in moved) Children.Remove(p.Existing!.Depth);
+        foreach (var (depth, p) in moved)
+        {
+            if (Children.TryGetValue(depth, out var occupant)) RemoveChild(occupant);
+            p.Existing!.Depth = depth;
+            Children[depth] = p.Existing;
+        }
 
         // Reconcile timeline-created children with the computed state.
         foreach (var c in Children.Values.ToArray())
@@ -276,6 +267,120 @@ public sealed class MovieClip : DisplayObject
         }
 
         RunFrameContent(target);
+        InitPending();
+    }
+
+    /// <summary>One timeline op applied to the display list being worked out (GotoFrame).</summary>
+    static void Step(Dictionary<int, Placement> state, OpDoc op, int f)
+    {
+        if (op.Remove is int rd) { state.Remove(rd); return; }
+        if (op.Place is not int depth) return;
+        if (op.From is int fromDepth)
+        {
+            state.Remove(depth);
+            if (state.Remove(fromDepth, out var carried)) state[depth] = carried;
+        }
+        state.TryGetValue(depth, out var p);
+        if (op.Id is int id && (op.Move != true || p == null || p.Id != id))
+        {
+            var np = new Placement { Id = id, PlaceFrame = f };
+            if (op.Move == true && p != null)
+            {
+                // Replacing the character keeps the old transform unless a new one is given.
+                np.Matrix = p.Matrix ?? p.Existing?.Matrix;
+                np.Cx = p.Cx ?? p.Existing?.ColorTransform;
+                np.Name = p.Name ?? p.Existing?.Name;
+                np.ClipDepth = p.ClipDepth;
+            }
+            p = state[depth] = np;
+        }
+        if (p == null) return;
+        if (op.Matrix != null) p.Matrix = Geo.Matrix(op.Matrix);
+        if (op.Cxform != null) p.Cx = CxForm.From(op.Cxform);
+        if (op.Ratio is double r) p.Ratio = (float)r;
+        if (op.Name != null) p.Name = op.Name;
+        if (op.ClipDepth is int cd) p.ClipDepth = cd;
+    }
+
+    /// <summary>What a timeline places at a frame, worked out from its start.</summary>
+    static Dictionary<int, Placement> StateAt(TimelineAsset timeline, int frame)
+    {
+        var state = new Dictionary<int, Placement>();
+        for (int f = 1; f <= frame; f++)
+            foreach (var op in timeline.Frame(f).Ops) Step(state, op, f);
+        return state;
+    }
+
+    /// <summary>
+    /// The settings' picture tweaks switched while this clip is shown: it and its children moved to their movies
+    /// loaded again (map: the old to the new), so their shapes are drawn as the tweaks have them now, and what the
+    /// timeline now places at the current frame shown (a colour transform changed, another symbol placed) without
+    /// leaving the frame.
+    /// </summary>
+    public void Retweak(IReadOnlyDictionary<MovieAsset, MovieAsset> map)
+    {
+        foreach (var c in Children.Values.ToArray())
+            if (c is MovieClip mc) mc.Retweak(map);
+            else if (c is GraphicObject && c.Asset is { } a && map.TryGetValue(a.Movie, out var fresh) && fresh.Symbol(a.Id) is ShapeAsset or MorphAsset or TextAsset)
+                c.Asset = fresh.Symbol(a.Id);
+        if (!map.TryGetValue(Movie, out var m)) return;
+        var old = Timeline;
+        // (A movie loaded into a clip, a scene into the player's holder: it plays its movie's own timeline, whatever
+        // sprite of another movie the clip was.)
+        if (ReferenceEquals(Timeline, Movie.Timeline)) Timeline = m.Timeline;
+        else if (Asset is SpriteAsset sprite && sprite.Movie == Movie)
+        {
+            // (Its sprite gone from the movie as loaded again (one a tweak added, now off): its parent moves it to the
+            // sprite in its place (Rebase), which takes the new movie; it doesn't keep the old one.)
+            if (m.Symbol(sprite.Id) is not SpriteAsset again) { Movie = m; return; }
+            Asset = again;
+            Timeline = again.Timeline;
+        }
+        else return;
+        Movie = m;
+        Rebase(old);
+    }
+
+    /// <summary>
+    /// Its timeline changed (Retweak) from old: what the new one places at the current frame shown. A clip placed in
+    /// place of another sprite is kept and moved to that sprite (as a patch's copy of a character, redrawn: where its
+    /// scripts have walked it, its frame and its variables kept); anything else placed in place of another is made
+    /// anew; a colour transform changed is set.
+    /// </summary>
+    void Rebase(TimelineAsset old)
+    {
+        // (Pictures it placed that are still from another load of its movie: this load's.)
+        foreach (var c in Children.Values)
+            if (c is GraphicObject && c.PlaceFrame != 0 && c.Asset is { } a && a.Movie != Movie &&
+                Movie.Symbol(a.Id) is ShapeAsset or MorphAsset or TextAsset)
+                c.Asset = Movie.Symbol(a.Id);
+        var before = StateAt(old, CurrentFrame);
+        foreach (var (depth, p) in StateAt(Timeline, CurrentFrame))
+        {
+            // (Only what the timeline put there, as it put it: not a clip a script attached.)
+            if (!Children.TryGetValue(depth, out var c) || c.PlaceFrame == 0 || !before.TryGetValue(depth, out var q) || c.Asset?.Id != q.Id) continue;
+            if (p.Id != q.Id && c is MovieClip clip && Movie.Symbol(p.Id) is SpriteAsset sprite)
+            {
+                var was = clip.Timeline;
+                clip.Asset = sprite;
+                clip.Timeline = sprite.Timeline;
+                // (The sprite is this movie's, as loaded now: the clip's movie with it, so what it places from here on
+                // is the current tweaks' (a clip left on an older load kept drawing that load's pictures).)
+                clip.Movie = Movie;
+                clip.CurrentFrame = Math.Min(clip.CurrentFrame, clip.FrameCount);
+                clip.PlaceFrame = p.PlaceFrame;
+                clip.Rebase(was);
+            }
+            else if (p.Id != q.Id)
+            {
+                RemoveChild(c);
+                if (Create(p.Id, depth) is not { } obj) continue;
+                obj.PlaceFrame = p.PlaceFrame;
+                Apply(obj, p);
+                if (obj is MovieClip made && Timeline.ClipEvents.TryGetValue((p.PlaceFrame, depth), out var ev)) made.ClipEvents = ev;
+            }
+            if (p.Cx != q.Cx && !c.TransformedByScript && Children.GetValueOrDefault(depth) is { } now) now.ColorTransform = p.Cx ?? CxForm.Identity;
+        }
         InitPending();
     }
 

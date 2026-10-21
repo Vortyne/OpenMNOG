@@ -1,0 +1,1 @@
+Shown at the full widescreen width (its sky stretched to fill it: widescreen.json).

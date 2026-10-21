@@ -16,6 +16,10 @@ if (TurnBack eq "1") {
 }
 if (eval("/:cTaipu") eq "1") {
     setProperty("Middle-Ground/Taipu", _x, "2000");
+    // (OpenMNOG: and stopped, so his digging, off the scene, isn't heard: its pickaxe sound played on.)
+    tellTarget ("Middle-Ground/Taipu") {
+        gotoAndStop(1);
+    }
 } else if (eval("/:cKapura") eq "1") {
     if (eval("/:TaipuCanGo") ne "1") {
         setTarget("/");
@@ -27,4 +31,8 @@ if (eval("/:cTaipu") eq "1") {
     }
 } else {
     setProperty("Middle-Ground/Taipu", _x, "2000");
+    // (OpenMNOG: and stopped, so his digging, off the scene, isn't heard: its pickaxe sound played on.)
+    tellTarget ("Middle-Ground/Taipu") {
+        gotoAndStop(1);
+    }
 }

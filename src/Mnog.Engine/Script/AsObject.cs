@@ -23,6 +23,13 @@ public class AsObject
     /// <summary>Property names for for-in, most recently added first (as Flash enumerates).</summary>
     public virtual IEnumerable<string> Keys() => _props.Keys.Reverse();
 
+    /// <summary>Its own string properties rewritten (the settings' Tohunga or Matoran, switched with text loaded).</summary>
+    public void MapStrings(Func<string, string> f)
+    {
+        foreach (var k in _props.Keys.ToList())
+            if (_props[k] is { IsString: true } v && f(v.RawString) is var s && s != v.RawString) _props[k] = Value.From(s);
+    }
+
     /// <summary>Looks up a property along the prototype chain.</summary>
     public virtual Value Get(string name, Interpreter vm)
     {

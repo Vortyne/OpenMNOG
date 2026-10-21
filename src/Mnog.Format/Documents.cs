@@ -295,6 +295,9 @@ public sealed class OpDoc
     public string? Name { get; set; }
     public int? ClipDepth { get; set; }
     public List<ClipEventDoc>? Events { get; set; }
+    /// <summary>OpenMNOG: the object at this depth moved here (to Place), the same object (it goes on animating and
+    /// being smoothed), not placed anew. A frame with these continues from what's shown when the timeline loops back to it.</summary>
+    public int? From { get; set; }
 }
 
 public sealed class FrameDoc
