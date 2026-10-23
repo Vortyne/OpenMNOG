@@ -25,6 +25,9 @@ public sealed unsafe class SdlHost : IHost, IDisposable
     public SdlHost(Player player, string title)
     {
         _player = player;
+        // (Windows: drawn at the screen's own resolution. Otherwise, on a screen with display scaling (a 4K one at
+        // 150%), Windows has the game draw at the scaled-down size and enlarges it, blocky in fullscreen.)
+        _sdl.SetHint("SDL_WINDOWS_DPI_AWARENESS", "permonitorv2");
         if (_sdl.Init(Sdl.InitVideo | Sdl.InitAudio | Sdl.InitEvents) < 0)
             throw new InvalidOperationException("SDL init failed: " + _sdl.GetErrorS());
         _sdl.SetHint(Sdl.HintRenderScaleQuality, "1");
@@ -34,6 +37,12 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         int w = player.StageWidth * 2, h = player.StageHeight * 2;
         if (_sdl.GetDesktopDisplayMode(0, &mode) == 0)
         {
+            // (Windows: in the screen's pixels, so as large as the display scaling makes other windows.)
+            float ddpi, hdpi, vdpi;
+            if (OperatingSystem.IsWindows() && _sdl.GetDisplayDPI(0, &ddpi, &hdpi, &vdpi) == 0 && hdpi > 96)
+            {
+                w = (int)(w * hdpi / 96); h = (int)(h * hdpi / 96);
+            }
             float fit = Math.Min(mode.W * 0.85f / w, mode.H * 0.85f / h);
             if (fit < 1) { w = (int)(w * fit); h = (int)(h * fit); }
         }
