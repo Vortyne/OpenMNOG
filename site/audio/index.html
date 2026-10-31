@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OpenMNOG High Quality Audio Pack</title>
 <meta name="description" content="The OpenMNOG High Quality Audio Pack: high-quality sounds and the chronicle's music.">
+<link rel="preload" href="moat-still.svg" as="image" type="image/svg+xml">
 <style>
 :root {
   --lava-shadow: rgba(40, 10, 2, .65);
@@ -55,11 +56,12 @@ nav a:hover { text-decoration: underline; }
 <body>
 <h1>OpenMNOG High Quality Audio Pack</h1>
 <div class="stage">
+  <img class="scene" src="moat-still.svg" alt="">
   <object class="scene" data="moat.svg" type="image/svg+xml" aria-hidden="true" tabindex="-1"></object>
   <div class="get">
-    <a class="download" id="download" href="https://github.com/Vortyne/OpenMNOG/releases/latest">
-      <span>Download</span>
-      <small id="detail">Latest release</small>
+    <a class="download" id="download" href="https://github.com/Vortyne/OpenMNOG/releases/latest/download/OpenMNOG-hq-audio-pack-v1.2.zip">
+      <span>Download HQ Audio Pack</span>
+      <small id="detail">v1.2 · 513 MB</small>
     </a>
     <p class="note" id="progress" hidden></p>
     <p class="note">Put the file you downloaded in OpenMNOG's game folder, and press Unpack audio in the game.</p>
@@ -73,13 +75,13 @@ nav a:hover { text-decoration: underline; }
 </div>
 <script>
 // The download: the pack on the newest release that has one, so it needn't be uploaded again until the audio changes.
-// (Without GitHub's answer, the link stays on the latest release's page.)
+// (Without GitHub's answer, what's written in the link below stands: the pack as last released.)
 fetch('https://api.github.com/repos/Vortyne/OpenMNOG/releases?per_page=30').then(r => r.ok ? r.json() : Promise.reject()).then(releases => {
   for (const release of releases) {
     const pack = !release.draft && !release.prerelease && release.assets.find(a => /^OpenMNOG-hq-audio-pack-v.+\.zip$/.test(a.name));
     if (!pack) continue;
     document.getElementById('download').href = pack.browser_download_url;
-    document.getElementById('detail').textContent = `${pack.name}, ${Math.round(pack.size / 1048576)} MB`;
+    document.getElementById('detail').textContent = [pack.name.match(/-(v.+)\.zip$/)[1], `${Math.round(pack.size / 1048576)} MB`].join(' · ');
     return;
   }
 }).catch(() => {});
