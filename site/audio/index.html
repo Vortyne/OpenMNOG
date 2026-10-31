@@ -22,12 +22,19 @@ body { background: #5a1c08; color: var(--ink); font: 15px/1.4 system-ui, "Segoe 
 
 /* The wordmark in the mountain's dark, placed as the stage is, but never above the window's top in a wide window. */
 h1 {
-  position: fixed; z-index: 1; left: 51.3%; top: max(1.5vh, calc(50vh - 26.5 * var(--u))); transform: translateX(-50%); margin: 0;
-  width: min(30 * var(--u), 92vw); text-align: center; color: #FF2E17;
-  font-size: clamp(15px, 1.9 * var(--u), 30px); font-weight: 700; letter-spacing: .02em;
+  position: fixed; z-index: 1; left: 51.3%; top: max(6vh, calc(50vh - 23 * var(--u))); transform: translateX(-50%); margin: 0;
+  width: min(27 * var(--u), 92vw); text-align: center; color: #FF2E17;
+  font-size: clamp(14px, 1.7 * var(--u), 28px); font-weight: 700; letter-spacing: .02em;
 }
 h1 img { display: block; width: 100%; height: auto; }
 h1 span { display: block; margin-top: .25em; text-shadow: 0 0 6px #000, 0 0 2px #000; }
+/* A dark box with blurred edges behind the logo and behind the download, so they read on the scenery. */
+h1::before, .get::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  background: rgba(0, 0, 0, .7); filter: blur(calc(1.2 * var(--u)));
+}
+h1::before { inset: calc(-1.2 * var(--u)) calc(-2 * var(--u)); }
+.get::before { inset: calc(-1.2 * var(--u)) calc(-2 * var(--u)); }
 
 .get { position: absolute; left: 50%; top: 68%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(40 * var(--u), 92vw); }
 a.download {
