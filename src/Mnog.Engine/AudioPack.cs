@@ -3,11 +3,10 @@ using System.IO.Compression;
 namespace Mnog.Engine;
 
 /// <summary>
-/// The high-quality audio, a separate download (OpenMNOG-hq-audio-pack-v{version}.zip, built by release.sh): its one folder, OpenMNOG-audio,
-/// goes in the game's folder, and holds hq/ and soundtrack/. A folder added as it is never overwrites anything, and it's
-/// found wherever unzipping left it; or the zip is left in the game's folder and the game unpacks it (AudioPackMenu). In
-/// the repository the files are in game/audio, as they always were; the lists of what there is (hq.json,
-/// soundtrack.json) are there in every download.
+/// The high-quality audio, a separate download (OpenMNOG-hq-audio-pack-v{version}.zip, built by release.sh): its one
+/// folder, OpenMNOG-audio, holds hq/ and soundtrack/. Left in the game's folder, the game unpacks the zip into game/audio
+/// (AudioPackMenu), where the files are in the repository too; unzipped by hand, the folder is found wherever that left
+/// it. The lists of what there is (hq.json, soundtrack.json) are in game/audio in every download.
 /// </summary>
 public static class AudioPack
 {
@@ -58,12 +57,12 @@ public static class AudioPack
         return null;
     }
 
-    /// <summary>Unpacks the zip into the game's folder: into a folder of its own, renamed to OpenMNOG-audio when all of
-    /// it is there, so a part of it is never taken for the audio. Throws if it can't be done.</summary>
+    /// <summary>Unpacks the zip into game/audio: first into a folder of its own, moved in when all of it is there, so a
+    /// part of it is never taken for the audio. Throws if it can't be done.</summary>
     public static void Unpack(string zip, string gameDir, Action<float> progress, CancellationToken cancel)
     {
-        var folder = Path.Combine(GameFolder(gameDir), Folder);
-        var part = folder + ".partial";
+        var audio = Path.GetFullPath(Path.Combine(gameDir, "audio"));
+        var part = Path.Combine(GameFolder(gameDir), Folder + ".partial");
         if (Directory.Exists(part)) Directory.Delete(part, true);
         try
         {
@@ -81,9 +80,14 @@ public static class AudioPack
                 done += entry.Length;
                 progress((float)done / total);
             }
-            if (!Directory.Exists(Path.Combine(part, Folder))) throw new InvalidDataException("No " + Folder + " folder in the zip");
-            if (Directory.Exists(folder)) Directory.Delete(folder, true);
-            Directory.Move(Path.Combine(part, Folder), folder);
+            var unpacked = Path.Combine(part, Folder);
+            if (!Directory.Exists(unpacked)) throw new InvalidDataException("No " + Folder + " folder in the zip");
+            foreach (var file in Directory.EnumerateFiles(unpacked, "*", SearchOption.AllDirectories).ToList())
+            {
+                var path = Path.Combine(audio, Path.GetRelativePath(unpacked, file));
+                Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+                System.IO.File.Move(file, path, true);
+            }
         }
         finally
         {
