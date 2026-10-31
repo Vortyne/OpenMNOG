@@ -101,7 +101,7 @@ public static class Watchdog
             {
                 // Came back: noted in the report (a long stall rather than a freeze).
                 try { File.AppendAllText(reported, $"{Environment.NewLine}Resumed after {Ms(reportedBeat) / 1000:0.0} s.{Environment.NewLine}"); }
-                catch (IOException) { }
+                catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
                 reported = null;
             }
             if (reported != null || stalled < StallMs) continue;

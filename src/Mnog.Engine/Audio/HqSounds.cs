@@ -22,7 +22,7 @@ public sealed class HqSounds
     /// and Gain, not faded as the game faded its short original).</summary>
     public sealed record Entry(string? File, bool Silent, string? Group, double Gain = 0, bool NoEnvelope = false);
 
-    readonly string _dir;
+    readonly string _gameDir;
     readonly Dictionary<string, Entry> _map = new(StringComparer.OrdinalIgnoreCase);
     readonly Dictionary<string, SoundAsset> _files = new(StringComparer.OrdinalIgnoreCase);
     readonly HashSet<string> _decoding = new(StringComparer.OrdinalIgnoreCase);
@@ -32,8 +32,8 @@ public sealed class HqSounds
 
     public HqSounds(string gameDir)
     {
-        _dir = Path.Combine(Path.GetFullPath(gameDir), "audio", "hq");
-        var file = Path.Combine(_dir, "hq.json");
+        _gameDir = gameDir;
+        var file = Path.Combine(Path.GetFullPath(gameDir), "audio", "hq", "hq.json");
         if (!File.Exists(file)) return;
         try
         {
@@ -56,6 +56,10 @@ public sealed class HqSounds
     static string MovieOf(string key) => key[..key.LastIndexOf('#')];
 
     public int Count => _map.Count;
+
+    /// <summary>Whether the files are here (they're a separate download: see AudioPack). Looked at anew each time.</summary>
+    public bool Installed => _map.Values.Where(e => e.File != null).Select(e => e.File!).Distinct()
+        .All(f => File.Exists(AudioPack.File(_gameDir, "hq", f)));
 
     /// <summary>The replacement for a game sound, if it has one and it can be used now.</summary>
     public Entry? Find(SoundAsset sound)
@@ -98,7 +102,7 @@ public sealed class HqSounds
         lock (_lock)
         {
             if (!_files.TryGetValue(name, out var asset))
-                _files[name] = asset = SoundAsset.FromFile(owner, Path.Combine(_dir, name), 0);
+                _files[name] = asset = SoundAsset.FromFile(owner, AudioPack.File(_gameDir, "hq", name), 0);
             return asset;
         }
     }

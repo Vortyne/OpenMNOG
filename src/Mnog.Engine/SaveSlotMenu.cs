@@ -63,6 +63,22 @@ public sealed class SaveSlotMenu
         _page = (_current - 1) / PerPage;
     }
 
+    /// <summary>game/files/scene-names.json: {"scene": ["area", "number"]}, shown on a slot without a picture.</summary>
+    Dictionary<string, string[]> Names => _names ??= ReadNames();
+    Dictionary<string, string[]>? _names;
+
+    Dictionary<string, string[]> ReadNames()
+    {
+        var names = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase);
+        try
+        {
+            var read = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string[]>>(File.ReadAllText(Path.Combine(_player.GameDir, "files", "scene-names.json")));
+            foreach (var (scene, name) in read ?? []) names[scene] = name;
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or System.Text.Json.JsonException) { }
+        return names;
+    }
+
     void Reload()
     {
         _current = _player.CurrentSaveSlot;
@@ -191,6 +207,12 @@ public sealed class SaveSlotMenu
         {
             canvas.DrawImage(image, pic, new SKSamplingOptions(SKFilterMode.Linear, SKMipmapMode.Linear));
         }
+        else if (info.Has && Names.TryGetValue(info.Scene, out var name) && name.Length == 2)
+        {
+            // No picture (one couldn't be saved): where the slot is, in words.
+            Centered(canvas, Lang.T(name[0]), new SKRect(pic.Left, pic.MidY - 22, pic.Right, pic.MidY + 2), _label, SKColors.White);
+            Centered(canvas, Number(name[1]), new SKRect(pic.Left, pic.MidY + 2, pic.Right, pic.MidY + 20), _small, Grey);
+        }
         else Centered(canvas, Lang.T(info.Has ? "No picture yet" : "Empty"), pic, _small, Grey);
         _stroke.Color = Grey;
         _stroke.StrokeWidth = 1;
@@ -241,6 +263,10 @@ public sealed class SaveSlotMenu
         _text.Color = color;
         canvas.DrawText(s, x, y, font, _text);
     }
+
+    /// <summary>"Scene XVIII-7" in the chosen language: the word from the "Scene {0}" format; the rest is kept.</summary>
+    static string Number(string s) =>
+        s.LastIndexOf(' ') is > 0 and var cut && Lang.Has(s[..cut] + " {0}", out var format) ? string.Format(format, s[(cut + 1)..]) : Lang.T(s);
 
     void Centered(SKCanvas canvas, string s, SKRect r, SKFont font, SKColor color)
     {

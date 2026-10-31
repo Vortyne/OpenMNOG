@@ -37,7 +37,12 @@ public sealed class AudioMenu(Player player)
         _mouse = p;
         if (CloseBox.Contains(p) || !Panel.Contains(p)) { player.CloseAudioMenu(false); return; }
         if (BackBox.Contains(p)) { player.CloseAudioMenu(true); return; }
-        if (HqBox.Contains(p)) { player.SetHqAudio(!player.HqAudio); return; }
+        if (HqBox.Contains(p))
+        {
+            if (player.Audio.UseHq || player.HqInstalled) player.SetHqAudio(!player.Audio.UseHq);
+            else player.AudioPrompt = new AudioPackMenu(player, () => player.SetHqAudio(true));
+            return;
+        }
         for (int i = 0; i < Rows.Length; i++)
         {
             var t = Track(i);
@@ -122,10 +127,10 @@ public sealed class AudioMenu(Player player)
         stroke.Color = Grey;
         canvas.DrawRect(HqBox, stroke);
         // ("Partial": only some of the game's sounds have high-quality originals so far.)
-        string hq = Lang.T(player.HqAudio ? "High quality: Partial" : "High quality: Off");
+        string hq = Lang.T(player.Audio.UseHq ? "High quality: Partial" : "High quality: Off");
         text.Color = hqLit ? SKColors.White : Orange;
         canvas.DrawText(hq, HqBox.MidX - label.MeasureText(hq) / 2, HqBox.MidY + 5, label, text);
-        if (hqLit)
+        if (hqLit && player.AudioPrompt == null)
             MenuGlyphs.DrawHint(canvas, Panel,
                 Lang.T("Partial: sounds and music play from high-quality originals, where they've been found so far.\nOff: the game's original sounds."),
                 player.MenuTypeface, player.DialogFont(13.5f), player.StageHeight);

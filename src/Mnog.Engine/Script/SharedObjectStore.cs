@@ -81,7 +81,6 @@ public sealed class SharedObjectStore(string dir)
     /// </summary>
     void Save(string name, AsObject data, Interpreter vm)
     {
-        Directory.CreateDirectory(dir);
         var file = FileFor(name);
         var baseline = _baseline.GetValueOrDefault(name) ?? [];
         var now = Snapshot(data, vm);
@@ -106,6 +105,7 @@ public sealed class SharedObjectStore(string dir)
         {
             try
             {
+                Directory.CreateDirectory(dir);
                 File.WriteAllText(temp, obj.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
                 File.Move(temp, file, overwrite: true);
                 break;
@@ -137,7 +137,7 @@ public sealed class SharedObjectStore(string dir)
             foreach (var old in Directory.GetFiles(BackupDir, stem + "-*.json").OrderByDescending(f => f, StringComparer.Ordinal).Skip(BackupsKept))
                 File.Delete(old);
         }
-        catch (IOException) { }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
     }
 
     /// <summary>Saves a data object now (values the engine set in it itself).</summary>

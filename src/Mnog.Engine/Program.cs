@@ -12,6 +12,14 @@ using SkiaSharp;
 // Mnog.Engine --pathop IN.json OUT.json: path clipping for the build tools (Skia's path operations): IN is
 // [{"subject": svg path, "clip": svg path, "near"?: svg path, "by"?: units}], OUT the subjects' parts inside their
 // clips (and, with "near", within "by" of that shape), as svg path data (the subject read even-odd, as shapes are).
+// Mnog.Engine --navigation GAMEDIR OUT.json: the navigation tables worked out from the game's scripts, written for a
+// release to load instead of reading every script (release.sh; Player.NavigationVars).
+if (args.Length == 3 && args[0] == "--navigation")
+{
+    Mnog.Engine.Player.WriteNavigation(args[1], args[2]);
+    return 0;
+}
+
 if (args.Length == 3 && args[0] == "--pathop")
 {
     var tasks = System.Text.Json.JsonSerializer.Deserialize<List<Dictionary<string, string>>>(File.ReadAllText(args[1]))!;
@@ -53,6 +61,12 @@ if (args.Length == 3 && args[0] == "--pathop")
     return 0;
 }
 
+// (From the very start: what fails before the game is up is noted, and shown; a release has no console. Later crashes
+// go to logs/crash-*.log as well, below.)
+StartupLog.ShowErrors = !args.Contains("--run");
+StartupLog.Step($"OpenMNOG starting, {System.Runtime.InteropServices.RuntimeInformation.OSDescription}, in {AppContext.BaseDirectory}");
+AppDomain.CurrentDomain.UnhandledException += (_, e) => StartupLog.Failed(e.ExceptionObject?.ToString() ?? "unknown error");
+
 string? gameDir = null;
 string? commands = null;
 string? entry = null;
@@ -68,10 +82,11 @@ for (int i = 0; i < args.Length; i++)
 gameDir ??= FindGameDir();
 if (gameDir == null || !File.Exists(Path.Combine(gameDir, "game.json")))
 {
-    Console.Error.WriteLine("Game data not found. Pass the folder containing game.json (the game/ folder of this repository).");
+    StartupLog.Failed("Game data not found: the game folder (with game.json) should be beside the program. Extract the whole download, and run OpenMNOG from inside its folder.");
     return 1;
 }
 
+StartupLog.Step("reading the game's settings and save: " + gameDir);
 var player = new Player(gameDir);
 // --movie Name starts a single movie instead of the game (for testing scenes in isolation).
 if (entry != null) player.Manifest.EntryMovie = entry;
@@ -83,6 +98,7 @@ if (commands != null)
     return 0;
 }
 
+StartupLog.Step("opening the window");
 using var host = new SdlHost(player, player.Manifest.Title);
 // --autopilot "<commands>": the game in its window (on the GPU), driven by test commands as if played: wait N lets N
 // game frames pass; "quit" closes it. For measuring the real renderer (its frame times are logged), or to take the
@@ -113,6 +129,7 @@ if (!args.Contains("--windowed") && SdlHost.SavedFullscreen()) host.Fullscreen =
 AppDomain.CurrentDomain.UnhandledException += (_, e) => WriteCrash(gameDir, player, e.ExceptionObject as Exception);
 try
 {
+    StartupLog.Step("loading the first movies");
     player.Start();
     // A freeze (the main loop not coming round for a few seconds) leaves logs/hang-<time>.log, as a crash does.
     Watchdog.Beat("-");
@@ -122,6 +139,7 @@ try
 catch (Exception e)
 {
     WriteCrash(gameDir, player, e);
+    StartupLog.Failed(e.ToString());
     throw;
 }
 return 0;
@@ -142,7 +160,7 @@ static void WriteCrash(string gameDir, Player player, Exception? e)
         File.WriteAllText(file, text);
         Console.Error.WriteLine($"Crashed; details saved to {file}");
     }
-    catch (IOException) { }
+    catch (Exception failed) when (failed is IOException or UnauthorizedAccessException) { }
 }
 
 /// <summary>Where crash and hang logs go: logs/ next to the game data (beside OpenMNOG.exe in a release).</summary>
@@ -314,6 +332,14 @@ static void RunCommand(Player player, string raw)
                 // totitle: leave the game for the title screen (as the ending prompt and the quit menu do).
                 player.ReturnToTitle();
                 break;
+            case "stagesvg":
+                {
+                    // stagesvg FILE W H: the stage as it is now, saved as an SVG (site/audio's moat: tools/site_moat.py).
+                    using var svgFile = File.Create(p[1]);
+                    using (var canvas = SKSvgCanvas.Create(SKRect.Create(F(2), F(3)), svgFile))
+                        player.Render(canvas, (int)F(2), (int)F(3));
+                    break;
+                }
             case "titlelayers":
                 {
                     // titlelayers DIR W H: the title scenery in layers, with each frame of its water (Player.SaveTitleLayers).

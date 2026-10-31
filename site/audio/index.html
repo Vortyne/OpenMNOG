@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenMNOG High Quality Audio Pack</title>
+<meta name="description" content="The OpenMNOG High Quality Audio Pack: high-quality sounds and the chronicle's music.">
+<style>
+:root {
+  --lava-shadow: rgba(40, 10, 2, .65);
+  --ink: #fff;
+  /* One stage unit: a hundredth of the scenery's width, as it's scaled to cover the window (16:9). */
+  --u: max(1vw, 1.7778vh);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: #5a1c08; color: var(--ink); font: 15px/1.4 system-ui, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+
+/* Ta-Koro's moat, cropped to fill the window; everything on it is placed in its own proportions, as on the main page. */
+.stage { position: fixed; left: 50%; top: 50%; width: calc(100 * var(--u)); aspect-ratio: 16 / 9; transform: translate(-50%, -50%); }
+.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+
+/* (On the window, not the stage: the stage's top is cropped off in a wide window.) */
+h1 {
+  position: fixed; z-index: 1; left: 50%; top: 3vh; transform: translateX(-50%); margin: 0; width: min(80 * var(--u), 92vw); text-align: center;
+  font-size: clamp(22px, 3 * var(--u), 48px); text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+.get { position: absolute; left: 50%; top: 68%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(40 * var(--u), 92vw); }
+a.download {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;
+  min-height: 64px; padding: 12px 28px; text-decoration: none; text-align: center;
+  background: rgba(30, 22, 8, .3); border: 3px solid var(--ink); color: var(--ink);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  font-size: clamp(20px, 2 * var(--u), 34px); font-weight: 700; letter-spacing: .02em;
+  text-shadow: 0 1px 3px var(--lava-shadow); box-shadow: 0 2px 10px var(--lava-shadow);
+  transition: background .12s;
+}
+a.download:hover, a.download:focus-visible { background: rgba(30, 22, 8, .5); }
+a.download:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+a.download small { font-size: .5em; font-weight: 500; letter-spacing: 0; }
+.note { margin: 0; text-align: center; font-size: 14px; text-shadow: 0 1px 3px var(--lava-shadow); white-space: nowrap; }
+nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px; font-size: 14px; }
+nav a { color: var(--ink); text-decoration: none; text-shadow: 0 1px 3px var(--lava-shadow); white-space: nowrap; }
+nav a:hover { text-decoration: underline; }
+
+@media (max-width: 620px) {
+  h1 { top: 10vh; }
+  .get { top: auto; bottom: 6vh; }
+  .note { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) { a.download { transition: none; } }
+</style>
+</head>
+<body>
+<h1>OpenMNOG High Quality Audio Pack</h1>
+<div class="stage">
+  <object class="scene" data="moat.svg" type="image/svg+xml" aria-hidden="true" tabindex="-1"></object>
+  <div class="get">
+    <a class="download" id="download" href="https://github.com/Vortyne/OpenMNOG/releases/latest">
+      <span>Download</span>
+      <small id="detail">Latest release</small>
+    </a>
+    <p class="note" id="progress" hidden></p>
+    <p class="note">Put the file you downloaded in OpenMNOG's game folder, and press Unpack audio in the game.</p>
+    <nav>
+      <a href="../">Back to OpenMNOG</a>
+      <a href="../sounds/">Sound list</a>
+      <a href="https://github.com/Vortyne/OpenMNOG">Source code</a>
+      <a href="https://github.com/Vortyne/OpenMNOG/issues/new?template=bug_report.yml">Report a bug</a>
+    </nav>
+  </div>
+</div>
+<script>
+// The download: the pack on the newest release that has one, so it needn't be uploaded again until the audio changes.
+// (Without GitHub's answer, the link stays on the latest release's page.)
+fetch('https://api.github.com/repos/Vortyne/OpenMNOG/releases?per_page=30').then(r => r.ok ? r.json() : Promise.reject()).then(releases => {
+  for (const release of releases) {
+    const pack = !release.draft && !release.prerelease && release.assets.find(a => /^OpenMNOG-hq-audio-pack-v.+\.zip$/.test(a.name));
+    if (!pack) continue;
+    document.getElementById('download').href = pack.browser_download_url;
+    document.getElementById('detail').textContent = `${pack.name}, ${Math.round(pack.size / 1048576)} MB`;
+    return;
+  }
+}).catch(() => {});
+
+// How much of the game's sound plays in high quality: the sound list's figure (site/sounds/progress.py).
+fetch('../sounds/sounds.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : Promise.reject()).then(d => {
+  if (!d.progress || !d.progress.total) return;
+  const note = document.getElementById('progress');
+  note.textContent = `${Math.round(d.progress.hq / d.progress.total * 100)}% of the game's sounds in high quality (${d.progress.hq} of ${d.progress.total})`;
+  note.hidden = false;
+}).catch(() => {});
+</script>
+</body>
+</html>

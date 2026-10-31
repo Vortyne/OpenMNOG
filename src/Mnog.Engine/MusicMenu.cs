@@ -12,24 +12,25 @@ namespace Mnog.Engine;
 /// </summary>
 public sealed class MusicMenu
 {
-    /// <summary>The soundtrack folder (beside the HQ audio).</summary>
-    public static string Folder(Player player) => Path.GetFullPath(Path.Combine(player.GameDir, "audio", "soundtrack"));
-
-    /// <summary>A chronicle entry's tracks whose files are here, as (name, file).</summary>
-    public static List<(string Name, string File)> Tracks(Player player, int slot)
+    /// <summary>A chronicle entry's tracks, whether their files are here or not, by file name. (The list is in every
+    /// download; the files are in the audio download: see AudioPack.)</summary>
+    public static List<string> Listed(Player player, int slot)
     {
-        var folder = Folder(player);
-        var list = new List<(string, string)>();
+        var list = new List<string>();
         try
         {
-            var doc = JsonNode.Parse(File.ReadAllText(Path.Combine(folder, "soundtrack.json")));
+            var doc = JsonNode.Parse(File.ReadAllText(Path.Combine(player.GameDir, "audio", "soundtrack", "soundtrack.json")));
             foreach (var f in doc?["chronicle"]?[slot.ToString()]?.AsArray() ?? [])
-                if (f?.GetValue<string>() is { } name && Path.Combine(folder, name) is var file && File.Exists(file))
-                    list.Add((NameOf(name), file));
+                if (f?.GetValue<string>() is { } name) list.Add(name);
         }
         catch (Exception e) when (e is IOException or System.Text.Json.JsonException or InvalidOperationException) { }
         return list;
     }
+
+    /// <summary>A chronicle entry's tracks whose files are here, as (name, file).</summary>
+    public static List<(string Name, string File)> Tracks(Player player, int slot) =>
+        Listed(player, slot).Select(name => (NameOf(name), File: AudioPack.File(player.GameDir, "soundtrack", name)))
+            .Where(t => File.Exists(t.File)).ToList();
 
     static string NameOf(string file)
     {
@@ -143,7 +144,7 @@ public sealed class MusicMenu
             }
             catch (Exception e) when (e is System.ComponentModel.Win32Exception or InvalidOperationException) { }
         }
-        _player.Host?.OpenUrl(Folder(_player));
+        _player.Host?.OpenUrl(Path.GetDirectoryName(_tracks[i].File)!);
     }
 
     public void KeyDown(int code)

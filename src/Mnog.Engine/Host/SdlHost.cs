@@ -28,7 +28,8 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         // (Windows: drawn at the screen's own resolution. Otherwise, on a screen with display scaling (a 4K one at
         // 150%), Windows has the game draw at the scaled-down size and enlarges it, blocky in fullscreen.)
         _sdl.SetHint("SDL_WINDOWS_DPI_AWARENESS", "permonitorv2");
-        if (_sdl.Init(Sdl.InitVideo | Sdl.InitAudio | Sdl.InitEvents) < 0)
+        StartupLog.Step("starting SDL (video)");
+        if (_sdl.Init(Sdl.InitVideo | Sdl.InitEvents) < 0)
             throw new InvalidOperationException("SDL init failed: " + _sdl.GetErrorS());
         _sdl.SetHint(Sdl.HintRenderScaleQuality, "1");
 
@@ -46,7 +47,9 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             float fit = Math.Min(mode.W * 0.85f / w, mode.H * 0.85f / h);
             if (fit < 1) { w = (int)(w * fit); h = (int)(h * fit); }
         }
+        StartupLog.Step($"creating the window, {w}x{h}, and OpenGL");
         if (!Environment.GetCommandLineArgs().Contains("--software")) TryCreateGl(title, w, h);
+        StartupLog.Step(_gr != null ? "drawing on the GPU" : "no OpenGL: drawing on the CPU");
         if (_gr == null)
         {
             _window = _sdl.CreateWindow(title, Sdl.WindowposCentered, Sdl.WindowposCentered, w, h,
@@ -57,6 +60,11 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             player.Log("rendering on the CPU");
         }
         SetIcon(Path.Combine(player.GameDir, "files", "icon.png"));
+        OpenDisplayLog();
+        StartupLog.Step("starting the sound");
+        // (Apart: a PC with no working sound device plays silently, rather than not starting.)
+        if (_sdl.InitSubSystem(Sdl.InitAudio) < 0)
+            StartupLog.Step("no sound: " + _sdl.GetErrorS());
 
         // The sound card pulls its audio on its own thread (AudioCallback), so a slow frame never starves it.
         _audioCallback = AudioCallback;
@@ -100,15 +108,129 @@ public sealed unsafe class SdlHost : IHost, IDisposable
         catch (Exception e) when (e is IOException or ArgumentException) { _player.Log($"window icon: {e.Message}"); }
     }
 
+    // ---- Display log ----
+
+    // logs/display.log (beside game/, made anew each run): the screen, the graphics card and driver, and around each
+    // switch to or from fullscreen and each window event (focus, minimizing...), the display's mode and how long the
+    // frames took: to tell whether a black screen is the game not drawing or the display changing mode.
+    StreamWriter? _displayLog;
+    readonly Stopwatch _displayClock = Stopwatch.StartNew();
+    double _watchFramesUntil;
+
+    void DisplayLog(string line)
+    {
+        if (_displayLog == null) return;
+        try { _displayLog.WriteLine($"[{_displayClock.Elapsed.TotalSeconds,8:0.000}] {line}"); _displayLog.Flush(); }
+        catch (IOException) { }
+    }
+
+    /// <summary>Frames for the next few seconds logged when slow (after a switch or a window event).</summary>
+    void WatchFrames() => _watchFramesUntil = _displayClock.Elapsed.TotalSeconds + 5;
+
+    string DisplayState()
+    {
+        int index = _sdl.GetWindowDisplayIndex(_window);
+        DisplayMode mode;
+        string m = _sdl.GetCurrentDisplayMode(Math.Max(0, index), &mode) == 0 ? $"{mode.W}x{mode.H} {mode.RefreshRate} Hz" : "?";
+        int x, y, w, h;
+        _sdl.GetWindowPosition(_window, &x, &y);
+        _sdl.GetWindowSize(_window, &w, &h);
+        var (dw, dh) = OutputSize();
+        uint f = _sdl.GetWindowFlags(_window);
+        string Flag(WindowFlags flag, string name) => (f & (uint)flag) == (uint)flag ? " " + name : "";
+        return $"display {index} mode {m}; window {w}x{h} at {x},{y}, drawing {dw}x{dh};" +
+               Flag(WindowFlags.FullscreenDesktop, "fullscreen") + Flag(WindowFlags.Borderless, "borderless") +
+               Flag(WindowFlags.Maximized, "maximized") + Flag(WindowFlags.Minimized, "minimized") +
+               Flag(WindowFlags.InputFocus, "focused") + Flag(WindowFlags.Shown, "shown") + (_borderless ? " (fullscreen: borderless window)" : "");
+    }
+
+    void OpenDisplayLog()
+    {
+        try
+        {
+            var dir = Path.GetFullPath(Path.Combine(_player.GameDir, "..", "logs"));
+            Directory.CreateDirectory(dir);
+            _displayLog = new StreamWriter(Path.Combine(dir, "display.log"), false);
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { return; }
+        Silk.NET.SDL.Version v;
+        _sdl.GetVersion(&v);
+        DisplayLog($"OpenMNOG {_player.ProjectVersion}, {RuntimeInformation.OSDescription}, SDL {v.Major}.{v.Minor}.{v.Patch}");
+        if (_gr != null && (delegate* unmanaged<uint, byte*>)_sdl.GLGetProcAddress("glGetString") is var glGetString && glGetString != null)
+        {
+            string Gl(uint name) => Marshal.PtrToStringUTF8((IntPtr)glGetString(name)) ?? "?";
+            DisplayLog($"drawing on the GPU: {Gl(0x1F01)} ({Gl(0x1F00)}), OpenGL {Gl(0x1F02)}");
+        }
+        else DisplayLog("drawing on the CPU");
+        for (int i = 0; i < _sdl.GetNumVideoDisplays(); i++)
+        {
+            DisplayMode mode, desktop;
+            Silk.NET.Maths.Rectangle<int> bounds;
+            float ddpi, hdpi, vdpi;
+            _sdl.GetCurrentDisplayMode(i, &mode);
+            _sdl.GetDesktopDisplayMode(i, &desktop);
+            _sdl.GetDisplayBounds(i, &bounds);
+            _sdl.GetDisplayDPI(i, &ddpi, &hdpi, &vdpi);
+            DisplayLog($"display {i}: {Marshal.PtrToStringUTF8((IntPtr)_sdl.GetDisplayName(i))}, at {bounds.Origin.X},{bounds.Origin.Y} {bounds.Size.X}x{bounds.Size.Y}, " +
+                       $"mode {mode.W}x{mode.H} {mode.RefreshRate} Hz (desktop {desktop.W}x{desktop.H} {desktop.RefreshRate} Hz), {hdpi:0} dpi ({hdpi / 96:0%} scaling)");
+        }
+        DisplayLog("start: " + DisplayState());
+    }
+
+    // Windows: fullscreen is a borderless window over the screen, a plain window with its border taken off and placed
+    // over the whole screen, not SDL's fullscreen (which also makes it always on top and changes it on every switch
+    // to another program and back).
+    bool _borderless;
+    (int X, int Y, int W, int H, bool Maximized) _windowed;
+
     public bool Fullscreen
     {
-        get => (_sdl.GetWindowFlags(_window) & (uint)WindowFlags.FullscreenDesktop) == (uint)WindowFlags.FullscreenDesktop;
+        get => OperatingSystem.IsWindows() ? _borderless
+            : (_sdl.GetWindowFlags(_window) & (uint)WindowFlags.FullscreenDesktop) == (uint)WindowFlags.FullscreenDesktop;
         set
         {
-            _sdl.SetWindowFullscreen(_window, value ? (uint)WindowFlags.FullscreenDesktop : 0);
+            DisplayLog($"switching {(value ? "to fullscreen" : "to a window")}: before, " + DisplayState());
+            long t0 = Stopwatch.GetTimestamp();
+            if (OperatingSystem.IsWindows()) SetBorderless(value);
+            else _sdl.SetWindowFullscreen(_window, value ? (uint)WindowFlags.FullscreenDesktop : 0);
+            DisplayLog($"switched in {Stopwatch.GetElapsedTime(t0).TotalMilliseconds:0} ms: " + DisplayState());
+            WatchFrames();
             _dirty = true;
             SaveWindowState(value);
         }
+    }
+
+    void SetBorderless(bool on)
+    {
+        if (on == _borderless) return;
+        if (on)
+        {
+            int x, y, w, h;
+            _sdl.GetWindowPosition(_window, &x, &y);
+            _sdl.GetWindowSize(_window, &w, &h);
+            bool maximized = (_sdl.GetWindowFlags(_window) & (uint)WindowFlags.Maximized) != 0;
+            _windowed = (x, y, w, h, maximized);
+            if (maximized) _sdl.RestoreWindow(_window);
+            Silk.NET.Maths.Rectangle<int> screen;
+            if (_sdl.GetDisplayBounds(Math.Max(0, _sdl.GetWindowDisplayIndex(_window)), &screen) != 0) return;
+            _sdl.SetWindowBordered(_window, SdlBool.False);
+            _sdl.SetWindowResizable(_window, SdlBool.False);
+            _sdl.SetWindowPosition(_window, screen.Origin.X, screen.Origin.Y);
+            _sdl.SetWindowSize(_window, screen.Size.X, screen.Size.Y);
+        }
+        else
+        {
+            _sdl.SetWindowBordered(_window, SdlBool.True);
+            _sdl.SetWindowResizable(_window, SdlBool.True);
+            // (Back where it was; one opened fullscreen keeps the size and place it was made with.)
+            if (_windowed.W > 0)
+            {
+                _sdl.SetWindowSize(_window, _windowed.W, _windowed.H);
+                _sdl.SetWindowPosition(_window, _windowed.X, _windowed.Y);
+                if (_windowed.Maximized) _sdl.MaximizeWindow(_window);
+            }
+        }
+        _borderless = on;
     }
 
     /// <summary>Whether the game was last left fullscreen (it opens that way next time); fullscreen at first.</summary>
@@ -132,7 +254,7 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             Directory.CreateDirectory(Path.GetDirectoryName(WindowStateFile)!);
             File.WriteAllText(WindowStateFile, $"{{ \"fullscreen\": {(fullscreen ? "true" : "false")} }}" + "\n");
         }
-        catch (IOException) { }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
     }
 
     public void SetClipboard(string text) => _sdl.SetClipboardText(text);
@@ -240,6 +362,7 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             if (!_shown && (_player.Started || clock.Elapsed.TotalMilliseconds > ShowWindowAfterMs))
             {
                 _shown = true;
+                StartupLog.Up();
                 _sdl.ShowWindow(_window);
                 _sdl.RaiseWindow(_window);
 
@@ -275,6 +398,11 @@ public sealed unsafe class SdlHost : IHost, IDisposable
                     break;
                 case EventType.Windowevent:
                     _dirty = true;
+                    if ((WindowEventID)ev.Window.Event is not (WindowEventID.Moved or WindowEventID.Enter or WindowEventID.Leave))
+                    {
+                        DisplayLog($"window event {(WindowEventID)ev.Window.Event} ({ev.Window.Data1}, {ev.Window.Data2}): " + DisplayState());
+                        WatchFrames();
+                    }
                     break;
                 case EventType.Mousemotion:
                     _player.OnMouseMove(ToStage(ev.Motion.X, ev.Motion.Y));
@@ -407,6 +535,9 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             if (_gr != null) { _builds.Add(_buildMs); _flushes.Add(_flushMs); _swaps.Add(_swapMs); }
             _ticks.Add(_tickMs);
         }
+        // (Shortly after a switch or a window event: each slow frame, with what it waited on.)
+        if (_displayLog != null && gap > 30 && _displayClock.Elapsed.TotalSeconds < _watchFramesUntil)
+            DisplayLog($"frame {gap:0} ms after the last: drawing {_buildMs:0.0} ms, handing to the GPU {_flushMs:0.0}, presenting {_swapMs:0.0}, at {w}x{h}");
         _lastFrame = Stopwatch.GetTimestamp();
         _tickMs = 0;
     }

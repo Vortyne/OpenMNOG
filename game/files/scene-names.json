@@ -1,0 +1,1742 @@
+{
+"I.1-N": [
+"Ta-Wahi",
+"Scene I-1"
+],
+"I.1-S": [
+"Ta-Wahi",
+"Scene I-1"
+],
+"I.2-N": [
+"Ta-Wahi",
+"Scene I-2"
+],
+"I.2-S": [
+"Ta-Wahi",
+"Scene I-2"
+],
+"I.2A": [
+"Ta-Wahi",
+"Scene I-2"
+],
+"I.3-E": [
+"Ta-Wahi",
+"Scene I-3"
+],
+"I.3-W": [
+"Ta-Wahi",
+"Scene I-3"
+],
+"I.4-E": [
+"Ta-Wahi",
+"Scene I-4"
+],
+"I.4-W": [
+"Ta-Wahi",
+"Scene I-4"
+],
+"I.5-S": [
+"Ta-Wahi",
+"Scene I-5"
+],
+"I.6-S": [
+"Ta-Wahi",
+"Scene I-6"
+],
+"II.1-E": [
+"Ta-Wahi",
+"Scene II-1"
+],
+"II.1-W": [
+"Ta-Wahi",
+"Scene II-1"
+],
+"II.2-N": [
+"Ta-Wahi",
+"Scene II-2"
+],
+"II.2-S": [
+"Ta-Wahi",
+"Scene II-2"
+],
+"II.3-N": [
+"Ta-Wahi",
+"Scene II-3"
+],
+"II.3-S": [
+"Ta-Wahi",
+"Scene II-3"
+],
+"II.4-N": [
+"Ta-Wahi",
+"Scene II-4"
+],
+"II.4-S": [
+"Ta-Wahi",
+"Scene II-4"
+],
+"II.4A": [
+"Telescope",
+"Scene II-4"
+],
+"II.4B": [
+"Telescope Carvings",
+"Scene II-4"
+],
+"III.1-N": [
+"Ta-Wahi",
+"Scene III-1"
+],
+"III.1-S": [
+"Ta-Wahi",
+"Scene III-1"
+],
+"III.1A": [
+"Ta-Wahi",
+"Scene III-1"
+],
+"III.2-N": [
+"Ta-Wahi",
+"Scene III-2"
+],
+"III.2-S": [
+"Ta-Wahi",
+"Scene III-2"
+],
+"III.3": [
+"Charred Forest",
+"Scene III-3"
+],
+"III.3A": [
+"Charred Forest",
+"Scene III-3"
+],
+"IV.1-N": [
+"Ta-Koro",
+"Scene IV-1"
+],
+"IV.1-S": [
+"Ta-Wahi",
+"Scene IV-1"
+],
+"IV.1-S.2": [
+"Ta-Wahi",
+"Scene IV-1"
+],
+"IV.2-N": [
+"Ta-Koro",
+"Scene IV-2"
+],
+"IV.2A": [
+"Ta-Koro",
+"Scene IV-2"
+],
+"IV.3-W": [
+"Ta-Koro",
+"Scene IV-3"
+],
+"IV.3A": [
+"Ta-Koro",
+"Scene IV-3"
+],
+"IV.4-N": [
+"Ta-Koro",
+"Scene IV-4"
+],
+"IV.4-S": [
+"Ta-Koro",
+"Scene IV-4"
+],
+"IV.5-N": [
+"Ta-Koro",
+"Scene IV-5"
+],
+"IV.5-S": [
+"Ta-Koro",
+"Scene IV-5"
+],
+"IV.6-N": [
+"Ta-Koro",
+"Scene IV-6"
+],
+"IV.6A": [
+"Ta-Koro",
+"Scene IV-6"
+],
+"IV.7-E": [
+"Ta-Koro",
+"Scene IV-7"
+],
+"IV.7-W": [
+"Ta-Koro",
+"Scene IV-7"
+],
+"IV.7A": [
+"Ta-Koro",
+"Scene IV-7"
+],
+"IV.8-N": [
+"Ta-Koro",
+"Scene IV-8"
+],
+"IV.8A": [
+"Ta-Koro",
+"Scene IV-8"
+],
+"V.1-S": [
+"Ga-Koro",
+"Scene V-1"
+],
+"V.1-W": [
+"Ga-Koro",
+"Scene V-1"
+],
+"V.2-N": [
+"Ga-Koro",
+"Scene V-2"
+],
+"V.2-S": [
+"Ga-Koro",
+"Scene V-2"
+],
+"V.3-S": [
+"Ga-Koro",
+"Scene V-3"
+],
+"V.3A": [
+"Ga-Koro",
+"Scene V-3"
+],
+"V.4-N": [
+"Ga-Koro",
+"Scene V-4"
+],
+"V.4-S": [
+"Ga-Koro",
+"Scene V-4"
+],
+"V.5-N": [
+"Ga-Koro",
+"Scene V-5"
+],
+"V.5-S": [
+"Ga-Koro",
+"Scene V-5"
+],
+"V.6": [
+"Ga-Koro",
+"Scene V-6"
+],
+"V.7-E": [
+"Ga-Koro",
+"Scene V-7"
+],
+"V.7A": [
+"Ga-Koro",
+"Scene V-7"
+],
+"V.7B": [
+"Ga-Koro",
+"Scene V-7"
+],
+"V.8-E": [
+"Ga-Koro",
+"Scene V-8"
+],
+"V.8A": [
+"Ga-Koro",
+"Scene V-8"
+],
+"V.9-E": [
+"Ga-Koro",
+"Scene V-9"
+],
+"V.9A": [
+"Ga-Koro",
+"Scene V-9"
+],
+"V.10-N": [
+"Ga-Koro",
+"Scene V-10"
+],
+"V.10A": [
+"Ga-Koro",
+"Scene V-10"
+],
+"V.11-E": [
+"Ga-Koro",
+"Scene V-11"
+],
+"V.12-N": [
+"Ga-Koro",
+"Scene V-12"
+],
+"V.12A": [
+"Ga-Koro",
+"Scene V-12"
+],
+"VI.1-E": [
+"Ga-Wahi, underwater",
+"Scene VI-1"
+],
+"VI.1-W": [
+"Ga-Wahi, underwater",
+"Scene VI-1"
+],
+"VI.2-E": [
+"Ga-Wahi, underwater",
+"Scene VI-2"
+],
+"VI.2-W": [
+"Ga-Wahi, underwater",
+"Scene VI-2"
+],
+"VI.2A": [
+"Ga-Wahi, underwater",
+"Scene VI-2"
+],
+"VII.1-N": [
+"Po-Wahi",
+"Scene VII-1"
+],
+"VII.1-S": [
+"Po-Wahi",
+"Scene VII-1"
+],
+"VII.1A": [
+"Po-Wahi",
+"Scene VII-1"
+],
+"VII.1B": [
+"Po-Wahi",
+"Scene VII-1"
+],
+"VII.2-N": [
+"Po-Wahi",
+"Scene VII-2"
+],
+"VII.2-S": [
+"Po-Wahi",
+"Scene VII-2"
+],
+"VII.3-N": [
+"Po-Wahi",
+"Scene VII-3"
+],
+"VII.3-S": [
+"Po-Wahi",
+"Scene VII-3"
+],
+"VII.4-N": [
+"Po-Wahi",
+"Scene VII-4"
+],
+"VII.4-S": [
+"Po-Wahi",
+"Scene VII-4"
+],
+"VII.5-E": [
+"Po-Wahi",
+"Scene VII-5"
+],
+"VII.5-W": [
+"Po-Wahi",
+"Scene VII-5"
+],
+"VII.6-E": [
+"Po-Wahi",
+"Scene VII-6"
+],
+"VII.6-W": [
+"Po-Wahi",
+"Scene VII-6"
+],
+"VII.7-E": [
+"Po-Wahi",
+"Scene VII-7"
+],
+"VII.7-W": [
+"Po-Wahi",
+"Scene VII-7"
+],
+"VII.8-E": [
+"Po-Wahi",
+"Scene VII-8"
+],
+"VII.8-W": [
+"Po-Wahi",
+"Scene VII-8"
+],
+"VII.9-N": [
+"Po-Wahi",
+"Scene VII-9"
+],
+"VII.9-S": [
+"Po-Wahi",
+"Scene VII-9"
+],
+"VII.10-N": [
+"Po-Wahi",
+"Scene VII-10"
+],
+"VII.10-S": [
+"Po-Wahi",
+"Scene VII-10"
+],
+"VII.11-N": [
+"Po-Wahi",
+"Scene VII-11"
+],
+"VII.11-S": [
+"Po-Wahi",
+"Scene VII-11"
+],
+"VIII.1-N": [
+"Po-Koro",
+"Scene VIII-1"
+],
+"VIII.1-S": [
+"Po-Wahi",
+"Scene VIII-1"
+],
+"VIII.1A": [
+"Po-Wahi",
+"Scene VIII-1"
+],
+"VIII.2-N": [
+"Po-Koro",
+"Scene VIII-2"
+],
+"VIII.2-S": [
+"Po-Koro",
+"Scene VIII-2"
+],
+"VIII.2A": [
+"Po-Koro",
+"Scene VIII-2"
+],
+"VIII.3-E": [
+"Po-Koro",
+"Scene VIII-3"
+],
+"VIII.3A": [
+"Po-Koro",
+"Scene VIII-3"
+],
+"VIII.4-N": [
+"Po-Koro",
+"Scene VIII-4"
+],
+"VIII.4-S": [
+"Po-Koro",
+"Scene VIII-4"
+],
+"VIII.4A": [
+"Po-Koro",
+"Scene VIII-4"
+],
+"VIII.5-E": [
+"Po-Koro",
+"Scene VIII-5"
+],
+"VIII.5A": [
+"Po-Koro",
+"Scene VIII-5"
+],
+"IX.1-E": [
+"Po-Wahi",
+"Scene IX-1"
+],
+"IX.1-W": [
+"Po-Wahi",
+"Scene IX-1"
+],
+"IX.2-E": [
+"Po-Wahi",
+"Scene IX-2"
+],
+"IX.2-W": [
+"Po-Wahi",
+"Scene IX-2"
+],
+"IX.3-E": [
+"Po-Wahi",
+"Scene IX-3"
+],
+"IX.3-W": [
+"Po-Wahi",
+"Scene IX-3"
+],
+"IX.4-E": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4-W": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4A": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4B": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4C": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4D": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4E": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.4F": [
+"Po-Wahi",
+"Scene IX-4"
+],
+"IX.5-N": [
+"Po-Wahi",
+"Scene IX-5"
+],
+"IX.5-S": [
+"Po-Wahi",
+"Scene IX-5"
+],
+"IX.6-N": [
+"Po-Wahi",
+"Scene IX-6"
+],
+"IX.6-S": [
+"Po-Wahi",
+"Scene IX-6"
+],
+"IX.7": [
+"Po-Wahi",
+"Scene IX-7"
+],
+"IX.7-N": [
+"Po-Wahi",
+"Scene IX-7"
+],
+"X.1-N": [
+"Po-Wahi",
+"Scene X-1"
+],
+"X.1-S": [
+"Po-Wahi",
+"Scene X-1"
+],
+"X.1A": [
+"Po-Wahi",
+"Scene X-1"
+],
+"X.2-N": [
+"Po-Wahi",
+"Scene X-2"
+],
+"X.2-S": [
+"Po-Wahi",
+"Scene X-2"
+],
+"X.3-N": [
+"Po-Wahi",
+"Scene X-3"
+],
+"X.3-S": [
+"Po-Wahi",
+"Scene X-3"
+],
+"X.4-N": [
+"Po-Wahi",
+"Scene X-4"
+],
+"X.4-S": [
+"Po-Wahi",
+"Scene X-4"
+],
+"X.5-N": [
+"Po-Wahi",
+"Scene X-5"
+],
+"X.5-S": [
+"Po-Wahi",
+"Scene X-5"
+],
+"X.6-N": [
+"Po-Wahi",
+"Scene X-6"
+],
+"X.6-S": [
+"Po-Wahi",
+"Scene X-6"
+],
+"X.6A": [
+"Po-Wahi",
+"Scene X-6"
+],
+"X.6B": [
+"Po-Wahi",
+"Scene X-6"
+],
+"X.7-N": [
+"Onu-Wahi",
+"Scene X-7"
+],
+"X.7-S": [
+"Onu-Wahi",
+"Scene X-7"
+],
+"X.8-N": [
+"Onu-Wahi",
+"Scene X-8"
+],
+"X.8-S": [
+"Onu-Wahi",
+"Scene X-8"
+],
+"X.9-N": [
+"Onu-Wahi",
+"Scene X-9"
+],
+"X.9-S": [
+"Onu-Wahi",
+"Scene X-9"
+],
+"X.10-N": [
+"Onu-Wahi",
+"Scene X-10"
+],
+"X.10-S": [
+"Onu-Wahi",
+"Scene X-10"
+],
+"X.11-N": [
+"Onu-Wahi",
+"Scene X-11"
+],
+"X.11-S": [
+"Onu-Wahi",
+"Scene X-11"
+],
+"X.12-N": [
+"Onu-Wahi",
+"Scene X-12"
+],
+"X.12-S": [
+"Onu-Wahi",
+"Scene X-12"
+],
+"XI.1-N": [
+"Onu-Koro",
+"Scene XI-1"
+],
+"XI.1-S": [
+"Onu-Koro",
+"Scene XI-1"
+],
+"XI.1A": [
+"Onu-Koro",
+"Scene XI-1"
+],
+"XI.2-E": [
+"Onu-Koro",
+"Scene XI-2"
+],
+"XI.2A": [
+"Onu-Koro",
+"Scene XI-2"
+],
+"XI.3-N": [
+"Onu-Koro",
+"Scene XI-3"
+],
+"XI.3-S": [
+"Onu-Koro",
+"Scene XI-3"
+],
+"XI.4-W": [
+"Onu-Koro",
+"Scene XI-4"
+],
+"XI.4A": [
+"Onu-Koro",
+"Scene XI-4"
+],
+"XI.5-N": [
+"Onu-Koro",
+"Scene XI-5"
+],
+"XI.5-S": [
+"Onu-Koro",
+"Scene XI-5"
+],
+"XI.5A": [
+"Onu-Koro",
+"Scene XI-5"
+],
+"XI.6-W": [
+"Onu-Koro",
+"Scene XI-6"
+],
+"XI.6A": [
+"Onu-Koro",
+"Scene XI-6"
+],
+"XI.6A_v4": [
+"Onu-Koro",
+"Scene XI-6"
+],
+"XI.7-E": [
+"Onu-Koro",
+"Scene XI-7"
+],
+"XI.7-W": [
+"Onu-Koro",
+"Scene XI-7"
+],
+"XI.8-N": [
+"Onu-Koro",
+"Scene XI-8"
+],
+"XI.8-S": [
+"Onu-Koro",
+"Scene XI-8"
+],
+"XII.1-E": [
+"Onu-Wahi",
+"Scene XII-1"
+],
+"XII.1-W": [
+"Onu-Wahi",
+"Scene XII-1"
+],
+"XII.2-E": [
+"Onu-Wahi",
+"Scene XII-2"
+],
+"XII.2-W": [
+"Onu-Wahi",
+"Scene XII-2"
+],
+"XII.2A": [
+"Onu-Wahi",
+"Scene XII-2"
+],
+"XII.3-E": [
+"Onu-Wahi",
+"Scene XII-3"
+],
+"XII.3-W": [
+"Onu-Wahi",
+"Scene XII-3"
+],
+"XII.4-E": [
+"Onu-Wahi",
+"Scene XII-4"
+],
+"XII.4-W": [
+"Onu-Wahi",
+"Scene XII-4"
+],
+"XII.5-E": [
+"Excavation Area",
+"Scene XII-5"
+],
+"XII.5-W": [
+"Onu-Wahi",
+"Scene XII-5"
+],
+"XII.6-E": [
+"Onu-Wahi",
+"Scene XII-6"
+],
+"XII.6A": [
+"Excavation Area",
+"Scene XII-6"
+],
+"XII.7A": [
+"Excavation Area",
+"Scene XII-7"
+],
+"XII.7B": [
+"Excavation Area",
+"Scene XII-7"
+],
+"XII.8-E": [
+"Excavation Area",
+"Scene XII-8"
+],
+"XII.8-W": [
+"Excavation Area",
+"Scene XII-8"
+],
+"XII.9-E": [
+"Excavation Area",
+"Scene XII-9"
+],
+"XII.9-W": [
+"Excavation Area",
+"Scene XII-9"
+],
+"XII.9A": [
+"Excavation Area",
+"Scene XII-9"
+],
+"XII.9B": [
+"Excavation Area",
+"Scene XII-9"
+],
+"XII.10-E": [
+"Excavation Area",
+"Scene XII-10"
+],
+"XII.10-E_b": [
+"Excavation Area",
+"Scene XII-10"
+],
+"XII.11-E": [
+"Excavation Area",
+"Scene XII-11"
+],
+"XII.11-W": [
+"Excavation Area",
+"Scene XII-11"
+],
+"XIII.1-N": [
+"Onu-Wahi",
+"Scene XIII-1"
+],
+"XIII.1-S": [
+"Onu-Wahi",
+"Scene XIII-1"
+],
+"XIII.2-N": [
+"Onu-Wahi",
+"Scene XIII-2"
+],
+"XIII.2-S": [
+"Onu-Wahi",
+"Scene XIII-2"
+],
+"XIII.3-N": [
+"Onu-Wahi",
+"Scene XIII-3"
+],
+"XIII.3-S": [
+"Onu-Wahi",
+"Scene XIII-3"
+],
+"XIII.4-N": [
+"Onu-Wahi",
+"Scene XIII-4"
+],
+"XIII.4-S": [
+"Onu-Wahi",
+"Scene XIII-4"
+],
+"XIII.5-N": [
+"Onu-Wahi",
+"Scene XIII-5"
+],
+"XIII.5-S": [
+"Onu-Wahi",
+"Scene XIII-5"
+],
+"XIII.6-N": [
+"Onu-Wahi",
+"Scene XIII-6"
+],
+"XIII.6-S": [
+"Onu-Wahi",
+"Scene XIII-6"
+],
+"XIII.7-N": [
+"Onu-Wahi",
+"Scene XIII-7"
+],
+"XIII.7-S": [
+"Onu-Wahi",
+"Scene XIII-7"
+],
+"XIII.8-N": [
+"Onu-Wahi",
+"Scene XIII-8"
+],
+"XIII.8-S": [
+"Onu-Wahi",
+"Scene XIII-8"
+],
+"XIII.9-N": [
+"Onu-Wahi",
+"Scene XIII-9"
+],
+"XIII.9-S": [
+"Onu-Wahi",
+"Scene XIII-9"
+],
+"XIII.10-N": [
+"Onu-Wahi",
+"Scene XIII-10"
+],
+"XIII.10-S": [
+"Dig Site",
+"Scene XIII-10"
+],
+"XIII.11-S": [
+"Dig Site",
+"Scene XIII-11"
+],
+"XIII.11A": [
+"Dig Site",
+"Scene XIII-11"
+],
+"XIII.12-S": [
+"Dig Site",
+"Scene XIII-12"
+],
+"XIV.1-E": [
+"Onu-Wahi",
+"Scene XIV-1"
+],
+"XIV.1-W": [
+"Onu-Wahi",
+"Scene XIV-1"
+],
+"XIV.2-E": [
+"Onu-Wahi",
+"Scene XIV-2"
+],
+"XIV.2-W": [
+"Onu-Wahi",
+"Scene XIV-2"
+],
+"XIV.3-E": [
+"Onu-Wahi",
+"Scene XIV-3"
+],
+"XIV.3-W": [
+"Onu-Wahi",
+"Scene XIV-3"
+],
+"XIV.4-E": [
+"Onu-Wahi",
+"Scene XIV-4"
+],
+"XIV.4-W": [
+"Onu-Wahi",
+"Scene XIV-4"
+],
+"XIV.5-E": [
+"Onu-Wahi",
+"Scene XIV-5"
+],
+"XIV.5-W": [
+"Onu-Wahi",
+"Scene XIV-5"
+],
+"XIV.6-E": [
+"Onu-Wahi",
+"Scene XIV-6"
+],
+"XIV.6-W": [
+"Onu-Wahi",
+"Scene XIV-6"
+],
+"XIV.7-E": [
+"Onu-Wahi",
+"Scene XIV-7"
+],
+"XIV.7-W": [
+"Onu-Wahi",
+"Scene XIV-7"
+],
+"XIV.8-E": [
+"Ta-Koro",
+"Scene XIV-8"
+],
+"XIV.8-W": [
+"Ta-Koro",
+"Scene XIV-8"
+],
+"XV.1-N": [
+"Onu-Wahi",
+"Scene XV-1"
+],
+"XV.1-S": [
+"Onu-Wahi",
+"Scene XV-1"
+],
+"XV.2-N": [
+"Onu-Wahi",
+"Scene XV-2"
+],
+"XV.2-S": [
+"Lava Tunnel",
+"Scene XV-2"
+],
+"XV.2.2-S": [
+"Lava Tunnel",
+"Scene XV-2"
+],
+"XV.3-N": [
+"Lava Tunnel",
+"Scene XV-3"
+],
+"XV.3-S": [
+"Lava Tunnel",
+"Scene XV-3"
+],
+"XV.3.2-N": [
+"Lava Tunnel",
+"Scene XV-3"
+],
+"XV.3A": [
+"Lava Tunnel",
+"Scene XV-3"
+],
+"XV.4-N": [
+"Onu-Wahi",
+"Scene XV-4"
+],
+"XV.4-S": [
+"Onu-Wahi",
+"Scene XV-4"
+],
+"XV.5-N": [
+"Cavern of Light",
+"Scene XV-5"
+],
+"XV.5-S": [
+"Cavern of Light",
+"Scene XV-5"
+],
+"XVI.1-N": [
+"Onu-Wahi",
+"Scene XVI-1"
+],
+"XVI.1-S": [
+"Onu-Wahi",
+"Scene XVI-1"
+],
+"XVI.2-N": [
+"Onu-Wahi",
+"Scene XVI-2"
+],
+"XVI.2-S": [
+"Onu-Wahi",
+"Scene XVI-2"
+],
+"XVI.3-N": [
+"Onu-Wahi",
+"Scene XVI-3"
+],
+"XVI.3-S": [
+"Onu-Wahi",
+"Scene XVI-3"
+],
+"XVI.4-N": [
+"Onu-Wahi",
+"Scene XVI-4"
+],
+"XVI.4-S": [
+"Onu-Wahi",
+"Scene XVI-4"
+],
+"XVII.1-N": [
+"Le-Wahi",
+"Scene XVII-1"
+],
+"XVII.1-S": [
+"Le-Wahi",
+"Scene XVII-1"
+],
+"XVII.1A": [
+"Le-Wahi",
+"Scene XVII-1"
+],
+"XVII.2-N": [
+"Le-Wahi",
+"Scene XVII-2"
+],
+"XVII.2-S": [
+"Le-Wahi",
+"Scene XVII-2"
+],
+"XVII.3-N": [
+"Le-Wahi",
+"Scene XVII-3"
+],
+"XVII.3-S": [
+"Le-Wahi",
+"Scene XVII-3"
+],
+"XVII.4-N": [
+"Le-Wahi",
+"Scene XVII-4"
+],
+"XVII.4-S": [
+"Le-Wahi",
+"Scene XVII-4"
+],
+"XVII.5-N": [
+"Le-Wahi",
+"Scene XVII-5"
+],
+"XVII.5-S": [
+"Le-Wahi",
+"Scene XVII-5"
+],
+"XVIII.1-N": [
+"Le-Wahi",
+"Scene XVIII-1"
+],
+"XVIII.1-S": [
+"Le-Wahi",
+"Scene XVIII-1"
+],
+"XVIII.1A": [
+"Le-Wahi",
+"Scene XVIII-1"
+],
+"XVIII.2A": [
+"Le-Koro",
+"Scene XVIII-2"
+],
+"XVIII.3-N": [
+"Le-Koro",
+"Scene XVIII-3"
+],
+"XVIII.3-S": [
+"Le-Koro",
+"Scene XVIII-3"
+],
+"XVIII.4-N": [
+"Le-Koro",
+"Scene XVIII-4"
+],
+"XVIII.4-S": [
+"Le-Koro",
+"Scene XVIII-4"
+],
+"XVIII.4A": [
+"Le-Koro",
+"Scene XVIII-4"
+],
+"XVIII.4B": [
+"Le-Koro",
+"Scene XVIII-4"
+],
+"XVIII.4C": [
+"Le-Koro",
+"Scene XVIII-4"
+],
+"XVIII.4D": [
+"Le-Koro",
+"Scene XVIII-4"
+],
+"XVIII.5-N": [
+"Le-Koro",
+"Scene XVIII-5"
+],
+"XVIII.5-S": [
+"Le-Koro",
+"Scene XVIII-5"
+],
+"XVIII.5A": [
+"Le-Koro",
+"Scene XVIII-5"
+],
+"XVIII.5B": [
+"Le-Koro",
+"Scene XVIII-5"
+],
+"XVIII.5C": [
+"Le-Koro",
+"Scene XVIII-5"
+],
+"XVIII.6-E": [
+"Ga-Koro",
+"Scene XVIII-6"
+],
+"XVIII.6A": [
+"Ga-Koro",
+"Scene XVIII-6"
+],
+"XVIII.7": [
+"Nui-Rama hive",
+"Scene XVIII-7"
+],
+"XVIII.7A": [
+"Nui-Rama hive",
+"Scene XVIII-7"
+],
+"XIX.1-N": [
+"Ko-Wahi",
+"Scene XIX-1"
+],
+"XIX.1-S": [
+"Ko-Wahi",
+"Scene XIX-1"
+],
+"XIX.1A": [
+"Ko-Wahi",
+"Scene XIX-1"
+],
+"XIX.1B": [
+"Ko-Wahi",
+"Scene XIX-1"
+],
+"XIX.2-N": [
+"Ko-Wahi",
+"Scene XIX-2"
+],
+"XIX.2-S": [
+"Ko-Wahi",
+"Scene XIX-2"
+],
+"XIX.3-N": [
+"Ko-Wahi",
+"Scene XIX-3"
+],
+"XIX.3A": [
+"Ko-Wahi",
+"Scene XIX-3"
+],
+"XIX.4-N": [
+"Ko-Wahi",
+"Scene XIX-4"
+],
+"XIX.4-S": [
+"Ko-Wahi",
+"Scene XIX-4"
+],
+"XIX.5-N": [
+"Ko-Wahi",
+"Scene XIX-5"
+],
+"XIX.5A": [
+"Ko-Wahi",
+"Scene XIX-5"
+],
+"XIX.6-N": [
+"Ko-Wahi",
+"Scene XIX-6"
+],
+"XIX.6-S": [
+"Ko-Wahi",
+"Scene XIX-6"
+],
+"XIX.7-N": [
+"Ko-Wahi",
+"Scene XIX-7"
+],
+"XIX.7-S": [
+"Ko-Wahi",
+"Scene XIX-7"
+],
+"XIX.8-N": [
+"Ko-Wahi",
+"Scene XIX-8"
+],
+"XIX.10-N": [
+"Ko-Wahi",
+"Scene XIX-10"
+],
+"XIX.10-S": [
+"Ko-Wahi",
+"Scene XIX-10"
+],
+"XIX.11-N": [
+"Ko-Wahi",
+"Scene XIX-11"
+],
+"XIX.11-S": [
+"Ko-Wahi",
+"Scene XIX-11"
+],
+"XIX.12-N": [
+"Ko-Wahi",
+"Scene XIX-12"
+],
+"XIX.12-S": [
+"Ko-Wahi",
+"Scene XIX-12"
+],
+"XX.1-N": [
+"Ko-Wahi",
+"Scene XX-1"
+],
+"XX.1-S": [
+"Ko-Wahi",
+"Scene XX-1"
+],
+"XX.2-N": [
+"Ko-Koro",
+"Scene XX-2"
+],
+"XX.2-S": [
+"Ko-Koro",
+"Scene XX-2"
+],
+"XX.2A": [
+"Ko-Koro",
+"Scene XX-2"
+],
+"XX.3-N": [
+"Ko-Koro",
+"Scene XX-3"
+],
+"XX.3-S": [
+"Ko-Koro",
+"Scene XX-3"
+],
+"XX.4-N": [
+"Ko-Koro",
+"Scene XX-4"
+],
+"XX.4-S": [
+"Ko-Koro",
+"Scene XX-4"
+],
+"XX.4A": [
+"Ko-Koro",
+"Scene XX-4"
+],
+"XX.5-N": [
+"Ko-Koro",
+"Scene XX-5"
+],
+"XX.5-S": [
+"Ko-Koro",
+"Scene XX-5"
+],
+"XX.5A": [
+"Ko-Koro",
+"Scene XX-5"
+],
+"XX.5B": [
+"Ko-Koro",
+"Scene XX-5"
+],
+"XXI.1-N": [
+"Ko-Wahi",
+"Scene XXI-1"
+],
+"XXI.5-N": [
+"Ko-Wahi",
+"Scene XXI-5"
+],
+"XXI.5-S": [
+"Ko-Wahi",
+"Scene XXI-5"
+],
+"XXI.6-N": [
+"Ko-Wahi",
+"Scene XXI-6"
+],
+"XXI.6-S": [
+"Ko-Wahi",
+"Scene XXI-6"
+],
+"XXI.7-N": [
+"Ko-Wahi",
+"Scene XXI-7"
+],
+"XXI.7-S": [
+"Ko-Wahi",
+"Scene XXI-7"
+],
+"XXI.8-N": [
+"Ko-Wahi",
+"Scene XXI-8"
+],
+"XXII.1-N": [
+"Kini-nui path",
+"Scene XXII-1"
+],
+"XXII.1-S": [
+"Kini-nui path",
+"Scene XXII-1"
+],
+"XXII.2-N": [
+"Kini-nui path",
+"Scene XXII-2"
+],
+"XXII.5-N": [
+"Le-Wahi",
+"Scene XXII-5"
+],
+"XXII.5-S": [
+"Le-Wahi",
+"Scene XXII-5"
+],
+"XXII.6-N": [
+"Le-Wahi",
+"Scene XXII-6"
+],
+"XXII.6-S": [
+"Le-Wahi",
+"Scene XXII-6"
+],
+"XXII.7-N": [
+"Le-Wahi",
+"Scene XXII-7"
+],
+"XXII.8-N": [
+"Le-Wahi",
+"Scene XXII-8"
+],
+"XXII.8-S": [
+"Le-Wahi",
+"Scene XXII-8"
+],
+"XXII.9-N": [
+"Kini-nui path",
+"Scene XXII-9"
+],
+"XXII.9-S": [
+"Kini-nui path",
+"Scene XXII-9"
+],
+"XXII.10-N": [
+"Kini-nui path",
+"Scene XXII-10"
+],
+"XXII.10-S": [
+"Kini-nui path",
+"Scene XXII-10"
+],
+"XXII.11-N": [
+"Kini-nui path",
+"Scene XXII-11"
+],
+"XXII.11-S": [
+"Kini-nui path",
+"Scene XXII-11"
+],
+"XXII.12-N": [
+"Kini-nui path",
+"Scene XXII-12"
+],
+"XXII.12-S": [
+"Kini-nui path",
+"Scene XXII-12"
+],
+"XXII.13-N": [
+"Kini-nui path",
+"Scene XXII-13"
+],
+"XXII.13-S": [
+"Kini-nui path",
+"Scene XXII-13"
+],
+"XXII.14-N": [
+"Kini-nui path",
+"Scene XXII-14"
+],
+"XXII.14-S": [
+"Kini-nui path",
+"Scene XXII-14"
+],
+"XXII.15-N": [
+"Kini-nui path",
+"Scene XXII-15"
+],
+"XXII.15-S": [
+"Kini-nui path",
+"Scene XXII-15"
+],
+"XXIII.1-N": [
+"Kini-nui path",
+"Scene XXIII-1"
+],
+"XXIII.1-S": [
+"Kini-nui path",
+"Scene XXIII-1"
+],
+"XXIII.2-N": [
+"Kini-nui path",
+"Scene XXIII-2"
+],
+"XXIII.2-S": [
+"Kini-nui path",
+"Scene XXIII-2"
+],
+"XXIII.3-N": [
+"Kini-nui path",
+"Scene XXIII-3"
+],
+"XXIII.3-S": [
+"Kini-nui path",
+"Scene XXIII-3"
+],
+"XXIII.4-N": [
+"Kini-nui path",
+"Scene XXIII-4"
+],
+"XXIII.5-N": [
+"Kini-Nui",
+"Scene XXIII-5"
+],
+"XXIII.5-N2": [
+"Kini-Nui",
+"Scene XXIII-5"
+],
+"XXIII.5-S": [
+"Kini-Nui",
+"Scene XXIII-5"
+],
+"XXIII.5-S2": [
+"Kini-Nui",
+"Scene XXIII-5"
+],
+"XXIII.5A": [
+"Kini-Nui",
+"Scene XXIII-5"
+],
+"XXIV.1": [
+"Kini-Nui",
+"Scene XXIV-1"
+],
+"XXIV.1-N": [
+"Makuta's lair",
+"Scene XXIV-1"
+],
+"XXIV.1-S": [
+"Makuta's lair",
+"Scene XXIV-1"
+],
+"XXIV.2": [
+"Kini-Nui",
+"Scene XXIV-2"
+],
+"XXIV.2-N": [
+"Makuta's lair",
+"Scene XXIV-2"
+],
+"XXIV.2-S": [
+"Makuta's lair",
+"Scene XXIV-2"
+],
+"XXIV.3": [
+"Kini-Nui",
+"Scene XXIV-3"
+],
+"XXIV.3-N": [
+"Makuta's lair",
+"Scene XXIV-3"
+],
+"XXIV.3-S": [
+"Makuta's lair",
+"Scene XXIV-3"
+],
+"XXIV.4": [
+"Kini-Nui",
+"Scene XXIV-4"
+],
+"XXIV.4-N": [
+"Makuta's lair",
+"Scene XXIV-4"
+],
+"XXIV.4-S": [
+"Makuta's lair",
+"Scene XXIV-4"
+],
+"Episode_1-1": [
+"Beach Stones",
+"Episode 1-1"
+],
+"Episode_1-2": [
+"Tahu's arrival",
+"Episode 1-2"
+],
+"Episode_2-1": [
+"Encountering Tahu",
+"Episode 2-1"
+],
+"Episode_3-1": [
+"Sailing to Ga-Koro",
+"Episode 3-1"
+],
+"Episode_3-2": [
+"Capturing of Ga-koro",
+"Episode 3-2"
+],
+"Episode_3-3": [
+"Gali vs. Tarakava",
+"Episode 3-3"
+],
+"episode_3-3b_water": [
+"Gali vs. Tarakava",
+"Episode 3-3"
+],
+"Episode_4-1": [
+"Infected Koli Ball",
+"Episode 4-1"
+],
+"Game_4-1": [
+"Nui-Jaga battle",
+"Game 4-1"
+],
+"Episode_4-2": [
+"Pohatu vs. Nui-Jaga",
+"Episode 4-2"
+],
+"episode_4-2a": [
+"Pohatu's arrival",
+"Episode 4-2"
+],
+"Episode_4-3": [
+"Pohatu vs. Nui-Jaga 2",
+"Episode 4-3"
+],
+"episode_4-3e": [
+"Pohatu's story",
+"Episode 4-3"
+],
+"Episode_5-1": [
+"Lava Surfing",
+"Episode 5-1"
+],
+"Episode_5-3": [
+"Lava Pump",
+"Episode 5-3"
+],
+"Episode_5-7": [
+"Taipu reaches Le-wahi",
+"Episode 5-7"
+],
+"Episode_6-1": [
+"Taipu reaches Le-wahi",
+"Episode 6-1"
+],
+"Game_6-1": [
+"Nui-Rama hive journey",
+"Game 6-1"
+],
+"Episode_6-2": [
+"Le-Koro taken",
+"Episode 6-2"
+],
+"Episode_6-3": [
+"Nui-Rama Attack",
+"Episode 6-3"
+],
+"Episode_6-4": [
+"Flight to the hive",
+"Episode 6-4"
+],
+"Episode_6-5": [
+"Reaching the Hive",
+"Episode 6-5"
+],
+"Episode_6-6": [
+"Knocked from the Sky",
+"Episode 6-6"
+],
+"Episode_6-7": [
+"Infected Lewa vs. Onua",
+"Episode 6-7"
+],
+"Episode_7-1": [
+"Cable ride to Ta-Koro",
+"Episode 7-1"
+],
+"Episode_7-2": [
+"Kopaka vs. Muaka",
+"Episode 7-2"
+],
+"Episode_8-1": [
+"Maku's Boat Ride",
+"Episode 8-1"
+],
+"Game_8-1": [
+"Kini-Nui Rahi defense",
+"Game 8-1"
+],
+"Episode_8-2": [
+"Tamaru's Vine Crossing",
+"Episode 8-2"
+],
+"Episode_8-3": [
+"Hafu and Taipu",
+"Episode 8-3"
+],
+"Episode_8-4": [
+"Kopeke's Key Carving",
+"Episode 8-4"
+],
+"Episode_8-5": [
+"The Toa at Kini-Nui",
+"Episode 8-5"
+],
+"Episode_8-6": [
+"Toa Kaita",
+"Episode 8-6"
+],
+"Episode_8-7": [
+"Toa Kaita 2",
+"Episode 8-7"
+],
+"Episode_8-8": [
+"Toa Kaita 3",
+"Episode 8-8"
+],
+"Episode_8-9": [
+"Kini-Nui Rahi defense",
+"Episode 8-9"
+],
+"Episode_8-10": [
+"Kini-Nui Rahi defense",
+"Episode 8-10"
+],
+"Episode_9-1": [
+"Final Defense at Kini-Nui",
+"Episode 9-1"
+],
+"Episode_9-2": [
+"Takua",
+"Episode 9-2"
+],
+"Episode_9-2_v4_sounded": [
+"Takua",
+"Episode 9-2"
+],
+"Episode_9-3": [
+"Toa vs. Makuta",
+"Episode 9-3"
+],
+"Episode_9-4": [
+"Takua's Final Crab Ride",
+"Episode 9-4"
+],
+"Episode_9-6": [
+"Vakama and the Chronicler",
+"Episode 9-6"
+],
+"Ihu": [
+"Cable ride over Mt. Ihu",
+"Cable ride"
+],
+"KahuRide": [
+"Kahu flight",
+"Kahu ride"
+],
+"KewaRide": [
+"Kewa flight",
+"Kewa ride"
+],
+"MiniSub": [
+"Sailing the coast",
+"Boat ride"
+],
+"XI.CrabRide1": [
+"Ussal crab ride",
+"Crab ride"
+]
+}

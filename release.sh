@@ -5,15 +5,19 @@
 #   OpenMNOG-v{version}-linux64.tar.gz     Linux (x64)
 #   OpenMNOG-v{version}-macos-arm64.zip    macOS on Apple silicon (M1 and later)
 #   OpenMNOG-v{version}-macos-x64.zip      macOS on Intel
+# and, with the target "audio" only, the high-quality audio, the same for every platform and every version, so it's
+# attached to a release once, and not again until the audio changes (site/audio finds the newest release that has it):
+#   OpenMNOG-hq-audio-pack-v{version}.zip  one folder, OpenMNOG-audio, with hq/ and soundtrack/ (see AudioPack.cs)
 #
 # Each holds one folder, OpenMNOG-v{version}-{target}/, with: the engine (OpenMNOG.exe, or OpenMNOG elsewhere;
-# self-contained: players need no .NET) and its native libraries (Skia, SDL), game/ (the committed game files only),
+# self-contained: players need no .NET) and its native libraries (Skia, SDL), game/ (the committed game files only,
+# without the audio files; hq.json and soundtrack.json, the lists of them, stay),
 # version_number.txt (shown on the title screen), OpenMNOG.ini (where the save goes) and README.txt (how to run the
 # game, from README-release.txt). Linux's and macOS's keep
 # OpenMNOG executable.
 #
-# usage: bash release.sh [--allow-dirty] [TARGET...]   (targets: win64 linux64 macos-arm64 macos-x64, or all;
-#                                                       win64 when none is given)
+# usage: bash release.sh [--allow-dirty] [TARGET...]   (targets: win64 linux64 macos-arm64 macos-x64 audio, or all,
+#                                                       which is all but audio; win64 when none is given)
 #   --allow-dirty: build from the working copy as it is, uncommitted changes and new files included (a test build:
 #   it won't match any commit).
 cd "$(dirname "$0")"
@@ -25,7 +29,7 @@ for a in "$@"; do
   case "$a" in
     --allow-dirty) DIRTY=1 ;;
     all) TARGETS+=(win64 linux64 macos-arm64 macos-x64) ;;
-    win64|linux64|macos-arm64|macos-x64) TARGETS+=("$a") ;;
+    win64|linux64|macos-arm64|macos-x64|audio) TARGETS+=("$a") ;;
     *) fail "unknown argument: $a" ;;
   esac
 done
@@ -49,8 +53,30 @@ mkdir -p "$OUT"
 if [ $DIRTY = 1 ]; then git ls-files -z --cached --others --exclude-standard game > "$OUT/game-files"
 else git ls-files -z game > "$OUT/game-files"; fi
 
+# The scenes' navigation tables, worked out from the scripts now, so the game loads them instead of reading every
+# script (ten thousand files) at start (Player.NavigationVars): game/navigation.json in each download.
+dotnet run --project src/Mnog.Engine -c Release -v q -- --navigation game "$OUT/navigation.json" > /dev/null \
+  && [ -s "$OUT/navigation.json" ] || fail "working out the navigation tables failed"
+
 built=()
 for target in "${TARGETS[@]}"; do
+  if [ "$target" = audio ]; then
+    ARCHIVE="$OUT/OpenMNOG-hq-audio-pack-v$VERSION.zip"
+    echo "Packing the audio..."
+    python - "$ARCHIVE" "$OUT/game-files" <<'EOF' || fail "packing the audio failed"
+import os, sys, zipfile
+out, listing = sys.argv[1:]
+count = 0
+with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
+    for f in open(listing, 'rb').read().decode('utf-8').split('\0'):
+        if f.startswith('game/audio/') and not f.endswith(('/hq.json', '/soundtrack.json')) and os.path.isfile(f):
+            z.write(f, 'OpenMNOG-audio/' + f[len('game/audio/'):])
+            count += 1
+print(f'{count} files')
+EOF
+    built+=("$ARCHIVE")
+    continue
+  fi
   case "$target" in
     win64) rid=win-x64; exe=Mnog.Engine.exe; as=OpenMNOG.exe; ext=zip ;;
     linux64) rid=linux-x64; exe=Mnog.Engine; as=OpenMNOG; ext=tar.gz ;;
@@ -70,16 +96,19 @@ for target in "${TARGETS[@]}"; do
 
   # Packed straight from the publish output and the repository (no copy of game/ first), the folder at its root.
   echo "Packing..."
-  python - "$NAME" "$ARCHIVE" "$OUT/engine-$target" "$exe" "$as" "$OUT/game-files" <<'EOF' || fail "packing $target failed"
+  python - "$NAME" "$ARCHIVE" "$OUT/engine-$target" "$exe" "$as" "$OUT/game-files" "$OUT/navigation.json" <<'EOF' || fail "packing $target failed"
 import os, sys, tarfile, zipfile
-name, out, engine, exe, as_name, listing = sys.argv[1:]
+name, out, engine, exe, as_name, listing, navigation = sys.argv[1:]
 # (source, path in the archive, executable)
 items = [(os.path.join(engine, exe), as_name, True)]
 items += [(os.path.join(engine, f), f, False) for f in sorted(os.listdir(engine))
           if f != exe and not f.endswith('.pdb') and os.path.isfile(os.path.join(engine, f))]
 items += [(f, f, False) for f in ('version_number.txt', 'OpenMNOG.ini')]
 items += [('README-release.txt', 'README.txt', False)]
-items += [(f, f, False) for f in open(listing, 'rb').read().decode('utf-8').split('\0') if f and os.path.isfile(f)]
+# (The audio files are their own download; the lists of them stay.)
+items += [(f, f, False) for f in open(listing, 'rb').read().decode('utf-8').split('\0') if f and os.path.isfile(f)
+          and (not f.startswith('game/audio/') or f.endswith(('/hq.json', '/soundtrack.json')))]
+items += [(navigation, 'game/navigation.json', False)]
 if out.endswith('.tar.gz'):
     with tarfile.open(out, 'w:gz', compresslevel=6) as t:
         for src, arc, x in items:
@@ -106,3 +135,4 @@ echo
 for a in "${built[@]}"; do echo "BUILT $a ($(du -h "$a" | cut -f1)), sha256 $(sha256sum "$a" | cut -d' ' -f1)"; done
 echo "  Attach them to a GitHub release tagged v$VERSION (marked as the latest release), e.g.:"
 echo "  gh release create v$VERSION ${built[*]} --title \"OpenMNOG v$VERSION\" --notes \"...\""
+echo "  (OpenMNOG-hq-audio-pack-v$VERSION.zip: attach it only when the audio has changed; site/audio finds the newest one.)"

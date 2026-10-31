@@ -41,8 +41,10 @@ The game opens fullscreen, or in a window if it was last left that way; `--windo
   Exit, Settings and Save Slot.
 - **Save slots**: 12 slots, each with a picture of where it was last saved. The game saves by itself.
 - **Chronicle music**: an entry's music button plays its soundtrack in full quality (FLAC, in
-  `game/audio/soundtrack`; `soundtrack.json` says which entries have which tracks), and Download opens that folder
-  with the track selected (a note there asks players to copy the files rather than move or delete them).
+  `game/audio/soundtrack`; `soundtrack.json` says which entries have which tracks), and Download opens that folder with the track selected (a note there asks players to copy the files rather than move or delete them).
+  In a release these files and `game/audio/hq`'s are a separate download, `OpenMNOG-hq-audio-pack-v{version}.zip` (`bash release.sh audio`, attached
+  to a release when the audio changes; [its page](https://vortyne.github.io/OpenMNOG/audio/) is `site/audio`): without them the
+  High quality option and the music button say so, and the game unpacks the zip when it finds it in its folder.
   Entries without music yet have the button greyed out.
 - **In-game Help**: the original support site's General, Tips and Hints and Bionicle Decoder pages, rebuilt inside
   the game (pictures are live frames of the game itself), plus the new keyboard controls.

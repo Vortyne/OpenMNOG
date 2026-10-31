@@ -7,6 +7,10 @@ no Flash, browser or other download is needed.
 
 Project page and newer versions: https://github.com/Vortyne/OpenMNOG
 
+The high-quality sounds and the chronicle's music are a separate download, the High Quality Audio Pack:
+https://vortyne.github.io/OpenMNOG/audio/
+Put the file you downloaded in this folder, and the game offers to unpack it.
+
 
 Running the game
 ----------------

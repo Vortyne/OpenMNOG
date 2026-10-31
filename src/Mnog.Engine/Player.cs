@@ -277,7 +277,13 @@ public sealed class Player
         _navigationReady = System.Threading.Tasks.Task.Run(() =>
         {
             using var job = Watchdog.Job("working out the scenes' navigation");
-            SceneState("");
+            // (At low priority: without the release's navigation.json it reads every script, and mustn't hold up
+            // drawing on a machine with few cores.)
+            var thread = System.Threading.Thread.CurrentThread;
+            var priority = thread.Priority;
+            thread.Priority = System.Threading.ThreadPriority.Lowest;
+            try { SceneState(""); }
+            finally { thread.Priority = priority; }
         });
     }
 
@@ -490,7 +496,7 @@ public sealed class Player
         Audio.Volume = Volume("volmaster") / 100f;
         Audio.GroupVolume[Mnog.Engine.Audio.AudioMixer.Music] = Volume("volmusic") / 100f;
         Audio.GroupVolume[Mnog.Engine.Audio.AudioMixer.Sfx] = Volume("volsfx") / 100f;
-        Audio.UseHq = HqAudio;
+        Audio.UseHq = HqAudio && HqInstalled;
         // (High quality on: the long songs start decoding now, so they're ready by the time they're needed.)
         if (Audio.UseHq && Audio.Hq != null && GetMovie("player") is { } owner) Audio.Hq.WarmUp(owner);
     }
@@ -498,6 +504,10 @@ public sealed class Player
     /// <summary>The Audio menu's High quality option (saved as "hqaudio", off by default): the high-quality
     /// replacements in game/audio/hq play instead of the game's own sounds (from the next sound started).</summary>
     public bool HqAudio => SaveValue("hqaudio") == "1";
+
+    /// <summary>Whether those replacements are here (they're a separate download: see AudioPack). Without them the
+    /// option stays off, whatever's saved.</summary>
+    public bool HqInstalled => Audio.Hq?.Installed == true;
 
     public void SetHqAudio(bool on)
     {
@@ -656,7 +666,7 @@ public sealed class Player
         Ending = null;
         Storage.BackupNow("mata-nui-online-game");
         RunScript("_level0.__matanui.save.state.clear(); _level0.__matanui.reload();", Level0Root);
-        try { File.Delete(SlotPictureFile(n)); } catch (IOException) { }
+        try { File.Delete(SlotPictureFile(n)); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
     }
 
     public void DeleteSaveSlot(int n, bool fromTitle)
@@ -664,7 +674,7 @@ public sealed class Player
         Storage.BackupNow("mata-nui-online-game");
         RunScript($"_level0.__matanui.deleteSlot(\"{n}\");" +
                   (fromTitle ? "if (_level20000.refreshSlot != undefined) { _level20000.refreshSlot(); }" : ""), Level0Root);
-        try { File.Delete(SlotPictureFile(n)); } catch (IOException) { }
+        try { File.Delete(SlotPictureFile(n)); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
     }
 
     long _pictureAt;
@@ -701,7 +711,7 @@ public sealed class Player
             using var png = image.Encode(SKEncodedImageFormat.Png, 90);
             File.WriteAllBytes(file, png.ToArray());
         }
-        catch (IOException e) { Log($"slot picture not saved: {e.Message}"); }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException) { Log($"slot picture not saved: {e.Message}"); }
     }
 
     /// <summary>The "Loading screen: Off" setting (see Patches.LoadScreenSkip).</summary>
@@ -1117,7 +1127,14 @@ public sealed class Player
             case "fullscreen": if (Host != null) Host.Fullscreen = arg.Equals("true", StringComparison.OrdinalIgnoreCase); break;
             case "widescreen": Widescreen = arg is "1" or "true"; break;
             case "wallpaper": if (int.TryParse(arg, out int wallSlot)) Wallpaper = new WallpaperMenu(this, wallSlot); break;
-            case "music": if (int.TryParse(arg, out int musicSlot) && MusicMenu.Tracks(this, musicSlot).Count > 0) Music = new MusicMenu(this, musicSlot); break;
+            case "music":
+                if (int.TryParse(arg, out int musicSlot))
+                {
+                    if (MusicMenu.Tracks(this, musicSlot).Count > 0) Music = new MusicMenu(this, musicSlot);
+                    else if (MusicMenu.Listed(this, musicSlot).Count > 0)
+                        AudioPrompt = new AudioPackMenu(this, () => { if (MusicMenu.Tracks(this, musicSlot).Count > 0) Music = new MusicMenu(this, musicSlot); });
+                }
+                break;
             case "vectorsand": if (VectorImages != (arg is "1" or "true")) { VectorImages = arg is "1" or "true"; _layerCache.Clear(); } break;
             case "textboxalpha": if (LowTextboxTransparency != (arg == "0")) { LowTextboxTransparency = arg == "0"; _layerCache.Clear(); } break;
             // Smoothing: 0 off, 1 partial (scripted motion, and the scenes marked for it), 2 full (all animation).
@@ -1265,12 +1282,12 @@ public sealed class Player
     /// <summary>One of the engine's own menus is open (the Help, save slots, audio settings, warp, wallpaper, music, the
     /// ending): it takes the mouse, and sets the cursor.</summary>
     bool EngineMenuOpen => SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Warp != null ||
-        Wallpaper != null || Music != null;
+        Wallpaper != null || Music != null || AudioPrompt != null;
 
     /// <summary>Whether a menu covers the game: the engine's own (the Help, save slots, audio settings, warp, wallpaper,
     /// the ending) or one of the overlay's dialogs (settings and its pages, timestamp, progress, quit).</summary>
     public bool MenuOpen => SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Warp != null ||
-        Wallpaper != null || Music != null || GetLevel(10001)?.ChildByName("matanui_overlay") is MovieClip overlay &&
+        Wallpaper != null || Music != null || AudioPrompt != null || GetLevel(10001)?.ChildByName("matanui_overlay") is MovieClip overlay &&
         overlay.Children.TryGetValue(16384 + 1, out var dialog) && dialog is MovieClip { Removed: false };
 
     /// <summary>
@@ -1353,6 +1370,7 @@ public sealed class Player
     {
         MouseStage = stage;
         // (The engine's menus: the pointer cursor over what can be clicked in them, nothing beneath them counting.)
+        if (AudioPrompt != null) { AudioPrompt.MouseMove(stage); Host?.SetHandCursor(AudioPrompt.OverClickable(stage)); return; }
         if (SlotMenu != null) { SlotMenu.MouseMove(stage); Host?.SetHandCursor(SlotMenu.OverClickable(stage)); return; }
         if (Ending != null) { Ending.MouseMove(stage); Host?.SetHandCursor(Ending.OverClickable(stage)); return; }
         if (Wallpaper != null) { Wallpaper.MouseMove(stage); Host?.SetHandCursor(Wallpaper.OverClickable(stage)); return; }
@@ -1416,6 +1434,7 @@ public sealed class Player
 
     public void OnMouseDown()
     {
+        if (AudioPrompt != null) { AudioPrompt.MouseDown(MouseStage); return; }
         if (SlotMenu != null) { SlotMenu.MouseDown(MouseStage); return; }
         if (Ending != null) { Ending.MouseDown(MouseStage); return; }
         if (Wallpaper != null) { Wallpaper.MouseDown(MouseStage); return; }
@@ -1441,7 +1460,7 @@ public sealed class Player
     {
         AudioSettings?.MouseUp();
         Help?.MouseUp();
-        if (Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || Music != null) return;
+        if (Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || Music != null || AudioPrompt != null) return;
         MouseDown = false;
         if (_pressed != null)
         {
@@ -1541,6 +1560,7 @@ public sealed class Player
     /// <summary>Flash key codes for button keyPress events (special keys use small numbers).</summary>
     public void OnKeyDown(int flashKeyCode, int buttonKeyCode)
     {
+        if (AudioPrompt != null) { AudioPrompt.KeyDown(flashKeyCode); return; }
         if (SlotMenu != null) { SlotMenu.KeyDown(flashKeyCode); return; }
         if (Ending != null) return;
         if (Wallpaper != null) { Wallpaper.KeyDown(flashKeyCode); return; }
@@ -1789,39 +1809,76 @@ public sealed class Player
         if (_navigation == null)
         {
             _navigation = new(StringComparer.OrdinalIgnoreCase);
-            var assign = new System.Text.RegularExpressions.Regex(@"^(\s*)(\w+) = ""([^""]*)"";\s*$");
-            static string MovieOf(string script) => Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(script))!);
-            // Only moves made in scenes, cutscenes and minigames: the player's start-up block for the first
-            // scene resets the whole game state.
-            var files = Directory.EnumerateFiles(Path.Combine(GameDir, "movies"), "*.as", SearchOption.AllDirectories)
-                .Where(f => MovieOf(f) is var m && (SceneName.IsMatch(m) || IsMovie(m) || IsMinigame(m)))
-                .OrderBy(f => SceneName.IsMatch(Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(f))!)) && Path.GetFileName(f).StartsWith("button") ? 0 : 1);
-            foreach (var file in files)
-            {
-                var lines = File.ReadAllLines(file);
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    var m = assign.Match(lines[i]);
-                    if (!m.Success || !m.Groups[2].Value.Equals("MovieName", StringComparison.OrdinalIgnoreCase)) continue;
-                    var target = Path.GetFileNameWithoutExtension(m.Groups[3].Value);
-                    if (target.Length == 0) continue;
-                    string indent = m.Groups[1].Value;
-                    int start = i, end = i;
-                    // The enclosing block: up to the brace opening it and the one closing it (or an "} else {").
-                    while (start > 0 && !(lines[start - 1].TrimEnd().EndsWith('{') && lines[start - 1].Length - lines[start - 1].TrimStart().Length < indent.Length)) start--;
-                    while (end + 1 < lines.Length && !(lines[end + 1].TrimStart().StartsWith('}') && lines[end + 1].Length - lines[end + 1].TrimStart().Length < indent.Length)) end++;
-                    var vars = new List<(string, string)>();
-                    for (int k = start; k <= end; k++)
-                        if (assign.Match(lines[k]) is { Success: true } a && a.Groups[1].Value == indent)
-                            vars.Add((a.Groups[2].Value, a.Groups[3].Value));
-                    // The fullest block wins (some only set a variable or two before loading).
-                    if (!_navigation.TryGetValue(target, out var known) || vars.Count > known.Count) _navigation[target] = vars;
-                    _routes.Add((Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(file))!), target, vars));
-                }
-            }
+            // (A release has them worked out ahead (game/navigation.json, release.sh): reading every script, ten
+            // thousand files, takes seconds, and on a first run, each scanned by the antivirus, stalled the game.)
+            var cache = Path.Combine(GameDir, NavigationFile);
+            if (!(File.Exists(cache) && ReadNavigation(cache, _routes))) { _routes.Clear(); _routes.AddRange(ReadRoutes(GameDir)); }
+            // The fullest block wins (some only set a variable or two before loading).
+            foreach (var (_, target, vars) in _routes)
+                if (!_navigation.TryGetValue(target, out var known) || vars.Count > known.Count) _navigation[target] = vars;
         }
         if (_navigation.TryGetValue(scene, out var found)) return found;
         return [("MovieName", scene + ".swf"), ("BeginLoadMovie", "1")];
+    }
+
+    /// <summary>The navigation tables worked out ahead, in the game folder (Mnog.Engine --navigation).</summary>
+    public const string NavigationFile = "navigation.json";
+
+    /// <summary>Every navigation block in the game's scripts, in the order they're weighed (NavigationVars).</summary>
+    static List<(string From, string To, List<(string Name, string Value)> Vars)> ReadRoutes(string gameDir)
+    {
+        var routes = new List<(string, string, List<(string, string)>)>();
+        var assign = new System.Text.RegularExpressions.Regex(@"^(\s*)(\w+) = ""([^""]*)"";\s*$");
+        static string MovieOf(string script) => Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(script))!);
+        // Only moves made in scenes, cutscenes and minigames: the player's start-up block for the first
+        // scene resets the whole game state.
+        var files = Directory.EnumerateFiles(Path.Combine(gameDir, "movies"), "*.as", SearchOption.AllDirectories)
+            .Where(f => MovieOf(f) is var m && (SceneName.IsMatch(m) || IsMovie(m) || IsMinigame(m)))
+            .OrderBy(f => SceneName.IsMatch(Path.GetFileName(Path.GetDirectoryName(Path.GetDirectoryName(f))!)) && Path.GetFileName(f).StartsWith("button") ? 0 : 1);
+        foreach (var file in files)
+        {
+            var lines = File.ReadAllLines(file);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var m = assign.Match(lines[i]);
+                if (!m.Success || !m.Groups[2].Value.Equals("MovieName", StringComparison.OrdinalIgnoreCase)) continue;
+                var target = Path.GetFileNameWithoutExtension(m.Groups[3].Value);
+                if (target.Length == 0) continue;
+                string indent = m.Groups[1].Value;
+                int start = i, end = i;
+                // The enclosing block: up to the brace opening it and the one closing it (or an "} else {").
+                while (start > 0 && !(lines[start - 1].TrimEnd().EndsWith('{') && lines[start - 1].Length - lines[start - 1].TrimStart().Length < indent.Length)) start--;
+                while (end + 1 < lines.Length && !(lines[end + 1].TrimStart().StartsWith('}') && lines[end + 1].Length - lines[end + 1].TrimStart().Length < indent.Length)) end++;
+                var vars = new List<(string, string)>();
+                for (int k = start; k <= end; k++)
+                    if (assign.Match(lines[k]) is { Success: true } a && a.Groups[1].Value == indent)
+                        vars.Add((a.Groups[2].Value, a.Groups[3].Value));
+                routes.Add((MovieOf(file), target, vars));
+            }
+        }
+        return routes;
+    }
+
+    /// <summary>Writes the navigation tables worked out from a game folder's scripts (for release.sh).</summary>
+    public static void WriteNavigation(string gameDir, string file) =>
+        File.WriteAllText(file, System.Text.Json.JsonSerializer.Serialize(
+            ReadRoutes(gameDir).Select(r => new object[] { r.From, r.To, r.Vars.Select(v => new[] { v.Name, v.Value }).ToArray() })));
+
+    /// <summary>Reads written navigation tables into routes; false if the file can't be read.</summary>
+    static bool ReadNavigation(string file, List<(string From, string To, List<(string Name, string Value)> Vars)> routes)
+    {
+        try
+        {
+            using var doc = System.Text.Json.JsonDocument.Parse(File.ReadAllText(file));
+            foreach (var r in doc.RootElement.EnumerateArray())
+                routes.Add((r[0].GetString()!, r[1].GetString()!, r[2].EnumerateArray().Select(v => (v[0].GetString()!, v[1].GetString()!)).ToList()));
+            return true;
+        }
+        catch (Exception e) when (e is IOException or System.Text.Json.JsonException or InvalidOperationException or IndexOutOfRangeException)
+        {
+            routes.Clear();
+            return false;
+        }
     }
 
     /// <summary>Every navigation block: the movie whose script it is, the scene it goes to, what it sets.</summary>
@@ -2280,6 +2337,9 @@ public sealed class Player
     /// <summary>The chronicle's music window (its music button: the entry's soundtrack), while open.</summary>
     public MusicMenu? Music;
 
+    /// <summary>The note that the high-quality audio is a separate download (see AudioPackMenu), while open.</summary>
+    public AudioPackMenu? AudioPrompt;
+
     /// <summary>Graphics > Textbox transparency Low: conversation text boxes less see-through (RenderContext.ConfigurePaint).</summary>
     public bool LowTextboxTransparency;
 
@@ -2292,7 +2352,7 @@ public sealed class Player
         if (GetLevel(1)?.ChildByName("holder") is not MovieClip { Movie.Name: "book" } book) return;
         if (book.Children.Values.FirstOrDefault(c => c is ButtonObject { Asset.Id: 70 }) is not ButtonObject button) return;
         int slot = (int)Vm.GetVariableAt(book, "CurrentTextSlot").ToNumber(6);
-        if (!_hasMusic.TryGetValue(slot, out bool has)) _hasMusic[slot] = has = MusicMenu.Tracks(this, slot).Count > 0;
+        if (!_hasMusic.TryGetValue(slot, out bool has)) _hasMusic[slot] = has = MusicMenu.Listed(this, slot).Count > 0;
         if (button.Disabled == !has) return;
         button.Disabled = !has;
         button.ColorTransform = has ? CxForm.Identity : new CxForm(0.4f, 0.4f, 0.4f, 0.75f, 0, 0, 0, 0);
@@ -2933,7 +2993,7 @@ public sealed class Player
         if (!_capturing && !_picturing) DrawTransition(canvas, width, height);
         if (!_picturing && TitleShowing) { canvas.Save(); canvas.SetMatrix(baseMatrix); DrawTitleSlot(canvas); canvas.Restore(); }
         if (!_picturing) { canvas.Save(); canvas.SetMatrix(baseMatrix); DrawSettingsHint(canvas); canvas.Restore(); }
-        if (!_picturing && (SkipVisible || Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || Music != null || _message != null))
+        if (!_picturing && (SkipVisible || Warp != null || SlotMenu != null || Ending != null || AudioSettings != null || Help != null || Wallpaper != null || Music != null || AudioPrompt != null || _message != null))
         {
             canvas.Save();
             canvas.SetMatrix(baseMatrix);
@@ -2945,6 +3005,7 @@ public sealed class Player
             Wallpaper?.Draw(canvas);
             Music?.Draw(canvas);
             SlotMenu?.Draw(canvas);
+            AudioPrompt?.Draw(canvas);
             DrawMessage(canvas, inBar: false);
             canvas.Restore();
         }
