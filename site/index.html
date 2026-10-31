@@ -132,7 +132,13 @@ async function show(version) {
   const link = document.getElementById('download');
   link.href = `${REPO}/releases/download/${tag}/${file}`;
   document.getElementById('label').textContent = `Download for ${build.name}`;
-  document.getElementById('detail').textContent = [tag, build.detail].filter(Boolean).join(' · ');
+  const detail = document.getElementById('detail');
+  detail.textContent = [tag, build.detail].filter(Boolean).join(' · ');
+  // Its size, from the release itself. (Without GitHub's answer, the rest stands.)
+  fetch(`https://api.github.com/repos/Vortyne/OpenMNOG/releases/tags/${tag}`).then(r => r.ok ? r.json() : Promise.reject()).then(release => {
+    const asset = release.assets.find(a => a.name === file);
+    if (asset) detail.textContent = [tag, build.detail, `${Math.round(asset.size / 1048576)} MB`].filter(Boolean).join(' · ');
+  }).catch(() => {});
   const note = document.getElementById('note');
   note.textContent = '';
   if (os === 'mobile') note.textContent = 'OpenMNOG runs on a computer. Visit this page on one to play.';

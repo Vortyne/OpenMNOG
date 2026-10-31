@@ -20,11 +20,14 @@ body { background: #5a1c08; color: var(--ink); font: 15px/1.4 system-ui, "Segoe 
 .stage { position: fixed; left: 50%; top: 50%; width: calc(100 * var(--u)); aspect-ratio: 16 / 9; transform: translate(-50%, -50%); }
 .scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
 
-/* (On the window, not the stage: the stage's top is cropped off in a wide window.) */
+/* The wordmark in the mountain's dark, placed as the stage is, but never above the window's top in a wide window. */
 h1 {
-  position: fixed; z-index: 1; left: 50%; top: 3vh; transform: translateX(-50%); margin: 0; width: min(80 * var(--u), 92vw); text-align: center;
-  font-size: clamp(22px, 3 * var(--u), 48px); text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+  position: fixed; z-index: 1; left: 51.3%; top: max(1.5vh, calc(50vh - 26.5 * var(--u))); transform: translateX(-50%); margin: 0;
+  width: min(30 * var(--u), 92vw); text-align: center; color: #FF2E17;
+  font-size: clamp(15px, 1.9 * var(--u), 30px); font-weight: 700; letter-spacing: .02em;
 }
+h1 img { display: block; width: 100%; height: auto; }
+h1 span { display: block; margin-top: .25em; text-shadow: 0 0 6px #000, 0 0 2px #000; }
 
 .get { position: absolute; left: 50%; top: 68%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(40 * var(--u), 92vw); }
 a.download {
@@ -45,7 +48,7 @@ nav a { color: var(--ink); text-decoration: none; text-shadow: 0 1px 3px var(--l
 nav a:hover { text-decoration: underline; }
 
 @media (max-width: 620px) {
-  h1 { top: 10vh; }
+  h1 { left: 50%; top: 10vh; width: 70vw; }
   .get { top: auto; bottom: 6vh; }
   .note { white-space: normal; }
 }
@@ -53,13 +56,13 @@ nav a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<h1>OpenMNOG High Quality Audio Pack</h1>
+<h1><img src="wordmark.svg" alt="OpenMNOG"><span>High Quality Audio Pack</span></h1>
 <div class="stage">
   <object class="scene" data="moat.svg" type="image/svg+xml" aria-hidden="true" tabindex="-1"></object>
   <div class="get">
-    <a class="download" id="download" href="https://github.com/Vortyne/OpenMNOG/releases/latest/download/OpenMNOG-hq-audio-pack-v1.2.zip">
+    <a class="download" id="download" href="https://github.com/Vortyne/OpenMNOG/releases/latest">
       <span>Download HQ Audio Pack</span>
-      <small id="detail">v1.2 · 513 MB</small>
+      <small id="detail">Latest release</small>
     </a>
     <p class="note" id="progress" hidden></p>
     <p class="note">Put the file you downloaded in OpenMNOG's game folder, and press Unpack audio in the game.</p>
@@ -73,16 +76,21 @@ nav a:hover { text-decoration: underline; }
 </div>
 <script>
 // The download: the pack on the newest release that has one, so it needn't be uploaded again until the audio changes.
-// (Without GitHub's answer, what's written in the link below stands: the pack as last released.)
+// Its version and size come from the release itself. (Without GitHub's answer: the latest release's page, and the
+// version published beside the main page.)
+const detail = document.getElementById('detail');
+const version = () => fetch('../version_number.txt', { cache: 'no-cache' }).then(r => r.ok ? r.text() : Promise.reject())
+  .then(v => { if (/^[\w.-]+$/.test(v.trim())) detail.textContent = 'v' + v.trim(); }).catch(() => {});
 fetch('https://api.github.com/repos/Vortyne/OpenMNOG/releases?per_page=30').then(r => r.ok ? r.json() : Promise.reject()).then(releases => {
   for (const release of releases) {
     const pack = !release.draft && !release.prerelease && release.assets.find(a => /^OpenMNOG-hq-audio-pack-v.+\.zip$/.test(a.name));
     if (!pack) continue;
     document.getElementById('download').href = pack.browser_download_url;
-    document.getElementById('detail').textContent = [pack.name.match(/-(v.+)\.zip$/)[1], `${Math.round(pack.size / 1048576)} MB`].join(' · ');
+    detail.textContent = [pack.name.match(/-(v.+)\.zip$/)[1], `${Math.round(pack.size / 1048576)} MB`].join(' · ');
     return;
   }
-}).catch(() => {});
+  version();
+}).catch(version);
 
 // How much of the game's sound plays in high quality: the sound list's figure (site/sounds/progress.py).
 fetch('../sounds/sounds.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : Promise.reject()).then(d => {
