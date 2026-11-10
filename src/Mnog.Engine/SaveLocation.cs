@@ -20,9 +20,17 @@ public static class SaveLocation
     /// <summary>Where the folder came from, for the log.</summary>
     public static string Source { get; private set; } = "default";
 
+    /// <summary>OpenMNOG.ini, beside the game folder (once <see cref="Resolve"/> has found it).</summary>
+    static string? _ini;
+
+    /// <summary>Whether an ini setting is on ("1", "true", "yes" or "on"); off when it, or the file, isn't there.</summary>
+    public static bool IniFlag(string section, string key) =>
+        _ini != null && ReadIni(_ini, section, key)?.ToLowerInvariant() is "1" or "true" or "yes" or "on";
+
     /// <summary>Settles the folder for a game in <paramref name="gameDir"/> (its ini is beside it).</summary>
     public static void Resolve(string gameDir)
     {
+        _ini = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(gameDir)) ?? gameDir, IniName);
         if (Environment.GetEnvironmentVariable("MNOG_SAVEDIR") is { Length: > 0 } saveDir)
         {
             SharedObjects = Path.GetFullPath(saveDir);

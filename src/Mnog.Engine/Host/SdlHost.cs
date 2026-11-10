@@ -216,7 +216,12 @@ public sealed unsafe class SdlHost : IHost, IDisposable
             _sdl.SetWindowBordered(_window, SdlBool.False);
             _sdl.SetWindowResizable(_window, SdlBool.False);
             _sdl.SetWindowPosition(_window, screen.Origin.X, screen.Origin.Y);
-            _sdl.SetWindowSize(_window, screen.Size.X, screen.Size.Y);
+            // (OpenMNOG.ini's [Display] TallerFullscreen: one pixel taller than the screen, its last row off its edge. A
+            // window exactly the screen's size is taken by the graphics driver (OpenGL, NVIDIA's and AMD's) for a
+            // fullscreen game, and the screen is switched over to it, going black for a second or two on some screens,
+            // TVs especially, each way.)
+            bool taller = SaveLocation.IniFlag("Display", "TallerFullscreen");
+            _sdl.SetWindowSize(_window, screen.Size.X, screen.Size.Y + (taller ? 1 : 0));
         }
         else
         {
