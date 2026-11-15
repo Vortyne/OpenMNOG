@@ -27,7 +27,9 @@ if (eval("/:OnuKoroLava") eq "1") {
 Language = eval("/:Language");
 Gnomon = eval("/:Gnomon");
 LetterA = eval("/:LetterA");
-if (Gnomon eq "1") {
+// (OpenMNOG: also once the gnomon is on the sundial, Gnomon 2; before, he went back to his first talk and gave
+// another letter.)
+if (Gnomon eq "1" or Gnomon eq "2") {
     TextToLoad = "Text_XII.9A_3_" add Language add ".txt";
 } else if (LetterA eq "1") {
     TextToLoad = "Text_XII.9A_2_" add Language add ".txt";
