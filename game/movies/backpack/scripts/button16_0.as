@@ -14,6 +14,17 @@ if (Name ne "") {
         TextToLoad = "Text_cBar_" add Name add "_XXII9-N_" add Language add ".txt";
     } else if (MovieName eq "XXII.14-N.swf" and Quest < "4") {
         TextToLoad = "Text_cBar_" add Name add "_XXII14-N_" add Language add ".txt";
+    // (OpenMNOG: once their part at Kini-Nui is done, each says so where they did it.)
+    } else if (MovieName eq "V.2-N.swf" and Name eq "MAKU" and "0" < Quest) {
+        TextToLoad = "Text_cBar_MAKU_V2-N_done_" add Language add ".txt";
+    } else if (MovieName eq "XXII.5-N.swf" and Name eq "TAMARU" and "1" < Quest) {
+        TextToLoad = "Text_cBar_TAMARU_XXII5-N_done_" add Language add ".txt";
+    } else if (MovieName eq "XXII.9-N.swf" and Name eq "HAFU" and "2" < Quest) {
+        TextToLoad = "Text_cBar_HAFU_XXII9-N_done_" add Language add ".txt";
+    } else if (MovieName eq "XXII.9-N.swf" and Name eq "TAIPU" and "2" < Quest) {
+        TextToLoad = "Text_cBar_TAIPU_XXII9-N_done_" add Language add ".txt";
+    } else if (MovieName eq "XXII.14-N.swf" and Name eq "KOPEKE" and "4" < Quest) {
+        TextToLoad = "Text_cBar_KOPEKE_XXII14-N_done_" add Language add ".txt";
     } else if (MovieName eq "XXIV.1.swf") {
         TextToLoad = "Text_cBar_" add Name add "_XXIV1_" add Language add ".txt";
     } else if (MovieName eq "XXIV.2.swf") {

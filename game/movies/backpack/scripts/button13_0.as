@@ -2,7 +2,8 @@
 if (eval("../:AllowChange") eq "1" and eval("../:cTextOpen") eq "1") {
     MovieName = eval("/:MovieName");
     Name = eval("../../:Name");
-    if (MovieName eq "V.2-N.swf" and Name eq "MAKU") {
+    if (MovieName eq "V.2-N.swf" and Name eq "MAKU" and eval("/:Quest") < "1") {
+        // (OpenMNOG: only until it has played; before, selecting him there played it again.)
         tellTarget ("../") {
             gotoAndPlay("Close cText");
         }
@@ -18,7 +19,8 @@ if (eval("../:AllowChange") eq "1" and eval("../:cTextOpen") eq "1") {
             HorizontalShift = "0";
             BeginLoadMovie = "1";
         }
-    } else if (MovieName eq "XXII.5-N.swf" and Name eq "TAMARU") {
+    } else if (MovieName eq "XXII.5-N.swf" and Name eq "TAMARU" and eval("/:Quest") < "2") {
+        // (OpenMNOG: only until it has played; before, selecting him there played it again.)
         tellTarget ("../") {
             gotoAndPlay("Close cText");
         }
@@ -34,7 +36,8 @@ if (eval("../:AllowChange") eq "1" and eval("../:cTextOpen") eq "1") {
             HorizontalShift = "1";
             BeginLoadMovie = "1";
         }
-    } else if (MovieName eq "XXII.9-N.swf") {
+    } else if (MovieName eq "XXII.9-N.swf" and eval("/:Quest") < "3") {
+        // (OpenMNOG: only until it has played; before, selecting Hafu or Taipu (and their animations) there played it again.)
         tellTarget ("../") {
             gotoAndPlay("Close cText");
         }
@@ -63,7 +66,8 @@ if (eval("../:AllowChange") eq "1" and eval("../:cTextOpen") eq "1") {
                 BeginLoadMovie = "1";
             }
         }
-    } else if (MovieName eq "XXII.14-N.swf" and Name eq "KOPEKE") {
+    } else if (MovieName eq "XXII.14-N.swf" and Name eq "KOPEKE" and eval("/:Quest") < "5") {
+        // (OpenMNOG: only until it has played; before, selecting him there played it again.)
         tellTarget ("../") {
             gotoAndPlay("Close cText");
         }
