@@ -359,6 +359,7 @@ if (FightVisions eq "0") {
 }
 QueuePick = "1";
 AllowQueue = "1";
+QueueHeld = "0";
 HitCalc = "0";
 RunName = "";
 ReturnName = "";

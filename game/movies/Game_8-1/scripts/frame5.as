@@ -1,4 +1,16 @@
 #version 4
+// (OpenMNOG: a Rahi's target marker holds the turns while it plays (AllowQueue 0, sixteen frames), and lets them go
+// on its last frame. But the marker is only there while the Rahi waits: hit meanwhile, it went, and knocked out,
+// never came back, and everyone waited to attack for good. So held much longer than a marker plays (this runs
+// every other frame: thirty frames), the turns go on.)
+if (AllowQueue eq "0") {
+    QueueHeld = QueueHeld + "1";
+    if ("15" < QueueHeld) {
+        AllowQueue = "1";
+    }
+} else {
+    QueueHeld = "0";
+}
 if (QueuePick eq "1") {
     count = "0";
     RahiAlive = "0";
@@ -34,7 +46,9 @@ if (QueuePick eq "1") {
         while (count < NumTohunga) {
             count = count + "1";
             AskAttacking = eval("Tohunga" add count add "/:Attacking");
-            if (AskAttacking eq "1") {
+            // (OpenMNOG: only one still standing. One knocked out still waits until its hit has played out, and given
+            // the turn then, it never gave it back: everyone waited for good.)
+            if (AskAttacking eq "1" and "0" < eval("Tohunga" add count add "/:Health")) {
                 AskTime = eval("Tohunga" add count add "/:AttackTime");
                 if (AskTime < AttackTime and AskTime < FramesPassed) {
                     AttackTime = AskTime;
@@ -46,7 +60,9 @@ if (QueuePick eq "1") {
         while (count < NumRahi) {
             count = count + "1";
             AskAttacking = eval("Rahi" add count add "/:Attacking");
-            if (AskAttacking eq "1") {
+            // (OpenMNOG: only one still standing. One knocked out still waits until its hit has played out, and given
+            // the turn then, it never gave it back: everyone waited for good.)
+            if (AskAttacking eq "1" and "0" < eval("Rahi" add count add "/:Health")) {
                 AskTime = eval("Rahi" add count add "/:AttackTime");
                 if (AskTime < AttackTime and AskTime < FramesPassed) {
                     AttackTime = AskTime;
